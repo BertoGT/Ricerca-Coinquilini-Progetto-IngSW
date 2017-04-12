@@ -12,14 +12,19 @@ public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
+    private String citta, indirizzo;
 
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata) {
+    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata, String citta, String indirizzo) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
         this.cucinaSeparata = cucinaSeparata;
+        this.citta = citta;
+        this.indirizzo = indirizzo;
         this.camere = new ArrayList<>();
     }
+
+   
     
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException {
         boolean flag = false;
@@ -66,6 +71,14 @@ public class InfoCasa {
 
     public ArrayList<CameraDisponibile> getCamere() {
         return camere;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
     }
     
     

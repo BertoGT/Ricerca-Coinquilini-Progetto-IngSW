@@ -17,10 +17,12 @@ public class AnnuncioCasa {
     private InfoCasa casa;
     private String descrizioneAggiuntiva;
     private int idAnnuncio;
+    private int costo;
 
-    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio) {
+    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
         this.idAnnuncio = idAnnuncio;
+        this.costo = costo;
     }
     
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{
@@ -31,8 +33,8 @@ public class AnnuncioCasa {
         casa.rimuoviCamera(idAnnuncio);
     }
     
-    public void creaInfo(int m2, int nLocali, int nBagni, boolean cucinaSeparata){
-        casa = new InfoCasa(m2, nLocali, nBagni, cucinaSeparata);
+    public void creaInfo(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata, String citta, String indirizzo){
+        casa = new InfoCasa(metriQuadri, nLocali, numeroBagni, cucinaSeparata, citta, indirizzo);
     }
 
     public InfoCasa getCasa() {
@@ -45,6 +47,34 @@ public class AnnuncioCasa {
 
     public int getIdAnnuncio() {
         return idAnnuncio;
+    }
+
+    public int getCosto() {
+        return costo;
+    }
+    
+    public String getCitta() {
+        return casa.getCitta();
+    }
+    
+    public int getMetriQuadri() {
+        return casa.getMetriQuadri();
+    }
+
+    public int getnLocali() {
+        return casa.getnLocali();
+    }
+
+    public int getNumeroBagni() {
+        return casa.getNumeroBagni();
+    }
+
+    public boolean isCucinaSeparata() {
+        return casa.isCucinaSeparata();
+    }
+
+    public ArrayList<CameraDisponibile> getCamere() {
+        return casa.getCamere();
     }
 
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
