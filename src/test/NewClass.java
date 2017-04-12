@@ -15,6 +15,6 @@ public class NewClass {
     public static void main(String[] args) {
         LeggiAnnunci l = new LeggiAnnunci();
         l.leggiCase();
-        l.stampaAnnunci();
+        System.out.println(l.stampaAnnunci());
     }
 }

@@ -1,1 +1,2 @@
-70  3   1   si  3   
+la casa di gt;50;250
+la casa di fari;60;300

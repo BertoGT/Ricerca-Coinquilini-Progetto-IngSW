@@ -22,12 +22,12 @@ public class LeggiAnnunci {
     private BufferedReader br;
     private ArrayList<AnnuncioCasa> annunci;
     
-    public void leggiCase(){
-        annunci = new ArrayList<AnnuncioCasa>();
+    public void leggiCase(){  
         try {
+            annunci = new ArrayList<AnnuncioCasa>();
             br = new BufferedReader(new FileReader("file/annunci.txt"));
             while(br.ready()){
-               String[] str = br.readLine().split("\t");
+               String[] str = br.readLine().split(";");
                annunci.add(new AnnuncioCasa(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2])));
             }
         } catch (FileNotFoundException ex) {
@@ -40,7 +40,7 @@ public class LeggiAnnunci {
     public String stampaAnnunci(){
         StringBuilder sb = new StringBuilder();
         for (AnnuncioCasa a : annunci) {
-            sb.append(a);
+            sb.append(a.getDescrizioneAggiuntiva()+" "+a.getIdAnnuncio()+" "+a.getCosto());
             sb.append("\n");
         }
         return sb.toString();
