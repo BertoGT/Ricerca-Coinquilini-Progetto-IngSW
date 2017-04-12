@@ -5,6 +5,8 @@
  */
 package Casa;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author alberto
