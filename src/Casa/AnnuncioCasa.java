@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author alberto
+ * @author fari
  */
 public class AnnuncioCasa {
     private InfoCasa casa;
