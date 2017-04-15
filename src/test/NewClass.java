@@ -16,5 +16,7 @@ public class NewClass {
         LeggiAnnunci l = new LeggiAnnunci();
         l.leggiCase();
         System.out.println(l.stampaAnnunci());
+        l.leggiInfoCasa();
+        System.out.println(l.stampaInfoAnnunci());
     }
 }

@@ -1,0 +1,2 @@
+50;3;1;cucina separata;Pavia;via Galilei 14
+5600;2;1;cucina a vista;Pavia;via Torpedo 10
