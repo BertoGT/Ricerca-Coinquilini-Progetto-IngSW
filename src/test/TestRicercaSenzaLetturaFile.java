@@ -7,7 +7,6 @@ package test;
 
 import Casa.AnnuncioCasa;
 import Exceptions.CameraNonInseritaException;
-import RicercaAnnuncio.ParametriRicercaAnnuncio;
 import RicercaAnnuncio.RicercaAnnuncio;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -42,6 +41,15 @@ public class TestRicercaSenzaLetturaFile {
             Logger.getLogger(TestRicercaSenzaLetturaFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         annunci.add(a2);
+        
+        AnnuncioCasa a3 = new AnnuncioCasa("prova", 1, 250);
+        a3.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77");
+        try {
+            a3.creaCamera(1, 2, 1);
+        } catch (CameraNonInseritaException ex) {
+            Logger.getLogger(TestRicercaSenzaLetturaFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        annunci.add(a3);
         
         ArrayList<AnnuncioCasa> annunciRisultati;
         annunciRisultati = new RicercaAnnuncio(annunci, "Pavia", 0, 0, 0, 0, 0, 0, 300).eseguiRicerca();

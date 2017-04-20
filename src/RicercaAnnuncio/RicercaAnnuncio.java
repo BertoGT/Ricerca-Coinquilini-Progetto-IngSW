@@ -31,32 +31,32 @@ public class RicercaAnnuncio {
         for (AnnuncioCasa a : annunciTotali) {
 
             if (!par.getCitta().equals(a.getCitta())) {
-                break;
+                continue;
             }
             
             // se i m2 max sono 0, non inserisco il parametro, quindi salta il filtro
             if (par.getMetriQuadriMax() != 0 ) {
                 if (a.getMetriQuadri() <= par.getMetriQuadriMin()
                         && a.getMetriQuadri() >= par.getMetriQuadriMax()) {
-                    break;
+                    continue;
                 }
             }
             if(par.getNumeroLocaliMax() != 0) {
                 if (a.getnLocali() <= par.getNumeroLocaliMin()
                         && a.getnLocali() >= par.getNumeroLocaliMax()) {
-                    break;
+                    continue;
                 }
             }
 
             if(par.getNumeroBagni() != 0) {
                 if (a.getNumeroBagni() != par.getNumeroBagni()) {
-                    break;
+                    continue;
                 }
             }
 
             if(par.getCostoMax() != 0) { 
                 if (a.getCosto() >= par.getCostoMax()) {
-                    break;
+                    continue;
                 }
             }
 
@@ -68,7 +68,7 @@ public class RicercaAnnuncio {
                     if (cameraDisponibile.getPostiLettoDisponibili() > 0
                            && cameraDisponibile.getPostiLetto() <= par.getPostiLettoMax()) {
                         flag = true; // ho trovato almeno una camera che va bene
-                        break;
+                        continue;
                     }
                 }
 
