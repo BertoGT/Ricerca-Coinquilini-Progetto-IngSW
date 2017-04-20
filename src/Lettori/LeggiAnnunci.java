@@ -7,6 +7,7 @@ package Lettori;
 
 import Casa.AnnuncioCasa;
 import Casa.InfoCasa;
+import Exceptions.CameraNonInseritaException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,14 +18,13 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author fari
+ * @author Niko
  */
 public class LeggiAnnunci {
-    private BufferedReader br_case, br_info;
+    private BufferedReader br_case, br_info, br_camera;
     private ArrayList<AnnuncioCasa> annunci;
-    private ArrayList<InfoCasa> specificheCasa;
-    
-    public void leggiCase(){  
+ 
+    private void leggiAnnunci(){  
         try {
             annunci = new ArrayList<AnnuncioCasa>();
             br_case = new BufferedReader(new FileReader("file/annunci.txt"));
@@ -40,10 +40,10 @@ public class LeggiAnnunci {
     }
     
     
-    public void leggiInfoCasa(){
+    private void leggiInfoCasa(){
         try {
-            specificheCasa = new ArrayList<InfoCasa>();
             br_info = new BufferedReader(new FileReader("file/infoCasa.txt"));
+            int contatore = 0;
             while(br_info.ready()){
                 String[] str = br_info.readLine().split(";");
                 boolean cucina = true;
@@ -57,7 +57,9 @@ public class LeggiAnnunci {
                     default:
                         break;
                 }
-                specificheCasa.add(new InfoCasa(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2]), cucina, str[4], str[5]));
+                annunci.get(contatore).creaInfo(Integer.parseInt(str[0]),
+                        Integer.parseInt(str[1]), Integer.parseInt(str[2]), cucina, str[4], str[5]);
+                contatore++;
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,17 +68,30 @@ public class LeggiAnnunci {
         }
     }
     
-    public String stampaInfoAnnunci(){
-        StringBuilder sb = new StringBuilder();
-        for (InfoCasa i : specificheCasa) {
-            String cucina;
-            if(i.isCucinaSeparata())
-                cucina = "cucina separata";
-            else cucina = "cucina a vista";
-            sb.append(i.getCitta()+" "+i.getIndirizzo()+"; "+"numero camere: "+i.getnLocali()+"; numero bagni: "+i.getNumeroBagni()+"; cucina: "+cucina);
-            sb.append("\n");
+    private void leggiCamere(){
+        try {
+            br_camera = new BufferedReader(new FileReader("file/camere.txt"));
+            while(br_camera.ready()){
+                String[] str = br_camera.readLine().split(";");
+                annunci.get(Integer.parseInt(str[0])).creaCamera(Integer.parseInt(str[1]), Integer.parseInt(str[2]),Integer.parseInt(str[3]));
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (CameraNonInseritaException ex) {
+            Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sb.toString();
+    }
+    
+    public void leggiFile(){
+        leggiAnnunci();
+        leggiInfoCasa();
+        leggiCamere();
+    }
+
+    public ArrayList<AnnuncioCasa> getAnnunci() {
+        return annunci;
     }
     
     public String stampaAnnunci(){
