@@ -75,8 +75,9 @@ public class RicercaAnnuncio {
                 if (flag) {
                     result.add(a);
                 }
-            } else 
+            } else {
                 result.add(a);
+            }
         }
         return result;
     }
