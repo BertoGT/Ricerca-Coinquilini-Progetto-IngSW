@@ -6,6 +6,7 @@
 package test;
 
 import Casa.AnnuncioCasa;
+import Casa.HouseGender;
 import Exceptions.CameraNonInseritaException;
 import RicercaAnnuncio.RicercaAnnuncio;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class TestRicercaSenzaLetturaFile {
         ArrayList<AnnuncioCasa> annunci = new ArrayList<>();
         AnnuncioCasa a1 = new AnnuncioCasa("prova", 1, 250);
         
-        a1.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77");
+        a1.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77", HouseGender.MASCHI);
         try {
             a1.creaCamera(1, 2, 1);
         } catch (CameraNonInseritaException ex) {
@@ -34,7 +35,7 @@ public class TestRicercaSenzaLetturaFile {
         annunci.add(a1);
         
         AnnuncioCasa a2 = new AnnuncioCasa("prova", 1, 350);
-        a2.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77");
+        a2.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77", HouseGender.FEMMINE);
         try {
             a2.creaCamera(1, 2, 1);
         } catch (CameraNonInseritaException ex) {
@@ -43,7 +44,7 @@ public class TestRicercaSenzaLetturaFile {
         annunci.add(a2);
         
         AnnuncioCasa a3 = new AnnuncioCasa("prova", 1, 250);
-        a3.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77");
+        a3.creaInfo(100, 2, 1, true, "Pavia", "Via Ferrini, 77",HouseGender.MISTA);
         try {
             a3.creaCamera(1, 2, 1);
         } catch (CameraNonInseritaException ex) {

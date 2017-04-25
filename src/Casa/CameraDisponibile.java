@@ -5,7 +5,7 @@ package Casa;
  * @author Alberto
  */
 public class CameraDisponibile {
-    private int postiLetto, postiLettoDisponibili, idCamera;
+    private int postiLetto, postiLettoDisponibili, idCamera; 
 
     public CameraDisponibile(int idCamera, int postiLetto, int postiLettoDisponibili) {
         this.postiLetto = postiLetto;

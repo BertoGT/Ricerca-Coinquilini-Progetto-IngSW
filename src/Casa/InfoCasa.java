@@ -10,11 +10,12 @@ import java.util.ArrayList;
  */
 public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni;
+    private HouseGender sessoCasa;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
     private String citta, indirizzo;
 
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata, String citta, String indirizzo) {
+    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
@@ -22,6 +23,7 @@ public class InfoCasa {
         this.citta = citta;
         this.indirizzo = indirizzo;
         this.camere = new ArrayList<>();
+        this.sessoCasa = sessoCasa;
     }
 
    
