@@ -7,10 +7,6 @@ package Utenti;
 
 import java.util.Calendar;
 
-/**
- *
- * @author Marco La Salvia
- */
 public class WebSurfer {
     private String id;
     private Calendar dataOraAccesso;
@@ -18,7 +14,6 @@ public class WebSurfer {
     public WebSurfer(int numeroUtente) {
         this.id = "ID_" + numeroUtente;
         this.dataOraAccesso = Calendar.getInstance();
-        
     }
 
     public String getId() {
@@ -31,7 +26,7 @@ public class WebSurfer {
 
     @Override
     public String toString() {
-        return "WebSurfer{" + "id=" + id + ", dataOraAccesso=" + dataOraAccesso + '}';
+        return "WebSurfer, l'id non ci serve";
     }
       
     
