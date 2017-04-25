@@ -1,0 +1,12 @@
+<h1> COSE DA FARE </h1>
+
+. aggiungere distanza dal centro della casa in InfoCasa<br>
+. aggiungere citta in InfoCasa<br>
+
+<h3>IDEE:</h3><br>
+. domande aggiuntive guidate?? (domande base) <br>
+. possibilità di legare profilo utente ad una camera dopo che e stata occupata <br>
+. doppio algoritmo di ricerca, in base a parametri: 
+<ol><li>uno dal punto di vista dell'utente che cerca casa</li>
+<li> uno dal punto di vista duchi mette l'annuncio e cerca coinquilino</li></ol>
+. affinità calcolata su scala da 0 a MUST
