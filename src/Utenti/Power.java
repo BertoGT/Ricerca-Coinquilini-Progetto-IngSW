@@ -11,4 +11,12 @@ package Utenti;
  */
 public interface Power {
     int getPower();
+    
+    
+    
+    
+    
+    
+    
+    
 }
