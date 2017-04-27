@@ -14,33 +14,35 @@ import java.util.GregorianCalendar;
  *
  * @author Margherita
  */
-public class DatiUtente {
+public abstract class DatiUtente {
     
     
     private SimpleDateFormat sdf;
-    private GregorianCalendar dataDiNascita= new GregorianCalendar();
+    private GregorianCalendar dataDiNascita = new GregorianCalendar();
     private String miaData;
     private int giorno, mese, anno;
     private int eta;
     private String sesso;  // volendo si può usare enum (F o M)
     private boolean fumatore, cuoco, sportivo; 
-    private String nome, cognome, nazionalita;
+    private String nome, cognome, nazionalita, eMail, password;
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
-    public Facolta facolta;
+    private Facolta facolta;
     
     
-    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno) throws ParseException {
+    public DatiUtente(String nome, String cognome, String sesso,String eMail, String password, int giorno, int mese, int anno) throws ParseException {
 
         this.nome=nome;
         this.cognome=cognome;
         this.sesso=sesso;
+        this.eMail = eMail;
+        this.password = password;
         
         calcoloEta(giorno, mese, anno);
         
     }
 
-    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno, String nazionalita, 
+    public DatiUtente(String nome, String cognome, String sesso,String eMail, String password, int giorno, int mese, int anno, String nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo) throws ParseException {
         
@@ -54,8 +56,50 @@ public class DatiUtente {
         this.fumatore=fumatore;
         this.cuoco=cuoco;
         this.sportivo=sportivo;
+        this.eMail = eMail;
+        this.password = password;
         this.potenzialeCoinquilino=false; // diventa true in caso di candidatura come coinquilino
 
+    }
+
+    public int getGiorno() {
+        return giorno;
+    }
+
+    public void setGiorno(int giorno) {
+        this.giorno = giorno;
+    }
+
+    public int getMese() {
+        return mese;
+    }
+
+    public void setMese(int mese) {
+        this.mese = mese;
+    }
+
+    public int getAnno() {
+        return anno;
+    }
+
+    public void setAnno(int anno) {
+        this.anno = anno;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
@@ -174,7 +218,7 @@ public class DatiUtente {
 
     @Override
     public String toString() {
-        return "DatiUtente: \n" + "- data di nascita = " + miaData + "\n- eta = "+ eta+ "\n- sesso = " + sesso + "\n- fumatore = " + fumatore 
+        return "DatiUtente: \n" + "\n- username = " + this.eMail+ "\n- password = " + this.password + "\n- data di nascita = " + miaData + "\n- eta = "+ eta+ "\n- sesso = " + sesso + "\n- fumatore = " + fumatore 
                 
                     + "\n- cuoco = " + cuoco + "\n- sportivo = " + sportivo + "\n- nome = " + nome + "\n- cognome = " + cognome + 
                 
@@ -182,7 +226,17 @@ public class DatiUtente {
                 
                     + potenzialeCoinquilino + "\n- facolta = " + facolta ;
     }
-    
+    public String toStringDB(){
+        String s = "";
+        s = this.eMail+ "\t" + this.password + "\t" + this.miaData + "\t"+ this.eta+ "\t" + this.sesso + "\t" + this.fumatore 
+                
+                    + "\t" + this.cuoco + "\t" + this.sportivo + "\t" + this.nome + "\t" + this.cognome + 
+                
+                    "\t" + this.nazionalita + "\t" + this.occupazione + "\t" 
+                
+                    + this.potenzialeCoinquilino + "\t" + this.facolta ;
+        return s;
+    }
     
     
     
