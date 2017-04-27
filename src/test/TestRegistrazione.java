@@ -21,6 +21,7 @@ public class TestRegistrazione {
     public static void main(String[] args) {
         try {
             Registrazione r = new Registrazione("marco", "la salvia", "m", "mrc.lasalvia@gmail.com","1234",11,12,1995);
+            Registrazione r1 = new Registrazione("margherita", "ricotti", "F", "marghethebest@hotmail.it","5678",2,12,1996);
             System.out.println(r.toString());
         } catch (ParseException ex) {
             System.out.println(ex.getMessage());
