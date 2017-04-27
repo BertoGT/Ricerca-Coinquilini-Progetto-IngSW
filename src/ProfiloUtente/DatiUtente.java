@@ -27,7 +27,7 @@ public class DatiUtente {
     private String nome, cognome, nazionalita;
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
-    public Facolta facolta;
+    private Facolta facolta;
     
     
     public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno) throws ParseException {
