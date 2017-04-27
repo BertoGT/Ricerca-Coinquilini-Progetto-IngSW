@@ -6,6 +6,7 @@
 package Lettori;
 
 import Casa.AnnuncioCasa;
+import Casa.HouseGender;
 import Casa.InfoCasa;
 import Exceptions.CameraNonInseritaException;
 import java.io.BufferedReader;
@@ -58,7 +59,7 @@ public class LeggiAnnunci {
                         break;
                 }
                 annunci.get(contatore).creaInfo(Integer.parseInt(str[0]),
-                        Integer.parseInt(str[1]), Integer.parseInt(str[2]), cucina, str[4], str[5]);
+                        Integer.parseInt(str[1]), Integer.parseInt(str[2]), cucina, str[4], str[5], HouseGender.valueOf(str[6].toUpperCase()));
                 contatore++;
             }
         } catch (FileNotFoundException ex) {

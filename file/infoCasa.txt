@@ -1,6 +1,6 @@
-50;3;1;cucina separata;Trevozzo;via Enrico Fermi 65
-60;2;1;cucina a vista;Cura;via Mazzini 14
-70;4;2;cucina separata;Pavia;via Cairoli 7
-120;6;3;cucina separata;Pavia;via Robolini 7
-40;2;1;cucina a vista;Pavia;via Cassinetto 7
-50;3;1;cucina a vista;Verbania;via Raffaello 6
+50;3;1;cucina separata;Trevozzo;via Enrico Fermi 65; MASCHI
+60;2;1;cucina a vista;Cura;via Mazzini 14; FEMMINE
+70;4;2;cucina separata;Pavia;via Cairoli 7; mista
+120;6;3;cucina separata;Pavia;via Robolini 7; mista
+40;2;1;cucina a vista;Pavia;via Cassinetto 7; femmine
+50;3;1;cucina a vista;Verbania;via Raffaello 6; maschi
