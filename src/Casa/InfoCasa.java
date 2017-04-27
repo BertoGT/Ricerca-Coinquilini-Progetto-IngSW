@@ -9,21 +9,23 @@ import java.util.ArrayList;
  * @author alberto
  */
 public class InfoCasa {
-    private int metriQuadri, nLocali, numeroBagni;
+    private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
     private HouseGender sessoCasa;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
     private String citta, indirizzo;
 
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
+    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
+        this.distanzaCentro=distanzaCentro;
         this.cucinaSeparata = cucinaSeparata;
         this.citta = citta;
         this.indirizzo = indirizzo;
         this.camere = new ArrayList<>();
         this.sessoCasa = sessoCasa;
+        
     }
 
    
@@ -65,6 +67,14 @@ public class InfoCasa {
 
     public int getNumeroBagni() {
         return numeroBagni;
+    }
+
+    public int getDistanzaCentro() {
+        return distanzaCentro;
+    }
+
+    public HouseGender getSessoCasa() {
+        return sessoCasa;
     }
 
     public boolean isCucinaSeparata() {
