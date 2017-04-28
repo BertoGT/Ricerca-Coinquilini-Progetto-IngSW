@@ -33,8 +33,8 @@ public class AnnuncioCasa {
         casa.rimuoviCamera(idAnnuncio);
     }
     
-    public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa){
-        casa = new InfoCasa(metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
+    public void creaInfo(int metriQuadri, int nLocali,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa){
+        casa = new InfoCasa(metriQuadri, nLocali, distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
     }
 
     public InfoCasa getCasa() {

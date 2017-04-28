@@ -35,7 +35,7 @@ public class Registrazione extends DatiUtente {
         bm.scriviFile(this.toStringDB());
     }
     private boolean controlloDB() throws FileNotFoundException{
-        Scanner s = new Scanner(new File(this.getBm().getNomeFile()));
+        Scanner s = new Scanner(new File("file/registrazioni.txt"));
         while(s.hasNextLine()){
             String riga = s.nextLine();
             String[] elem = riga.split("\t");

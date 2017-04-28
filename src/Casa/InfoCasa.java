@@ -15,10 +15,9 @@ public class InfoCasa {
     private ArrayList<CameraDisponibile> camere;
     private String citta, indirizzo;
 
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
+    public InfoCasa(int metriQuadri, int nLocali, int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
-        this.numeroBagni = numeroBagni;
         this.distanzaCentro=distanzaCentro;
         this.cucinaSeparata = cucinaSeparata;
         this.citta = citta;
