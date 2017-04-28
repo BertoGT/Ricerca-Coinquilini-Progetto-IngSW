@@ -33,4 +33,12 @@ public class BusinessModel {
         this.buffer.println(s);
         this.chiudiFile();
     } 
+
+    public String getNomeFile() {
+        return nomeFile;
+    }
+
+    public void setNomeFile(String nomeFile) {
+        this.nomeFile = nomeFile;
+    }
 }
