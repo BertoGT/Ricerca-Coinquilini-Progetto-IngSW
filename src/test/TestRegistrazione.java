@@ -1,6 +1,7 @@
 package test;
 
 
+import Exceptions.EmailAlreadyExistsException;
 import ProfiloUtente.Registrazione;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -25,7 +26,7 @@ public class TestRegistrazione {
             System.out.println(r.toString());
         } catch (ParseException ex) {
             System.out.println(ex.getMessage());
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException | EmailAlreadyExistsException ex) {
             Logger.getLogger(TestRegistrazione.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
