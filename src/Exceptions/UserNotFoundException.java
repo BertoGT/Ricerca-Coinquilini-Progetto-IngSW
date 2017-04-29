@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utenti;
+package Exceptions;
 
 /**
  *
  * @author Marco La Salvia
  */
-public class IdTemporanei {
-    int idCreati;
+public class UserNotFoundException extends Exception {
 
-    public IdTemporanei() {
-        this.idCreati = 0;
+    public UserNotFoundException() {
+        super();
     }
-    public int getIdCreati() {
-        return idCreati;
-    }
-    public void incrementaId(){
-        this.idCreati++;
+
+    public UserNotFoundException(String string) {
+        super(string);
     }
     
     

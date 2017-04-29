@@ -22,6 +22,10 @@ public class Registrazione extends DatiUtente {
     public Registrazione(String nome, String cognome, String sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException, FileNotFoundException, EmailAlreadyExistsException {
         super(nome, cognome, sesso, eMail, password, giorno, mese, anno);
         bm = new BusinessModel();
+        /*
+        DA RIFARE IN QUANTO IL COLLEGAMENTO AL BM E' STATO GIA MESSO NEL SISTEMA!
+        O COMUNQUE BISOGNA RISTRUTTURARLO MEGLIO.
+        */
         if(this.controlloDB())
             this.scriviDb();
         else

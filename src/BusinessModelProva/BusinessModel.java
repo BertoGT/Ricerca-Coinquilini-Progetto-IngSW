@@ -24,6 +24,7 @@ public class BusinessModel {
         this.emailPresenti = new ArrayList<>();
         this.utentiRegistrati = new HashMap<>();
         this.caricaEmail();
+        this.caricaUtentiRegistrati();
     }
     private void apriFileWriter() throws FileNotFoundException{
         this.writer = new PrintWriter(new FileOutputStream(nomeFile, true));

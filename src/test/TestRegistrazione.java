@@ -21,13 +21,11 @@ import java.util.logging.Logger;
 public class TestRegistrazione {
     public static void main(String[] args) {
         try {
-            Registrazione r = new Registrazione("marco", "la salvia", "m", "mrc.lasalvia@gmail.com","1234",11,12,1995);
-            Registrazione r1 = new Registrazione("margherita", "ricotti", "F", "marghethebest@hotmail.it","5678",2,12,1996);
+           Registrazione r = new Registrazione("marco", "la salvia", "m", "mrc.lasalvia@gmail.com","1234",11,12,1995);
+           Registrazione r1 = new Registrazione("margherita", "ricotti", "F", "marghethebest@hotmail.it","5678",2,12,1996);
             System.out.println(r.toString());
-        } catch (ParseException ex) {
+        } catch (ParseException | FileNotFoundException | EmailAlreadyExistsException ex) {
             System.out.println(ex.getMessage());
-        } catch (FileNotFoundException | EmailAlreadyExistsException ex) {
-            Logger.getLogger(TestRegistrazione.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
