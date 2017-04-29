@@ -5,11 +5,8 @@
  */
 package BusinessModelProva;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -17,21 +14,27 @@ import java.util.Scanner;
  */
 public class BusinessModel {
     private String nomeFile;
-    private PrintWriter buffer;
+    private PrintWriter writer;
+    private Scanner reader;
+    private ArrayList<String> emailPresenti;
+    private HashMap<String, String> utentiRegistrati;
 
-    public BusinessModel(){
+    public BusinessModel() throws FileNotFoundException{
         this.nomeFile = "file/registrazioni.txt";
+        this.emailPresenti = new ArrayList<>();
+        this.utentiRegistrati = new HashMap<>();
+        this.caricaEmail();
     }
-    private void apriFile() throws FileNotFoundException{
-        this.buffer = new PrintWriter(new FileOutputStream(nomeFile, true));
+    private void apriFileWriter() throws FileNotFoundException{
+        this.writer = new PrintWriter(new FileOutputStream(nomeFile, true));
     }
-    private void chiudiFile(){
-        this.buffer.close();
+    private void chiudiFileWriter(){
+        this.writer.close();
     }
     public void scriviFile(String s) throws FileNotFoundException{
-        this.apriFile();
-        this.buffer.println(s);
-        this.chiudiFile();
+        this.apriFileWriter();
+        this.writer.println(s);
+        this.chiudiFileWriter();
     } 
 
     public String getNomeFile() {
@@ -41,4 +44,39 @@ public class BusinessModel {
     public void setNomeFile(String nomeFile) {
         this.nomeFile = nomeFile;
     }
+    private void apriFileReader() throws FileNotFoundException{
+        this.reader = new Scanner(new File(this.nomeFile));
+    }
+    private void chiudiFileReader(){
+        this.reader.close();
+    }
+    private void caricaEmail() throws FileNotFoundException{
+        ArrayList<String> eMails = new ArrayList<>();
+        this.apriFileReader();
+        while(this.reader.hasNextLine()){
+            String riga = this.reader.nextLine();
+            String[] elem = riga.split("\t");
+            eMails.add(elem[0]);           
+        }
+        this.emailPresenti = eMails;
+        this.chiudiFileReader();
+    }
+    private void caricaUtentiRegistrati() throws FileNotFoundException{
+        this.apriFileReader();
+        while(this.reader.hasNextLine()){
+            String riga = this.reader.nextLine();
+            String[] elem = riga.split("\t");
+            this.utentiRegistrati.put(elem[0], elem[1]);
+        }
+        this.chiudiFileReader();
+    }
+
+    public HashMap<String, String> getUtentiRegistrati() {
+        return utentiRegistrati;
+    }
+
+    public ArrayList<String> getEmailPresenti() {
+        return emailPresenti;
+    }
+    
 }

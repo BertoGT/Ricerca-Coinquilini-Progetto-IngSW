@@ -21,6 +21,7 @@ public class Registrazione extends DatiUtente {
     private BusinessModel bm;
     public Registrazione(String nome, String cognome, String sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException, FileNotFoundException, EmailAlreadyExistsException {
         super(nome, cognome, sesso, eMail, password, giorno, mese, anno);
+        bm = new BusinessModel();
         if(this.controlloDB())
             this.scriviDb();
         else
@@ -31,18 +32,13 @@ public class Registrazione extends DatiUtente {
         super(nome, cognome, sesso, eMail, password, giorno, mese, anno, nazionalita, occupazione, facolta, fumatore, cuoco, sportivo);
     }
     private void scriviDb() throws FileNotFoundException{
-        bm = new BusinessModel();
         bm.scriviFile(this.toStringDB());
     }
-    private boolean controlloDB() throws FileNotFoundException{
-        Scanner s = new Scanner(new File("file/registrazioni.txt"));
-        while(s.hasNextLine()){
-            String riga = s.nextLine();
-            String[] elem = riga.split("\t");
-            if(elem[0].equals(this.geteMail()))
-                return false;
-        }
-        return true;
+    private boolean controlloDB(){
+        if(this.bm.getEmailPresenti().contains(this.geteMail()))
+            return false;
+        else
+            return true;
     }
 
     public BusinessModel getBm() {
