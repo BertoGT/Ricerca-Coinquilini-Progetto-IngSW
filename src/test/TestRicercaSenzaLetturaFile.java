@@ -22,6 +22,7 @@ public class TestRicercaSenzaLetturaFile {
     /**
      * @param args the command line arguments
      */
+    /*
     public static void main(String[] args) {
         ArrayList<AnnuncioCasa> annunci = new ArrayList<>();
         AnnuncioCasa a1 = new AnnuncioCasa("prova", 1, 250);
@@ -56,5 +57,6 @@ public class TestRicercaSenzaLetturaFile {
         annunciRisultati = new RicercaAnnuncio(annunci, "Pavia", 0, 0, 0, 0, 0, 0, 300).eseguiRicerca();
         System.out.println("prova");
     }
+*/
     
 }

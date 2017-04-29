@@ -90,6 +90,10 @@ public class Sistema {
         }else
             throw new UserNotFoundException("eMail non trovata all'interno del database: Utente inesistente.");
     }
+    /*
+    VA AGGIUNTO UN QUALCOSA CHE PERMETTA DI PROCEDERE COME GUEST/REGISTRARSI/EFFETTUARE IL LOGIN SOLO IN UN CERTO ORDINE O COMUNQUE SE LOGGATO NON SI PUO' EFFETTUARE REGISTRAZIONE
+    FINCHE NON SI FA LOGOUT ECC..
+    */
     
     
 }

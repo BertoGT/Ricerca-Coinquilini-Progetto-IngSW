@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  * @author Marco La Salvia
  */
 public class TestRegistrazione {
+    /*
     public static void main(String[] args) {
         try {
            Registrazione r = new Registrazione("marco", "la salvia", "m", "mrc.lasalvia@gmail.com","1234",11,12,1995);
@@ -28,4 +29,5 @@ public class TestRegistrazione {
             System.out.println(ex.getMessage());
         }
     }
+*/
 }

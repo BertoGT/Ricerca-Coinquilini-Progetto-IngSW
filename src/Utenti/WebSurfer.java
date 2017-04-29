@@ -26,7 +26,8 @@ public class WebSurfer implements Power{
         return dataOraAccesso;
     }
     public int getNumeroUtente(){
-        return Integer.parseInt(id);
+        String numeroUtente = this.id.replaceAll("ID_", "");
+        return Integer.parseInt(numeroUtente);
     }
     @Override
     public String toString() {
