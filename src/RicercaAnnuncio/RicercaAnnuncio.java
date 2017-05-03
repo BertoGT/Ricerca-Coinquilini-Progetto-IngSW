@@ -15,71 +15,46 @@ import java.util.ArrayList;
 public class RicercaAnnuncio {
 
     private ArrayList<AnnuncioCasa> annunciTotali;
-    private ParametriRicercaAnnuncio par;
+    private ArrayList<ParametroRicercaAnnuncio> parametriRicerca;
+    private ArrayList<AnnuncioRisultante> annunciRisultanti;
 
-    public RicercaAnnuncio(ArrayList<AnnuncioCasa> annunciTotali, String citta,
-            int metriQuadriMin, int metriQuadriMax, int numeroLocaliMin,
-            int numeroLocaliMax, int numeroBagni, int postiLettoMax, int costoMax) {
-
+    public RicercaAnnuncio(ArrayList<AnnuncioCasa> annunciTotali, ArrayList<ParametroRicercaAnnuncio> parametriRicerca) {
         this.annunciTotali = annunciTotali;
-        par = new ParametriRicercaAnnuncio(citta, metriQuadriMin, metriQuadriMax,
-                numeroLocaliMin, numeroLocaliMax, numeroBagni, postiLettoMax, costoMax);
+        this.parametriRicerca = parametriRicerca;
+        this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
     }
-
-    public ArrayList<AnnuncioCasa> eseguiRicerca() {
-        ArrayList<AnnuncioCasa> result = new ArrayList<>();
-        for (AnnuncioCasa a : annunciTotali) {
-
-            if (!par.getCitta().equals(a.getCitta())) {
-                continue;
-            }
+   
+    public void calcolaAffinita() {
+        for (AnnuncioCasa annuncioCasa : annunciTotali) {
+            float affinitaTotale = 0;
+            int totaleStelle = 0;
+            boolean annuncioIncompatibile = false;
             
-            // se i m2 max sono 0, non inserisco il parametro, quindi salta il filtro
-            if (par.getMetriQuadriMax() != 0 ) {
-                if (a.getMetriQuadri() <= par.getMetriQuadriMin()
-                        && a.getMetriQuadri() >= par.getMetriQuadriMax()) {
-                    continue;
-                }
+            for (ParametroRicercaAnnuncio parametroRicerca : parametriRicerca) {
+                totaleStelle += parametroRicerca.getStelle();
+                float affinita = parametroRicerca.calcolaAffinità(annuncioCasa);
+                if(affinita == -1) {
+                    // annuncio da escludere ai risultati
+                    annuncioIncompatibile = true;
+                    break;                      
+                } else 
+                    affinitaTotale += affinita;
             }
-            if(par.getNumeroLocaliMax() != 0) {
-                if (a.getnLocali() <= par.getNumeroLocaliMin()
-                        && a.getnLocali() >= par.getNumeroLocaliMax()) {
-                    continue;
-                }
-            }
-
-            if(par.getNumeroBagni() != 0) {
-                if (a.getNumeroBagni() != par.getNumeroBagni()) {
-                    continue;
-                }
-            }
-
-            if(par.getCostoMax() != 0) { 
-                if (a.getCosto() >= par.getCostoMax()) {
-                    continue;
-                }
-            }
-
-            if(par.getPostiLettoMax() != 0) {
-                // Controllo che ci sia almeno una camera che soddisfa le richieste 
-                ArrayList<CameraDisponibile> camera = a.getCamere();
-                boolean flag = false;
-                for (CameraDisponibile cameraDisponibile : camera) {
-                    if (cameraDisponibile.getPostiLettoDisponibili() > 0
-                           && cameraDisponibile.getPostiLetto() <= par.getPostiLettoMax()) {
-                        flag = true; // ho trovato almeno una camera che va bene
-                        continue;
-                    }
-                }
-
-                if (flag) {
-                    result.add(a);
-                }
-            } else {
-                result.add(a);
-            }
+            if(!annuncioIncompatibile) {
+                float punteggio = affinitaTotale * 100 / totaleStelle;
+                this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, punteggio));
+            }      
         }
-        return result;
     }
 
+    public ArrayList<AnnuncioRisultante> getAnnunciRisultanti() {
+        return annunciRisultanti;
+    }
+    
+    
+
+    
+
+    
+   
 }

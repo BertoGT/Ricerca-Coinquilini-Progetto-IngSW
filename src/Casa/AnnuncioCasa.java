@@ -80,8 +80,14 @@ public class AnnuncioCasa {
     public ArrayList<CameraDisponibile> getCamere() {
         return casa.getCamere();
     }
+    
+    public HouseGender getSessoCasa() {
+        return casa.getSessoCasa();
+    }
 
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }
+    
+    
 }

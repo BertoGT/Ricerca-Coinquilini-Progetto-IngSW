@@ -13,21 +13,23 @@ import Casa.AnnuncioCasa;
  */
 public class DistanzaCentro extends ParametroRicercaAnnuncio {
 
-    private int km;
+    private int distanzaMax;
     
-    public DistanzaCentro(int stelle,int km) {
+    public DistanzaCentro(int stelle,int distanzaMax) {
         super(stelle);
-        this.km=km;
+        this.distanzaMax=distanzaMax;
     }
 
     @Override
     public float calcolaAffinità(AnnuncioCasa annuncio) {
-        if(this.km<annuncio.getDistanzaCentro())
+        if(this.distanzaMax<annuncio.getDistanzaCentro()) 
             return 0;
+        
         else if(annuncio.getDistanzaCentro()==0)
             return super.getStelle();
         else
-            return super.getStelle()- (super.getStelle()/annuncio.getDistanzaCentro());
+            return super.getStelle() - 
+                    ( ( (float) super.getStelle()*annuncio.getDistanzaCentro()) / distanzaMax);
         
     }
     
