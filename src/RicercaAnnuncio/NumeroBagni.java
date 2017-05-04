@@ -9,26 +9,22 @@ import Casa.AnnuncioCasa;
 
 /**
  *
- * @author Delbo
+ * @author alberto
  */
-public class Città extends ParametroRicercaAnnuncio{
+public class NumeroBagni extends ParametroRicercaAnnuncio{
+    private int numeroBagni;
 
-    private String nome;
-    
-    public Città(String nome) {
-        super(0);
-        this.nome=nome;
-        
+    public NumeroBagni(int stelle, int numeroBagni) {
+        super(stelle);
+        this.numeroBagni = numeroBagni;
     }
-    
-    
-    
+
     @Override
     public float calcolaAffinità(AnnuncioCasa annuncio) {
-        if(this.nome.equals(annuncio.getCitta()))
-            return 0;
+        if(numeroBagni <= annuncio.getNumeroBagni())
+            return super.getStelle();
         else
-            return -1;
+            return 0;
     }
     
 }

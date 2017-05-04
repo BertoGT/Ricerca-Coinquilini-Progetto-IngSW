@@ -14,7 +14,6 @@ import Casa.AnnuncioCasa;
 public abstract class ParametroRicercaAnnuncio {
     
     private int stelle;
-    protected TipoParametro type;
 
     public ParametroRicercaAnnuncio(int stelle) {
         this.stelle = stelle;
@@ -23,10 +22,6 @@ public abstract class ParametroRicercaAnnuncio {
     
     public int getStelle() {
         return stelle;
-    }
-
-    public TipoParametro getType() {
-        return type;
     }
     
     public abstract float calcolaAffinità(AnnuncioCasa annuncio);
