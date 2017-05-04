@@ -14,8 +14,8 @@ import Casa.AnnuncioCasa;
 public class Costo extends ParametroRicercaAnnuncio{
     private int costoMax;
 
-    public Costo(int stelle, int costoMax) {
-        super(stelle);
+    public Costo(int costoMax) {
+        super(0);
         this.costoMax = costoMax;
     }
     
@@ -27,10 +27,7 @@ public class Costo extends ParametroRicercaAnnuncio{
         if(costoMax<annuncio.getCosto())
             return -1;
         else
-            return super.getStelle()-
-                    ( ( (float) super.getStelle()*annuncio.getCosto()) / costoMax);
-
-        
+            return 0;        
     }
     
 }

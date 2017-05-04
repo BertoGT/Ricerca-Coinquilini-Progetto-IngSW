@@ -28,6 +28,7 @@ public class DatiUtente {
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
     private Facolta facolta;
+    private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini
     
     
     public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno) throws ParseException {
@@ -40,7 +41,7 @@ public class DatiUtente {
         
     }
 
-    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno, String nazionalita, 
+    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno, String cittaDiRicerca, String nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo) throws ParseException {
         
@@ -48,6 +49,7 @@ public class DatiUtente {
         this.cognome=cognome;
         this.sesso=sesso;
         calcoloEta(giorno, mese, anno);
+        this.cittaDiRicerca = cittaDiRicerca;
         this.nazionalita=nazionalita;
         this.occupazione=occupazione;
         this.facolta=facolta;
@@ -109,6 +111,10 @@ public class DatiUtente {
         return cognome;
     }
 
+    public String getCittaDiRicerca() {
+        return cittaDiRicerca;
+    }
+
     public String getNazionalità() {
         return nazionalita;
     }
@@ -153,6 +159,10 @@ public class DatiUtente {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
+    }
+
+    public void setCittaDiRicerca(String cittaDiRicerca) {
+        this.cittaDiRicerca = cittaDiRicerca;
     }
 
     public void setNazionalita(String nazionalita) {

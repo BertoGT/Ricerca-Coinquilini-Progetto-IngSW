@@ -12,10 +12,10 @@ import java.util.ArrayList;
  *
  * @author alberto
  */
-public class ContenitoreParametri {
+public class ContenitoreParametriAnnuncio {
     private ArrayList<ParametroRicercaAnnuncio> parametriRicerca;
 
-    public ContenitoreParametri() {
+    public ContenitoreParametriAnnuncio() {
         parametriRicerca = new ArrayList<ParametroRicercaAnnuncio>();
     }
     
@@ -23,8 +23,8 @@ public class ContenitoreParametri {
         parametriRicerca.add(new Città(nome));
     }
     
-    public void setParametroCosto(int stelle, int costoMax) {
-        parametriRicerca.add(new Costo(stelle, costoMax));
+    public void setParametroCosto(int costoMax) {
+        parametriRicerca.add(new Costo(costoMax));
     }
     
     public void setParametroCucina(int stelle, boolean cucinaSeparata) {

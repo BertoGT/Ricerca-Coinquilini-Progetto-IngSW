@@ -5,8 +5,8 @@
 package RicercaAnnuncio;
 
 import Casa.AnnuncioCasa;
-import Casa.CameraDisponibile;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -24,7 +24,7 @@ public class RicercaAnnuncio {
         this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
     }
    
-    public void calcolaAffinita() {
+    private void calcolaAffinita() {
         for (AnnuncioCasa annuncioCasa : annunciTotali) {
             float affinitaTotale = 0;
             int totaleStelle = 0;
@@ -46,15 +46,11 @@ public class RicercaAnnuncio {
             }      
         }
     }
-
-    public ArrayList<AnnuncioRisultante> getAnnunciRisultanti() {
+    
+    public ArrayList<AnnuncioRisultante> eseguiRicerca() {
+        calcolaAffinita();
+        Collections.sort(annunciRisultanti);
         return annunciRisultanti;
-    }
-    
-    
-
-    
-
-    
+    } 
    
 }

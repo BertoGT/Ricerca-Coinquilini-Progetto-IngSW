@@ -11,7 +11,7 @@ import Casa.AnnuncioCasa;
  *
  * @author alberto
  */
-public class AnnuncioRisultante {
+public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
     private final float punteggio;
     private final AnnuncioCasa annuncio;
 
@@ -27,6 +27,20 @@ public class AnnuncioRisultante {
     public AnnuncioCasa getAnnuncio() {
         return annuncio;
     }
+
+    @Override
+    public int compareTo(AnnuncioRisultante o) {
+        return (int) (o.getPunteggio() - this.punteggio);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(this.punteggio + " " + this.annuncio.getIdAnnuncio()+"\n");
+        return s.toString();
+    }
+
+    
     
     
 }
