@@ -7,12 +7,14 @@ package Utenti;
 
 import java.util.Calendar;
 
-public class WebSurfer {
+public class WebSurfer implements Power{
     private String id;
+    private int power;
     private Calendar dataOraAccesso;
 
     public WebSurfer(int numeroUtente) {
         this.id = "ID_" + numeroUtente;
+        this.power = -1;
         this.dataOraAccesso = Calendar.getInstance();
     }
 
@@ -23,12 +25,20 @@ public class WebSurfer {
     public Calendar getDataOraAccesso() {
         return dataOraAccesso;
     }
-
+    public int getNumeroUtente(){
+        String numeroUtente = this.id.replaceAll("ID_", "");
+        return Integer.parseInt(numeroUtente);
+    }
     @Override
     public String toString() {
-        return "WebSurfer, l'id non ci serve";
+        return "ACCESSO: " +this.dataOraAccesso.toString() + "\n"+this.id+"\n";
     }
-      
+    
+    @Override
+    public int getPower() {
+        return this.power;
+    }
+
     
     
     

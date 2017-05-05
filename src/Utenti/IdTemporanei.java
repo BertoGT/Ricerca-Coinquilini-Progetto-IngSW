@@ -15,7 +15,6 @@ public class IdTemporanei {
     public IdTemporanei() {
         this.idCreati = 0;
     }
-
     public int getIdCreati() {
         return idCreati;
     }

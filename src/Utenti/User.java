@@ -13,37 +13,37 @@ import java.util.Scanner;
  *
  * @author Marco La Salvia
  */
-public class User extends WebSurfer implements Power{
+public class User extends WebSurfer{
     private int power;
     private String eMail, password;
     private boolean loggedIn;
     
-    public User(int numeroUtente, String eMail, String password) throws FileNotFoundException {
+    public User(int numeroUtente, String eMail, String password){
         super(numeroUtente);
         this.eMail = eMail;
         this.password = password;
         this.loggedIn = false;
         this.power = 1;
     }
-    public void logIn(String eMail, String password) throws FileNotFoundException{
-            Scanner s = new Scanner(new File("loginProva.txt"));
-            int i = 0, j = 1;
-            while(s.hasNextLine()){
-                String riga = s.nextLine();
-                String[] userPass = riga.split("\t");
-                if(userPass[i].equals(eMail)&& userPass[j].equals(password)){
-                    this.loggedIn = true;
-                    System.out.println("User Loggato: "+eMail+"," +password+"\n");
-                    break;
-                }else
-                    System.out.println("utente sbagliato\n");
-                i++;
-                j++;
-            }
-    }
-    @Override
+
     public int getPower() {
-        return this.power;
+        return power;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
     
 }

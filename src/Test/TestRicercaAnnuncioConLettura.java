@@ -2,7 +2,7 @@
  * Progetto Coinquilini
  * AA 2016/2017 * 
  */
-package test;
+package Test;
 
 import Casa.AnnuncioCasa;
 import Casa.HouseGender;

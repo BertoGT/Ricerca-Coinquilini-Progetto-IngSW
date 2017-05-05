@@ -9,16 +9,12 @@ package Utenti;
  *
  * @author Marco La Salvia
  */
-public class Guest extends WebSurfer implements Power {
+public class Guest extends WebSurfer {
     private int power;
 
     public Guest(int numeroUtente) {
         super(numeroUtente);
         this.power = 0;
-    }
-    @Override
-    public int getPower() {
-        return this.power;
     }
 
     @Override
