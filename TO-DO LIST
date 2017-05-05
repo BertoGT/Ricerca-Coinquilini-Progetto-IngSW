@@ -1,0 +1,18 @@
+COSE DA FARE:
+
+. aggiungere distanza dal centro della casa in InfoCasa<br>
+. aggiungere citta in InfoCasa<br>
+. aggiungere via in InfoCasa <br>
+. aggiungere enum in InfoCasa per sesso inquilini (maschi,femmine,misto)
+. InfoCasa sala si/no?
+. CONTROLLARE CHE UNA REGISTRAZIONE NON SIA GIA PRESENTE
+
+IDEE:
+. domande aggiuntive guidate?? (domande base) 
+. possibilità di legare profilo utente ad una camera dopo che e stata occupata 
+. doppio algoritmo di ricerca, in base a parametri: 
+1) uno dal punto di vista dell'utente che cerca casa
+2) uno dal punto di vista duchi mette l'annuncio e cerca coinquilino
+. affinità calcolata su scala da 0 a MUST
+. togliere arraylist in modo che 1 persona = 1 solo annuncio, cioè dove abita.
+. 
