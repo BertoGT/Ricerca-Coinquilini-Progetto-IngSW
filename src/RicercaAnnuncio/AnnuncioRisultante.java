@@ -30,13 +30,18 @@ public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
 
     @Override
     public int compareTo(AnnuncioRisultante o) {
-        return (int) (o.getPunteggio() - this.punteggio);
+        int diff = (int) (o.getPunteggio() - this.punteggio);
+        if(diff == 0) 
+            return o.getAnnuncio().getCosto() - this.annuncio.getCosto();
+        else
+            return diff;
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append(this.punteggio + " " + this.annuncio.getIdAnnuncio()+"\n");
+        s.append(this.punteggio).append(" ").append(this.annuncio.getIdAnnuncio())
+                .append(" ").append(this.annuncio.getDescrizioneAggiuntiva());
         return s.toString();
     }
 

@@ -17,7 +17,7 @@ import RicercaAnnuncio.TipoCamera;
  *
  * @author alberto
  */
-public class testParametriRicerca {
+public class TestParametriRicercaAnnuncio {
     public static void main(String[] args) throws CameraNonInseritaException {
         /*
         Test parametro sesso casa
@@ -38,7 +38,7 @@ public class testParametriRicerca {
         /*
         Test costo
         */
-        Costo c = new Costo(4, 500);
+        Costo c = new Costo(500);
         System.out.println(c.calcolaAffinità(a));
     }
 }

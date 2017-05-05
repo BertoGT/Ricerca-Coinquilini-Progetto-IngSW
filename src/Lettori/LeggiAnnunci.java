@@ -7,7 +7,6 @@ package Lettori;
 
 import Casa.AnnuncioCasa;
 import Casa.HouseGender;
-import Casa.InfoCasa;
 import Exceptions.CameraNonInseritaException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -27,7 +26,7 @@ public class LeggiAnnunci {
  
     private void leggiAnnunci(){  
         try {
-            annunci = new ArrayList<AnnuncioCasa>();
+            annunci = new ArrayList<>();
             br_case = new BufferedReader(new FileReader("file/annunci.txt"));
             while(br_case.ready()){
                String[] str = br_case.readLine().split(";");
@@ -48,7 +47,7 @@ public class LeggiAnnunci {
             while(br_info.ready()){
                 String[] str = br_info.readLine().split(";");
                 boolean cucina = true;
-                switch(str[3]){
+                switch(str[4]){
                     case "cucina separata":
                         cucina = true;
                         break;
@@ -59,7 +58,9 @@ public class LeggiAnnunci {
                         break;
                 }
                 annunci.get(contatore).creaInfo(Integer.parseInt(str[0]),
-                        Integer.parseInt(str[1]), Integer.parseInt(str[2]), cucina, str[4], str[5], HouseGender.valueOf(str[6].toUpperCase()));
+                        Integer.parseInt(str[1]), Integer.parseInt(str[2]), 
+                        Integer.parseInt(str[3]), cucina, str[5], str[6], 
+                        HouseGender.valueOf(str[7].toUpperCase()));
                 contatore++;
             }
         } catch (FileNotFoundException ex) {
@@ -78,9 +79,7 @@ public class LeggiAnnunci {
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CameraNonInseritaException ex) {
+        } catch (IOException | CameraNonInseritaException ex) {
             Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -98,8 +97,9 @@ public class LeggiAnnunci {
     public String stampaAnnunci(){
         StringBuilder sb = new StringBuilder();
         for (AnnuncioCasa a : annunci) {
-            sb.append(a.getDescrizioneAggiuntiva()+" "+a.getIdAnnuncio()+" "+a.getCosto());
-            sb.append("\n");
+            sb.append(a.getDescrizioneAggiuntiva()).append(" ")
+                    .append(a.getIdAnnuncio()).append(" ")
+                    .append(a.getCosto()).append("\n");
         }
         return sb.toString();
     }

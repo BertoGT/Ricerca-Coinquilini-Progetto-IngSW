@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author nicholas
  */
-public class TestRicercaSenzaLetturaFile {
+public class TestRicercaAnnuncioSenzaLetturaFile {
 
     /**
      * @param args the command line arguments
