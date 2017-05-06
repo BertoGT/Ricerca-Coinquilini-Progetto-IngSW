@@ -32,6 +32,7 @@ public class TestConnessioneDb {
             while (myResult.next()){
                 System.out.println(myResult.getString("Nome"));
             }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(TestConnessioneDb.class.getName()).log(Level.SEVERE, null, ex);
         }
