@@ -203,7 +203,17 @@ public class DatiUtente {
                     + potenzialeCoinquilino + "\n- facolta = " + facolta ;
     }
     
-    
+    public String toStringDB(){
+              return eMail +"\t" +password+ "\t"+  miaData + "\nt"+ eta+ "t" + sesso + "\t" + fumatore 
+                
+                    + "\t" + cuoco + "\t" + sportivo + "\t" + nome + "\t" + cognome + 
+                
+                    "\t" + nazionalita + "\t" + occupazione + "\t" 
+                
+                    + potenzialeCoinquilino + "\t" + facolta ;    
+
+
+    }
     
     
     
