@@ -45,12 +45,15 @@ public class BusinessModel {
     public void setNomeFile(String nomeFile) {
         this.nomeFile = nomeFile;
     }
+    
     private void apriFileReader() throws FileNotFoundException{
         this.reader = new Scanner(new File(this.nomeFile));
     }
+    
     private void chiudiFileReader(){
         this.reader.close();
     }
+    
     private void caricaEmail() throws FileNotFoundException{
         ArrayList<String> eMails = new ArrayList<>();
         this.apriFileReader();
@@ -62,6 +65,7 @@ public class BusinessModel {
         this.emailPresenti = eMails;
         this.chiudiFileReader();
     }
+    
     private void caricaUtentiRegistrati() throws FileNotFoundException{
         this.apriFileReader();
         while(this.reader.hasNextLine()){

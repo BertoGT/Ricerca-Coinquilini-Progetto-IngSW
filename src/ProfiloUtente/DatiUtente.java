@@ -20,6 +20,7 @@ public class DatiUtente {
     private SimpleDateFormat sdf;
     private GregorianCalendar dataDiNascita= new GregorianCalendar();
     private String miaData;
+    private String eMail, password;
     private int giorno, mese, anno;
     private int eta;
     private String sesso;  // volendo si può usare enum (F o M)
@@ -31,19 +32,20 @@ public class DatiUtente {
     private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini
     
     
-    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno) throws ParseException {
+    public DatiUtente(String nome, String cognome, String sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException {
 
         this.nome=nome;
         this.cognome=cognome;
         this.sesso=sesso;
-        
+        this.eMail = eMail;
+        this.password = password;
         calcoloEta(giorno, mese, anno);
         
     }
 
-    public DatiUtente(String nome, String cognome, String sesso, int giorno, int mese, int anno, String cittaDiRicerca, String nazionalita, 
+    public DatiUtente(String nome, String cognome, String sesso,String eMail, String password,  int giorno, int mese, int anno, String nazionalita, 
             
-            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo) throws ParseException {
+            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, String cittaDiRicerca) throws ParseException {
         
         this.nome=nome;
         this.cognome=cognome;
@@ -101,6 +103,14 @@ public class DatiUtente {
 
     public boolean isSportivo() {
         return sportivo;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getNome() {

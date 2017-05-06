@@ -1,3 +1,4 @@
 mrc.lasalvia@gmail.com	1234	11/12/1995	22	m	false	false	false	marco	la salvia	null	null	false	null
 marghethebest@hotmail.it	5678	2/12/1996	21	F	false	false	false	margherita	ricotti	null	null	false	null
 mrc@mrc.com	1234	11/12/1995	22	M	false	false	false	Marco	La Salvia	null	null	false	null
+nonbuono@hotmail.it	gitpv	2/11/1995	22	M	false	false	false	albi	casadei	null	null	false	null
