@@ -5,6 +5,8 @@
  */
 package grafica.viste;
 
+import java.awt.Color;
+
 /**
  *
  * @author Marco La Salvia
@@ -17,6 +19,7 @@ public class HomePage extends javax.swing.JFrame {
     public HomePage() {
         super.setTitle("Rooming");
         initComponents();
+        overlayPanel.setBackground(new Color(0,0,0,200));
     }
 
     /**
@@ -27,86 +30,121 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         PannelloSinistro = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         PannelloDestro = new javax.swing.JPanel();
         emailLabel = new javax.swing.JLabel();
         separatoreMailPass = new javax.swing.JSeparator();
         passwordLabel = new javax.swing.JLabel();
         eMailTextField1 = new javax.swing.JTextField();
         separatoreMailPass1 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         emailLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        PannelloSinistroBackground = new javax.swing.JPanel();
+        overlayPanel = new javax.swing.JPanel();
+        LogoLabel = new javax.swing.JLabel();
+        ImmagineSfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ROOMING");
 
         PannelloSinistro.setBackground(new java.awt.Color(32, 33, 35));
         PannelloSinistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grafica/immagini/logo.png"))); // NOI18N
-        PannelloSinistro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 4, 610, 690));
-
         PannelloDestro.setBackground(new java.awt.Color(32, 33, 35));
-        PannelloDestro.setForeground(null);
         PannelloDestro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         emailLabel.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         emailLabel.setForeground(new java.awt.Color(34, 139, 34));
         emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLabel.setText("OPPURE...");
-        PannelloDestro.add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 110, 40));
-
-        separatoreMailPass.setForeground(null);
-        PannelloDestro.add(separatoreMailPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 430, 20));
+        PannelloDestro.add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 110, 40));
+        PannelloDestro.add(separatoreMailPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 430, 20));
 
         passwordLabel.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(34, 139, 34));
         passwordLabel.setText("PASSWORD");
         passwordLabel.setMaximumSize(new java.awt.Dimension(66, 26));
         passwordLabel.setMinimumSize(new java.awt.Dimension(66, 26));
-        PannelloDestro.add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 100, 30));
+        PannelloDestro.add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 100, 30));
 
+        eMailTextField1.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
+        eMailTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        eMailTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eMailTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
         eMailTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eMailTextField1ActionPerformed(evt);
             }
         });
-        PannelloDestro.add(eMailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 430, 30));
+        PannelloDestro.add(eMailTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 430, 30));
+        PannelloDestro.add(separatoreMailPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 430, 10));
 
-        separatoreMailPass1.setForeground(null);
-        PannelloDestro.add(separatoreMailPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 430, 10));
-        PannelloDestro.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 430, 30));
+        jPasswordField.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
+        jPasswordField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldActionPerformed(evt);
+            }
+        });
+        PannelloDestro.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 430, 30));
 
         jButton2.setBackground(new java.awt.Color(34, 139, 34));
         jButton2.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("CERCA UN APPARTAMENTO");
         jButton2.setBorder(null);
-        PannelloDestro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 430, 40));
+        PannelloDestro.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 430, 30));
 
         emailLabel1.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         emailLabel1.setForeground(new java.awt.Color(34, 139, 34));
         emailLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLabel1.setText("E-MAIL");
-        PannelloDestro.add(emailLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 80, 40));
+        PannelloDestro.add(emailLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 80, 40));
 
         jButton4.setBackground(new java.awt.Color(34, 139, 34));
         jButton4.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("LOGIN");
         jButton4.setBorder(null);
-        PannelloDestro.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 430, 40));
+        PannelloDestro.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 430, 30));
 
         jButton5.setBackground(new java.awt.Color(34, 139, 34));
         jButton5.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("REGISTRATI");
         jButton5.setBorder(null);
-        PannelloDestro.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 430, 40));
+        PannelloDestro.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 430, 30));
+
+        PannelloSinistroBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        overlayPanel.setBackground(new java.awt.Color(0, 0, 0));
+
+        LogoLabel.setFont(new java.awt.Font("Monospaced", 1, 19)); // NOI18N
+        LogoLabel.setForeground(new java.awt.Color(0, 51, 255));
+        LogoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LogoLabel.setText("ROOMING");
+
+        javax.swing.GroupLayout overlayPanelLayout = new javax.swing.GroupLayout(overlayPanel);
+        overlayPanel.setLayout(overlayPanelLayout);
+        overlayPanelLayout.setHorizontalGroup(
+            overlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LogoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+        overlayPanelLayout.setVerticalGroup(
+            overlayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, overlayPanelLayout.createSequentialGroup()
+                .addComponent(LogoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        PannelloSinistroBackground.add(overlayPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 710));
+
+        ImmagineSfondo.setForeground(new java.awt.Color(255, 255, 255));
+        ImmagineSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImmagineSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grafica/immagini/bckground.jpg"))); // NOI18N
+        PannelloSinistroBackground.add(ImmagineSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 650, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,23 +152,33 @@ public class HomePage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PannelloSinistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(PannelloSinistroBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PannelloDestro, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
+                .addComponent(PannelloDestro, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PannelloSinistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PannelloDestro, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(PannelloSinistro, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(PannelloDestro, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PannelloSinistroBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         PannelloDestro.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void eMailTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMailTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eMailTextField1ActionPerformed
+
+    private void jPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,16 +216,19 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ImmagineSfondo;
+    private javax.swing.JLabel LogoLabel;
     private javax.swing.JPanel PannelloDestro;
     private javax.swing.JPanel PannelloSinistro;
+    private javax.swing.JPanel PannelloSinistroBackground;
     private javax.swing.JTextField eMailTextField1;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel emailLabel1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField;
+    private javax.swing.JPanel overlayPanel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JSeparator separatoreMailPass;
     private javax.swing.JSeparator separatoreMailPass1;
