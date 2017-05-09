@@ -20,19 +20,20 @@ public class DatiUtente {
     private SimpleDateFormat sdf;
     private GregorianCalendar dataDiNascita= new GregorianCalendar();
     private String miaData;
-    private String eMail, password;
+    private String eMail, password,cellulare;
     private int giorno, mese, anno;
     private int eta;
-    private String sesso;  // volendo si può usare enum (F o M)
+    private Sesso sesso; 
     private boolean fumatore, cuoco, sportivo; 
-    private String nome, cognome, nazionalita;
+    private String nome, cognome;
+    private Nazionalita nazionalita;
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
     private Facolta facolta;
     private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini
     
     
-    public DatiUtente(String nome, String cognome, String sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException {
+    public DatiUtente(String nome, String cognome, Sesso sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException {
 
         this.nome=nome;
         this.cognome=cognome;
@@ -43,7 +44,7 @@ public class DatiUtente {
         
     }
 
-    public DatiUtente(String nome, String cognome, String sesso,String eMail, String password,  int giorno, int mese, int anno, String nazionalita, 
+    public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazionalita nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, String cittaDiRicerca) throws ParseException {
         
@@ -51,6 +52,7 @@ public class DatiUtente {
         this.cognome=cognome;
         this.sesso=sesso;
         calcoloEta(giorno, mese, anno);
+        this.cellulare=cellulare;
         this.cittaDiRicerca = cittaDiRicerca;
         this.nazionalita=nazionalita;
         this.occupazione=occupazione;
@@ -81,15 +83,20 @@ public class DatiUtente {
         return dataDiNascita;
     }
 
-    public String getSesso() {
+    public Sesso getSesso() {
         return sesso;
     }
 
     public int getEta() {
         return eta;
     }
+
+    public String getCellulare() {
+        return cellulare;
+    }
     
-    public String getNazionalita() {
+    
+    public Nazionalita getNazionalita() {
         return nazionalita;
     }
 
@@ -125,10 +132,6 @@ public class DatiUtente {
         return cittaDiRicerca;
     }
 
-    public String getNazionalità() {
-        return nazionalita;
-    }
-
     public Occupazione getOccupazione() {
         return occupazione;
     }
@@ -143,11 +146,15 @@ public class DatiUtente {
 
     public void setDataDiNascita(int giorno, int mese, int anno) throws ParseException {
         
-        calcoloEta(giorno, mese, anno);
-        
+        calcoloEta(giorno, mese, anno);   
+    }
+
+    public void setCellulare(String cellulare) {
+        this.cellulare = cellulare;
     }
     
-    public void setSesso(String sesso) {
+    
+    public void setSesso(Sesso sesso) {
         this.sesso = sesso;
     }
 
@@ -175,7 +182,7 @@ public class DatiUtente {
         this.cittaDiRicerca = cittaDiRicerca;
     }
 
-    public void setNazionalita(String nazionalita) {
+    public void setNazionalita(Nazionalita nazionalita) {
         this.nazionalita = nazionalita;
     }
 

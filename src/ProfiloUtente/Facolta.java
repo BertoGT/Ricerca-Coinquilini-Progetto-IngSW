@@ -11,6 +11,6 @@ package ProfiloUtente;
  */
 public enum Facolta {
     
-    TecnicoScientifico, Economico, Giuridico, LetterarioUmanistico, MediaComunicazione, Altro ; 
+    TecnicoScientifico, Economico, Giuridico, LetterarioUmanistico, MediaComunicazione, MedicoSanitario, Altro ; 
     
 }
