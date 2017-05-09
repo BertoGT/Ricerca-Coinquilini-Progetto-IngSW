@@ -16,6 +16,7 @@ import Utenti.User;
 import Utenti.WebSurfer;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import jdk.nashorn.internal.runtime.regexp.RegExp;
 
 /**
  *
@@ -41,53 +42,25 @@ public class Sistema {
         this.guest = new Guest(this.webSurfer.getNumeroUtente());
         this.init = true;
     }
-    public void registrati(String nome, String cognome, Sesso sesso, ) throws ParseException, FileNotFoundException, EmailAlreadyExistsException{
-        String nome = JOptionPane.showInputDialog("INTRODURRE NOME E PREMERE 'OK' : ");
-        String cognome = JOptionPane.showInputDialog("INTRODURRE COGNOME E PREMERE 'OK' : ");
-        String sesso = JOptionPane.showInputDialog("INTRODURRE M OPPURE F E PREMERE 'OK' : ");
-        String eMail = JOptionPane.showInputDialog("INTRODURRE E-MAIL E PREMERE 'OK' : ");
-        String password = this.checkPassword(this.introdurrePassword());        //ANDRA MESSO UN LOOP PER IL CONTROLLO CHE SIA INSERITA UNA PASSWORD(EVENTUALMENTE CON REGOLE)
-        int giorno = Integer.parseInt(JOptionPane.showInputDialog("INTRODURRE GIORNO DI NASCITA E PREMERE 'OK' : "));
-        int mese = Integer.parseInt(JOptionPane.showInputDialog("INTRODURRE MESE DI NASCITA E PREMERE 'OK' : "));
-        int anno = Integer.parseInt(JOptionPane.showInputDialog("INTRODURRE ANNO DI NASCITA E PREMERE 'OK' : "));
-        Registrazione nuovaRegistrazione = new Registrazione(nome, cognome, sesso, eMail, password, giorno, mese, anno);
-        JOptionPane.showMessageDialog(null, "UNA VOLTA EFFETTUATO IL LOGIN SARA' POSSIBILE COMPLETARE IL PROFILO UTENTE, QUESTI ERANO I DATI OBBLIGATORI", "INFO MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+    public int registrati(String nome, String cognome, Sesso sesso, String email,
+        String password, int giorno, int mese, int anno) 
+            throws ParseException, FileNotFoundException, EmailAlreadyExistsException{
+        
+        return new Registrazione(nome, cognome, sesso, email, password, giorno, mese, anno).scriviDb();
     }
-    private String introdurrePassword(){
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel("INTRODURRE PASSWORD PER REGISTRARSI E PREMERE 'OK' :");
-        JPasswordField pass = new JPasswordField(15);
-        panel.add(label);
-        panel.add(pass);
-        String[] options = new String[]{"OK", "CANCEL"};
-        int option = JOptionPane.showOptionDialog(null, panel, "INTRODURRE PASSWORD",
-                                 JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
-                                 null, options, options[1]);
-        if(option == 0){
-            // UTENTE HA SCHIACCIATO "OK"
-            char[] password = pass.getPassword();
-            return String.valueOf(password);
-        }
-        return null;
-    }
-    private String checkPassword(String s){
-        if(s==null){
-            while(s==null){
-                s = this.introdurrePassword();
-            }
-        }
-        return s;
-    }
-    public void logIn() throws UserNotFoundException{
-        String eMail = JOptionPane.showInputDialog("INTRODURRE E-MAIL E PREMERE 'OK' : ");
-        String password = this.checkPassword(this.introdurrePassword());
+
+    public int logIn(String eMail, String password) throws UserNotFoundException{
+        // TODO richiama il metodo del mainModel che esegue il login
         if(this.bm.getUtentiRegistrati().containsKey(eMail)){
             if(this.bm.getUtentiRegistrati().get(eMail).equals(password)){
-                this.user = new User(this.webSurfer.getNumeroUtente(), eMail, password);
+                this.user = new User(this.webSurfer.getNumeroUtente(), null);
                 this.user.setLoggedIn(true);
                 this.init = true;
+                return 0; // codice login effettuato
             }
-        }else
+            return 1; // codice password sbagliata
+        }else {
             throw new UserNotFoundException("eMail non trovata all'interno del database: Utente inesistente.");
+        }
     }
 }

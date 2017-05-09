@@ -84,7 +84,7 @@ public class SistemaConInterfaccia {
         String password = this.checkPassword(this.introdurrePassword());
         if(this.bm.getUtentiRegistrati().containsKey(eMail)){
             if(this.bm.getUtentiRegistrati().get(eMail).equals(password)){
-                this.user = new User(this.webSurfer.getNumeroUtente(), eMail, password);
+                this.user = new User(this.webSurfer.getNumeroUtente(), null);
                 this.user.setLoggedIn(true);
                 this.init = true;
             }
