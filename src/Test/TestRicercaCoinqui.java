@@ -44,7 +44,7 @@ public class TestRicercaCoinqui {
         c.setParametroSportivo(1, true);
         c.setParametroNazionalita(4, Nazionalita.Italiana);
         
-        RicercaCoinquilino r=new RicercaCoinquilino(dati, c.getParametri());
+        RicercaCoinquilino r=new RicercaCoinquilino(c);
         System.out.print(r.eseguiRicerca());
     }
 }

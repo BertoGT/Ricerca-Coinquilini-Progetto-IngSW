@@ -10,13 +10,16 @@ import Exceptions.EmailAlreadyExistsException;
 import Exceptions.UserNotFoundException;
 import ProfiloUtente.Registrazione;
 import ProfiloUtente.Sesso;
+import RicercaAnnuncio.AnnuncioRisultante;
+import RicercaAnnuncio.ContenitoreParametriAnnuncio;
+import RicercaAnnuncio.RicercaAnnuncio;
 import Utenti.Guest;
 import Utenti.IdTemporanei;
 import Utenti.User;
 import Utenti.WebSurfer;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import jdk.nashorn.internal.runtime.regexp.RegExp;
+import java.util.ArrayList;;
 
 /**
  *
@@ -62,5 +65,9 @@ public class Sistema {
         }else {
             throw new UserNotFoundException("eMail non trovata all'interno del database: Utente inesistente.");
         }
+    }
+    
+    public ArrayList<AnnuncioRisultante> eseguiRicercaCasa(ContenitoreParametriAnnuncio parametriRicerca) {
+        return new RicercaAnnuncio(parametriRicerca).eseguiRicerca();
     }
 }

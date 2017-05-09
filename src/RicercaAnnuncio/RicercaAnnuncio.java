@@ -15,11 +15,11 @@ import java.util.Collections;
 public class RicercaAnnuncio {
 
     private ArrayList<AnnuncioCasa> annunciTotali;
-    private ArrayList<ParametroRicercaAnnuncio> parametriRicerca;
+    private ContenitoreParametriAnnuncio parametriRicerca;
     private ArrayList<AnnuncioRisultante> annunciRisultanti;
 
-    public RicercaAnnuncio(ArrayList<AnnuncioCasa> annunciTotali, ArrayList<ParametroRicercaAnnuncio> parametriRicerca) {
-        this.annunciTotali = annunciTotali;
+    public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca) {
+        // TODO carica gli annunci totali da DB
         this.parametriRicerca = parametriRicerca;
         this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
     }
@@ -30,7 +30,7 @@ public class RicercaAnnuncio {
             int totaleStelle = 0;
             boolean annuncioIncompatibile = false;
             
-            for (ParametroRicercaAnnuncio parametroRicerca : parametriRicerca) {
+            for (ParametroRicercaAnnuncio parametroRicerca : parametriRicerca.getParametriRicerca()) {
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(annuncioCasa);
                 if(affinita == -1) {
@@ -48,6 +48,7 @@ public class RicercaAnnuncio {
     }
     
     public ArrayList<AnnuncioRisultante> eseguiRicerca() {
+        
         calcolaAffinita();
         Collections.sort(annunciRisultanti);
         return annunciRisultanti;

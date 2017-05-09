@@ -16,11 +16,11 @@ import java.util.Collections;
 public class RicercaCoinquilino {
     
     private ArrayList<DatiUtente> utentiTotali;
-    private ArrayList<ParametroRicercaCoinquilino> parametriRicerca;
+    private ContenitoreParametriCoinquilino parametriRicerca;
     private ArrayList<CoinquilinoRisultante> coinquiliniRisultanti;
 
-    public RicercaCoinquilino(ArrayList<DatiUtente> utentiTotali, ArrayList<ParametroRicercaCoinquilino> parametriRicerca) {
-        this.utentiTotali = utentiTotali;
+    public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) {
+        // TODO carica gli utenti che si candidano da DB
         this.parametriRicerca = parametriRicerca;
         this.coinquiliniRisultanti= new ArrayList<>();
     }
@@ -31,7 +31,7 @@ public class RicercaCoinquilino {
             int totaleStelle = 0;
             boolean coinquilinoIncompatibile = false;
             
-            for (ParametroRicercaCoinquilino parametroRicerca : parametriRicerca) {
+            for (ParametroRicercaCoinquilino parametroRicerca : parametriRicerca.getParametri()) {
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(dati);
                 if(affinita == -1) {

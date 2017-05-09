@@ -28,7 +28,7 @@ public class TestRicercaAnnuncioConLettura {
         c.setParametroSessoCasa(1, HouseGender.MISTA);
         c.setParametroTipoCamera(4, 1);
         
-        RicercaAnnuncio r = new RicercaAnnuncio(annunciTotali, c.getParametriRicerca());
+        RicercaAnnuncio r = new RicercaAnnuncio(c);
         
         ArrayList<AnnuncioRisultante> a = r.eseguiRicerca(); 
         
