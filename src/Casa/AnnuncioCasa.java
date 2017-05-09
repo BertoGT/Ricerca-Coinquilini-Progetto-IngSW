@@ -106,6 +106,23 @@ public class AnnuncioCasa {
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
+
+    public void setNomeCognomeProprietario(String nomeCognomeProprietario) {
+        this.nomeCognomeProprietario = nomeCognomeProprietario;
+    }
+
+    public void setCellulareProprietario(String cellulareProprietario) {
+        this.cellulareProprietario = cellulareProprietario;
+    }
+
+    public void setEmailProprietario(String emailProprietario) {
+        this.emailProprietario = emailProprietario;
+    }
+    
     
  
     

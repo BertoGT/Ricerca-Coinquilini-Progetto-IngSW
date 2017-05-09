@@ -28,8 +28,6 @@ public class InfoCasa {
         
     }
 
-   
-    
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException {
         boolean flag = false;
         for (CameraDisponibile camera : camere) {
@@ -92,6 +90,39 @@ public class InfoCasa {
     public String getIndirizzo() {
         return indirizzo;
     }
+
+    public void setMetriQuadri(int metriQuadri) {
+        this.metriQuadri = metriQuadri;
+    }
+
+    public void setnLocali(int nLocali) {
+        this.nLocali = nLocali;
+    }
+
+    public void setNumeroBagni(int numeroBagni) {
+        this.numeroBagni = numeroBagni;
+    }
+
+    public void setDistanzaCentro(int distanzaCentro) {
+        this.distanzaCentro = distanzaCentro;
+    }
+
+    public void setSessoCasa(HouseGender sessoCasa) {
+        this.sessoCasa = sessoCasa;
+    }
+
+    public void setCucinaSeparata(boolean cucinaSeparata) {
+        this.cucinaSeparata = cucinaSeparata;
+    }
+
+    public void setCitta(String citta) {
+        this.citta = citta;
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+    
     
     
 }
