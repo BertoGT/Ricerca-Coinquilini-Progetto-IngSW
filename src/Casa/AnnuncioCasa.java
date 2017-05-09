@@ -7,6 +7,7 @@ package Casa;
 
 import Exceptions.CameraNonInseritaException;
 import Exceptions.CameraNonTrovataException;
+import ProfiloUtente.DatiUtente;
 import java.util.ArrayList;
 
 /**
@@ -18,11 +19,16 @@ public class AnnuncioCasa {
     private String descrizioneAggiuntiva;
     private int idAnnuncio;
     private int costo;
+    private String nomeCognomeProprietario;
+    private String cellulareProprietario, emailProprietario;
 
-    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo) {
+    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo, String nomeCognomeProprietario, String cellulareProprietario, String emailProprietario) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
         this.idAnnuncio = idAnnuncio;
         this.costo = costo;
+        this.nomeCognomeProprietario = nomeCognomeProprietario;
+        this.cellulareProprietario = cellulareProprietario;
+        this.emailProprietario = emailProprietario;
     }
     
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{
@@ -85,9 +91,23 @@ public class AnnuncioCasa {
         return casa.getSessoCasa();
     }
 
+    public String getNomeCognomeProprietario() {
+        return nomeCognomeProprietario;
+    }
+
+    public String getCellulareProprietario() {
+        return cellulareProprietario;
+    }
+
+    public String getEmailProprietario() {
+        return emailProprietario;
+    }
+    
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }
+    
+ 
     
     
 }

@@ -7,19 +7,19 @@ package Sistema;
 
 import BusinessModelProva.BusinessModel;
 import Exceptions.EmailAlreadyExistsException;
-import Exceptions.PasswordNonInseritaException;
 import Exceptions.UserNotFoundException;
 import ProfiloUtente.Registrazione;
-import Utenti.*;
+import ProfiloUtente.Sesso;
+import Utenti.Guest;
+import Utenti.IdTemporanei;
+import Utenti.User;
+import Utenti.WebSurfer;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.*;
 
 /**
  *
- * @author Marco La Salvia
+ * @author Delbo
  */
 public class Sistema {
     private WebSurfer webSurfer;
@@ -41,7 +41,7 @@ public class Sistema {
         this.guest = new Guest(this.webSurfer.getNumeroUtente());
         this.init = true;
     }
-    public void registrati() throws ParseException, FileNotFoundException, EmailAlreadyExistsException{
+    public void registrati(String nome, String cognome, Sesso sesso, ) throws ParseException, FileNotFoundException, EmailAlreadyExistsException{
         String nome = JOptionPane.showInputDialog("INTRODURRE NOME E PREMERE 'OK' : ");
         String cognome = JOptionPane.showInputDialog("INTRODURRE COGNOME E PREMERE 'OK' : ");
         String sesso = JOptionPane.showInputDialog("INTRODURRE M OPPURE F E PREMERE 'OK' : ");
@@ -90,10 +90,4 @@ public class Sistema {
         }else
             throw new UserNotFoundException("eMail non trovata all'interno del database: Utente inesistente.");
     }
-    /*
-    VA AGGIUNTO UN QUALCOSA CHE PERMETTA DI PROCEDERE COME GUEST/REGISTRARSI/EFFETTUARE IL LOGIN SOLO IN UN CERTO ORDINE O COMUNQUE SE LOGGATO NON SI PUO' EFFETTUARE REGISTRAZIONE
-    FINCHE NON SI FA LOGOUT ECC..
-    */
-    
-    
 }

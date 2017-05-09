@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Sistema.Sistema;
+import Sistema.SistemaConInterfaccia;
 
 /**
  *
@@ -22,7 +22,7 @@ import Sistema.Sistema;
 public class TestSystem {
     public static void main(String[] args) {
         try {
-            Sistema s = new Sistema();
+            SistemaConInterfaccia s = new SistemaConInterfaccia();
             s.procediComeGuest();
             s.registrati();
             s.logIn();
