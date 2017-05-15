@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
     private HouseGender sessoCasa;
+    private ArrayList<ElettroDomestico> elettroDomestici;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
     private String citta, indirizzo;
@@ -24,6 +25,7 @@ public class InfoCasa {
         this.citta = citta;
         this.indirizzo = indirizzo;
         this.camere = new ArrayList<>();
+        this.elettroDomestici=new ArrayList<>();
         this.sessoCasa = sessoCasa;
         
     }
