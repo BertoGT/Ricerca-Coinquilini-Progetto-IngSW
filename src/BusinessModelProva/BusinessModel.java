@@ -32,10 +32,11 @@ public class BusinessModel {
     private void chiudiFileWriter(){
         this.writer.close();
     }
-    public void scriviFile(String s) throws FileNotFoundException{
+    public int scriviFile(String s) throws FileNotFoundException{
         this.apriFileWriter();
         this.writer.println(s);
         this.chiudiFileWriter();
+        return 0;
     } 
 
     public String getNomeFile() {

@@ -5,6 +5,7 @@
  */
 package Utenti;
 
+import ProfiloUtente.DatiUtente;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -15,15 +16,14 @@ import java.util.Scanner;
  */
 public class User extends WebSurfer{
     private int power;
-    private String eMail, password;
+    private DatiUtente dati;
     private boolean loggedIn;
     
-    public User(int numeroUtente, String eMail, String password){
+    public User(int numeroUtente, DatiUtente dati){
         super(numeroUtente);
-        this.eMail = eMail;
-        this.password = password;
         this.loggedIn = false;
         this.power = 1;
+        this.dati = dati;
     }
 
     public int getPower() {
@@ -31,11 +31,11 @@ public class User extends WebSurfer{
     }
 
     public String geteMail() {
-        return eMail;
+        return dati.geteMail();
     }
 
     public String getPassword() {
-        return password;
+        return dati.getPassword();
     }
 
     public boolean isLoggedIn() {
@@ -45,5 +45,7 @@ public class User extends WebSurfer{
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
+    
+    
     
 }

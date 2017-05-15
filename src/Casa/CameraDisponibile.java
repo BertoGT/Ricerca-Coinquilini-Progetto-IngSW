@@ -28,6 +28,11 @@ public class CameraDisponibile {
     public void setPostiLettoDisponibili(int postiLettoDisponibili) {
         this.postiLettoDisponibili = postiLettoDisponibili;
     }
+
+    public void setPostiLetto(int postiLetto) {
+        this.postiLetto = postiLetto;
+    }
+    
     
     
     
