@@ -13,12 +13,11 @@ import java.util.logging.Logger;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Marco La Salvia
  */
-public class TestRegistrazione {
+public class TestRegistrazione { 
     /*
     public static void main(String[] args) {
         try {
@@ -29,5 +28,5 @@ public class TestRegistrazione {
             System.out.println(ex.getMessage());
         }
     }
-*/
+    */
 }

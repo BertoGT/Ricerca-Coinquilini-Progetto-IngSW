@@ -143,7 +143,7 @@ public class HomePage extends javax.swing.JFrame {
 
         ImmagineSfondo.setForeground(new java.awt.Color(255, 255, 255));
         ImmagineSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ImmagineSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grafica/immagini/bckground.jpg"))); // NOI18N
+        ImmagineSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/grafica/immagini/logo.png"))); // NOI18N
         PannelloSinistroBackground.add(ImmagineSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 650, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

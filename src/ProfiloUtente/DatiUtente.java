@@ -33,14 +33,12 @@ public class DatiUtente {
     
     
     public DatiUtente(String nome, String cognome, String sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException {
-
         this.nome=nome;
         this.cognome=cognome;
         this.sesso=sesso;
         this.eMail = eMail;
         this.password = password;
-        calcoloEta(giorno, mese, anno);
-        
+        calcoloEta(giorno, mese, anno);  
     }
 
     public DatiUtente(String nome, String cognome, String sesso,String eMail, String password,  int giorno, int mese, int anno, String nazionalita, 
