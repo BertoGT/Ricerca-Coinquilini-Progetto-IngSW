@@ -6,7 +6,7 @@
 package ProfiloUtente;
 
 import Exceptions.EmailAlreadyExistsException;
-import BusinessModelProva.BusinessModel;
+import BusinessModelProva.BusinessModelProva;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -18,13 +18,13 @@ import java.util.Scanner;
  */
 public class Registrazione extends DatiUtente {
     
-    private BusinessModel bm;
+    private BusinessModelProva bm;
     public Registrazione(String nome, String cognome, Sesso sesso, String eMail,
             String password, int giorno, int mese, int anno) throws ParseException,
             FileNotFoundException, EmailAlreadyExistsException {
         
         super(nome, cognome, sesso, eMail, password, giorno, mese, anno);
-        bm = new BusinessModel();
+        bm = new BusinessModelProva();
         /*
         DA RIFARE IN QUANTO IL COLLEGAMENTO AL BM E' STATO GIA MESSO NEL SISTEMA!
         O COMUNQUE BISOGNA RISTRUTTURARLO MEGLIO.
@@ -53,7 +53,7 @@ public class Registrazione extends DatiUtente {
             return true;
     }
 
-    public BusinessModel getBm() {
+    public BusinessModelProva getBm() {
         return bm;
     }
 
