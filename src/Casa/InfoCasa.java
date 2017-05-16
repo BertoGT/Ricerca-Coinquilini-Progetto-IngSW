@@ -56,6 +56,24 @@ public class InfoCasa {
         if(flag == false)
             throw new CameraNonTrovataException("Camera non presente");
     }
+    
+    public void addElettroDomestico(ElettroDomestico elettroDomestico){
+        this.elettroDomestici.add(elettroDomestico);
+    }
+    
+    public void rimuoviElettroDomestico(ElettroDomestico elettroDomestico){
+        int indice=0;
+        boolean flag=false;
+        
+        for(int i=0; i<this.elettroDomestici.size();i++){
+            if(this.elettroDomestici.get(i)==elettroDomestico){
+                indice=i;
+                flag=true;
+            }
+        }
+        if(flag)
+        this.elettroDomestici.remove(indice);
+    }
 
     public int getMetriQuadri() {
         return metriQuadri;
@@ -83,6 +101,10 @@ public class InfoCasa {
 
     public ArrayList<CameraDisponibile> getCamere() {
         return camere;
+    }
+
+    public ArrayList<ElettroDomestico> getElettroDomestici() {
+        return elettroDomestici;
     }
 
     public String getCitta() {
