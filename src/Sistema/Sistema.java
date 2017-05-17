@@ -5,7 +5,7 @@
  */
 package Sistema;
 
-import BusinessModelProva.BusinessModel;
+import BusinessModelProva.BusinessModelProva;
 import Exceptions.EmailAlreadyExistsException;
 import Exceptions.UserNotFoundException;
 import ProfiloUtente.Registrazione;
@@ -31,11 +31,11 @@ public class Sistema {
     private User user;
     private boolean init;       //FINCHE QUESTO FLAG NON E' TRUE LE ALTRE AZIONI DI SISTEMA NON SARANNO VISIBILI/EFFETTUABILI
     private IdTemporanei contatore;
-    private BusinessModel bm;
+    private BusinessModelProva bm;
 
     public Sistema() throws FileNotFoundException {
         this.contatore = new IdTemporanei();
-        this.bm = new BusinessModel();
+        this.bm = new BusinessModelProva();
         this.webSurfer = new WebSurfer(this.contatore.getIdCreati());        //VA CREATO UN METODO PRIVATO CHE ATTRIBUISCA L'ID LEGGENDO DA FILE L'ULTIMO NUMERO E SUCCESSIVAMENTE RISCRIVENDO DOVE SI E' ARRIVATI
         this.contatore.incrementaId();
         this.init = false; 
