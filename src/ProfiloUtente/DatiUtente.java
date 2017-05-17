@@ -65,24 +65,14 @@ public class DatiUtente {
         this.sportivo=sportivo;
         this.cittaDiRicerca = cittaDiRicerca;
         this.potenzialeCoinquilino = false; 
-        /**
-         * Crea un'istanza di Dati Utente, ossia un contenitore dei dati di un utilizzatore della piattaforma di ricerca coinquilini;
-         * PARAMETRI : NOME, COGNOME, SESSO, EMAIL, PASSWORD, GIORNO MESE E ANNO DI NASCITA,
-         * CELLULARE, NAZIONALITA, OCCUPAZIONE, FACOLTA, FUMATORE, CUOCO, SPORTIVO E CITTA IN CUI CERCA COINQUILINO O VORREBBE TROVARE CASA;
-         */
     }
 
     /**
      *
-     * @return
+     * @return Crea un'istanza di Dati Utente, ossia un contenitore dei dati di un utilizzatore della piattaforma di ricerca coinquilini;
      */
     public DataDiNascita getDataDiNascita() {
         return dataDiNascita;
-        /**
-         * RITORNA L'ISTANZA DI UNA DATA DI NASCITA OSSIA LA CLASSE CONTENENTE I DATI RIGUARDANTI L'ETA ED IL CALCOLO DELLA STESSA;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: DataDiNascita;
-         */
     }
 
     /**
@@ -93,11 +83,6 @@ public class DatiUtente {
      */
     public void setDataDiNascita(int giorno, int mese, int anno) {
         this.dataDiNascita = new DataDiNascita(giorno,mese,anno);
-        /**
-         * IMPOSTA LA DATA DI NASCITA DELL'UTENTE (O NE PERMETTE LA MODIFICA SE GIA' IMPOSTATA);
-         * PARAMETRI: GIORNO, MESE, ANNO;
-         * OUTPUT: NESSUNO;
-         */
     }
 
     /**
@@ -106,11 +91,6 @@ public class DatiUtente {
      */
     public String geteMail() {
         return eMail;
-        /**
-         * METODO GET DELL'ATTRIBUTO EMAIL;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: EMAIL;
-         */
     }
 
     /**
@@ -119,11 +99,6 @@ public class DatiUtente {
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
-        /**
-         * METODO SET DELL'EMAIL DELL'UTENTE;
-         * PARAMETRO: EMAIL;
-         * OUTPUT: NESSUNO;
-         */
     }
 
     /**
@@ -132,11 +107,6 @@ public class DatiUtente {
      */
     public String getPassword() {
         return password;
-        /**
-          METODO GET DELL'ATTRIBUTO PASSWORD;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: PASSWORD;
-         */
     }
 
     /**
@@ -145,11 +115,6 @@ public class DatiUtente {
      */
     public void setPassword(String password) {
         this.password = password;
-        /**
-         * METODO SET DELL'ATTRIBUTO PASSWORD;
-         * PARAMETRI: PASSWORD;
-         * OUTPUT: NESSUNO;
-         */
     }
 
     /**
@@ -158,11 +123,6 @@ public class DatiUtente {
      */
     public String getNumeroDiTelefono() {
         return numeroDiTelefono;
-        /**
-         * METODO GET DELL'ATTRIBUTO NUMERODITELEFONO;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: NUMERODITELEFONO
-         */
     }
 
     /**
@@ -171,24 +131,17 @@ public class DatiUtente {
      */
     public void setNumeroDiTelefono(String numeroDiTelefono) {
         this.numeroDiTelefono = numeroDiTelefono;
-        /**
-         * METODO CHE PERMETTE LA MODIFICA DEL NUMERO DI TELEFONO (SETTER);
-         * PARAMETRO: NUMERO DI TELEFONO (STRING)
-         * OUTPUT: NESSUNO;
-         */
     }
 
     /**
      *
      * @return
+     * METODO GET DELL'ATTRIBUTO SESSO DELL'UTENTE;
+         * PARAMETRI: NESSUNO;
+         * OUTPUT: SESSO(ENUM)
      */
     public Sesso getSesso() {
         return sesso;
-        /**
-         * METODO GET DELL'ATTRIBUTO SESSO DELL'UTENTE;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: SESSO(ENUM)
-         */
     }
 
     /**
@@ -358,7 +311,16 @@ public class DatiUtente {
     public void setCittaDiRicerca(String cittaDiRicerca) {
         this.cittaDiRicerca = cittaDiRicerca;
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "NOME: "+this.nome + "\nCOGNOME: "+this.cognome +"\nDATA DI NASCITA: " +this.dataDiNascita.toString();
+        s += "\nSESSO: "+this.sesso + "\nEMAIL: "+this.eMail+"\nNAZIONALITA': "+this.nazionalita;
+        s+= "\nOCCUPAZIONE: "+this.occupazione+"\nFACOLTA': "+this.facolta+"\nFUMATORE: "+this.fumatore;
+        s+= "\nCUOCO: "+this.cuoco+"\nSPORTIVO: "+ this.sportivo+"\nCITTA' DI RICERCA: "+this.cittaDiRicerca;
+        return s;
+    }
     
-    
-    
+
 }
