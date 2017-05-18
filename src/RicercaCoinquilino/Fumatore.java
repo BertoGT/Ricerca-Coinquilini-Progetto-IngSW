@@ -5,7 +5,7 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -21,11 +21,11 @@ public class Fumatore extends ParametroRicercaCoinquilino{
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
+    public float calcolaAffinità(Utente utente) {
         if(fumatore)
             return super.getStelle();
         else {
-            if(utente.isFumatore())
+            if(utente.getDatiUtente().isFumatore())
                 return 0;
             else 
                 return super.getStelle();

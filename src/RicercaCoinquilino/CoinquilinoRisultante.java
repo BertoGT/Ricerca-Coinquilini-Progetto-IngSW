@@ -5,7 +5,7 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -13,15 +13,15 @@ import ProfiloUtente.DatiUtente;
  */
 public class CoinquilinoRisultante implements Comparable<CoinquilinoRisultante>{
     
-    private final DatiUtente utente;
+    private final Utente utente;
     private final float punteggio;
 
-    public CoinquilinoRisultante(DatiUtente utente, float punteggio) {
+    public CoinquilinoRisultante(Utente utente, float punteggio) {
         this.utente = utente;
         this.punteggio = punteggio;
     }
 
-    public DatiUtente getUtente() {
+    public Utente getUtente() {
         return utente;
     }
 

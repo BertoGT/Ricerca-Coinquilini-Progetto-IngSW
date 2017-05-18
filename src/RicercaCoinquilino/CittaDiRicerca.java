@@ -6,6 +6,7 @@
 package RicercaCoinquilino;
 
 import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -21,8 +22,8 @@ public class CittaDiRicerca extends ParametroRicercaCoinquilino{
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
-        if(this.citta.equals(utente.getCittaDiRicerca()))
+    public float calcolaAffinità(Utente utente) {
+        if(this.citta.equals(utente.getDatiUtente().getCittaDiRicerca()))
             return 0;
         else
             return -1;

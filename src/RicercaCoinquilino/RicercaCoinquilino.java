@@ -5,7 +5,7 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,7 +15,7 @@ import java.util.Collections;
  */
 public class RicercaCoinquilino {
     
-    private ArrayList<DatiUtente> utentiTotali;
+    private ArrayList<Utente> utentiTotali;
     private ContenitoreParametriCoinquilino parametriRicerca;
     private ArrayList<CoinquilinoRisultante> coinquiliniRisultanti;
 
@@ -26,7 +26,7 @@ public class RicercaCoinquilino {
     }
     
     private void calcolaAffinita() {
-        for (DatiUtente dati : utentiTotali) {
+        for (Utente dati : utentiTotali) {
             float affinitaTotale = 0;
             int totaleStelle = 0;
             boolean coinquilinoIncompatibile = false;

@@ -5,7 +5,7 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -21,8 +21,8 @@ public class Facolta extends ParametroRicercaCoinquilino{
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
-        if(utente.getFacolta()==this.facolta)
+    public float calcolaAffinità(Utente utente) {
+        if(utente.getDatiUtente().getFacolta()==this.facolta)
             return super.getStelle();
         else
             return 0;

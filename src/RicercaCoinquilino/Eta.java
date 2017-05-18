@@ -7,6 +7,7 @@
 package RicercaCoinquilino;
 
 import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -23,8 +24,8 @@ public class Eta extends ParametroRicercaCoinquilino{
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
-        if(utente.getEta() <= etaMax && utente.getEta() >= etaMin)
+    public float calcolaAffinità(Utente utente) {
+        if(utente.getDatiUtente().getDataDiNascita().getEta() <= etaMax && utente.getDatiUtente().getDataDiNascita().getEta() >= etaMin)
             return super.getStelle();
         else 
             return 0;

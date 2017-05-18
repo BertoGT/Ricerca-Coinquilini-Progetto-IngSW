@@ -5,7 +5,7 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 import RicercaCoinquilino.ParametroRicercaCoinquilino;
 
 /**
@@ -22,14 +22,14 @@ public class Sportivo extends ParametroRicercaCoinquilino{
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
+    public float calcolaAffinità(Utente utente) {
         if(this.sportivo){
-            if(utente.isSportivo())
+            if(utente.getDatiUtente().isSportivo())
                 return super.getStelle();
             else
                 return 0;
         } else {
-            if(!utente.isSportivo())
+            if(!utente.getDatiUtente().isSportivo())
                 return super.getStelle();
             else
                 return 0;

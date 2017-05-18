@@ -100,6 +100,10 @@ public class DataDiNascita {
     public String toString() {
         return "\nDATA DI NASCITA: " + this.miaData + "\n";
     }
+
+    public int getEta() {
+        return eta;
+    }
     
     
 }

@@ -6,6 +6,7 @@
 package RicercaCoinquilino;
 
 import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
@@ -24,5 +25,5 @@ public abstract class ParametroRicercaCoinquilino {
         return stelle;
     }
     
-    public abstract float calcolaAffinità(DatiUtente utente);
+    public abstract float calcolaAffinità(Utente utente);
 }
