@@ -28,7 +28,7 @@ public class DatiUtente {
     private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini 
     /**
      *
-     * @param nome
+     * @param nome 
      * @param cognome
      * @param sesso
      * @param eMail
@@ -69,7 +69,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return Crea un'istanza di Dati Utente, ossia un contenitore dei dati di un utilizzatore della piattaforma di ricerca coinquilini;
+     * @return RESTITUISCE LA DATA DI NASCITA DELL'UTENTE.
      */
     public DataDiNascita getDataDiNascita() {
         return dataDiNascita;
@@ -77,9 +77,9 @@ public class DatiUtente {
 
     /**
      *
-     * @param giorno
-     * @param mese
-     * @param anno
+     * @param giorno: GIORNO DI NASCITA.
+     * @param mese: MESE DI NASCITA.
+     * @param anno: ANNO DI NASCITA.
      */
     public void setDataDiNascita(int giorno, int mese, int anno) {
         this.dataDiNascita = new DataDiNascita(giorno,mese,anno);
@@ -87,7 +87,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE L'EMAIL DELL'UTENTE.
      */
     public String geteMail() {
         return eMail;
@@ -95,7 +95,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param eMail
+     * @param eMail: EMAIL INSERITA DURANTE LA REGISTRAZIONE.
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
@@ -103,7 +103,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE LA PASSWORD DELL'UTENTE.
      */
     public String getPassword() {
         return password;
@@ -111,7 +111,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param password
+     * @param password: PASSWORD INSERITA DURANTE LA REGISTRAZIONE.
      */
     public void setPassword(String password) {
         this.password = password;
@@ -119,7 +119,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE IL NUMERO DI TELEFONO DELL'UTENTE.
      */
     public String getNumeroDiTelefono() {
         return numeroDiTelefono;
@@ -127,7 +127,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param numeroDiTelefono
+     * @param numeroDiTelefono: NUMERO TELEFONICO INSERITO DALL'UTENTE PER ESSERE CONTATTATO.
      */
     public void setNumeroDiTelefono(String numeroDiTelefono) {
         this.numeroDiTelefono = numeroDiTelefono;
@@ -135,10 +135,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
-     * METODO GET DELL'ATTRIBUTO SESSO DELL'UTENTE;
-         * PARAMETRI: NESSUNO;
-         * OUTPUT: SESSO(ENUM)
+     * @return RESTITUISCE IL SESSO, M O F, DELL'UTENTE.
      */
     public Sesso getSesso() {
         return sesso;
@@ -146,7 +143,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param sesso
+     * @param sesso: MASCHIO O FEMMINA.
      */
     public void setSesso(Sesso sesso) {
         this.sesso = sesso;
@@ -154,7 +151,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE TRUE SE L'UTENTE E' UN FUMATORE, VICEVERSA RESTITUISCE FALSE.
      */
     public boolean isFumatore() {
         return fumatore;
@@ -162,7 +159,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param fumatore
+     * @param fumatore: TRUE SE L'UTENTE E' FUMATORE, FALSE SE NON LO E'.
      */
     public void setFumatore(boolean fumatore) {
         this.fumatore = fumatore;
@@ -170,7 +167,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE TRUE SE L'UTENTE SI RITIENE UNA PERSONA CAPACE DI CUCINARE, VICEVERSA RESTITUISCE FALSE.
      */
     public boolean isCuoco() {
         return cuoco;
@@ -178,7 +175,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param cuoco
+     * @param cuoco: TRUE SE L'UTENTE SI RITIENE IN GRADO DI CUCINARE DISCRETAMENTE, FALSE SE NON LO E'.
      */
     public void setCuoco(boolean cuoco) {
         this.cuoco = cuoco;
@@ -186,7 +183,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE TRUE SE L'UTENTE SI RITIENE UNA PERSONA CHE PRATICA SPORT, VICEVERSA RESTITUISCE FALSE.
      */
     public boolean isSportivo() {
         return sportivo;
@@ -194,7 +191,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param sportivo
+     * @param sportivo: TRUE SE L'UTENTE PRATICA SPORT, VICEVERSA FALSE.
      */
     public void setSportivo(boolean sportivo) {
         this.sportivo = sportivo;
@@ -202,7 +199,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENENTE IL NOME DELL'UTENTE.
      */
     public String getNome() {
         return nome;
@@ -210,7 +207,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param nome
+     * @param nome: STRINGA DI TESTO CON IL NOME DELL'UTENTE.
      */
     public void setNome(String nome) {
         this.nome = nome;
@@ -218,7 +215,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENENTE IL COGNOME DELL'UTENTE.
      */
     public String getCognome() {
         return cognome;
@@ -226,7 +223,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param cognome
+     * @param cognome: STRINGA DI TESTO CON IL COGNOME DELL'UTENTE.
      */
     public void setCognome(String cognome) {
         this.cognome = cognome;
@@ -234,7 +231,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE LA NAZIONALITA' DELL'UTENTE.
      */
     public Nazionalita getNazionalita() {
         return nazionalita;
@@ -242,7 +239,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param nazionalita
+     * @param nazionalita: ENUM CONTENENTE LA NAZIONE DI PROVENIENZA DELL'UTENTE.
      */
     public void setNazionalita(Nazionalita nazionalita) {
         this.nazionalita = nazionalita;
@@ -250,7 +247,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE L'OCCUPAZIONE DELL'UTENTE: STUDENTE, LAVORATORE O ALTRO.
      */
     public Occupazione getOccupazione() {
         return occupazione;
@@ -258,7 +255,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param occupazione
+     * @param occupazione: ENUM CONTENENTE L'OCCUPAZIONE DELL'UTENTE.
      */
     public void setOccupazione(Occupazione occupazione) {
         this.occupazione = occupazione;
@@ -266,7 +263,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE TRUE SE L'UTENTE VUOLE ESSERE INSERITO IN UNA EVENTUALE RICERCA DI COINQUILINI DA PARTE DI UN SECONDO UTENTE, VICEVERSA RESTITUISCE FALSE.
      */
     public boolean isPotenzialeCoinquilino() {
         return potenzialeCoinquilino;
@@ -274,7 +271,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param potenzialeCoinquilino
+     * @param potenzialeCoinquilino: TRUE SE L'UTENTE VUOLE CANDIDARSI COME POTENZIALE COINQUILINO.
      */
     public void setPotenzialeCoinquilino(boolean potenzialeCoinquilino) {
         this.potenzialeCoinquilino = potenzialeCoinquilino;
@@ -282,7 +279,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE LA FACOLTA FREQUENTATA DALL'UTENTE SE QUESTO E' UNO STUDENTE.
      */
     public Facolta getFacolta() {
         return facolta;
@@ -290,7 +287,7 @@ public class DatiUtente {
 
     /**
      *
-     * @param facolta
+     * @param facolta: ENUM DELLA FACOLTA FREQUENTATA DALL'UTENTE, SE STUDENTE.
      */
     public void setFacolta(Facolta facolta) {
         this.facolta = facolta;
@@ -298,7 +295,7 @@ public class DatiUtente {
 
     /**
      *
-     * @return
+     * @return RESTITUISCE LA CITTA' IN CUI L'UTENTE CERCA CASA O COINQUILINI.
      */
     public String getCittaDiRicerca() {
         return cittaDiRicerca;
@@ -306,19 +303,35 @@ public class DatiUtente {
 
     /**
      *
-     * @param cittaDiRicerca
+     * @param cittaDiRicerca: ENUM CONTENTENTE LA CITTA' IN CUI LO STUDENTE CERCA CASA O COINQUILINI.
      */
     public void setCittaDiRicerca(String cittaDiRicerca) {
         this.cittaDiRicerca = cittaDiRicerca;
     }
 
+    /**
+     *
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENTENTE IL RIASSUNTO DEI DATI DELL'UTENTE.
+     */
     @Override
     public String toString() {
         String s = "";
         s += "NOME: "+this.nome + "\nCOGNOME: "+this.cognome +"\nDATA DI NASCITA: " +this.dataDiNascita.toString();
         s += "\nSESSO: "+this.sesso + "\nEMAIL: "+this.eMail+"\nNAZIONALITA': "+this.nazionalita;
-        s+= "\nOCCUPAZIONE: "+this.occupazione+"\nFACOLTA': "+this.facolta+"\nFUMATORE: "+this.fumatore;
-        s+= "\nCUOCO: "+this.cuoco+"\nSPORTIVO: "+ this.sportivo+"\nCITTA' DI RICERCA: "+this.cittaDiRicerca;
+        s+= "\nOCCUPAZIONE: "+this.occupazione+"\nFACOLTA': "+this.facolta;
+        if(this.fumatore)
+            s+="\nFUMATORE: SI";
+        else
+            s+="\nFUMATORE: NO";
+        if(this.cuoco)
+            s+="\nCUOCO: SI";
+        else
+            s+="\nCUOCO: NO";
+        if(this.sportivo)
+            s+="\nSPORTIVO: SI";
+        else
+            s+="\nSPORTIVO: NO";
+        s+= "\nCITTA' DI RICERCA: "+this.cittaDiRicerca;
         return s;
     }
     
