@@ -6,6 +6,10 @@
 package BusinessModel;
 
 import Database.Database;
+import ProfiloUtente.Facolta;
+import ProfiloUtente.Nazionalita;
+import ProfiloUtente.Occupazione;
+import ProfiloUtente.Sesso;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,10 +26,10 @@ public class BusinessModel {
         db = new Database();
     }
     
-    public int registrazione(String email, String password, int power, boolean candidato) throws SQLException {
+    public int registrazione(String email, String password, boolean candidato) throws SQLException {
         db.apriConnesione();
         ResultSet rs;
-        rs = db.registrazione(email, password, power, candidato);
+        rs = db.registrazione(email, password, 1, candidato);
         if(rs != null && rs.next()) {
             int result = rs.getInt(1);
             db.chiudiConnessione();
@@ -41,14 +45,21 @@ public class BusinessModel {
         db.apriConnesione();
         ResultSet rs;
         rs = db.login(email, password);
-        if(rs.next())
-            return rs.getInt(1);
-        else 
+        if(rs.next()) {
+            int result = rs.getInt(1);
+            db.chiudiConnessione();
+            return result;
+        }else {
+            db.chiudiConnessione();
             return -1; // dati sbagliati
+        }          
     }
+    
+    
     public boolean modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
         db.apriConnesione();
         int result = db.modificaPassword(idUtente, vecchiaPassword, nuovaPassword);
+        db.chiudiConnessione();
         if(result == 0) 
             return false; // modifica non avvenuta, vecchia password errata
         else 
@@ -58,18 +69,24 @@ public class BusinessModel {
     public boolean setCandidatura(int idUtente, boolean candidatura) throws SQLException {
         db.apriConnesione();
         int result = db.setCandidatura(idUtente, candidatura);
+        db.chiudiConnessione();
         if(result == 0) 
             return false;
         else 
             return true;
     }
-    public boolean inserisciAnagraficaUtente(int idUtente, String nome, String cognome, int giorno, int mese, int anno, String sesso, 
-            String nazionalita, String cittaDiRicerca) throws SQLException {
+    
+    
+    public boolean inserisciAnagraficaUtente(int idUtente, String nome, String cognome, int giorno, int mese, int anno, Sesso sesso, 
+            Nazionalita nazionalita, String cittaDiRicerca) throws SQLException {
+        // TODO conversione enum della cittaRicerca
         db.apriConnesione();
         Calendar c = Calendar.getInstance();
         c.set(anno, mese-1, giorno);
         Date data = new Date(c.getTimeInMillis());
-        int result = db.setDatiAnagrafici(idUtente, nome, cognome, data, sesso, nazionalita, cittaDiRicerca);
+        int result = db.setDatiAnagrafici(idUtente, nome, cognome, data, String.valueOf(sesso),
+                String.valueOf(nazionalita), cittaDiRicerca);
+        db.chiudiConnessione();
         if(result == 0)
             return false;
         else
@@ -78,7 +95,33 @@ public class BusinessModel {
     
     public boolean modificaCittaDiRicerca(int idUtente, String nuovaCitta) throws SQLException {
         db.apriConnesione();
+        // TODO conversione enum della cittaRicerca
         int result = db.modificaCitaDiRicerca(idUtente, nuovaCitta);
+        db.chiudiConnessione();
+        if(result == 0) 
+            return false;
+        else 
+            return true;
+    }
+    
+    public boolean inserisciInfoUtente(int idUtente, boolean fumatore, boolean cuoco, 
+            boolean sportivo, Occupazione occupazione, Facolta facolta) throws SQLException {
+        db.apriConnesione();
+        int result = db.setInfoUtente(idUtente, fumatore, cuoco, sportivo, 
+                String.valueOf(occupazione), String.valueOf(facolta));
+        db.chiudiConnessione();
+        if(result == 0) 
+            return false;
+        else 
+            return true;
+    }
+    
+    public boolean modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
+            Occupazione occupazione, Facolta facolta) throws SQLException {
+        db.apriConnesione();
+        int result = db.modificaInfoUtente(idUtente, fumatore, cuoco, sportivo,
+                String.valueOf(occupazione), String.valueOf(facolta));
+        db.chiudiConnessione();
         if(result == 0) 
             return false;
         else 
