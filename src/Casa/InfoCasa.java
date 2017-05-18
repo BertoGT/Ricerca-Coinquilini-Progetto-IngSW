@@ -10,13 +10,14 @@ import java.util.ArrayList;
  */
 public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
-    private HouseGender sessoCasa;
+    private HouseGenerality sessoCasa;
     private ArrayList<ElettroDomestico> elettroDomestici;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
-    private String citta, indirizzo;
+    private Citta citta;
+    private String indirizzo;
 
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
+    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
@@ -91,7 +92,7 @@ public class InfoCasa {
         return distanzaCentro;
     }
 
-    public HouseGender getSessoCasa() {
+    public HouseGenerality getSessoCasa() {
         return sessoCasa;
     }
 
@@ -107,7 +108,7 @@ public class InfoCasa {
         return elettroDomestici;
     }
 
-    public String getCitta() {
+    public Citta getCitta() {
         return citta;
     }
 
@@ -131,7 +132,7 @@ public class InfoCasa {
         this.distanzaCentro = distanzaCentro;
     }
 
-    public void setSessoCasa(HouseGender sessoCasa) {
+    public void setSessoCasa(HouseGenerality sessoCasa) {
         this.sessoCasa = sessoCasa;
     }
 
@@ -139,7 +140,7 @@ public class InfoCasa {
         this.cucinaSeparata = cucinaSeparata;
     }
 
-    public void setCitta(String citta) {
+    public void setCitta(Citta citta) {
         this.citta = citta;
     }
 

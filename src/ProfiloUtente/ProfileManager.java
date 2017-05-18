@@ -5,6 +5,8 @@
  */
 package ProfiloUtente;
 
+import Casa.AnnuncioCasa;
+
 /**
  *
  * @author Marco La Salvia
@@ -12,14 +14,24 @@ package ProfiloUtente;
 public class ProfileManager {
     private Utente utente;
     private String descrizioneAggiuntiva;
+    private AnnuncioCasa annuncioCasa;
 
-    public ProfileManager(Utente utente, String descrizioneAggiuntiva) {
+    public ProfileManager(Utente utente, String descrizioneAggiuntiva, AnnuncioCasa annuncioCasa) {
         this.utente = utente;
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
+        this.annuncioCasa = annuncioCasa;
     }
 
     public Utente getUtente() {
         return utente;
+    }
+
+    public AnnuncioCasa getAnnuncioCasa() {
+        return annuncioCasa;
+    }
+
+    public void setAnnuncioCasa(AnnuncioCasa annuncioCasa) {
+        this.annuncioCasa = annuncioCasa;
     }
 
     public void setUtente(Utente utente) {

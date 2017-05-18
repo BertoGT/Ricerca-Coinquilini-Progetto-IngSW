@@ -9,6 +9,6 @@ package Casa;
  *
  * @author Marco La Salvia
  */
-public enum HouseGender {
+public enum HouseGenerality {
     MASCHI, FEMMINE, MISTA
 }

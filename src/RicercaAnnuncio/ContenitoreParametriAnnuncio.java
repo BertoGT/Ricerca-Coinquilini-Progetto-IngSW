@@ -5,7 +5,8 @@
  */
 package RicercaAnnuncio;
 
-import Casa.HouseGender;
+import Casa.Citta;
+import Casa.HouseGenerality;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public class ContenitoreParametriAnnuncio {
         parametriRicerca = new ArrayList<ParametroRicercaAnnuncio>();
     }
     
-    public void setParametroCitta(String nome) {
+    public void setParametroCitta(Citta nome) {
         parametriRicerca.add(new Città(nome));
     }
     
@@ -43,7 +44,7 @@ public class ContenitoreParametriAnnuncio {
         parametriRicerca.add(new NumeroBagni(stelle, nBagni));
     }
     
-    public void setParametroSessoCasa(int stelle, HouseGender sesso) {
+    public void setParametroSessoCasa(int stelle, HouseGenerality sesso) {
         parametriRicerca.add(new SessoCasa(stelle, sesso));
     }
     

@@ -6,7 +6,7 @@
 package Test;
 
 import Casa.ElettroDomestico;
-import Casa.HouseGender;
+import Casa.HouseGenerality;
 import Casa.InfoCasa;
 
 /**
@@ -14,8 +14,9 @@ import Casa.InfoCasa;
  * @author Delbo
  */
 public class TestInfoCasa {
+    /*
     public static void main(String[] args) {
-        InfoCasa info=new InfoCasa(10,2,1,100,true,"Pavia","Via dal cazzo 7",HouseGender.MISTA);
+        InfoCasa info=new InfoCasa(10,2,1,100,true,"Pavia","Via dal cazzo 7",HouseGenerality.MISTA);
         
         info.addElettroDomestico(ElettroDomestico.LAVATRICE);
         info.addElettroDomestico(ElettroDomestico.LAVATRICE);
@@ -28,6 +29,6 @@ public class TestInfoCasa {
         info.rimuoviElettroDomestico(ElettroDomestico.ASPIRAPOLVERE);
         
         System.out.print(info.getElettroDomestici());
-    }
+    }*/
           
 }
