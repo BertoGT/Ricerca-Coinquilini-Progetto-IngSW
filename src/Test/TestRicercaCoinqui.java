@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Delbo
  */
-public class TestRicercaCoinqui {
+public class TestRicercaCoinqui {/*
     
     public static void main(String[] args) throws ParseException {
         ArrayList<DatiUtente> dati=new ArrayList<>();
@@ -46,5 +46,5 @@ public class TestRicercaCoinqui {
         
         RicercaCoinquilino r=new RicercaCoinquilino(c);
         System.out.print(r.eseguiRicerca());
-    }
+    }*/
 }

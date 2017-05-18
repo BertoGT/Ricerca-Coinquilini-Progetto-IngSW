@@ -6,7 +6,6 @@
 package Test;
 
 import Casa.AnnuncioCasa;
-import Lettori.LeggiAnnunci;
 import java.util.ArrayList;
 
 /**
@@ -14,11 +13,12 @@ import java.util.ArrayList;
  * @author Niko
  */
 public class TestFile {
+    /*
     public static void main(String[] args) {
         ArrayList<AnnuncioCasa> ann = new ArrayList<>();
         LeggiAnnunci l = new LeggiAnnunci();
         l.leggiFile();
         ann = l.getAnnunci();
         System.out.println(l.stampaAnnunci());
-    }
+    }*/
 }

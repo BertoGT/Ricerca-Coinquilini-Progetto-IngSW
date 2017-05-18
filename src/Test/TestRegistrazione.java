@@ -2,7 +2,7 @@ package Test;
 
 
 import Exceptions.EmailAlreadyExistsException;
-import ProfiloUtente.Registrazione;
+
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.logging.Level;

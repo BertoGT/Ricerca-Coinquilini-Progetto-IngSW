@@ -5,6 +5,7 @@
  */
 package RicercaCoinquilino;
 
+import Casa.Citta;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public class ContenitoreParametriCoinquilino {
         this.parametri = new ArrayList<>();
     }
     
-    public void setParametroCittaDiRicerca(String citta){
+    public void setParametroCittaDiRicerca(Citta citta){
         this.parametri.add(new CittaDiRicerca(citta));
     }
     

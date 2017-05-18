@@ -6,6 +6,7 @@
 package RicercaAnnuncio;
 
 import Casa.AnnuncioCasa;
+import Casa.Citta;
 
 /**
  *
@@ -13,9 +14,9 @@ import Casa.AnnuncioCasa;
  */
 public class Città extends ParametroRicercaAnnuncio{
 
-    private String nome;
+    private Citta nome;
     
-    public Città(String nome) {
+    public Città(Citta nome) {
         super(0);
         this.nome=nome;
         

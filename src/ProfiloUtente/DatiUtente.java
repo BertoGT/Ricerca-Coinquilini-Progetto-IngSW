@@ -5,6 +5,7 @@
  */
 package ProfiloUtente;
 
+import Casa.Citta;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,7 +26,7 @@ public class DatiUtente {
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
     private Facolta facolta;
-    private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini 
+    private Citta cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini 
     /**
      *
      * @param nome 
@@ -48,7 +49,7 @@ public class DatiUtente {
      */
     public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazionalita nazionalita, 
             
-            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, String cittaDiRicerca) throws ParseException {
+            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca) throws ParseException {
         
         this.nome=nome;
         this.cognome=cognome;
@@ -297,7 +298,7 @@ public class DatiUtente {
      *
      * @return RESTITUISCE LA CITTA' IN CUI L'UTENTE CERCA CASA O COINQUILINI.
      */
-    public String getCittaDiRicerca() {
+    public Citta getCittaDiRicerca() {
         return cittaDiRicerca;
     }
 
@@ -305,7 +306,7 @@ public class DatiUtente {
      *
      * @param cittaDiRicerca: ENUM CONTENTENTE LA CITTA' IN CUI LO STUDENTE CERCA CASA O COINQUILINI.
      */
-    public void setCittaDiRicerca(String cittaDiRicerca) {
+    public void setCittaDiRicerca(Citta cittaDiRicerca) {
         this.cittaDiRicerca = cittaDiRicerca;
     }
 

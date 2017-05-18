@@ -13,13 +13,13 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Sistema.SistemaConInterfaccia;
 
 /**
  *
  * @author Marco La Salvia
  */
 public class TestSystem {
+    /*
     public static void main(String[] args) {
         try {
             SistemaConInterfaccia s = new SistemaConInterfaccia();
@@ -29,5 +29,5 @@ public class TestSystem {
         } catch (FileNotFoundException | ParseException | EmailAlreadyExistsException | UserNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
-    }
+    }*/
 }

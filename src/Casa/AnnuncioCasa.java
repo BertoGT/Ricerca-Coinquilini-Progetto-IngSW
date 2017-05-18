@@ -39,7 +39,7 @@ public class AnnuncioCasa {
         casa.rimuoviCamera(idAnnuncio);
     }
     
-    public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa){
+    public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
         casa = new InfoCasa(metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
     }
 
@@ -59,7 +59,7 @@ public class AnnuncioCasa {
         return costo;
     }
     
-    public String getCitta() {
+    public Citta getCitta() {
         return casa.getCitta();
     }
     
@@ -87,7 +87,7 @@ public class AnnuncioCasa {
         return casa.getCamere();
     }
     
-    public HouseGender getSessoCasa() {
+    public HouseGenerality getSessoCasa() {
         return casa.getSessoCasa();
     }
 
@@ -122,9 +122,5 @@ public class AnnuncioCasa {
     public void setEmailProprietario(String emailProprietario) {
         this.emailProprietario = emailProprietario;
     }
-    
-    
- 
-    
     
 }

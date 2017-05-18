@@ -6,23 +6,23 @@
 package RicercaAnnuncio;
 
 import Casa.AnnuncioCasa;
-import Casa.HouseGender;
+import Casa.HouseGenerality;
 
 /**
  *
  * @author alberto
  */
 public class SessoCasa extends ParametroRicercaAnnuncio{
-    private HouseGender sesso;
+    private HouseGenerality sesso;
 
-    public SessoCasa(int stelle, HouseGender sesso) {
+    public SessoCasa(int stelle, HouseGenerality sesso) {
         super(stelle);
         this.sesso = sesso;
     }
 
     @Override
     public float calcolaAffinità(AnnuncioCasa annuncio) {
-        if(sesso == HouseGender.MISTA) {
+        if(sesso == HouseGenerality.MISTA) {
             if(sesso == annuncio.getSessoCasa())
                 return super.getStelle();
             else 
@@ -30,7 +30,7 @@ public class SessoCasa extends ParametroRicercaAnnuncio{
         } else {
             if(sesso == annuncio.getSessoCasa())
                 return super.getStelle();
-            else if(annuncio.getSessoCasa() == HouseGender.MISTA)
+            else if(annuncio.getSessoCasa() == HouseGenerality.MISTA)
                 return ((float)super.getStelle() / 2);
             else 
                 return 0;

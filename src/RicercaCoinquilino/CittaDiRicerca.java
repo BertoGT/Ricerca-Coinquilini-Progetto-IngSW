@@ -5,6 +5,7 @@
  */
 package RicercaCoinquilino;
 
+import Casa.Citta;
 import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Utente;
 
@@ -14,9 +15,10 @@ import ProfiloUtente.Utente;
  */
 public class CittaDiRicerca extends ParametroRicercaCoinquilino{
 
-    private String citta;
+    private Citta
+            citta;
     
-    public CittaDiRicerca(String citta) {
+    public CittaDiRicerca(Citta citta) {
         super(0);
         this.citta = citta;
     }
