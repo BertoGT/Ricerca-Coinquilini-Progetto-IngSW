@@ -109,4 +109,32 @@ public class Database {
         ps.setInt(2, idUtente);
         return ps.executeUpdate();
     }
+    
+    public int setInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
+            String occupazione, String facolta) throws SQLException {
+        try {
+            PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciInfoUtente);
+            ps.setInt(1, idUtente);
+            ps.setBoolean(2, fumatore);
+            ps.setBoolean(3, cuoco);
+            ps.setBoolean(4, sportivo);
+            ps.setString(5, occupazione);
+            ps.setString(6, facolta);
+            return ps.executeUpdate();
+        } catch(MySQLIntegrityConstraintViolationException e) {
+            return 0;
+        }
+    }
+    
+    public int modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
+            String occupazione, String facolta) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaInfoUtente);
+        ps.setBoolean(1, fumatore);
+        ps.setBoolean(2, cuoco);
+        ps.setBoolean(3, sportivo);
+        ps.setString(4, occupazione);
+        ps.setString(5, facolta);
+        ps.setInt(6, idUtente);
+        return ps.executeUpdate();
+    }
 }
