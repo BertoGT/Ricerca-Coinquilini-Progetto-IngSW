@@ -19,10 +19,10 @@ import java.util.Calendar;
  *
  * @author Niko
  */
-public class BusinessModel {
+public class BusinnessModelUtente {
     private Database db;
 
-    public BusinessModel() throws SQLException {
+    public BusinnessModelUtente() throws SQLException {
         db = new Database();
     }
     
@@ -107,8 +107,15 @@ public class BusinessModel {
     public boolean inserisciInfoUtente(int idUtente, boolean fumatore, boolean cuoco, 
             boolean sportivo, Occupazione occupazione, Facolta facolta) throws SQLException {
         db.apriConnesione();
+        
+        String fac;
+        if(occupazione == Occupazione.STUDENTE)
+            fac = String.valueOf(facolta);
+        else 
+            fac = null;
+        
         int result = db.setInfoUtente(idUtente, fumatore, cuoco, sportivo, 
-                String.valueOf(occupazione), String.valueOf(facolta));
+                String.valueOf(occupazione), fac);
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -119,8 +126,15 @@ public class BusinessModel {
     public boolean modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
             Occupazione occupazione, Facolta facolta) throws SQLException {
         db.apriConnesione();
+        
+        String fac;
+        if(occupazione == Occupazione.STUDENTE)
+            fac = String.valueOf(facolta);
+        else 
+            fac = null;
+        
         int result = db.modificaInfoUtente(idUtente, fumatore, cuoco, sportivo,
-                String.valueOf(occupazione), String.valueOf(facolta));
+                String.valueOf(occupazione), fac);
         db.chiudiConnessione();
         if(result == 0) 
             return false;

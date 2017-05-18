@@ -42,6 +42,8 @@ public class Database {
         conn.close();
     }
     
+    /* SEZIONE UTENTE */
+    
     public ResultSet registrazione(String email, String password, int power, boolean candidato) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaEmail);
         ps.setString(1, email);
@@ -137,4 +139,7 @@ public class Database {
         ps.setInt(6, idUtente);
         return ps.executeUpdate();
     }
+    
+    
+    /* SEZIONE ANNUNCI CASA */
 }

@@ -44,6 +44,10 @@ public class CostantiDB {
     
     //Query inserimento/modifica infoUtente
     final static String inserisciInfoUtente = "INSERT INTO "+tabellaInfoUtente+" VALUES (?, ?, ?, ?, ?, ?)";
-    final static String modificaInfoUtente = "UPDATE "+tabellaInfoCasa+" SET fumatore = ?, cuoco = ?, sportivo = ?"
+    final static String modificaInfoUtente = "UPDATE "+tabellaInfoUtente+" SET fumatore = ?, cuoco = ?, sportivo = ?,"
             + "occupazione = ?, facolta = ? WHERE idUtente = ?";
+    
+    /* SEZIONE ANNUNCI */
+    
+   
 }
