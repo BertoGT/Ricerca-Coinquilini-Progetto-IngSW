@@ -29,8 +29,9 @@ public class TestConDb {
 //            System.out.println(bm.inserisciAnagraficaUtente(1, "nicholas", "farina", 10, 3, 1995, Sesso.M, Nazionalita.Italiana, "Pavia"));
 //            System.out.println(bm.modificaCittaDiRicerca(1, "Milano"));
 
-            System.out.println(bm.inserisciInfoUtente(1, false, false, true, Occupazione.STUDENTE, Facolta.TecnicoScientifico));
-            System.out.println(bm.modificaInfoUtente(1, true, true, true, Occupazione.LAVORATORE, Facolta.Altro));
+//            System.out.println(bm.inserisciInfoUtente(1, false, false, true, Occupazione.STUDENTE, Facolta.INGEGNERIA));
+//            System.out.println(bm.modificaInfoUtente(1, true, true, true, Occupazione.LAVORATORE, Facolta.ALTRO));
+
             
         } catch (SQLException ex) {
             Logger.getLogger(TestConDb.class.getName()).log(Level.SEVERE, null, ex);

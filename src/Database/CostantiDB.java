@@ -11,19 +11,19 @@ package Database;
  */
 public class CostantiDB {
     //Nomi tabelle database
-    public final static String tabellaAnagraficaUtente = "anagraficaUtente";
-    public final static String tabellaAnnuncioCasa = "annuncioCasa";
-    public final static String tabellaCamere = "camere";
-    public final static String tabellaInfoCasa = "infoCasa";
-    public final static String tabellaInfoUtente = "infoUtente";
-    public final static String tabellaUtente = "utente";
+    final static String tabellaAnagraficaUtente = "anagraficaUtente";
+    final static String tabellaAnnuncioCasa = "annuncioCasa";
+    final static String tabellaCamere = "camere";
+    final static String tabellaInfoCasa = "infoCasa";
+    final static String tabellaInfoUtente = "infoUtente";
+    final static String tabellaUtente = "utente";
     
     //IP server
-    public final static String URL_DB = "jdbc:mysql://roomingdb2.c7syuv3prdev.us-east-2.rds.amazonaws.com:3306/innodb";
+    final static String URL_DB = "jdbc:mysql://roomingdb2.c7syuv3prdev.us-east-2.rds.amazonaws.com:3306/innodb";
     
     //Username e Password
-    public final static String username = "roomingdb";
-    public final static String password = "albo1000";
+    final static String username = "roomingdb";
+    final static String password = "albo1000";
     
     //Query registrazione e login
     final static String verificaEmail = "select * from " +tabellaUtente+ " where email = ?";
@@ -49,5 +49,17 @@ public class CostantiDB {
     
     /* SEZIONE ANNUNCI */
     
-   
+   // Query inserimento/modifica annuncio
+    final static String inserisciAnnuncioCasa = "INSERT INTO "+tabellaAnnuncioCasa+" (idCasa,"
+            + "idUtenteProprietario, descrizione, costo) VALUES (?,?,?,?)";
+    final static String modificaAnnuncioCasa = "UPDATE "+tabellaAnnuncioCasa+" SET descrizione = ?,"
+            + "costo = ? WHERE idAnnuncio = ?";
+    
+    // Query inserimento/modifica infoCasa
+    final static String inserisciInfoCasa = "INSERT INTO "+tabellaInfoCasa+" (m2, nLocali, nBagni,"
+            + "distanzaCentro, sessoCasa, cucinaSeparata, citta, indirizzo)"
+            + "VALUES (?,?,?,?,?,?,?,?)";
+    final static String modificaInfoCasa = "UPDATE "+tabellaInfoCasa+" SET m2 = ?, nLocali = ?,"
+            + "nBagni = ?, distanzaCentro = ?, sessoCasa = ?, cucinaSeparata = ?, citta = ?,"
+            + "indirizzo = ? WHERE idCasa = ?";
 }

@@ -142,4 +142,54 @@ public class Database {
     
     
     /* SEZIONE ANNUNCI CASA */
+    
+    public int setAnnuncioCasa(int idCasa, int idUtenteProprietario, String descrizione, int costo) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciAnnuncioCasa);
+        ps.setInt(1, idCasa);
+        ps.setInt(2, idUtenteProprietario);
+        ps.setString(3, descrizione);
+        ps.setInt(4, costo);
+        return ps.executeUpdate();
+    }
+    
+    public int modificaAnnuncioCasa(int idAnnuncio, String descrizione, int costo) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaAnnuncioCasa);
+        ps.setInt(1, idAnnuncio);
+        ps.setString(2, descrizione);
+        ps.setInt(3, costo);
+        return ps.executeUpdate();
+    }
+
+    public ResultSet setInfoCasa(int m2, int nLocali, int nBagni, int distanzaCentro, 
+            String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciInfoCasa, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, m2);
+        ps.setInt(2, nLocali);
+        ps.setInt(3, nBagni);
+        ps.setInt(4, distanzaCentro);
+        ps.setString(5, sessoCasa);
+        ps.setBoolean(6, cucinaSeparata);
+        ps.setString(7, citta);
+        ps.setString(8, indirizzo);
+        ps.executeUpdate();
+        return ps.getGeneratedKeys();
+    }
+    
+    public int modificaInfoCasa(int idCasa, int m2, int nLocali, int nBagni, int distanzaCentro, 
+            String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaInfoCasa);
+        ps.setInt(1, m2);
+        ps.setInt(2, nLocali);
+        ps.setInt(3, nBagni);
+        ps.setInt(4, distanzaCentro);
+        ps.setString(5, sessoCasa);
+        ps.setBoolean(6, cucinaSeparata);
+        ps.setString(7, citta);
+        ps.setString(8, indirizzo);
+        ps.setInt(9, idCasa);
+        return ps.executeUpdate();
+    }
+    
 }
