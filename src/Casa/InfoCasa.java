@@ -72,7 +72,7 @@ public class InfoCasa {
             }
         }
         if(flag)
-        this.elettroDomestici.remove(indice);
+            this.elettroDomestici.remove(indice);
     }
 
     public int getMetriQuadri() {

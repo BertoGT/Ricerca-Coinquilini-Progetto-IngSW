@@ -9,17 +9,21 @@ package Utenti;
  *
  * @author Marco La Salvia
  */
-public class Guest extends WebSurfer {
+public class Guest extends WebSurfer implements Power{
     private int power;
-
-    public Guest(int numeroUtente) {
-        super(numeroUtente);
+    
+    public Guest() {
         this.power = 0;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Guest{" + "power=" + power + '}';
+        return super.toString() + "\nGUEST \nPOWER: " + this.power;
+    }
+
+    @Override
+    public int getPower() {
+        return this.power;
     }
     
 }

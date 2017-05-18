@@ -7,39 +7,29 @@ package Utenti;
 
 import java.util.Calendar;
 
-public class WebSurfer implements Power{
-    private String id;
-    private int power;
+public class WebSurfer{
     private Calendar dataOraAccesso;
+    private boolean loggedIn;
 
-    public WebSurfer(int numeroUtente) {
-        this.id = "ID_" + numeroUtente;
-        this.power = -1;
+    public WebSurfer() {
+        this.loggedIn = false;
         this.dataOraAccesso = Calendar.getInstance();
     }
-
-    public String getId() {
-        return id;
-    }
-
     public Calendar getDataOraAccesso() {
         return dataOraAccesso;
     }
-    public int getNumeroUtente(){
-        String numeroUtente = this.id.replaceAll("ID_", "");
-        return Integer.parseInt(numeroUtente);
-    }
+
     @Override
     public String toString() {
-        return "ACCESSO: " +this.dataOraAccesso.toString() + "\n"+this.id+"\n";
-    }
-    
-    @Override
-    public int getPower() {
-        return this.power;
+        return "\nACCESSO: " +this.dataOraAccesso.toString();
     }
 
-    
-    
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
     
 }

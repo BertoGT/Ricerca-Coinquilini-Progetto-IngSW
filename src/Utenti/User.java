@@ -6,6 +6,7 @@
 package Utenti;
 
 import ProfiloUtente.DatiUtente;
+import ProfiloUtente.ProfileManager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -14,38 +15,27 @@ import java.util.Scanner;
  *
  * @author Marco La Salvia
  */
-public class User extends WebSurfer{
-    private int power;
-    private DatiUtente dati;
-    private boolean loggedIn;
+public class User extends WebSurfer implements Power{
     
-    public User(int numeroUtente, DatiUtente dati){
-        super(numeroUtente);
-        this.loggedIn = false;
+    private int power;
+    private ProfileManager profileManager;
+
+    public User(){
+        super();
         this.power = 1;
-        this.dati = dati;
     }
 
+    @Override
     public int getPower() {
         return power;
+    }  
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nUSER \nPOWER: " + this.power;
     }
 
-    public String geteMail() {
-        return dati.geteMail();
-    }
-
-    public String getPassword() {
-        return dati.getPassword();
-    }
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }
-    
-    
-    
+    public ProfileManager getProfileManager() {
+        return profileManager;
+    }    
 }
