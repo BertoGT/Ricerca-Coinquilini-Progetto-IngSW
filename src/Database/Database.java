@@ -154,9 +154,9 @@ public class Database {
     
     public int modificaAnnuncioCasa(int idAnnuncio, String descrizione, int costo) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaAnnuncioCasa);
-        ps.setInt(1, idAnnuncio);
-        ps.setString(2, descrizione);
-        ps.setInt(3, costo);
+        ps.setString(1, descrizione);
+        ps.setInt(2, costo);
+        ps.setInt(3, idAnnuncio);
         return ps.executeUpdate();
     }
 

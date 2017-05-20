@@ -21,8 +21,10 @@ public class TestConDBAnnunci {
         try {
             BusinnessModelAnnuncio bm = new BusinnessModelAnnuncio();
             
-            int idCasa = bm.inserisciInfoCasa(50, 2, 1, 1000, HouseGenerality.MASCHI, true, Citta.PAVIA, "indirizzo");
-            System.out.println(bm.inserisciAnnuncioCasa(idCasa, 1, "descrizione", 300));
+//            int idCasa = bm.inserisciInfoCasa(50, 2, 1, 1000, HouseGenerality.MASCHI, true, Citta.PAVIA, "indirizzo");
+//            System.out.println(bm.inserisciAnnuncioCasa(idCasa, 1, "descrizione", 300));
+            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
+//            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
         } catch (SQLException ex) {
             Logger.getLogger(TestConDBAnnunci.class.getName()).log(Level.SEVERE, null, ex);
         }
