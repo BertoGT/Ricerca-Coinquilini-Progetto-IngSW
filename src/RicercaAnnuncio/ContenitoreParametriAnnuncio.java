@@ -20,14 +20,6 @@ public class ContenitoreParametriAnnuncio {
         parametriRicerca = new ArrayList<ParametroRicercaAnnuncio>();
     }
     
-    public void setParametroCitta(Citta nome) {
-        parametriRicerca.add(new Città(nome));
-    }
-    
-    public void setParametroCosto(int costoMax) {
-        parametriRicerca.add(new Costo(costoMax));
-    }
-    
     public void setParametroCucina(int stelle, boolean cucinaSeparata) {
         parametriRicerca.add(new Cucina(stelle, cucinaSeparata));
     }

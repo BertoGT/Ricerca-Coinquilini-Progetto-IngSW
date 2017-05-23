@@ -42,6 +42,10 @@ public class AnnuncioCasa {
     public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
         casa = new InfoCasa(metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
     }
+    
+    public void creaElettrodomestico(ElettroDomestico elettrodomestico) {
+        casa.addElettroDomestico(elettrodomestico);
+    }
 
     public InfoCasa getCasa() {
         return casa;

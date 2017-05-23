@@ -6,8 +6,11 @@
 package Test;
 
 import BusinessModel.BusinnessModelAnnuncio;
+import Casa.CameraDisponibile;
 import Casa.Citta;
+import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
+import Casa.InfoCasa;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,10 +24,18 @@ public class TestConDBAnnunci {
         try {
             BusinnessModelAnnuncio bm = new BusinnessModelAnnuncio();
             
-//            int idCasa = bm.inserisciInfoCasa(50, 2, 1, 1000, HouseGenerality.MASCHI, true, Citta.PAVIA, "indirizzo");
-//            System.out.println(bm.inserisciAnnuncioCasa(idCasa, 1, "descrizione", 300));
-            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
-//            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
+//            int idProprietario = 9;
+//            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.FEMMINE));
+//            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa con belle ragazze", 400));
+//////            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
+//////            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
+//            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(1, 2, 1)));
+////            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(2, 1, 0)));
+//////            System.out.println(bm.modificaCamera(1, new CameraDisponibile(1, 2, 0)));
+//            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.LAVATRICE));  
+//            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.FORNO)); 
+//            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.MICROONDE)); 
+//            System.out.println(bm.eliminaElettrodomestico(1, ElettroDomestico.LAVATRICE));
         } catch (SQLException ex) {
             Logger.getLogger(TestConDBAnnunci.class.getName()).log(Level.SEVERE, null, ex);
         }

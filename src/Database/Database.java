@@ -89,7 +89,7 @@ public class Database {
     }
     
     public int setDatiAnagrafici(int idUtente, String nome, String cognome, Date dataNascita, String sesso, 
-            String nazionalita, String cittaDiRicerca) throws SQLException {
+            String nazionalita, String cittaDiRicerca, String numeroDiTelefono) throws SQLException {
         try {
             PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciAnagraficaUtente);
             ps.setInt(1, idUtente);
@@ -99,6 +99,7 @@ public class Database {
             ps.setString(5, sesso);
             ps.setString(6, nazionalita);
             ps.setString(7, cittaDiRicerca);
+            ps.setString(8, numeroDiTelefono);
             return ps.executeUpdate();
         } catch(MySQLIntegrityConstraintViolationException e) {
             return 0;
@@ -190,6 +191,66 @@ public class Database {
         ps.setString(8, indirizzo);
         ps.setInt(9, idCasa);
         return ps.executeUpdate();
+    }
+    
+    public int setCamera(int idCasa, int idCamera, int postiTotali, int postiDisponibili) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciCamera);
+        ps.setInt(1, idCasa);
+        ps.setInt(2, idCamera);
+        ps.setInt(3, postiTotali);
+        ps.setInt(4, postiDisponibili);
+        return ps.executeUpdate();
+    }
+    
+    public int modificaCamera(int idCasa, int idCamera, int postiTotali, int postiDisponibili) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaCamera);       
+        ps.setInt(1, postiTotali);
+        ps.setInt(2, postiDisponibili);
+        ps.setInt(3, idCasa);
+        ps.setInt(4, idCamera);
+        return ps.executeUpdate();
+    }
+    
+    public int setElettrodomestico(int idCasa, String tipo) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciElettrodomestico);
+        ps.setInt(1, idCasa);
+        ps.setString(2, tipo);
+        return ps.executeUpdate();
+    }
+    
+    public int eliminaElettrodomestico(int idCasa, String tipo) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaElettrodomestico);       
+        ps.setInt(1, idCasa);
+        ps.setString(2, tipo);
+        return ps.executeUpdate();
+    }
+    
+    /* SEZIONE LETTURA ANNUNCI */
+    
+    public ResultSet getAnnunciInfoCasa(String citta, int costo) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.getAnnunciJoinInfoCasa);
+        ps.setString(1, citta);
+        ps.setInt(2, costo);
+        return ps.executeQuery();   
+    }
+    
+    public ResultSet getCamere(int idCasa) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.getCamere);
+        ps.setInt(1, idCasa);
+        return ps.executeQuery();
+    }
+    
+    public ResultSet getElettrodomestici(int idCasa) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.getElettrodomestici);
+        ps.setInt(1, idCasa);
+        return ps.executeQuery();
     }
     
 }

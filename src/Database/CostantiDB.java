@@ -17,6 +17,7 @@ public class CostantiDB {
     final static String tabellaInfoCasa = "infoCasa";
     final static String tabellaInfoUtente = "infoUtente";
     final static String tabellaUtente = "utente";
+    final static String tabellaElettrodomestico = "elettrodomestici";
     
     //IP server
     final static String URL_DB = "jdbc:mysql://roomingdb2.c7syuv3prdev.us-east-2.rds.amazonaws.com:3306/innodb";
@@ -39,13 +40,15 @@ public class CostantiDB {
     
     //Query per inserimento dati anagrafici
     final static String inserisciAnagraficaUtente = "INSERT INTO "+tabellaAnagraficaUtente+" (idUtente, nome, cognome, dataNascita,"
-            + " sesso, nazionalita, cittaDiRicerca) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            + " sesso, nazionalita, cittaDiRicerca, numeroDiTelefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     final static String modificaCittaRicerca = "update "+tabellaAnagraficaUtente+" set cittaDiRicerca = ? where idUtente = ?";
     
     //Query inserimento/modifica infoUtente
     final static String inserisciInfoUtente = "INSERT INTO "+tabellaInfoUtente+" VALUES (?, ?, ?, ?, ?, ?)";
     final static String modificaInfoUtente = "UPDATE "+tabellaInfoUtente+" SET fumatore = ?, cuoco = ?, sportivo = ?,"
             + "occupazione = ?, facolta = ? WHERE idUtente = ?";
+    
+    
     
     /* SEZIONE ANNUNCI */
     
@@ -62,4 +65,24 @@ public class CostantiDB {
     final static String modificaInfoCasa = "UPDATE "+tabellaInfoCasa+" SET m2 = ?, nLocali = ?,"
             + "nBagni = ?, distanzaCentro = ?, sessoCasa = ?, cucinaSeparata = ?, citta = ?,"
             + "indirizzo = ? WHERE idCasa = ?";
+    
+    //Query inserimento/modifica camera
+    final static String inserisciCamera = "INSERT INTO "+tabellaCamere+" VALUES (?,?,?,?)";
+    final static String modificaCamera = "UPDATE "+tabellaCamere+" SET postiTotali = ?, postiDisponibili = ?"
+            + " WHERE idCasa = ? and idCamera = ?";
+    
+    //Query inserimento/modifica elettrodomestici
+    final static String inserisciElettrodomestico = "INSERT INTO "+tabellaElettrodomestico+" VALUES(?, ?)";
+    final static String eliminaElettrodomestico = "DELETE FROM "+tabellaElettrodomestico+" WHERE idCasa = ? and tipo = ?";
+
+    //Query annunciCasa
+    final static String getAnnunciJoinInfoCasa = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
+            tabellaInfoCasa+" WHERE citta = ? AND costo <= ?) as ann join" +
+            "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
+            tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
+    
+    final static String getCamere = "SELECT * FROM "+tabellaCamere+" WHERE idCasa = ?";
+    final static String getElettrodomestici = "SELECT tipo FROM "+tabellaElettrodomestico+" WHERE idCasa = ?";
+
+
 }

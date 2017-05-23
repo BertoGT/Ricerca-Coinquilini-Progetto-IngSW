@@ -6,6 +6,7 @@
 package BusinessModel;
 
 import Database.Database;
+import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazionalita;
 import ProfiloUtente.Occupazione;
@@ -77,15 +78,14 @@ public class BusinnessModelUtente {
     }
     
     
-    public boolean inserisciAnagraficaUtente(int idUtente, String nome, String cognome, int giorno, int mese, int anno, Sesso sesso, 
-            Nazionalita nazionalita, String cittaDiRicerca) throws SQLException {
+    public boolean inserisciAnagraficaUtente(int idUtente, DatiUtente dati) throws SQLException {
         // TODO conversione enum della cittaRicerca
         db.apriConnesione();
         Calendar c = Calendar.getInstance();
-        c.set(anno, mese-1, giorno);
+        c.set(dati.getDataDiNascita().getAnno(), dati.getDataDiNascita().getMese()-1, dati.getDataDiNascita().getGiorno());
         Date data = new Date(c.getTimeInMillis());
-        int result = db.setDatiAnagrafici(idUtente, nome, cognome, data, String.valueOf(sesso),
-                String.valueOf(nazionalita), cittaDiRicerca);
+        int result = db.setDatiAnagrafici(idUtente, dati.getNome(), dati.getCognome(), data, dati.getSesso().name(),
+                dati.getNazionalita().name(), dati.getCittaDiRicerca().name(), dati.getNumeroDiTelefono());
         db.chiudiConnessione();
         if(result == 0)
             return false;
@@ -104,18 +104,17 @@ public class BusinnessModelUtente {
             return true;
     }
     
-    public boolean inserisciInfoUtente(int idUtente, boolean fumatore, boolean cuoco, 
-            boolean sportivo, Occupazione occupazione, Facolta facolta) throws SQLException {
+    public boolean inserisciInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
         String fac;
-        if(occupazione == Occupazione.STUDENTE)
-            fac = String.valueOf(facolta);
+        if(dati.getOccupazione() == Occupazione.STUDENTE)
+            fac = dati.getFacolta().name();
         else 
             fac = null;
         
-        int result = db.setInfoUtente(idUtente, fumatore, cuoco, sportivo, 
-                String.valueOf(occupazione), fac);
+        int result = db.setInfoUtente(idUtente, dati.isFumatore(), dati.isCuoco(), dati.isSportivo(), 
+                dati.getOccupazione().name(), fac);
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -123,18 +122,17 @@ public class BusinnessModelUtente {
             return true;
     }
     
-    public boolean modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
-            Occupazione occupazione, Facolta facolta) throws SQLException {
+    public boolean modificaInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
         String fac;
-        if(occupazione == Occupazione.STUDENTE)
-            fac = String.valueOf(facolta);
+        if(dati.getOccupazione() == Occupazione.STUDENTE)
+            fac = dati.getFacolta().name();
         else 
             fac = null;
         
-        int result = db.modificaInfoUtente(idUtente, fumatore, cuoco, sportivo,
-                String.valueOf(occupazione), fac);
+        int result = db.modificaInfoUtente(idUtente, dati.isFumatore(), dati.isCuoco(), dati.isSportivo(), 
+                dati.getOccupazione().name(), fac);
         db.chiudiConnessione();
         if(result == 0) 
             return false;
