@@ -8,7 +8,7 @@ package BusinessModel;
 import Database.Database;
 import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazionalita;
+import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
 import java.sql.Date;
@@ -20,10 +20,10 @@ import java.util.Calendar;
  *
  * @author Niko
  */
-public class BusinnessModelUtente {
+public class BusinessModelUtente {
     private Database db;
 
-    public BusinnessModelUtente() throws SQLException {
+    public BusinessModelUtente() throws SQLException {
         db = new Database();
     }
     

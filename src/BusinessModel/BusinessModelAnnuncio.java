@@ -23,10 +23,10 @@ import java.util.logging.Logger;
  *
  * @author alberto
  */
-public class BusinnessModelAnnuncio {
+public class BusinessModelAnnuncio {
     private Database db;
 
-    public BusinnessModelAnnuncio() throws SQLException {
+    public BusinessModelAnnuncio() throws SQLException {
         db = new Database();
     }
     
@@ -146,7 +146,7 @@ public class BusinnessModelAnnuncio {
                 try {
                     annuncio.creaCamera(rCamere.getInt(2), rCamere.getInt(3), rCamere.getInt(4));
                 } catch (CameraNonInseritaException ex) {
-                    Logger.getLogger(BusinnessModelAnnuncio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(BusinessModelAnnuncio.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             ResultSet rElettro = db.getElettrodomestici(idCasa);

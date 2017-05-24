@@ -4,7 +4,7 @@
  */
 package RicercaAnnuncio;
 
-import BusinessModel.BusinnessModelAnnuncio;
+import BusinessModel.BusinessModelAnnuncio;
 import Casa.AnnuncioCasa;
 import Casa.Citta;
 import java.sql.SQLException;
@@ -33,10 +33,14 @@ public class RicercaAnnuncio {
    
     private void calcolaAffinita() {
         for (AnnuncioCasa annuncioCasa : annunciTotali) {
+            if(annuncioCasa==null)
+                break;
             float affinitaTotale = 0;
             int totaleStelle = 0;
             
             for (ParametroRicercaAnnuncio parametroRicerca : parametriRicerca.getParametriRicerca()) {
+                if(parametroRicerca==null)
+                    break;
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(annuncioCasa);
                 affinitaTotale += affinita;
@@ -54,7 +58,7 @@ public class RicercaAnnuncio {
     } 
     
     private void caricaAnnunciTotali() throws SQLException {
-        BusinnessModelAnnuncio bm = new BusinnessModelAnnuncio();
+        BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
         annunciTotali = bm.getAnnunci(citta, costoMax);
     }
    

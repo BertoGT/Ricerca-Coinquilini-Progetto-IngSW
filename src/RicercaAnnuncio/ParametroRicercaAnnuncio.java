@@ -19,7 +19,6 @@ public abstract class ParametroRicercaAnnuncio {
         this.stelle = stelle;
     }
 
-    
     public int getStelle() {
         return stelle;
     }

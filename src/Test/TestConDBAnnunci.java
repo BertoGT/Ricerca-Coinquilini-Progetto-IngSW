@@ -5,7 +5,7 @@
  */
 package Test;
 
-import BusinessModel.BusinnessModelAnnuncio;
+import BusinessModel.BusinessModelAnnuncio;
 import Casa.CameraDisponibile;
 import Casa.Citta;
 import Casa.ElettroDomestico;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class TestConDBAnnunci {
     public static void main(String[] args) {
         try {
-            BusinnessModelAnnuncio bm = new BusinnessModelAnnuncio();
+            BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
             
 //            int idProprietario = 9;
 //            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.FEMMINE));

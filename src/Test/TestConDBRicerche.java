@@ -5,7 +5,7 @@
  */
 package Test;
 
-import BusinessModel.BusinnessModelAnnuncio;
+import BusinessModel.BusinessModelAnnuncio;
 import Casa.AnnuncioCasa;
 import Casa.Citta;
 import Casa.HouseGenerality;

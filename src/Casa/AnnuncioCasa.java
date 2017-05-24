@@ -9,6 +9,7 @@ import Exceptions.CameraNonInseritaException;
 import Exceptions.CameraNonTrovataException;
 import ProfiloUtente.DatiUtente;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -21,6 +22,7 @@ public class AnnuncioCasa {
     private int costo;
     private String nomeCognomeProprietario;
     private String cellulareProprietario, emailProprietario;
+    private String dataCreazioneAnnuncio;
 
     public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo, String nomeCognomeProprietario, String cellulareProprietario, String emailProprietario) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
@@ -29,6 +31,11 @@ public class AnnuncioCasa {
         this.nomeCognomeProprietario = nomeCognomeProprietario;
         this.cellulareProprietario = cellulareProprietario;
         this.emailProprietario = emailProprietario;
+        this.dataCreazioneAnnuncio = Calendar.getInstance().toString();
+    }
+
+    public String getDataCreazioneAnnuncio() {
+        return dataCreazioneAnnuncio;
     }
     
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{

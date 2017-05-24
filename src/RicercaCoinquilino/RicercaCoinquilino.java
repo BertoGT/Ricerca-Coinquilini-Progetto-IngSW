@@ -27,11 +27,15 @@ public class RicercaCoinquilino {
     
     private void calcolaAffinita() {
         for (Utente dati : utentiTotali) {
+            if(dati==null)
+                break;
             float affinitaTotale = 0;
             int totaleStelle = 0;
             boolean coinquilinoIncompatibile = false;
             
             for (ParametroRicercaCoinquilino parametroRicerca : parametriRicerca.getParametri()) {
+                if(parametroRicerca==null)
+                    break;
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(dati);
                 if(affinita == -1) {

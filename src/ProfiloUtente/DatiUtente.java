@@ -22,7 +22,7 @@ public class DatiUtente {
     private Sesso sesso; 
     private boolean fumatore, cuoco, sportivo; 
     private String nome, cognome;
-    private Nazionalita nazionalita;
+    private Nazione nazionalita;
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
     private Facolta facolta;
@@ -47,7 +47,7 @@ public class DatiUtente {
      * @param cittaDiRicerca
      * @throws ParseException
      */
-    public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazionalita nazionalita, 
+    public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca) throws ParseException {
         
@@ -234,7 +234,7 @@ public class DatiUtente {
      *
      * @return RESTITUISCE LA NAZIONALITA' DELL'UTENTE.
      */
-    public Nazionalita getNazionalita() {
+    public Nazione getNazionalita() {
         return nazionalita;
     }
 
@@ -242,7 +242,7 @@ public class DatiUtente {
      *
      * @param nazionalita: ENUM CONTENENTE LA NAZIONE DI PROVENIENZA DELL'UTENTE.
      */
-    public void setNazionalita(Nazionalita nazionalita) {
+    public void setNazionalita(Nazione nazionalita) {
         this.nazionalita = nazionalita;
     }
 

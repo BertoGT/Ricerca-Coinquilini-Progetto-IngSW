@@ -13,16 +13,16 @@ import ProfiloUtente.Utente;
  */
 public class Nazionalita extends ParametroRicercaCoinquilino {
 
-    private ProfiloUtente.Nazionalita nazionalita;
+    private ProfiloUtente.Nazione nazione;
     
-    public Nazionalita(int stelle,ProfiloUtente.Nazionalita nazionalita) {
+    public Nazionalita(int stelle,ProfiloUtente.Nazione nazionalita) {
         super(stelle);
-        this.nazionalita=nazionalita;
+        this.nazione=nazionalita;
     }
 
     @Override
     public float calcolaAffinità(Utente utente) {
-        if(utente.getDatiUtente().getNazionalita()==this.nazionalita)
+        if(utente.getDatiUtente().getNazionalita()==this.nazione)
             return super.getStelle();
         else
             return 0;

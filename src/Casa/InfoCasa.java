@@ -34,6 +34,8 @@ public class InfoCasa {
     public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException {
         boolean flag = false;
         for (CameraDisponibile camera : camere) {
+            if(camera==null)
+                break;
             if(camera.getIdCamera() == idCamera) {
                flag = true;
                break;

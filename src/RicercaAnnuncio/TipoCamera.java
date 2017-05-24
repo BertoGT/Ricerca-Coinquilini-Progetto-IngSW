@@ -26,6 +26,8 @@ public class TipoCamera extends ParametroRicercaAnnuncio{
         // TODO le case senza posti disponibili le eliminiamo dalla ricerca 
         // prima di mandarla??
         for (CameraDisponibile camera : annuncio.getCamere()) {
+            if(camera==null)
+                break;
             if(camera.getPostiLettoDisponibili() != 0) {
                 if(postiLetto == camera.getPostiLetto()) {
                     stelleTemporanee = super.getStelle();

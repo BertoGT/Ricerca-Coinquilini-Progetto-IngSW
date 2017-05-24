@@ -40,7 +40,7 @@ public class ContenitoreParametriCoinquilino {
         this.parametri.add(new Fumatore(stelle, isFumatore));
     }
     
-    public void setParametroNazionalita(int stelle,ProfiloUtente.Nazionalita nazionalita){
+    public void setParametroNazionalita(int stelle,ProfiloUtente.Nazione nazionalita){
         this.parametri.add(new Nazionalita(stelle, nazionalita));
     }
     

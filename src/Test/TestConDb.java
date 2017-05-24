@@ -5,11 +5,11 @@
  */
 package Test;
 
-import BusinessModel.BusinnessModelUtente;
+import BusinessModel.BusinessModelUtente;
 import Casa.Citta;
 import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazionalita;
+import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
 import java.sql.SQLException;
@@ -24,13 +24,13 @@ import java.util.logging.Logger;
 public class TestConDb {
     public static void main(String[] args) throws ParseException {
         try {
-            BusinnessModelUtente bm = new BusinnessModelUtente();       
+            BusinessModelUtente bm = new BusinessModelUtente();       
 //            int idUtente = bm.registrazione("ricoz@gmail.com", "marghe", true);
 //            //System.out.println(bm.login("nico@gmail.com", "sucamelo"));
 //            //System.out.println(bm.modificaPassword(4, "ciao", "bobo"));
 //            //System.out.println(bm.setCandidatura(1, false));
 //            DatiUtente dati = new DatiUtente("Margherita", "Ricotti", Sesso.F, "ricoz@gmail.com",
-//                    "marghe", 20, 12, 1996, "3348930567", Nazionalita.Italiana, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
+//                    "marghe", 20, 12, 1996, "3348930567", Nazione.Italiana, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
 //                    false, false, false, Citta.PAVIA);
 //            
 //            System.out.println(bm.inserisciAnagraficaUtente(idUtente,dati));
