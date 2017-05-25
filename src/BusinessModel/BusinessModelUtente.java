@@ -5,7 +5,16 @@
  */
 package BusinessModel;
 
+import Casa.AnnuncioCasa;
+import Casa.Citta;
+import Casa.ElettroDomestico;
+import Casa.HouseGenerality;
 import Database.Database;
+import Exceptions.CameraNonInseritaException;
+import Exceptions.LoginException;
+import Exceptions.NessunAnnuncioException;
+import Exceptions.PasswordException;
+import Exceptions.RegistrazioneException;
 import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
@@ -15,6 +24,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +38,7 @@ public class BusinessModelUtente {
         db = new Database();
     }
     
-    public int registrazione(String email, String password, boolean candidato) throws SQLException {
+    public int registrazione(String email, String password, boolean candidato) throws SQLException, RegistrazioneException {
         db.apriConnesione();
         ResultSet rs;
         rs = db.registrazione(email, password, 1, candidato);
@@ -38,11 +49,11 @@ public class BusinessModelUtente {
         }
         else {
             db.chiudiConnessione();
-            return -1;
+            throw new RegistrazioneException("Email gia in uso");
         }
     }
     
-    public int login(String email, String password) throws SQLException {
+    public int login(String email, String password) throws SQLException, LoginException {
         db.apriConnesione();
         ResultSet rs;
         rs = db.login(email, password);
@@ -52,19 +63,17 @@ public class BusinessModelUtente {
             return result;
         }else {
             db.chiudiConnessione();
-            return -1; // dati sbagliati
+            throw new LoginException("Email o password errata"); // dati sbagliati
         }          
     }
     
     
-    public boolean modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
+    public void modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException, PasswordException {
         db.apriConnesione();
         int result = db.modificaPassword(idUtente, vecchiaPassword, nuovaPassword);
         db.chiudiConnessione();
         if(result == 0) 
-            return false; // modifica non avvenuta, vecchia password errata
-        else 
-            return true;
+            throw new PasswordException("Vecchia password errata"); // modifica non avvenuta, vecchia password errata
     }
     
     public boolean setCandidatura(int idUtente, boolean candidatura) throws SQLException {
@@ -79,7 +88,6 @@ public class BusinessModelUtente {
     
     
     public boolean inserisciAnagraficaUtente(int idUtente, DatiUtente dati) throws SQLException {
-        // TODO conversione enum della cittaRicerca
         db.apriConnesione();
         Calendar c = Calendar.getInstance();
         c.set(dati.getDataDiNascita().getAnno(), dati.getDataDiNascita().getMese()-1, dati.getDataDiNascita().getGiorno());
@@ -93,10 +101,9 @@ public class BusinessModelUtente {
             return true;
     }
     
-    public boolean modificaCittaDiRicerca(int idUtente, String nuovaCitta) throws SQLException {
+    public boolean modificaCittaDiRicerca(int idUtente, Citta nuovaCitta) throws SQLException {
         db.apriConnesione();
-        // TODO conversione enum della cittaRicerca
-        int result = db.modificaCitaDiRicerca(idUtente, nuovaCitta);
+        int result = db.modificaCitaDiRicerca(idUtente, nuovaCitta.name());
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -138,5 +145,32 @@ public class BusinessModelUtente {
             return false;
         else 
             return true;
+    }
+    
+    public AnnuncioCasa getAnnuncioUtente(int idUtenteProprietario) throws SQLException, NessunAnnuncioException {
+        
+        db.apriConnesione();
+        ResultSet rs = db.getAnnuncioUtente(idUtenteProprietario);
+        if(rs.next()) {
+            int idCasa = rs.getInt(1);
+            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getString(4), rs.getInt(2), rs.getInt(5),
+                    rs.getString(16) +" "+rs.getString(17), rs.getString(18), rs.getString(15));
+            annuncio.creaInfo(rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getBoolean(11),
+                    Citta.valueOf(rs.getString(12)), rs.getString(13), HouseGenerality.valueOf(rs.getString(10)));
+            ResultSet rCamere = db.getCamere(idCasa);
+            while(rCamere.next()) {
+                try {
+                    annuncio.creaCamera(rCamere.getInt(2), rCamere.getInt(3), rCamere.getInt(4));
+                } catch (CameraNonInseritaException ex) {
+                    Logger.getLogger(BusinessModelAnnuncio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            ResultSet rElettro = db.getElettrodomestici(idCasa);
+            while(rElettro.next()) {
+                annuncio.creaElettrodomestico(ElettroDomestico.valueOf(rElettro.getString(1)));
+            }
+            return annuncio;
+        } else
+            throw new NessunAnnuncioException("Nessun annuncio creato");
     }
 }

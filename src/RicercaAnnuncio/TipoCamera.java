@@ -25,10 +25,12 @@ public class TipoCamera extends ParametroRicercaAnnuncio{
         float stelleTemporanee = 0;
         // TODO le case senza posti disponibili le eliminiamo dalla ricerca 
         // prima di mandarla??
+        boolean cameraLibera = false;
         for (CameraDisponibile camera : annuncio.getCamere()) {
             if(camera==null)
                 break;
             if(camera.getPostiLettoDisponibili() != 0) {
+                cameraLibera = true;
                 if(postiLetto == camera.getPostiLetto()) {
                     stelleTemporanee = super.getStelle();
                     break;
@@ -36,8 +38,11 @@ public class TipoCamera extends ParametroRicercaAnnuncio{
                     stelleTemporanee = ((float) super.getStelle() / 2);
                 }
             }
-        }
-        return stelleTemporanee;                 
+        } 
+        if(cameraLibera)
+            return stelleTemporanee;      
+        else 
+            return -1;
     }
     
 }

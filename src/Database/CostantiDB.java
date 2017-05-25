@@ -48,6 +48,12 @@ public class CostantiDB {
     final static String modificaInfoUtente = "UPDATE "+tabellaInfoUtente+" SET fumatore = ?, cuoco = ?, sportivo = ?,"
             + "occupazione = ?, facolta = ? WHERE idUtente = ?";
     
+    //Query modifica annuncio
+    final static String getAnnuncioUtente = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
+            tabellaInfoCasa+" WHERE idUtenteProprietario = ?) as ann join" +
+            "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
+            tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
+    
     
     
     /* SEZIONE ANNUNCI */
@@ -78,6 +84,10 @@ public class CostantiDB {
     //Query annunciCasa
     final static String getAnnunciJoinInfoCasa = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
             tabellaInfoCasa+" WHERE citta = ? AND costo <= ?) as ann join" +
+            "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
+            tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
+    final static String getAnnunciSenzaCosto = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
+            tabellaInfoCasa+" WHERE citta = ?) as ann join" +
             "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
             tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
     

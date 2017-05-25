@@ -141,6 +141,12 @@ public class Database {
         return ps.executeUpdate();
     }
     
+    public ResultSet getAnnuncioUtente(int idUtenteProprietario) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.getAnnuncioUtente);
+        ps.setInt(1, idUtenteProprietario);
+        return ps.executeQuery();
+    }
+    
     
     /* SEZIONE ANNUNCI CASA */
     
@@ -233,9 +239,15 @@ public class Database {
     
     public ResultSet getAnnunciInfoCasa(String citta, int costo) throws SQLException {
         
-        PreparedStatement ps = conn.prepareStatement(CostantiDB.getAnnunciJoinInfoCasa);
-        ps.setString(1, citta);
-        ps.setInt(2, costo);
+        PreparedStatement ps;
+        if(costo == 0) {
+            ps = conn.prepareStatement(CostantiDB.getAnnunciSenzaCosto);
+            ps.setString(1, citta);
+        } else {
+            ps = conn.prepareStatement(CostantiDB.getAnnunciJoinInfoCasa);
+            ps.setString(1, citta);
+            ps.setInt(2, costo);
+        }
         return ps.executeQuery();   
     }
     

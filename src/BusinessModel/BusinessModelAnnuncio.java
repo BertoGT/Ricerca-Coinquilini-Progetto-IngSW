@@ -13,6 +13,7 @@ import Casa.HouseGenerality;
 import Casa.InfoCasa;
 import Database.Database;
 import Exceptions.CameraNonInseritaException;
+import Exceptions.NessunAnnuncioException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -129,12 +130,17 @@ public class BusinessModelAnnuncio {
     
     /* SEZIONE LETTURA ANNUNCI */
     
-    public ArrayList<AnnuncioCasa> getAnnunci(Citta citta, int costo) throws SQLException {
+    public ArrayList<AnnuncioCasa> getAnnunci(Citta citta, int costo) throws SQLException, NessunAnnuncioException {
         
         ArrayList<AnnuncioCasa> annunci = new ArrayList<>();
         
         db.apriConnesione();
-        ResultSet rs = db.getAnnunciInfoCasa(citta.name(), costo);
+        int costoConTolleranza;
+        if(costo == 0)
+            costoConTolleranza = 0;
+        else 
+            costoConTolleranza = costo + 50;
+        ResultSet rs = db.getAnnunciInfoCasa(citta.name(), costoConTolleranza);
         while(rs.next()) {
             int idCasa = rs.getInt(1);
             AnnuncioCasa annuncio = new AnnuncioCasa(rs.getString(4), rs.getInt(2), rs.getInt(5),
@@ -155,6 +161,8 @@ public class BusinessModelAnnuncio {
             }
             annunci.add(annuncio);
         }
+        if(annunci.size() == 0)
+            throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
         
         return annunci;
     }

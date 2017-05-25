@@ -24,18 +24,18 @@ public class TestConDBAnnunci {
         try {
             BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
             
-//            int idProprietario = 9;
-//            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.FEMMINE));
-//            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa con belle ragazze", 400));
-//////            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
-//////            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
-//            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(1, 2, 1)));
+//            int idProprietario = 10;
+//            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.MASCHI));
+//            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa del capo progetto", 390));
+////////            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
+////////            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
+//            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(1, 2, 0)));
 ////            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(2, 1, 0)));
-//////            System.out.println(bm.modificaCamera(1, new CameraDisponibile(1, 2, 0)));
+////////            System.out.println(bm.modificaCamera(1, new CameraDisponibile(1, 2, 0)));
 //            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.LAVATRICE));  
-//            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.FORNO)); 
-//            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.MICROONDE)); 
-//            System.out.println(bm.eliminaElettrodomestico(1, ElettroDomestico.LAVATRICE));
+////            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.FORNO)); 
+////            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.MICROONDE)); 
+////            System.out.println(bm.eliminaElettrodomestico(1, ElettroDomestico.LAVATRICE));
         } catch (SQLException ex) {
             Logger.getLogger(TestConDBAnnunci.class.getName()).log(Level.SEVERE, null, ex);
         }

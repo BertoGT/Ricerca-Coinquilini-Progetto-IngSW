@@ -5,8 +5,6 @@
  */
 package Test;
 
-import BusinessModel.BusinessModelAnnuncio;
-import Casa.AnnuncioCasa;
 import Casa.Citta;
 import Casa.HouseGenerality;
 import Exceptions.CameraNonInseritaException;
@@ -31,8 +29,8 @@ public class TestConDBRicerche {
         c.setParametroSessoCasa(4, HouseGenerality.MISTA);
         c.setParametroTipoCamera(3, 1);
         c.setParametroDistCentro(2, 1000);
-        ArrayList<AnnuncioRisultante> annunciRisultanti = new RicercaAnnuncio(c, Citta.PAVIA, 340).eseguiRicerca();
+        ArrayList<AnnuncioRisultante> annunciRisultanti = new RicercaAnnuncio(c, Citta.PAVIA, 350).eseguiRicerca();
         
-        System.out.println("cioao");
+        System.out.println("ciao");
     }
 }

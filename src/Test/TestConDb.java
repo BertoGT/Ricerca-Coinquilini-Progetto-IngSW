@@ -25,14 +25,14 @@ public class TestConDb {
     public static void main(String[] args) throws ParseException {
         try {
             BusinessModelUtente bm = new BusinessModelUtente();       
-//            int idUtente = bm.registrazione("ricoz@gmail.com", "marghe", true);
+//            int idUtente = bm.registrazione("roogle@gmail.com", "Roogle", true);
 //            //System.out.println(bm.login("nico@gmail.com", "sucamelo"));
 //            //System.out.println(bm.modificaPassword(4, "ciao", "bobo"));
 //            //System.out.println(bm.setCandidatura(1, false));
-//            DatiUtente dati = new DatiUtente("Margherita", "Ricotti", Sesso.F, "ricoz@gmail.com",
-//                    "marghe", 20, 12, 1996, "3348930567", Nazione.Italiana, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
-//                    false, false, false, Citta.PAVIA);
-//            
+//            DatiUtente dati = new DatiUtente("Mattia", "Rogledi", Sesso.M, "roogle@gmail.com",
+//                    "Roogle", 20, 12, 1995, "3348930567", Nazione.ITALIA, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
+//                    false, true, false, Citta.PAVIA);
+////            
 //            System.out.println(bm.inserisciAnagraficaUtente(idUtente,dati));
 ////            System.out.println(bm.modificaCittaDiRicerca(1, "Milano"));
 //

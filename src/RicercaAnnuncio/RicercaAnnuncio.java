@@ -37,16 +37,22 @@ public class RicercaAnnuncio {
                 break;
             float affinitaTotale = 0;
             int totaleStelle = 0;
-            
+            boolean annuncioIncompatibile = false;
             for (ParametroRicercaAnnuncio parametroRicerca : parametriRicerca.getParametriRicerca()) {
                 if(parametroRicerca==null)
                     break;
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(annuncioCasa);
-                affinitaTotale += affinita;
+                if(affinita == -1) {                   // annuncio da escludere ai risultati
+                    annuncioIncompatibile = true;
+                    break;                      
+                } else 
+                    affinitaTotale += affinita;
             }
-            float punteggio = affinitaTotale * 100 / totaleStelle;
-            this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, punteggio));      
+            if(!annuncioIncompatibile) {
+                float punteggio = affinitaTotale * 100 / totaleStelle;
+                this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, punteggio));
+            }       
         }
     }
     
