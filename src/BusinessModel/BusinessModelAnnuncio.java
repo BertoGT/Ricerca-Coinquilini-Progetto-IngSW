@@ -14,8 +14,15 @@ import Casa.InfoCasa;
 import Database.Database;
 import Exceptions.CameraNonInseritaException;
 import Exceptions.NessunAnnuncioException;
+import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Facolta;
+import ProfiloUtente.Nazione;
+import ProfiloUtente.Occupazione;
+import ProfiloUtente.Sesso;
+import ProfiloUtente.Utente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,7 +137,7 @@ public class BusinessModelAnnuncio {
     
     /* SEZIONE LETTURA ANNUNCI */
     
-    public ArrayList<AnnuncioCasa> getAnnunci(Citta citta, int costo) throws SQLException, NessunAnnuncioException {
+    public ArrayList<AnnuncioCasa> getAnnunciCase(Citta citta, int costo) throws SQLException, NessunAnnuncioException {
         
         ArrayList<AnnuncioCasa> annunci = new ArrayList<>();
         
@@ -165,5 +172,30 @@ public class BusinessModelAnnuncio {
             throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
         
         return annunci;
+    }
+    
+    public ArrayList<Utente> getAnnunciCoinquilini(Citta citta, Sesso sesso) throws SQLException, ParseException, NessunAnnuncioException {
+        
+        ArrayList<Utente> annunciUtenti = new ArrayList<>();
+        
+        db.apriConnesione();
+        String sessoString = null;
+        if(sesso != null)
+            sessoString = sesso.name();
+        ResultSet rs = db.getAnnunciCoinquilini(citta.name(), sessoString);
+        while(rs.next()) {
+            int idCasa = rs.getInt(1);
+            String[] data = rs.getString(4).split("-");
+            DatiUtente dati = new DatiUtente(rs.getString(2), rs.getString(3), Sesso.valueOf(rs.getString(5)),
+                    rs.getString(14), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(8), Nazione.valueOf(rs.getString(6)),
+                    Occupazione.valueOf(rs.getString(12)), Facolta.valueOf(rs.getString(13)),rs.getBoolean(9), rs.getBoolean(10),
+                    rs.getBoolean(11), Citta.valueOf(rs.getString(7)));
+            Utente annuncio = new Utente(rs.getString(1), dati);
+            annunciUtenti.add(annuncio);
+        }
+        if(annunciUtenti.size() == 0)
+            throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
+        
+        return annunciUtenti;
     }
 }

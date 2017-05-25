@@ -56,7 +56,7 @@ public class CostantiDB {
     
     
     
-    /* SEZIONE ANNUNCI */
+    /* SEZIONE ANNUNCI CASA*/
     
    // Query inserimento/modifica annuncio
     final static String inserisciAnnuncioCasa = "INSERT INTO "+tabellaAnnuncioCasa+" (idCasa,"
@@ -80,7 +80,7 @@ public class CostantiDB {
     //Query inserimento/modifica elettrodomestici
     final static String inserisciElettrodomestico = "INSERT INTO "+tabellaElettrodomestico+" VALUES(?, ?)";
     final static String eliminaElettrodomestico = "DELETE FROM "+tabellaElettrodomestico+" WHERE idCasa = ? and tipo = ?";
-
+    
     //Query annunciCasa
     final static String getAnnunciJoinInfoCasa = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
             tabellaInfoCasa+" WHERE citta = ? AND costo <= ?) as ann join" +
@@ -93,6 +93,13 @@ public class CostantiDB {
     
     final static String getCamere = "SELECT * FROM "+tabellaCamere+" WHERE idCasa = ?";
     final static String getElettrodomestici = "SELECT tipo FROM "+tabellaElettrodomestico+" WHERE idCasa = ?";
-
-
+    
+    /*SEZIONE ANNUNCI COINQUILINO*/
+    final static String getAnnunciCoinquilini= "SELECT idUtente,nome, cognome, dataNascita, sesso, nazionalita, cittaDiRicerca,"
+            + " numeroDiTelefono, fumatore, cuoco, sportivo, occupazione, facolta, email from "+tabellaAnagraficaUtente
+            + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente+" where candidato = true and cittaDiRicerca = ?"
+            + " and sesso = ?";
+    final static String getAnnunciCoinquiliniSenzaSesso= "SELECT idUtente,nome, cognome, dataNascita, sesso, nazionalita, cittaDiRicerca,"
+            + " numeroDiTelefono, fumatore, cuoco, sportivo, occupazione, facolta, email from "+tabellaAnagraficaUtente
+            + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente+" where candidato = true and cittaDiRicerca = ?";
 }

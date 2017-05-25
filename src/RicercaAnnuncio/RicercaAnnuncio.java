@@ -7,6 +7,7 @@ package RicercaAnnuncio;
 import BusinessModel.BusinessModelAnnuncio;
 import Casa.AnnuncioCasa;
 import Casa.Citta;
+import Exceptions.NessunAnnuncioException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ public class RicercaAnnuncio {
     private Citta citta;
     private int costoMax;
 
-    public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca, Citta citta, int costoMax) throws SQLException {
+    public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca, Citta citta, int costoMax) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
         this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
         this.citta = citta;
@@ -63,9 +64,9 @@ public class RicercaAnnuncio {
         return annunciRisultanti;
     } 
     
-    private void caricaAnnunciTotali() throws SQLException {
+    private void caricaAnnunciTotali() throws SQLException, NessunAnnuncioException {
         BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
-        annunciTotali = bm.getAnnunci(citta, costoMax);
+        annunciTotali = bm.getAnnunciCase(citta, costoMax);
     }
    
 }

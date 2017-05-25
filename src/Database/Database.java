@@ -265,4 +265,18 @@ public class Database {
         return ps.executeQuery();
     }
     
+    public ResultSet getAnnunciCoinquilini(String citta, String sesso) throws SQLException {
+        
+        PreparedStatement ps;
+        if(sesso == null) {
+            ps = conn.prepareStatement(CostantiDB.getAnnunciCoinquiliniSenzaSesso);
+            ps.setString(1, citta);
+        } else {
+            ps = conn.prepareStatement(CostantiDB.getAnnunciCoinquilini);
+            ps.setString(1, citta);
+            ps.setString(2, sesso);
+        }
+        return ps.executeQuery(); 
+    }
+    
 }
