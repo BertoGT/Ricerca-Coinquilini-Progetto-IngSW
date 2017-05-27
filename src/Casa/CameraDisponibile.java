@@ -5,12 +5,13 @@ package Casa;
  * @author Alberto
  */
 public class CameraDisponibile {
-    private int postiLetto, postiLettoDisponibili, idCamera; 
+    private int postiLetto, postiLettoDisponibili, idCamera, idAnnuncio; 
 
-    public CameraDisponibile(int idCamera, int postiLetto, int postiLettoDisponibili) {
+    public CameraDisponibile(int idAnnuncio, int idCamera, int postiLetto, int postiLettoDisponibili) {
         this.postiLetto = postiLetto;
         this.postiLettoDisponibili = postiLettoDisponibili;
         this.idCamera = idCamera;
+        this.idAnnuncio=idAnnuncio;
     }
 
     public int getPostiLetto() {
