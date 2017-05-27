@@ -26,7 +26,11 @@ public class CameraDisponibile {
         return idCamera;
     }
 
-    public void setPostiLettoDisponibili(int postiLettoDisponibili) {
+    public void setIdCamera(int idCamera) {
+        this.idCamera = idCamera;
+    }
+    
+        public void setPostiLettoDisponibili(int postiLettoDisponibili) {
         this.postiLettoDisponibili = postiLettoDisponibili;
     }
 

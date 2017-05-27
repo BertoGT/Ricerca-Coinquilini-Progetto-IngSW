@@ -5,6 +5,8 @@
  */
 package Test;
 
+import Casa.AnnuncioCasa;
+import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Casa.InfoCasa;
@@ -13,10 +15,11 @@ import Casa.InfoCasa;
  *
  * @author Delbo
  */
+
 public class TestInfoCasa {
-    /*
-    public static void main(String[] args) {
-        InfoCasa info=new InfoCasa(10,2,1,100,true,"Pavia","Via dal cazzo 7",HouseGenerality.MISTA);
+    
+    public static void main(String[] args) throws CameraNonTrovataException  {
+       /* InfoCasa info=new InfoCasa(10,2,1,100,true,"Pavia","Via dal cazzo 7",HouseGenerality.MISTA);
         
         info.addElettroDomestico(ElettroDomestico.LAVATRICE);
         info.addElettroDomestico(ElettroDomestico.LAVATRICE);
@@ -29,6 +32,34 @@ public class TestInfoCasa {
         info.rimuoviElettroDomestico(ElettroDomestico.ASPIRAPOLVERE);
         
         System.out.print(info.getElettroDomestici());
-    }*/
+      */
+       
+       
+       AnnuncioCasa ann=new AnnuncioCasa("boh", 4, 440, "berto", "333", "berto@mail");
+       ann.creaInfo(10,3,4,200,true,Citta.AGRIGENTO,"via",HouseGenerality.MISTA);
+       InfoCasa info=new InfoCasa(10,2,1,100,true,Citta.ANCONA,"Via dal cazzo 7",HouseGenerality.MISTA);
+       ann.creaCamera(1, 1);
+       System.out.println(ann.getCamere());
+       ann.creaCamera(2, 2);
+       System.out.println(ann.getCamere());
+ //      ann.printid();
+       System.out.println("\n");
+       ann.rimuoviCamera(0);
+       System.out.print(ann.getCamere());
+       ann.rimuoviCamera(0);
+       System.out.print(ann.getCamere());
+       
+       
+       
+       
+       
+    //   ann.creaCamera(0, 0);
+    //   System.out.println(ann.getCamere());
+       
+       
+    }
+    
+    
           
 }
+

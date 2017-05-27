@@ -38,12 +38,12 @@ public class AnnuncioCasa {
         return dataCreazioneAnnuncio;
     }
     
-    public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{
-        casa.creaCamera(idCamera, postiLetto, postiLettoDisponibili);
+    public void creaCamera(int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{
+        casa.creaCamera(this.idAnnuncio, postiLetto, postiLettoDisponibili);
     }
     
     public void rimuoviCamera(int idCamera) throws CameraNonTrovataException{
-        casa.rimuoviCamera(idAnnuncio);
+        casa.rimuoviCamera(idCamera);
     }
     
     public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){

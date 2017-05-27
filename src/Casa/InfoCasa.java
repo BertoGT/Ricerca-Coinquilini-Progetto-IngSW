@@ -31,32 +31,29 @@ public class InfoCasa {
         
     }
 
-    public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException {
-        boolean flag = false;
-        for (CameraDisponibile camera : camere) {
-            if(camera==null)
-                break;
-            if(camera.getIdCamera() == idCamera) {
-               flag = true;
-               break;
-            }
-        }
-        if(flag)
-            throw new CameraNonInseritaException("Camera già presente");
-        else 
-            camere.add(new CameraDisponibile(idCamera, postiLetto, postiLettoDisponibili));
+    public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
+        int indice=this.camere.size();
+        camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
     
     public void rimuoviCamera(int idCamera) throws CameraNonTrovataException {
-        boolean flag = false;
-        for (int i = 0; i < camere.size(); i++) {
-            if(camere.get(i).getIdCamera() == idCamera) {
-                camere.remove(i);
-                flag = true;
-                break;
-            }
-        }
-        if(flag == false)
+       boolean flag=false;
+       int indice=0;
+      
+       for(int i=0;i<this.camere.size();i++){
+           if(this.camere.get(i).getIdCamera()==idCamera){
+               indice=i;
+               flag=true;
+               break;
+           }
+       }
+       if(flag){
+           this.camere.remove(indice);
+           for(int j=indice;j<this.camere.size();j++){
+               this.camere.get(j).setIdCamera(j);
+           }
+       }
+        else
             throw new CameraNonTrovataException("Camera non presente");
     }
     
