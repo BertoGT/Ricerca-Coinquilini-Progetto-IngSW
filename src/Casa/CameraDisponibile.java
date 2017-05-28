@@ -30,13 +30,22 @@ public class CameraDisponibile {
         this.idCamera = idCamera;
     }
     
-        public void setPostiLettoDisponibili(int postiLettoDisponibili) {
-        this.postiLettoDisponibili = postiLettoDisponibili;
+     public void setPostiLettoDisponibili(int postiLettoDisponibili) {
+       this.postiLettoDisponibili = postiLettoDisponibili;
     }
 
     public void setPostiLetto(int postiLetto) {
         this.postiLetto = postiLetto;
     }
+
+    @Override
+    public String toString() {
+        return "CameraDisponibile{" + "postiLetto=" + postiLetto + ", idCamera=" + idCamera + ", idAnnuncio=" + idAnnuncio + '}';
+    }
+
+    
+    
+    
     
     
     

@@ -38,7 +38,7 @@ public class AnnuncioCasa {
         return dataCreazioneAnnuncio;
     }
     
-    public void creaCamera(int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException{
+    public void creaCamera(int postiLetto, int postiLettoDisponibili) {
         casa.creaCamera(this.idAnnuncio, postiLetto, postiLettoDisponibili);
     }
     

@@ -10,6 +10,8 @@ import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Casa.InfoCasa;
+import Exceptions.CameraNonInseritaException;
+import Exceptions.CameraNonTrovataException;
 
 /**
  *
