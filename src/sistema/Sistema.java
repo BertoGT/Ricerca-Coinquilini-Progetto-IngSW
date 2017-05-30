@@ -71,7 +71,6 @@ public class Sistema {
                                                                   cellulare, nazionalita, occupazione, facolta, fumatore, cuoco, sportivo, cittaDiRicerca, potenzialeCoinquilino));
         
     }
-    
     private void switchToUser(){
         this.setNullAll();
         this.user = new User();
@@ -86,7 +85,6 @@ public class Sistema {
         this.guest = new Guest();
         this.guest.setDataOraAccesso(dataOraAccesso);
     }
-    
     
     
     
