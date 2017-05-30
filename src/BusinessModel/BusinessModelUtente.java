@@ -176,13 +176,11 @@ public class BusinessModelUtente {
             db.apriConnesione();
             ResultSet rs = db.getDatiUtente(idUtente);
             rs.next();
-            int idCasa = rs.getInt(1);
             String[] data = rs.getString(3).split("-");
-
             DatiUtente dati = new DatiUtente(rs.getString(1), rs.getString(2), Sesso.valueOf(rs.getString(4)),
-                    rs.getString(13), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(7), Nazione.valueOf(rs.getString(6)),
+                    rs.getString(13), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(7), Nazione.valueOf(rs.getString(5)),
                     Occupazione.valueOf(rs.getString(11)), Facolta.valueOf(rs.getString(12)),rs.getBoolean(8), rs.getBoolean(9),
-                    rs.getBoolean(10), Citta.valueOf(rs.getString(6)));
+                    rs.getBoolean(10), Citta.valueOf(rs.getString(6)), rs.getBoolean(14));
             return dati;
         } catch (ParseException ex) {
             Logger.getLogger(BusinessModelUtente.class.getName()).log(Level.SEVERE, null, ex);

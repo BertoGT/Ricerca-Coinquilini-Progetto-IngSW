@@ -38,8 +38,8 @@ public class TestConDb {
 //
 //            System.out.println(bm.inserisciInfoUtente(idUtente, dati));
 ////            System.out.println(bm.modificaInfoUtente(1, true, true, true, Occupazione.LAVORATORE, Facolta.ALTRO));
-
-            
+            DatiUtente dati = bm.getDatiUtente(6);
+            System.out.println("ciao");
         } catch (SQLException ex) {
             Logger.getLogger(TestConDb.class.getName()).log(Level.SEVERE, null, ex);
         }

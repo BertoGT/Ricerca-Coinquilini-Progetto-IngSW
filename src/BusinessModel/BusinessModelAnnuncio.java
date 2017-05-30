@@ -182,7 +182,7 @@ public class BusinessModelAnnuncio {
                 DatiUtente dati = new DatiUtente(rs.getString(2), rs.getString(3), Sesso.valueOf(rs.getString(5)),
                         rs.getString(14), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(8), Nazione.valueOf(rs.getString(6)),
                         Occupazione.valueOf(rs.getString(12)), Facolta.valueOf(rs.getString(13)),rs.getBoolean(9), rs.getBoolean(10),
-                        rs.getBoolean(11), Citta.valueOf(rs.getString(7)));
+                        rs.getBoolean(11), Citta.valueOf(rs.getString(7)), true);
                 Utente annuncio = new Utente(rs.getString(1), dati);
                 annunciUtenti.add(annuncio);
             }

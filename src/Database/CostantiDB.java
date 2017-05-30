@@ -56,8 +56,9 @@ public class CostantiDB {
     
     //Query per ottenere i dati utenti dato l'ID
     final static String getDatiUtente = "SELECT nome, cognome, dataNascita, sesso, nazionalita, cittaDiRicerca,"
-            + " numeroDiTelefono, fumatore, cuoco, sportivo, occupazione, facolta, email from "+tabellaAnagraficaUtente
-            + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente+" where idUtente = ?";
+            + " numeroDiTelefono, fumatore, cuoco, sportivo, occupazione, facolta, email, candidato from (select * "
+            + "from "+tabellaAnagraficaUtente+" where idUtente = ?)as x "
+            + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente;
     
     
     
