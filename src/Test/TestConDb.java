@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class TestConDb {
     public static void main(String[] args) throws ParseException {
         try {
-            BusinessModelUtente bm = new BusinessModelUtente();       
+            BusinessModelUtente bm = BusinessModelUtente.getInstance();      
 //            int idUtente = bm.registrazione("roogle@gmail.com", "Roogle", true);
 //            //System.out.println(bm.login("nico@gmail.com", "sucamelo"));
 //            //System.out.println(bm.modificaPassword(4, "ciao", "bobo"));

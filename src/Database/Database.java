@@ -22,8 +22,18 @@ import java.util.logging.Logger;
  */
 public class Database {
     
+    private static Database instance;
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private Connection conn;
+    
+    private Database(){};
+    
+    public static Database getInstance() {
+      if(instance == null) {
+         instance = new Database();
+      }
+      return instance;
+   }
 
     public Connection getConn() {
         return conn;

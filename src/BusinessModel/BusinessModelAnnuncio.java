@@ -23,16 +23,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author alberto
  */
 public class BusinessModelAnnuncio {
     private Database db;
+    private static BusinessModelAnnuncio instance;
 
-    public BusinessModelAnnuncio() throws SQLException {
-        db = new Database();
+    private BusinessModelAnnuncio() throws SQLException {
+        db = Database.getInstance();
     }
+    
+    public static BusinessModelAnnuncio getInstance() {
+      if(instance == null) {
+          try {
+              instance = new BusinessModelAnnuncio();
+          } catch (SQLException ex) {
+              Logger.getLogger(BusinessModelAnnuncio.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+      return instance;
+   }
     
     public boolean inserisciAnnuncioCasa(int idCasa, int idUtenteProprietario, 
             String descrizione, int costo) throws SQLException {

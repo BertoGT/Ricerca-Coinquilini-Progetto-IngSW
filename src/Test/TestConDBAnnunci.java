@@ -21,8 +21,8 @@ import java.util.logging.Logger;
  */
 public class TestConDBAnnunci {
     public static void main(String[] args) {
-        try {
-            BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
+        
+            BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
             
 //            int idProprietario = 10;
 //            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.MASCHI));
@@ -36,8 +36,5 @@ public class TestConDBAnnunci {
 ////            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.FORNO)); 
 ////            System.out.println(bm.inserisciElettrodomestico(idCasa, ElettroDomestico.MICROONDE)); 
 ////            System.out.println(bm.eliminaElettrodomestico(1, ElettroDomestico.LAVATRICE));
-        } catch (SQLException ex) {
-            Logger.getLogger(TestConDBAnnunci.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
