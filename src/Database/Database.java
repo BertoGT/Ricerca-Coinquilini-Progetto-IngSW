@@ -279,4 +279,10 @@ public class Database {
         return ps.executeQuery(); 
     }
     
+    public ResultSet getDatiUtente(int idUtente) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.getDatiUtente);
+        ps.setInt(1, idUtente);
+        return ps.executeQuery();
+    }
+    
 }

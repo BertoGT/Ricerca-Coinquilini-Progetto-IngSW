@@ -5,7 +5,12 @@
  */
 package RicercaCoinquilino;
 
+import BusinessModel.BusinessModelAnnuncio;
+import Exceptions.NessunAnnuncioException;
+import ProfiloUtente.Sesso;
 import ProfiloUtente.Utente;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -19,10 +24,10 @@ public class RicercaCoinquilino {
     private ContenitoreParametriCoinquilino parametriRicerca;
     private ArrayList<CoinquilinoRisultante> coinquiliniRisultanti;
 
-    public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) {
-        // TODO carica gli utenti che si candidano da DB
+    public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
         this.coinquiliniRisultanti= new ArrayList<>();
+        caricaDati();
     }
     
     private void calcolaAffinita() {
@@ -57,6 +62,12 @@ public class RicercaCoinquilino {
         Collections.sort(coinquiliniRisultanti);
         return coinquiliniRisultanti;
     } 
+    
+    private void caricaDati() throws SQLException, NessunAnnuncioException{
+        BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
+        utentiTotali = bm.getAnnunciCoinquilini(parametriRicerca.getCittaDiRicerca(), 
+                parametriRicerca.getSesso());
+    }
     
     
     

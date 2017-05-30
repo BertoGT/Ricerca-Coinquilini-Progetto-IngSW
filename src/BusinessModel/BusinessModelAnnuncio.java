@@ -12,7 +12,6 @@ import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Casa.InfoCasa;
 import Database.Database;
-import Exceptions.CameraNonInseritaException;
 import Exceptions.NessunAnnuncioException;
 import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
@@ -24,9 +23,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author alberto
@@ -156,11 +152,8 @@ public class BusinessModelAnnuncio {
                     Citta.valueOf(rs.getString(12)), rs.getString(13), HouseGenerality.valueOf(rs.getString(10)));
             ResultSet rCamere = db.getCamere(idCasa);
             while(rCamere.next()) {
-                try {
-                    annuncio.creaCamera(rCamere.getInt(2), rCamere.getInt(3), rCamere.getInt(4));
-                } catch (CameraNonInseritaException ex) {
-                    Logger.getLogger(BusinessModelAnnuncio.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                annuncio.creaCamera(rCamere.getInt(3), rCamere.getInt(4));
+                
             }
             ResultSet rElettro = db.getElettrodomestici(idCasa);
             while(rElettro.next()) {
@@ -168,34 +161,37 @@ public class BusinessModelAnnuncio {
             }
             annunci.add(annuncio);
         }
-        if(annunci.size() == 0)
+        if(annunci.isEmpty())
             throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
         
         return annunci;
     }
     
-    public ArrayList<Utente> getAnnunciCoinquilini(Citta citta, Sesso sesso) throws SQLException, ParseException, NessunAnnuncioException {
-        
-        ArrayList<Utente> annunciUtenti = new ArrayList<>();
-        
-        db.apriConnesione();
-        String sessoString = null;
-        if(sesso != null)
-            sessoString = sesso.name();
-        ResultSet rs = db.getAnnunciCoinquilini(citta.name(), sessoString);
-        while(rs.next()) {
-            int idCasa = rs.getInt(1);
-            String[] data = rs.getString(4).split("-");
-            DatiUtente dati = new DatiUtente(rs.getString(2), rs.getString(3), Sesso.valueOf(rs.getString(5)),
-                    rs.getString(14), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(8), Nazione.valueOf(rs.getString(6)),
-                    Occupazione.valueOf(rs.getString(12)), Facolta.valueOf(rs.getString(13)),rs.getBoolean(9), rs.getBoolean(10),
-                    rs.getBoolean(11), Citta.valueOf(rs.getString(7)));
-            Utente annuncio = new Utente(rs.getString(1), dati);
-            annunciUtenti.add(annuncio);
+    public ArrayList<Utente> getAnnunciCoinquilini(Citta citta, ProfiloUtente.Sesso sesso) throws SQLException, NessunAnnuncioException {
+        try {
+            ArrayList<Utente> annunciUtenti = new ArrayList<>();
+
+            db.apriConnesione();
+            String sessoString = null;
+            if(sesso != null)
+                sessoString = sesso.name();
+            ResultSet rs = db.getAnnunciCoinquilini(citta.name(), sessoString);
+            while(rs.next()) {
+                int idCasa = rs.getInt(1);
+                String[] data = rs.getString(4).split("-");
+                DatiUtente dati = new DatiUtente(rs.getString(2), rs.getString(3), Sesso.valueOf(rs.getString(5)),
+                        rs.getString(14), null, Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]), rs.getString(8), Nazione.valueOf(rs.getString(6)),
+                        Occupazione.valueOf(rs.getString(12)), Facolta.valueOf(rs.getString(13)),rs.getBoolean(9), rs.getBoolean(10),
+                        rs.getBoolean(11), Citta.valueOf(rs.getString(7)));
+                Utente annuncio = new Utente(rs.getString(1), dati);
+                annunciUtenti.add(annuncio);
+            }
+            if(annunciUtenti.isEmpty())
+                throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
+
+            return annunciUtenti;
+        } catch (ParseException ex) {
+            return null;
         }
-        if(annunciUtenti.size() == 0)
-            throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri di ricerca inseriti");
-        
-        return annunciUtenti;
     }
 }

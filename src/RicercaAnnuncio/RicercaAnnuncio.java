@@ -21,14 +21,10 @@ public class RicercaAnnuncio {
     private ArrayList<AnnuncioCasa> annunciTotali;
     private ContenitoreParametriAnnuncio parametriRicerca;
     private ArrayList<AnnuncioRisultante> annunciRisultanti;
-    private Citta citta;
-    private int costoMax;
 
-    public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca, Citta citta, int costoMax) throws SQLException, NessunAnnuncioException {
+    public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
         this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
-        this.citta = citta;
-        this.costoMax = costoMax;
         caricaAnnunciTotali();
     }
    
@@ -66,7 +62,7 @@ public class RicercaAnnuncio {
     
     private void caricaAnnunciTotali() throws SQLException, NessunAnnuncioException {
         BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
-        annunciTotali = bm.getAnnunciCase(citta, costoMax);
+        annunciTotali = bm.getAnnunciCase(parametriRicerca.getCitta(), parametriRicerca.getCostoMax());
     }
    
 }

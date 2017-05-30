@@ -15,9 +15,24 @@ import java.util.ArrayList;
  */
 public class ContenitoreParametriAnnuncio {
     private ArrayList<ParametroRicercaAnnuncio> parametriRicerca;
+    private Citta citta;
+    private int costoMax;
 
-    public ContenitoreParametriAnnuncio() {
+    public ContenitoreParametriAnnuncio(Citta citta) {
         parametriRicerca = new ArrayList<ParametroRicercaAnnuncio>();
+        this.citta = citta;
+    }
+
+    public Citta getCitta() {
+        return citta;
+    }
+
+    public int getCostoMax() {
+        return costoMax;
+    }
+
+    public void setCostoMax(int costo) {
+        this.costoMax = costo;
     }
     
     public void setParametroCucina(int stelle, boolean cucinaSeparata) {

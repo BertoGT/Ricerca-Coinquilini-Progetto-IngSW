@@ -48,11 +48,16 @@ public class CostantiDB {
     final static String modificaInfoUtente = "UPDATE "+tabellaInfoUtente+" SET fumatore = ?, cuoco = ?, sportivo = ?,"
             + "occupazione = ?, facolta = ? WHERE idUtente = ?";
     
-    //Query modifica annuncio
+    //Query per restituire l'annuncio inserito dall'utente di cui si da l'id
     final static String getAnnuncioUtente = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+
             tabellaInfoCasa+" WHERE idUtenteProprietario = ?) as ann join" +
             "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
             tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
+    
+    //Query per ottenere i dati utenti dato l'ID
+    final static String getDatiUtente = "SELECT nome, cognome, dataNascita, sesso, nazionalita, cittaDiRicerca,"
+            + " numeroDiTelefono, fumatore, cuoco, sportivo, occupazione, facolta, email from "+tabellaAnagraficaUtente
+            + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente+" where idUtente = ?";
     
     
     
