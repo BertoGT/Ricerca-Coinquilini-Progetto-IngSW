@@ -19,7 +19,6 @@ import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
-import ProfiloUtente.Utente;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,10 +33,22 @@ import java.util.logging.Logger;
  */
 public class BusinessModelUtente {
     private Database db;
+    private static BusinessModelUtente instance = null;
 
-    public BusinessModelUtente() throws SQLException {
-        db = new Database();
+    private BusinessModelUtente() throws SQLException {
+        db = Database.getInstance();
     }
+    
+    public static BusinessModelUtente getInstance() {
+      if(instance == null) {
+          try {
+              instance = new BusinessModelUtente();
+          } catch (SQLException ex) {
+              Logger.getLogger(BusinessModelUtente.class.getName()).log(Level.SEVERE, null, ex);
+          }
+      }
+      return instance;
+   }
     
     public int registrazione(String email, String password, boolean candidato) throws SQLException, RegistrazioneException {
         db.apriConnesione();

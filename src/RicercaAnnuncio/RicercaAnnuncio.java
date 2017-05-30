@@ -61,7 +61,7 @@ public class RicercaAnnuncio {
     } 
     
     private void caricaAnnunciTotali() throws SQLException, NessunAnnuncioException {
-        BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
+        BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
         annunciTotali = bm.getAnnunciCase(parametriRicerca.getCitta(), parametriRicerca.getCostoMax());
     }
    

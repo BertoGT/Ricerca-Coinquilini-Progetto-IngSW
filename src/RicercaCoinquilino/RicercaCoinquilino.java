@@ -64,7 +64,7 @@ public class RicercaCoinquilino {
     } 
     
     private void caricaDati() throws SQLException, NessunAnnuncioException{
-        BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
+        BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
         utentiTotali = bm.getAnnunciCoinquilini(parametriRicerca.getCittaDiRicerca(), 
                 parametriRicerca.getSesso());
     }
