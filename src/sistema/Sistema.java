@@ -83,8 +83,9 @@ public class Sistema {
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws RegistrazioneException, SQLException, ParseException{
         
         int idUtente = this.bmUtente.registrazione(eMail, password, potenzialeCoinquilino);
-        this.bmUtente.inserisciAnagraficaUtente(idUtente, this.bmUtente.getDatiUtente(idUtente));
-        this.bmUtente.inserisciInfoUtente(idUtente, this.bmUtente.getDatiUtente(idUtente));
+        DatiUtente dati = new DatiUtente(nome, cognome, sesso, eMail, password, giorno, mese, anno, cellulare, nazionalita, occupazione, facolta, fumatore, cuoco, sportivo, cittaDiRicerca, potenzialeCoinquilino);
+        this.bmUtente.inserisciAnagraficaUtente(idUtente, dati);
+        this.bmUtente.inserisciInfoUtente(idUtente, dati);
         
     }
     private void switchToUser(){
@@ -201,4 +202,14 @@ public class Sistema {
         this.ricercaCoinquilino = new RicercaCoinquilino(this.parametriCoinquilino);
         this.coinquiliniRisultanti = this.ricercaCoinquilino.eseguiRicerca();
     }
+
+    public ArrayList<AnnuncioRisultante> getAnnunciRisultanti() {
+        return annunciRisultanti;
+    }
+
+    public ArrayList<CoinquilinoRisultante> getCoinquiliniRisultanti() {
+        return coinquiliniRisultanti;
+    }
+    
+    
 }
