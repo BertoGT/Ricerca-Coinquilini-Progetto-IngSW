@@ -10,7 +10,7 @@ package ProfiloUtente;
  * @author Marco La Salvia
  */
 public class Utente {
-    private String idUtente;
+    private int idUtente;
     private DatiUtente datiUtente;
 
     /**
@@ -19,7 +19,7 @@ public class Utente {
      * @param datiUtente
      * @param dataDiNascita
      */
-    public Utente(String idUtente, DatiUtente datiUtente) {
+    public Utente(int idUtente, DatiUtente datiUtente) {
         this.idUtente = idUtente;
         this.datiUtente = datiUtente;
     }
@@ -28,7 +28,7 @@ public class Utente {
      *
      * @return : RESTITUISCE L'ID DELL'UTENTE ALL'INTERNO DEL DATABASE.
      */
-    public String getIdUtente() {
+    public int getIdUtente() {
         return idUtente;
     }
 

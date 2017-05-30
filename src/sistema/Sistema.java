@@ -11,11 +11,7 @@ import Casa.Citta;
 import Exceptions.LoginException;
 import Exceptions.NessunAnnuncioException;
 import Exceptions.RegistrazioneException;
-import ProfiloUtente.DatiUtente;
-import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazione;
-import ProfiloUtente.Occupazione;
-import ProfiloUtente.Sesso;
+import ProfiloUtente.*;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
 import RicercaAnnuncio.RicercaAnnuncio;
 import RicercaCoinquilino.ContenitoreParametriCoinquilino;
@@ -52,15 +48,16 @@ public class Sistema {
         this.ricercaAnnuncio = null;
         this.ricercaCoinquilino = null;
     }
-    public void logIn(String eMail, String password) throws SQLException, LoginException{
-        int result = this.bmUtente.login(eMail, password);
+    public String logIn(String eMail, String password) throws SQLException, LoginException{
+        int idUtente = this.bmUtente.login(eMail, password);
         this.switchToUser();
+        Utente temp = new Utente(idUtente, this.bmUtente.getDatiUtente(idUtente));
         try {
-            this.user.setProfileManager(new ProfileManager(new Utente(), this.bmUtente.getAnnuncioUtente(result)));  //fetch dati utente da db mancante!
+           this.user.setProfileManager(new ProfileManager(temp, this.bmUtente.getAnnuncioUtente(idUtente)));
         } catch (NessunAnnuncioException ex) {
-            this.user.setProfileManager(new ProfileManager(new Utente(), null));
-        }
-
+           this.user.setProfileManager(new ProfileManager(temp, null));
+        }       
+        return "LOGIN EFFETTUATO\n";
     }
     public void registrazioneUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
