@@ -7,19 +7,31 @@ package sistema;
 
 import BusinessModel.BusinessModelAnnuncio;
 import BusinessModel.BusinessModelUtente;
+import Casa.Citta;
+import Exceptions.LoginException;
+import Exceptions.NessunAnnuncioException;
+import Exceptions.RegistrazioneException;
+import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Facolta;
+import ProfiloUtente.Nazione;
+import ProfiloUtente.Occupazione;
+import ProfiloUtente.Sesso;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
 import RicercaAnnuncio.RicercaAnnuncio;
 import RicercaCoinquilino.ContenitoreParametriCoinquilino;
 import RicercaCoinquilino.RicercaCoinquilino;
 import Utenti.*;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Marco La Salvia
  */
 public class Sistema {
-    private WebSurfer webSurfer;
     private Guest guest;
     private User user;
     private ContenitoreParametriAnnuncio parametriAnnuncio;
@@ -28,26 +40,52 @@ public class Sistema {
     private RicercaCoinquilino ricercaCoinquilino;
     private BusinessModelUtente bmUtente;
     private BusinessModelAnnuncio bmAnnuncio;
+     private Calendar dataOraAccesso;
 
     public Sistema() throws SQLException {
-        this.webSurfer = new WebSurfer();
+        this.dataOraAccesso = Calendar.getInstance();
         this.bmUtente = new BusinessModelUtente();
         this.bmAnnuncio = new BusinessModelAnnuncio();
-        this.guest = null;
-        this.user = null;
+        this.switchToGuest();
         this.parametriAnnuncio = null;
         this.parametriCoinquilino = null;
         this.ricercaAnnuncio = null;
         this.ricercaCoinquilino = null;
     }
-    public String logIn(String eMail, String password) throws SQLException{
+    public void logIn(String eMail, String password) throws SQLException, LoginException{
         int result = this.bmUtente.login(eMail, password);
-        if(result<0)
-            return "DATI INSERITI NON CORRETTI!\n";
-        return "LOGIN EFFETTUATO CON SUCCESSO!\n";
+        this.switchToUser();
+        try {
+            this.user.setProfileManager(new ProfileManager(new Utente(), this.bmUtente.getAnnuncioUtente(result)));  //fetch dati utente da db mancante!
+        } catch (NessunAnnuncioException ex) {
+            this.user.setProfileManager(new ProfileManager(new Utente(), null));
+        }
+
+    }
+    public void registrazioneUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
+            
+            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws RegistrazioneException, SQLException, ParseException{
+        
+        int idUtente = this.bmUtente.registrazione(eMail, password, potenzialeCoinquilino);
+        this.bmUtente.modificaInfoUtente(idUtente, new DatiUtente(nome, cognome, sesso, eMail, password, giorno, mese, anno,
+                                                                  cellulare, nazionalita, occupazione, facolta, fumatore, cuoco, sportivo, cittaDiRicerca, potenzialeCoinquilino));
+        
     }
     
-    
+    private void switchToUser(){
+        this.setNullAll();
+        this.user = new User();
+        this.user.setDataOraAccesso(dataOraAccesso);
+    }
+    private void setNullAll(){
+        this.guest = null;
+        this.user = null;
+    }
+    private void switchToGuest(){
+        this.setNullAll();
+        this.guest = new Guest();
+        this.guest.setDataOraAccesso(dataOraAccesso);
+    }
     
     
     

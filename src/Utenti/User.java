@@ -9,20 +9,22 @@ import ProfiloUtente.DatiUtente;
 import ProfiloUtente.ProfileManager;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
  *
  * @author Marco La Salvia
  */
-public class User extends WebSurfer implements Power{
+public class User implements Power{
     
     private int power;
     private ProfileManager profileManager;
+    private Calendar dataOraAccesso;
 
     public User(){
-        super();
         this.power = 1;
+        this.dataOraAccesso = null;
     }
 
     @Override
@@ -32,10 +34,23 @@ public class User extends WebSurfer implements Power{
 
     @Override
     public String toString() {
-        return super.toString() + "\nUSER \nPOWER: " + this.power;
+        return "\nACCESSO: " +this.dataOraAccesso.toString() + "\nUSER \nPOWER: " + this.power;
+    }
+
+    public Calendar getDataOraAccesso() {
+        return dataOraAccesso;
+    }
+
+    public void setDataOraAccesso(Calendar dataOraAccesso) {
+        this.dataOraAccesso = dataOraAccesso;
     }
 
     public ProfileManager getProfileManager() {
         return profileManager;
-    }    
+    }  
+
+    public void setProfileManager(ProfileManager profileManager) {
+        this.profileManager = profileManager;
+    }
+    
 }

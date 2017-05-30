@@ -46,7 +46,7 @@ public class DatiUtente {
      */
     public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
-            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca) throws ParseException {
+            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws ParseException {
         
         this.nome=nome;
         this.cognome=cognome;
@@ -62,7 +62,7 @@ public class DatiUtente {
         this.cuoco=cuoco;
         this.sportivo=sportivo;
         this.cittaDiRicerca = cittaDiRicerca;
-        this.potenzialeCoinquilino = false; 
+        this.potenzialeCoinquilino = potenzialeCoinquilino; 
     }
 
     /**

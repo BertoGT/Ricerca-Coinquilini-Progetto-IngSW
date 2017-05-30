@@ -13,12 +13,10 @@ import Casa.AnnuncioCasa;
  */
 public class ProfileManager {
     private Utente utente;
-    private String descrizioneAggiuntiva;
     private AnnuncioCasa annuncioCasa;
 
-    public ProfileManager(Utente utente, String descrizioneAggiuntiva, AnnuncioCasa annuncioCasa) {
+    public ProfileManager(Utente utente, AnnuncioCasa annuncioCasa) {
         this.utente = utente;
-        this.descrizioneAggiuntiva = descrizioneAggiuntiva;
         this.annuncioCasa = annuncioCasa;
     }
 
@@ -38,17 +36,10 @@ public class ProfileManager {
         this.utente = utente;
     }
 
-    public String getDescrizioneAggiuntiva() {
-        return descrizioneAggiuntiva;
-    }
-
-    public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
-        this.descrizioneAggiuntiva = descrizioneAggiuntiva;
-    }
 
     @Override
     public String toString() {
-        return "\nPROFILO UTENTE\n" + this.utente.toString() +"\nDESCRIZIONE PERSONALE: "+this.descrizioneAggiuntiva+"\n";
+        return "\nPROFILO UTENTE\n" + this.utente.toString()+"\n";
     }
     
     
