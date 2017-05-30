@@ -57,15 +57,15 @@ public class Sistema {
         } catch (NessunAnnuncioException ex) {
            this.user.setProfileManager(new ProfileManager(temp, null));
         }       
-        return "LOGIN EFFETTUATO\n";
+        return "LOGIN EFFETTUATO CON SUCCESSO\n";
     }
     public void registrazioneUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws RegistrazioneException, SQLException, ParseException{
         
         int idUtente = this.bmUtente.registrazione(eMail, password, potenzialeCoinquilino);
-        this.bmUtente.modificaInfoUtente(idUtente, new DatiUtente(nome, cognome, sesso, eMail, password, giorno, mese, anno,
-                                                                  cellulare, nazionalita, occupazione, facolta, fumatore, cuoco, sportivo, cittaDiRicerca, potenzialeCoinquilino));
+        this.bmUtente.inserisciAnagraficaUtente(idUtente, this.bmUtente.getDatiUtente(idUtente));
+        this.bmUtente.inserisciInfoUtente(idUtente, this.bmUtente.getDatiUtente(idUtente));
         
     }
     private void switchToUser(){
@@ -83,6 +83,6 @@ public class Sistema {
         this.guest.setDataOraAccesso(dataOraAccesso);
     }
     
-    
+
     
 }
