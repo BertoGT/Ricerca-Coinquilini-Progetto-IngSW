@@ -6,6 +6,7 @@
 package RicercaCoinquilino;
 
 import Casa.Citta;
+import ProfiloUtente.Sesso;
 import java.util.ArrayList;
 
 /**
@@ -15,14 +16,26 @@ import java.util.ArrayList;
 public class ContenitoreParametriCoinquilino {
     
     private ArrayList<ParametroRicercaCoinquilino> parametri;
+    private Sesso sesso;
+    private Citta cittaDiRicerca;
 
-    public ContenitoreParametriCoinquilino() {
+    public ContenitoreParametriCoinquilino(Citta cittaDiRicerca) {
         this.parametri = new ArrayList<>();
+        this.cittaDiRicerca = cittaDiRicerca;
     }
-    
-    public void setParametroCittaDiRicerca(Citta citta){
-        this.parametri.add(new CittaDiRicerca(citta));
+
+    public Sesso getSesso() {
+        return sesso;
     }
+
+    public Citta getCittaDiRicerca() {
+        return cittaDiRicerca;
+    }
+
+    public void setSesso(Sesso sesso) {
+        this.sesso = sesso;
+    }
+      
     
     public void setParametroCuoco(int stelle, Boolean isCuoco){
         this.parametri.add(new Cuoco(stelle, isCuoco));
@@ -46,11 +59,7 @@ public class ContenitoreParametriCoinquilino {
     
     public void setParametroOccupazione(int stelle,ProfiloUtente.Occupazione occupazione){
         this.parametri.add(new Occupazione(stelle, occupazione));
-    }
-    
-    public void setParametroSesso(ProfiloUtente.Sesso sesso){
-        this.parametri.add(new Sesso(sesso));
-    }
+    } 
     
     public void setParametroSportivo(int stelle,boolean sportivo){
         this.parametri.add(new Sportivo(stelle, sportivo));

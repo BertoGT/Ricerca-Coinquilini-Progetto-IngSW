@@ -10,6 +10,9 @@ import Casa.Citta;
 import Exceptions.NessunAnnuncioException;
 import ProfiloUtente.Sesso;
 import ProfiloUtente.Utente;
+import RicercaCoinquilino.CoinquilinoRisultante;
+import RicercaCoinquilino.ContenitoreParametriCoinquilino;
+import RicercaCoinquilino.RicercaCoinquilino;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -23,8 +26,11 @@ import java.util.logging.Logger;
 public class TestConDBRicercaCoinquilino {
     public static void main(String[] args) throws ParseException {
         try {
-            BusinessModelAnnuncio bm = new BusinessModelAnnuncio();
-            ArrayList<Utente> annunci = bm.getAnnunciCoinquilini(Citta.PAVIA, Sesso.M);
+            ContenitoreParametriCoinquilino c = new ContenitoreParametriCoinquilino((Citta.PAVIA));
+            c.setSesso(Sesso.M);
+            c.setParametroFumatore(5, false);
+            c.setParametroSportivo(3, true);
+            ArrayList<CoinquilinoRisultante> result = new RicercaCoinquilino(c).eseguiRicerca();
             System.out.println("ciao");
         } catch (SQLException ex) {
             Logger.getLogger(TestConDBRicercaCoinquilino.class.getName()).log(Level.SEVERE, null, ex);
