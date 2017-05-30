@@ -58,8 +58,8 @@ public class Sistema {
 
     public Sistema() throws SQLException {
         this.dataOraAccesso = Calendar.getInstance();
-        this.bmUtente = new BusinessModelUtente();
-        this.bmAnnuncio = new BusinessModelAnnuncio();
+        this.bmUtente = BusinessModelUtente.getInstance();
+        this.bmAnnuncio = BusinessModelAnnuncio.getInstance();
         this.switchToGuest();
         this.parametriAnnuncio = null;
         this.parametriCoinquilino = null;
