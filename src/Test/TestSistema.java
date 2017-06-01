@@ -28,28 +28,19 @@ public class TestSistema {
     public static void main(String[] args) {
         try {
             Sistema s = new Sistema();
-//            System.out.println(s.logIn("berto@gmail.com", "ciao"));
-//            s.registrazioneUtente("Marco", "La Salvia", Sesso.M, "mrc.lasalvia@gmail.com", "1234", 
-//                    11, 12, 1995, "340425353", Nazione.ITALIA, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
-//                    false, false, true, Citta.PAVIA, true);
-            s.iniziaRicercaAnnunci(Citta.PAVIA);
-            s.setCostoMax(270);
-            s.setParametroNBagni(4, 1);
-            s.setParametroSessoCasa(3, HouseGenerality.MASCHI);
-            s.setParametroDistCentro(5, 1000);
-            s.ricercaAnnuncio();
-            System.out.println("c");
-        } catch (SQLException ex) {
+//            System.out.println(s.logIn("mario.shehu.07@gmail.com", "proteine"));
+            s.registrazioneUtente("Antonio", "Licchello", Sesso.M, "antonio.licchello@gmail.com", "cicciofranco", 
+                    10, 11, 1995, "36547474", Nazione.ITALIA, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
+                    false, true, true, Citta.PAVIA, true);
+//            s.iniziaRicercaAnnunci(Citta.PAVIA);
+//            s.setCostoMax(270);
+//            s.setParametroNBagni(4, 1);
+//            s.setParametroSessoCasa(3, HouseGenerality.MASCHI);
+//            s.setParametroDistCentro(5, 1000);
+//            s.ricercaAnnuncio();
+//            System.out.println("c");
+        } catch (Exception ex) {
             Logger.getLogger(TestSistema.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (LoginException ex) {
-//            System.out.println(ex.getMessage());
-//        } catch (RegistrazioneException ex) {
-//            System.out.println(ex.getMessage());
-//        } catch (ParseException ex) {
-//            Logger.getLogger(TestSistema.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        } catch (NessunAnnuncioException ex) {
-            System.out.println(ex.getMessage());
         }
     }
 }

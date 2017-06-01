@@ -6,6 +6,8 @@
 package Database;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -60,35 +62,55 @@ public class Database {
         if(ps.executeQuery().next())
             return null; // email già in uso
         else {
-            ps = conn.prepareStatement(CostantiDB.registraUtente, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, email);
-            ps.setString(2, password);
-            ps.setInt(3, power);
-            ps.setBoolean(4, candidato);
-            ps.executeUpdate();
+            try {
+                ps = conn.prepareStatement(CostantiDB.registraUtente, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, email);
+                ps.setString(2, ConvertitoreSha.SHA1(password));
+                ps.setInt(3, power);
+                ps.setBoolean(4, candidato);
+                ps.executeUpdate();
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return ps.getGeneratedKeys();
         }
     }
     
     public ResultSet login(String email, String password) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaUtente);
-        ps.setString(1, email);
-        ps.setString(2, password);
+        try{
+            ps.setString(1, email);
+            ps.setString(2, ConvertitoreSha.SHA1(password));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return ps.executeQuery();
     }
     
     public int modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaConId);
-        ps.setInt(1, idUtente);
-        ps.setString(2, vecchiaPassword);
-        ResultSet rs = ps.executeQuery();
-        if(rs.next()) { // dati giusti si procede con la modifica della password
-            ps = conn.prepareStatement(CostantiDB.modificaPassword);
-            ps.setString(1, nuovaPassword);
-            ps.setInt(2, idUtente);
-            return ps.executeUpdate();
-        } else 
+        try{
+            ps.setInt(1, idUtente);
+            ps.setString(2, ConvertitoreSha.SHA1(vecchiaPassword));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) { // dati giusti si procede con la modifica della password
+                ps = conn.prepareStatement(CostantiDB.modificaPassword);
+                ps.setString(1, ConvertitoreSha.SHA1(nuovaPassword));
+                ps.setInt(2, idUtente);
+                return ps.executeUpdate();
+            } else 
+                return 0;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
     }
     
     public int setCandidatura(int idUtente, boolean candidatura) throws SQLException {
