@@ -34,11 +34,17 @@ import java.util.logging.Logger;
 public class BusinessModelUtente {
     private Database db;
     private static BusinessModelUtente instance = null;
-
+    /**
+     * Istanzia un oggetto BusinessModelUtente
+     * @throws SQLException 
+     */
     private BusinessModelUtente() throws SQLException {
         db = Database.getInstance();
     }
-    
+    /**
+     * 
+     * @return Restituisce l'istanza creata BusinessModelUtente
+     */
     public static BusinessModelUtente getInstance() {
       if(instance == null) {
           try {
@@ -49,6 +55,15 @@ public class BusinessModelUtente {
       }
       return instance;
    }
+    /**
+     * Registra un utente nel database e da la possibilità di candidarsi come coinquilino 
+     * @param email email dell'utente che vuole registrarsi
+     * @param password password dell'utente che vuole registrarsi
+     * @param candidato indica se l'utente vuole candidarsi o meno come potenziale coinquilino
+     * @return Restituisce un intero che indica l'id dell'utente
+     * @throws SQLException
+     * @throws RegistrazioneException lancia un'eccezione se la regisgtrazione non avviene con successo (es.email già in uso)
+     */
     
     public int registrazione(String email, String password, boolean candidato) throws SQLException, RegistrazioneException {
         db.apriConnesione();
@@ -64,7 +79,14 @@ public class BusinessModelUtente {
             throw new RegistrazioneException("Email gia in uso");
         }
     }
-    
+    /**
+     * Verifica se l'utente è registrato e in caso positivo lo logga 
+     * @param email email dell'utente registrato
+     * @param password password dell'utente registrato
+     * @returnRestituisce un intero che indica l'id dell'utente
+     * @throws SQLException
+     * @throws LoginException lancia un'eccezione se il login non avviene con successo (es.email o password errate)
+     */
     public int login(String email, String password) throws SQLException, LoginException {
         db.apriConnesione();
         ResultSet rs;
@@ -79,7 +101,14 @@ public class BusinessModelUtente {
         }          
     }
     
-    
+    /**
+     * Permette all'utente di modificare la propria password
+     * @param idUtente id dell'utente registrato
+     * @param vecchiaPassword password corrente dell'utente registrato
+     * @param nuovaPassword nuova password dell'utente registrato
+     * @throws SQLException
+     * @throws PasswordException lancia un'eccezione se la modifica della password non avviene con successo (es.vecchia password errate)
+     */
     public void modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException, PasswordException {
         db.apriConnesione();
         int result = db.modificaPassword(idUtente, vecchiaPassword, nuovaPassword);
@@ -87,7 +116,13 @@ public class BusinessModelUtente {
         if(result == 0) 
             throw new PasswordException("Vecchia password errata"); // modifica non avvenuta, vecchia password errata
     }
-    
+    /**
+     * Permette all'utente di potersi o meno candidare come coinquilino
+     * @param idUtente id dell'utente registrato
+     * @param candidatura indica se l'utente vuole candidarsi o meno come potenziale coinquilino
+     * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
+     * @throws SQLException 
+     */
     public boolean setCandidatura(int idUtente, boolean candidatura) throws SQLException {
         db.apriConnesione();
         int result = db.setCandidatura(idUtente, candidatura);
@@ -98,7 +133,13 @@ public class BusinessModelUtente {
             return true;
     }
     
-    
+    /**
+     * Permette all'utente di inserire i propri dati anagrafici
+     * @param idUtente id dell'utente registrato
+     * @param dati dati dell'utente registrato
+     * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
+     * @throws SQLException 
+     */
     public boolean inserisciAnagraficaUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         Calendar c = Calendar.getInstance();
@@ -112,7 +153,13 @@ public class BusinessModelUtente {
         else
             return true;
     }
-    
+    /**
+     * Permette all'utente di modificaren la propria citta di ricerca
+     * @param idUtente id dell'utente registrato
+     * @param nuovaCitta nuova citta di ricerca in cui l'utente vuole essere ricercato
+     * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
+     * @throws SQLException 
+     */
     public boolean modificaCittaDiRicerca(int idUtente, Citta nuovaCitta) throws SQLException {
         db.apriConnesione();
         int result = db.modificaCitaDiRicerca(idUtente, nuovaCitta.name());
@@ -122,7 +169,13 @@ public class BusinessModelUtente {
         else 
             return true;
     }
-    
+    /**
+     * Permette all'utente di inserire i propri dati caratteriali
+     * @param idUtente id dell'utente registrato
+     * @param dati dell'utente registrato
+     * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
+     * @throws SQLException 
+     */
     public boolean inserisciInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
@@ -140,7 +193,13 @@ public class BusinessModelUtente {
         else 
             return true;
     }
-    
+    /**
+     * Permette all'utente di modificare i propri dati caratteriali
+     * @param idUtente id dell'utente registrato
+     * @param dati dati dell'utente registrato
+     * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
+     * @throws SQLException 
+     */
     public boolean modificaInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
@@ -158,7 +217,13 @@ public class BusinessModelUtente {
         else 
             return true;
     }
-    
+    /**
+     * Permette all'utente di visualizzare l'annuncio da lui creato
+     * @param idUtenteProprietario id dell'utente proprietario dell'annuncio
+     * @return  Ritorna l'annuncio creato dall'utente
+     * @throws SQLException
+     * @throws NessunAnnuncioException lancia un'eccezione nel caso in cui si voglia visualizzare il proprio annuncio ma non è stato creato
+     */
     public AnnuncioCasa getAnnuncioUtente(int idUtenteProprietario) throws SQLException, NessunAnnuncioException {
         
         db.apriConnesione();
@@ -181,7 +246,12 @@ public class BusinessModelUtente {
         } else
             throw new NessunAnnuncioException("Nessun annuncio creato");
     }
-    
+    /**
+     * Permette all'utente di visualizzare i propri dati inseriti
+     * @param idUtente id dell'utente registrato
+     * @return Ritorna i dati dell'utente
+     * @throws SQLException 
+     */
     public DatiUtente getDatiUtente(int idUtente) throws SQLException {
         try {
             db.apriConnesione();

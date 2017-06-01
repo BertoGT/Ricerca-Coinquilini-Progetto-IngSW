@@ -6,7 +6,13 @@ package Casa;
  */
 public class CameraDisponibile {
     private int postiLetto, postiLettoDisponibili, idCamera, idAnnuncio; 
-
+    /**
+     * Istanzia un oggetto CameraDisponibile
+     * @param idAnnuncio id dell'annuncio
+     * @param idCamera id della camera dell'annuncio
+     * @param postiLetto posti letto totali della camera
+     * @param postiLettoDisponibili posti letto disponibili della camera
+     */
     public CameraDisponibile(int idAnnuncio, int idCamera, int postiLetto, int postiLettoDisponibili) {
         this.postiLetto = postiLetto;
         this.postiLettoDisponibili = postiLettoDisponibili;

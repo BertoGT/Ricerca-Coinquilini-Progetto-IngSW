@@ -16,7 +16,17 @@ public class InfoCasa {
     private ArrayList<CameraDisponibile> camere;
     private Citta citta;
     private String indirizzo;
-
+    /**
+     * Istanzia un oggetto InfoCasa
+     * @param metriQuadri metri quadrati della casa
+     * @param nLocali numero locali della casa
+     * @param numeroBagni numero di bagni della casa
+     * @param distanzaCentro dictanza dal centro della casa
+     * @param cucinaSeparata tipologia di cucina della casa
+     * @param citta citta di collocamento della casa
+     * @param indirizzo indirizzo della casa
+     * @param sessoCasa  indica il sesso delle persone all'interno della casa dell'annuncio
+     */
     public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
@@ -30,7 +40,7 @@ public class InfoCasa {
         this.sessoCasa = sessoCasa;
         
     }
-
+    
     public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
         int indice=this.camere.size();
         camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
@@ -56,7 +66,8 @@ public class InfoCasa {
         else
             throw new CameraNonTrovataException("Camera non presente");
     }
-    
+  
+   
     public void addElettroDomestico(ElettroDomestico elettroDomestico){
         this.elettroDomestici.add(elettroDomestico);
     }
