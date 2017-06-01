@@ -11,10 +11,10 @@ import Casa.AnnuncioCasa;
  *
  * @author alberto
  */
-public class Cucina extends ParametroRicercaAnnuncio{
+class Cucina extends ParametroRicercaAnnuncio{
     private boolean cucinaSeparata;
 
-    public Cucina(int stelle, boolean cucinaSeparata) {
+    Cucina(int stelle, boolean cucinaSeparata) {
         super(stelle);
         this.cucinaSeparata = cucinaSeparata;
     }
@@ -22,7 +22,7 @@ public class Cucina extends ParametroRicercaAnnuncio{
     
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         if(cucinaSeparata){
             if(annuncio.isCucinaSeparata()) 
                 return super.getStelle();

@@ -24,6 +24,12 @@ public class RicercaCoinquilino {
     private ContenitoreParametriCoinquilino parametriRicerca;
     private ArrayList<CoinquilinoRisultante> coinquiliniRisultanti;
 
+    /**
+     * Istanzia un oggetto che esegue la ricerca di un potenziale coinquilino
+     * @param parametriRicerca contenitore dei parametri di ricerca
+     * @throws SQLException
+     * @throws NessunAnnuncioException se nessun coinquilino soddisfa i criteri di ricerca inseriti
+     */
     public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
         this.coinquiliniRisultanti= new ArrayList<>();
@@ -57,6 +63,10 @@ public class RicercaCoinquilino {
         }
     }
     
+    /**
+     * Esegue la ricerca degi coinquilini e li ordina per punteggio (affinità) descrescente
+     * @return Lista di potenziali conquilino compatibili ordinati per affinita descrescente
+     */
     public ArrayList<CoinquilinoRisultante> eseguiRicerca() {
         calcolaAffinita();
         Collections.sort(coinquiliniRisultanti);

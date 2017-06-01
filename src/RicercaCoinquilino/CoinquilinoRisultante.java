@@ -16,7 +16,7 @@ public class CoinquilinoRisultante implements Comparable<CoinquilinoRisultante>{
     private final Utente utente;
     private final float punteggio;
 
-    public CoinquilinoRisultante(Utente utente, float punteggio) {
+    CoinquilinoRisultante(Utente utente, float punteggio) {
         this.utente = utente;
         this.punteggio = punteggio;
     }

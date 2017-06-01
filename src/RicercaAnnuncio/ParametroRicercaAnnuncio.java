@@ -11,19 +11,19 @@ import Casa.AnnuncioCasa;
  *
  * @author Delbo
  */
-public abstract class ParametroRicercaAnnuncio {
+abstract class ParametroRicercaAnnuncio {
     
     private int stelle;
 
-    public ParametroRicercaAnnuncio(int stelle) {
+    ParametroRicercaAnnuncio(int stelle) {
         this.stelle = stelle;
     }
 
-    public int getStelle() {
+    int getStelle() {
         return stelle;
     }
     
-    public abstract float calcolaAffinità(AnnuncioCasa annuncio);
+    abstract float calcolaAffinità(AnnuncioCasa annuncio);
     
     
     

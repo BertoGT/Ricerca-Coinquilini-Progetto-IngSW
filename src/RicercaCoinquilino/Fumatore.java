@@ -11,17 +11,17 @@ import ProfiloUtente.Utente;
  *
  * @author Niko
  */
-public class Fumatore extends ParametroRicercaCoinquilino{
+class Fumatore extends ParametroRicercaCoinquilino{
     
     private boolean fumatore;
 
-    public Fumatore(int stelle, boolean fumatore) {
+    Fumatore(int stelle, boolean fumatore) {
         super(stelle);
         this.fumatore = fumatore;
     }
 
     @Override
-    public float calcolaAffinità(Utente utente) {
+    float calcolaAffinità(Utente utente) {
         if(fumatore)
             return super.getStelle();
         else {

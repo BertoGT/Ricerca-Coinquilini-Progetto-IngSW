@@ -11,17 +11,17 @@ import Casa.AnnuncioCasa;
  *
  * @author Delbo
  */
-public class DistanzaCentro extends ParametroRicercaAnnuncio {
+class DistanzaCentro extends ParametroRicercaAnnuncio {
 
     private int distanzaMax;
     
-    public DistanzaCentro(int stelle,int distanzaMax) {
+    DistanzaCentro(int stelle,int distanzaMax) {
         super(stelle);
         this.distanzaMax=distanzaMax;
     }
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         if(this.distanzaMax<annuncio.getDistanzaCentro()) 
             return 0;
         

@@ -12,16 +12,16 @@ import Casa.CameraDisponibile;
  *
  * @author alberto
  */
-public class TipoCamera extends ParametroRicercaAnnuncio{
+class TipoCamera extends ParametroRicercaAnnuncio{
     private int postiLetto;
 
-    public TipoCamera(int stelle, int postiLetto) {
+    TipoCamera(int stelle, int postiLetto) {
         super(stelle);
         this.postiLetto = postiLetto;
     }
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         float stelleTemporanee = 0;
         // TODO le case senza posti disponibili le eliminiamo dalla ricerca 
         // prima di mandarla??

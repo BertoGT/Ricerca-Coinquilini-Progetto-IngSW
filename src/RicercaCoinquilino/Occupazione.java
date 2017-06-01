@@ -11,17 +11,17 @@ import ProfiloUtente.Utente;
  *
  * @author Delbo
  */
-public class Occupazione extends ParametroRicercaCoinquilino{
+class Occupazione extends ParametroRicercaCoinquilino{
 
     private ProfiloUtente.Occupazione occupazione;
     
-    public Occupazione(int stelle,ProfiloUtente.Occupazione occupazione) {
+    Occupazione(int stelle,ProfiloUtente.Occupazione occupazione) {
         super(stelle);
         this.occupazione=occupazione;
     }
 
     @Override
-    public float calcolaAffinità(Utente utente) {
+    float calcolaAffinità(Utente utente) {
         if(utente.getDatiUtente().getOccupazione()==this.occupazione)
             return super.getStelle();
         else

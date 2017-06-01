@@ -12,16 +12,16 @@ import Casa.HouseGenerality;
  *
  * @author alberto
  */
-public class SessoCasa extends ParametroRicercaAnnuncio{
+class SessoCasa extends ParametroRicercaAnnuncio{
     private HouseGenerality sesso;
 
-    public SessoCasa(int stelle, HouseGenerality sesso) {
+    SessoCasa(int stelle, HouseGenerality sesso) {
         super(stelle);
         this.sesso = sesso;
     }
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         if(sesso == HouseGenerality.MISTA) {
             if(sesso == annuncio.getSessoCasa())
                 return super.getStelle();
