@@ -122,7 +122,7 @@ label{
 	text-align: right;
 }
 
-input{
+input, textarea{
 	border-radius: 4px;
 	display: inline;
 	width: 150px;
