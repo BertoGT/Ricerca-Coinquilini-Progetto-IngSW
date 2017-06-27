@@ -22,9 +22,15 @@ public class RicercaAnnuncio {
     private ContenitoreParametriAnnuncio parametriRicerca;
     private ArrayList<AnnuncioRisultante> annunciRisultanti;
 
+    /**
+     * Istanzia un oggetto che esegue la ricerca di un annuncio casa
+     * @param parametriRicerca contenitore dei parametri di ricerca
+     * @throws SQLException
+     * @throws NessunAnnuncioException se nessun annuncio soddisfa i criteri di ricerca inseriti
+     */
     public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
-        this.annunciRisultanti = new ArrayList<AnnuncioRisultante>();
+        this.annunciRisultanti = new ArrayList<>();
         caricaAnnunciTotali();
     }
    
@@ -53,6 +59,10 @@ public class RicercaAnnuncio {
         }
     }
     
+    /**
+     * Esegue la ricerca degli annunci compatibili e li ordina per punteggio (affinità) descrescente
+     * @return Lista degli annunci compatibili ordinati per affinita descrescente
+     */
     public ArrayList<AnnuncioRisultante> eseguiRicerca() {
         
         calcolaAffinita();

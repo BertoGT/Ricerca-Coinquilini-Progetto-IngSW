@@ -13,18 +13,18 @@ import ProfiloUtente.Utente;
  *
  * @author Niko
  */
-public class Eta extends ParametroRicercaCoinquilino{
+class Eta extends ParametroRicercaCoinquilino{
     
     private int etaMin, etaMax;
 
-    public Eta(int stelle, int etaMin, int etaMax) {
+    Eta(int stelle, int etaMin, int etaMax) {
         super(stelle);
         this.etaMin = etaMin;
         this.etaMax = etaMax;
     }
 
     @Override
-    public float calcolaAffinità(Utente utente) {
+    float calcolaAffinità(Utente utente) {
         if(utente.getDatiUtente().getDataDiNascita().getEta() <= etaMax && utente.getDatiUtente().getDataDiNascita().getEta() >= etaMin)
             return super.getStelle();
         else 

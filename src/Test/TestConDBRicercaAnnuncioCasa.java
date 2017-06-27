@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author cl428444
  */
-public class TestConDBRicerche {
+public class TestConDBRicercaAnnuncioCasa {
     
     public static void main(String[] args) throws SQLException, CameraNonInseritaException {
         

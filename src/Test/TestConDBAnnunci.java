@@ -24,6 +24,7 @@ public class TestConDBAnnunci {
         
             BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
             
+            
 //            int idProprietario = 10;
 //            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.MASCHI));
 //            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa del capo progetto", 390));

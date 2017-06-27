@@ -11,16 +11,16 @@ import Casa.AnnuncioCasa;
  *
  * @author alberto
  */
-public class NumeroBagni extends ParametroRicercaAnnuncio{
+class NumeroBagni extends ParametroRicercaAnnuncio{
     private int numeroBagni;
 
-    public NumeroBagni(int stelle, int numeroBagni) {
+    NumeroBagni(int stelle, int numeroBagni) {
         super(stelle);
         this.numeroBagni = numeroBagni;
     }
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         if(numeroBagni <= annuncio.getNumeroBagni())
             return super.getStelle();
         else

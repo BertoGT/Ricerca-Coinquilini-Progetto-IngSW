@@ -12,17 +12,17 @@ import RicercaCoinquilino.ParametroRicercaCoinquilino;
  *
  * @author Delbo
  */
-public class Sportivo extends ParametroRicercaCoinquilino{
+class Sportivo extends ParametroRicercaCoinquilino{
 
     private boolean sportivo;
     
-    public Sportivo(int stelle,boolean sportivo) {
+    Sportivo(int stelle,boolean sportivo) {
         super(stelle);
         this.sportivo=sportivo;
     }
 
     @Override
-    public float calcolaAffinità(Utente utente) {
+    float calcolaAffinità(Utente utente) {
         if(this.sportivo){
             if(utente.getDatiUtente().isSportivo())
                 return super.getStelle();
