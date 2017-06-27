@@ -19,7 +19,7 @@ public class TesterServlet {
         Server server = new Server(8080);
 		try {
 			ServletContextHandler handler = new ServletContextHandler();
-			handler.addServlet(RegistrationServlet.class, "/registrazione.html");
+			handler.addServlet(RegistrationServlet.class, "/registrazione");
 			server.setHandler(handler);
 			server.start();
 			/**
