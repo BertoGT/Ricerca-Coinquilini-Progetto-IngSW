@@ -42,6 +42,12 @@ public class ProfileManager {
         return "\nPROFILO UTENTE\n" + this.utente.toString()+"\n";
     }
     
+    public void creaAnnuncio(String descrizioneAggiuntiva, int idAnnuncio, int costo, String nomeCognomeProprietario, String cellulareProprietario, String emailProprietario) throws AnnuncioException{
+        if(this.annuncioCasa==null)
+            this.annuncioCasa = new AnnuncioCasa(descrizioneAggiuntiva, 0, 0, nomeCognomeProprietario, cellulareProprietario, emailProprietario);
+        else
+            throw new AnnuncioException("Cancellare annuncio precedente prima di crearne uno nuovo!");
+    }
     
     
     
