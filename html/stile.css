@@ -99,7 +99,7 @@ h1{
 
 .sfondo{
 	margin-top: 0px;
-	background: url('https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/immagini/mattoni.jpg') center center;
+	background: url('/immagini/mattoni.jpg') center center;
 	min-height: 800px;
 	background-attachment: fixed;
 	opacity: 1;
