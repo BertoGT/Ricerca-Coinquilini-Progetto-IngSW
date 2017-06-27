@@ -24,5 +24,12 @@ public class RegistrationServlet extends HttpServlet {
         response.setStatus(200);
         response.getWriter().println(registrazioneHtml);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }
