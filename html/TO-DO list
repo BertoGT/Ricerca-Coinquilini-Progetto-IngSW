@@ -1,0 +1,14 @@
+pagina di login deve non essere accessibili se gia loggati 
+registrare dominio , rooming.cloud ?? 
+aggiungere login tramite facebook con l'SDK (già nella pagina login dovrebbe) 
+
+bottoni mainpage larghi uguali
+colore footer come navbar rgba(192, 192, 192, 1) non va
+logo su sfondo vuoto
+
+descrizione chi siamo : nome , breve descr, contatti.
+footer:
+	contattaci, a rooming.ita@gmail.com e altre cose a caso.
+	
+
+

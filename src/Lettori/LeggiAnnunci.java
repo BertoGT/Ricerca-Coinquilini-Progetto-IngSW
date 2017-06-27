@@ -30,7 +30,7 @@ public class LeggiAnnunci {
             br_case = new BufferedReader(new FileReader("file/annunci.txt"));
             while(br_case.ready()){
                String[] str = br_case.readLine().split(";");
-               annunci.add(new AnnuncioCasa(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2])));
+               //annunci.add(new AnnuncioCasa(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2])));
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(LeggiAnnunci.class.getName()).log(Level.SEVERE, null, ex);
