@@ -5,7 +5,11 @@
  */
 package Servlet;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -13,5 +17,12 @@ import javax.servlet.http.HttpServlet;
  * @author Marco La Salvia
  */
 public class RegistrationServlet extends HttpServlet {
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
+        response.setStatus(200);
+        response.getWriter().println(registrazioneHtml);
+    }
     
 }
