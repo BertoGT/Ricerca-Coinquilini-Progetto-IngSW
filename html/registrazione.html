@@ -11,24 +11,85 @@
     };
 </script> 
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/stile.css" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/master/html/stile.css" type="text/css">
 <title>Rooming</title>
 </head>
 <body onload="caricabarra()">
 <div id="navbarra"></div>
 <div id="sfondoform" class="sfondo">
 		<p><h1>Inserisci i tuoi dati:</h1></p>
-		<form method="post" action="https://github.com/IngSW-unipv/Progetto-G/blob/master/html/registrazione.html" id="form">
+		<form name="form" method="post" action="http://localhost:8080/registrazione" id="form">
 		<p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value=""></p>
 		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognnome"  value=""></p>		
 		<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value=""></p>	
-		<p><label>Sesso*   &nbsp; </label><input style="width:75px" type="radio" name="sesso" value="M">M<input style="width:75px" type="radio" name="sesso" value="F">F</p>
+		<p><label>Sesso*   &nbsp; </label><input style="width:75px" type="radio" name="maschio" value="M">M<input style="width:75px" type="radio" name="femmina" value="F">F</p>
 		<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value=""></p>	
 		<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
-		<p><label>Nazionalità &nbsp; </label><input type="text" name="nazionalità" value=""></p>	
-		<p><label>Occupazione &nbsp;</label><select name="occupazione"><option value="S">Studente</option><option value="L">Lavoratore</option></select></p>
+		<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
+			<option value="ITALIA">ITALIA</option>
+			<option value="PORTOGALLO">PORTOGALLO</option>
+			<option value="SPAGNA">SPAGNA</option>
+			<option value="IRLANDA">IRLANDA</option>
+			<option value="REGNO_UNITO">REGNO_UNITO</option>
+			<option value="PAESI_BASSI">PAESI_BASSI</option>
+			<option value="BELGIO">BELGIO</option>
+			<option value="GERMANIA">GERMANIA</option>
+			<option value="REPUBBLICA_CECA">REPUBBLICA_CECA</option>
+			<option value="NORVEGIA">NORVEGIA</option>
+			<option value="SVEZIA">SVEZIA</option>
+			<option value="FINLANDIA">FINLANDIA</option>
+			<option value="RUSSIA">RUSSIA</option>
+			<option value="ESTONIA">ESTONIA</option>
+			<option value="LETTONIA">LETTONIA</option>
+			<option value="LITUANIA">LITUANIA</option>
+			<option value="KAZAKISTAN">KAZAKISTAN</option>
+			<option value="DANIMARCA">DANIMARCA</option>
+			<option value="POLONIA">POLONIA</option>
+			<option value="BIELORUSSIA">BIELORUSSIA</option>
+			<option value="UCRAINA">UCRAINA</option>	
+			<option value="SLOVACCHIA">SLOVACCHIA</option>
+			<option value="ROMANIA">ROMANIA</option>
+			<option value="MOLDAVIA">MOLDAVIA</option>
+			<option value="GEORGIA">GEORGIA</option>
+			<option value="AZERBAIGIAN">AZERBAIGIAN</option>
+			<option value="ARMENIA">ARMENIA</option>
+			<option value="FRANCIA">FRANCIA</option>
+			<option value="SVIZZERA">SVIZZERA</option>
+			<option value="SLOVENIA">SLOVENIA</option>
+			<option value="CROAZIA">CROAZIA</option>
+			<option value="BOSNIA">BOSNIA</option>
+			<option value="SERBIA">SERBIA</option>
+			<option value="BULGARIA">BULGARIA</option>
+			<option value="MACEDONIA">MACEDONIA</option>
+			<option value="ALBANIA">ALBANIA</option>
+			<option value="GRECIA">GRECIA</option>
+			<option value="TURCHIA">TURCHIA</option>
+			<option value="SIRIA">SIRIA</option>
+			<option value="IRAQ">IRAQ</option>
+			<option value="CIPRO">CIPRO</option>
+			<option value="LIBANO">LIBANO</option>
+			<option value="GIORDANIA">GIORDANIA</option>
+			<option value="ARABIA_SAUDITA">ARABIA_SAUDITA</option>
+			<option value="ISRAELE">ISRAELE</option>
+			<option value="MYANMAR">MYANMAR</option>
+			<option value="TUNISIA">TUNISIA</option>
+			<option value="ALGERIA">ALGERIA</option>
+			<option value="MAROCCO">MAROCCO</option>
+			<option value="AFRICA">AFRICA</option>
+			<option value="AUSTRALIA">AUSTRALIA</option>
+			<option value="AMERICA">AMERICA</option>
+			<option value="CANADA">CANADA</option>
+			<option value="ARGENTINA">ARGENTINA</option>
+			<option value="CINA">CINA</option>
+			<option value="GIAPPONE">GIAPPONE</option>
+			<option value="FILIPPINE">FILIPPINE</option>
+			<option value="ALTRO">ALTRO</option>
+
+		</select></p>	
+		<p><label>Occupazione &nbsp;</label><select name="occupazione">
+			<option value="STUDENTE">Studente</option>
+			<option value="LAVORATORE">Lavoratore</option>
+			<option value="ALTRO">Altro</option></select></p>
 		<p><label>Fumatore &nbsp;</label> <input type="checkbox" name="fumatore" value="F"></p>	
 		<p><label>Cucini? &nbsp;</label> <input type="checkbox" name="cuoco" value="C"></p>
 		<p><label>Sportivo? &nbsp;</label> <input type="checkbox" name="sportivo" value="S"></p>
