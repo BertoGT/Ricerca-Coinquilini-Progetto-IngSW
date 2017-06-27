@@ -12,21 +12,25 @@ import Casa.CameraDisponibile;
  *
  * @author alberto
  */
-public class TipoCamera extends ParametroRicercaAnnuncio{
+class TipoCamera extends ParametroRicercaAnnuncio{
     private int postiLetto;
 
-    public TipoCamera(int stelle, int postiLetto) {
+    TipoCamera(int stelle, int postiLetto) {
         super(stelle);
         this.postiLetto = postiLetto;
     }
 
     @Override
-    public float calcolaAffinità(AnnuncioCasa annuncio) {
+    float calcolaAffinità(AnnuncioCasa annuncio) {
         float stelleTemporanee = 0;
         // TODO le case senza posti disponibili le eliminiamo dalla ricerca 
         // prima di mandarla??
+        boolean cameraLibera = false;
         for (CameraDisponibile camera : annuncio.getCamere()) {
+            if(camera==null)
+                break;
             if(camera.getPostiLettoDisponibili() != 0) {
+                cameraLibera = true;
                 if(postiLetto == camera.getPostiLetto()) {
                     stelleTemporanee = super.getStelle();
                     break;
@@ -34,8 +38,11 @@ public class TipoCamera extends ParametroRicercaAnnuncio{
                     stelleTemporanee = ((float) super.getStelle() / 2);
                 }
             }
-        }
-        return stelleTemporanee;                 
+        } 
+        if(cameraLibera)
+            return stelleTemporanee;      
+        else 
+            return -1;
     }
     
 }

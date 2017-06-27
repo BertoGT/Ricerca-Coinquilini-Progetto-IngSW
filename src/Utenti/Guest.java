@@ -5,21 +5,37 @@
  */
 package Utenti;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Marco La Salvia
  */
-public class Guest extends WebSurfer {
+public class Guest implements Power{
     private int power;
-
-    public Guest(int numeroUtente) {
-        super(numeroUtente);
+    private Calendar dataOraAccesso;
+    
+    public Guest() {
         this.power = 0;
+        this.dataOraAccesso = null;
+    }
+
+    public Calendar getDataOraAccesso() {
+        return dataOraAccesso;
+    }
+
+    public void setDataOraAccesso(Calendar dataOraAccesso) {
+        this.dataOraAccesso = dataOraAccesso;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Guest{" + "power=" + power + '}';
+        return "\nACCESSO: " +this.dataOraAccesso.toString() + "\nGUEST \nPOWER: " + this.power;
+    }
+
+    @Override
+    public int getPower() {
+        return this.power;
     }
     
 }

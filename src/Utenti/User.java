@@ -6,46 +6,51 @@
 package Utenti;
 
 import ProfiloUtente.DatiUtente;
+import ProfiloUtente.ProfileManager;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
  *
  * @author Marco La Salvia
  */
-public class User extends WebSurfer{
-    private int power;
-    private DatiUtente dati;
-    private boolean loggedIn;
+public class User implements Power{
     
-    public User(int numeroUtente, DatiUtente dati){
-        super(numeroUtente);
-        this.loggedIn = false;
+    private int power;
+    private ProfileManager profileManager;
+    private Calendar dataOraAccesso;
+
+    public User(){
         this.power = 1;
-        this.dati = dati;
+        this.dataOraAccesso = null;
     }
 
+    @Override
     public int getPower() {
         return power;
+    }  
+
+    @Override
+    public String toString() {
+        return "\nACCESSO: " +this.dataOraAccesso.toString() + "\nUSER \nPOWER: " + this.power;
     }
 
-    public String geteMail() {
-        return dati.geteMail();
+    public Calendar getDataOraAccesso() {
+        return dataOraAccesso;
     }
 
-    public String getPassword() {
-        return dati.getPassword();
+    public void setDataOraAccesso(Calendar dataOraAccesso) {
+        this.dataOraAccesso = dataOraAccesso;
     }
 
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
+    public ProfileManager getProfileManager() {
+        return profileManager;
+    }  
 
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
+    public void setProfileManager(ProfileManager profileManager) {
+        this.profileManager = profileManager;
     }
-    
-    
     
 }

@@ -5,7 +5,12 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import BusinessModel.BusinessModelAnnuncio;
+import Exceptions.NessunAnnuncioException;
+import ProfiloUtente.Sesso;
+import ProfiloUtente.Utente;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,23 +20,33 @@ import java.util.Collections;
  */
 public class RicercaCoinquilino {
     
-    private ArrayList<DatiUtente> utentiTotali;
+    private ArrayList<Utente> utentiTotali;
     private ContenitoreParametriCoinquilino parametriRicerca;
     private ArrayList<CoinquilinoRisultante> coinquiliniRisultanti;
 
-    public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) {
-        // TODO carica gli utenti che si candidano da DB
+    /**
+     * Istanzia un oggetto che esegue la ricerca di un potenziale coinquilino
+     * @param parametriRicerca contenitore dei parametri di ricerca
+     * @throws SQLException
+     * @throws NessunAnnuncioException se nessun coinquilino soddisfa i criteri di ricerca inseriti
+     */
+    public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) throws SQLException, NessunAnnuncioException {
         this.parametriRicerca = parametriRicerca;
         this.coinquiliniRisultanti= new ArrayList<>();
+        caricaDati();
     }
     
     private void calcolaAffinita() {
-        for (DatiUtente dati : utentiTotali) {
+        for (Utente dati : utentiTotali) {
+            if(dati==null)
+                break;
             float affinitaTotale = 0;
             int totaleStelle = 0;
             boolean coinquilinoIncompatibile = false;
             
             for (ParametroRicercaCoinquilino parametroRicerca : parametriRicerca.getParametri()) {
+                if(parametroRicerca==null)
+                    break;
                 totaleStelle += parametroRicerca.getStelle();
                 float affinita = parametroRicerca.calcolaAffinità(dati);
                 if(affinita == -1) {
@@ -48,11 +63,21 @@ public class RicercaCoinquilino {
         }
     }
     
+    /**
+     * Esegue la ricerca degi coinquilini e li ordina per punteggio (affinità) descrescente
+     * @return Lista di potenziali conquilino compatibili ordinati per affinita descrescente
+     */
     public ArrayList<CoinquilinoRisultante> eseguiRicerca() {
         calcolaAffinita();
         Collections.sort(coinquiliniRisultanti);
         return coinquiliniRisultanti;
     } 
+    
+    private void caricaDati() throws SQLException, NessunAnnuncioException{
+        BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
+        utentiTotali = bm.getAnnunciCoinquilini(parametriRicerca.getCittaDiRicerca(), 
+                parametriRicerca.getSesso());
+    }
     
     
     

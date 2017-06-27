@@ -5,25 +5,25 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Utente;
 
 /**
  *
  * @author Delbo
  */
-public class Cuoco extends ParametroRicercaCoinquilino {
+class Cuoco extends ParametroRicercaCoinquilino {
 
     private boolean cuoco;
     
-    public Cuoco(int stelle,boolean cuoco) {
+    Cuoco(int stelle,boolean cuoco) {
         super(stelle);
         this.cuoco=cuoco;
     }
 
     @Override
-    public float calcolaAffinità(DatiUtente utente) {
+    float calcolaAffinità(Utente utente) {
         if(this.cuoco){
-            if(utente.isCuoco())
+            if(utente.getDatiUtente().isCuoco())
                 return super.getStelle();
             else
                 return 0;

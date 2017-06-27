@@ -5,224 +5,333 @@
  */
 package ProfiloUtente;
 
+import Casa.Citta;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 /**
- *
- * @author Margherita
+ * 
+ * @author Marco La Salvia
  */
+
 public class DatiUtente {
     
-    
-    private SimpleDateFormat sdf;
-    private GregorianCalendar dataDiNascita= new GregorianCalendar();
-    private String miaData;
-    private String eMail, password,cellulare;
-    private int giorno, mese, anno;
-    private int eta;
+    private DataDiNascita dataDiNascita;
+    private String eMail, password, numeroDiTelefono;
     private Sesso sesso; 
     private boolean fumatore, cuoco, sportivo; 
     private String nome, cognome;
-    private Nazionalita nazionalita;
+    private Nazione nazionalita;
     private Occupazione occupazione; 
     private boolean potenzialeCoinquilino;
     private Facolta facolta;
-    private String cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini
-    
-    
-    public DatiUtente(String nome, String cognome, Sesso sesso, String eMail, String password, int giorno, int mese, int anno) throws ParseException {
-
+    private Citta cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini 
+    /**
+     *
+     * @param nome 
+     * @param cognome
+     * @param sesso
+     * @param eMail
+     * @param password
+     * @param giorno
+     * @param mese
+     * @param anno
+     * @param cellulare
+     * @param nazionalita
+     * @param occupazione
+     * @param facolta
+     * @param fumatore
+     * @param cuoco
+     * @param sportivo
+     * @param cittaDiRicerca
+     * @throws ParseException
+     */
+    public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
+            
+            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws ParseException {
+        
         this.nome=nome;
         this.cognome=cognome;
         this.sesso=sesso;
         this.eMail = eMail;
         this.password = password;
-        calcoloEta(giorno, mese, anno);
-        
-    }
-
-    public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazionalita nazionalita, 
-            
-            Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, String cittaDiRicerca) throws ParseException {
-        
-        this.nome=nome;
-        this.cognome=cognome;
-        this.sesso=sesso;
-        calcoloEta(giorno, mese, anno);
-        this.cellulare=cellulare;
-        this.cittaDiRicerca = cittaDiRicerca;
-        this.nazionalita=nazionalita;
+        this.dataDiNascita = new DataDiNascita(giorno, mese, anno);
+        this.numeroDiTelefono=cellulare;
+        this.nazionalita = nazionalita;
         this.occupazione=occupazione;
         this.facolta=facolta;
         this.fumatore=fumatore;
         this.cuoco=cuoco;
         this.sportivo=sportivo;
-        this.potenzialeCoinquilino=false; // diventa true in caso di candidatura come coinquilino
-
-    }
-    
-    
-    private void calcoloEta(int giorno, int mese, int anno) throws ParseException {
-        
-        this.anno=anno;
-        this.mese=mese;
-        this.giorno=giorno;
-        this.sdf= new SimpleDateFormat("dd/MM/yyyy");
-        this.miaData= giorno+"/"+mese+"/"+anno;
-        dataDiNascita.setTime(sdf.parse(this.miaData));
-        
-        Calendar c= new GregorianCalendar();
-        
-        eta=c.get(Calendar.YEAR)-anno;    // calcolo età solo in base all'anno, non in base al mese e al giorno
+        this.cittaDiRicerca = cittaDiRicerca;
+        this.potenzialeCoinquilino = potenzialeCoinquilino; 
     }
 
-    public Calendar getDataDiNascita() {
+    /**
+     *
+     * @return RESTITUISCE LA DATA DI NASCITA DELL'UTENTE.
+     */
+    public DataDiNascita getDataDiNascita() {
         return dataDiNascita;
     }
 
-    public Sesso getSesso() {
-        return sesso;
+    /**
+     *
+     * @param giorno: GIORNO DI NASCITA.
+     * @param mese: MESE DI NASCITA.
+     * @param anno: ANNO DI NASCITA.
+     */
+    public void setDataDiNascita(int giorno, int mese, int anno) {
+        this.dataDiNascita = new DataDiNascita(giorno,mese,anno);
     }
 
-    public int getEta() {
-        return eta;
-    }
-
-    public String getCellulare() {
-        return cellulare;
-    }
-    
-    
-    public Nazionalita getNazionalita() {
-        return nazionalita;
-    }
-
-    public boolean isFumatore() {
-        return fumatore;
-    }
-
-    public boolean isCuoco() {
-        return cuoco;
-    }
-
-    public boolean isSportivo() {
-        return sportivo;
-    }
-
+    /**
+     *
+     * @return RESTITUISCE L'EMAIL DELL'UTENTE.
+     */
     public String geteMail() {
         return eMail;
     }
 
+    /**
+     *
+     * @param eMail: EMAIL INSERITA DURANTE LA REGISTRAZIONE.
+     */
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    /**
+     *
+     * @return RESTITUISCE LA PASSWORD DELL'UTENTE.
+     */
     public String getPassword() {
         return password;
     }
 
-    public String getNome() {
-        return nome;
+    /**
+     *
+     * @param password: PASSWORD INSERITA DURANTE LA REGISTRAZIONE.
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getCognome() {
-        return cognome;
+    /**
+     *
+     * @return RESTITUISCE IL NUMERO DI TELEFONO DELL'UTENTE.
+     */
+    public String getNumeroDiTelefono() {
+        return numeroDiTelefono;
     }
 
-    public String getCittaDiRicerca() {
-        return cittaDiRicerca;
+    /**
+     *
+     * @param numeroDiTelefono: NUMERO TELEFONICO INSERITO DALL'UTENTE PER ESSERE CONTATTATO.
+     */
+    public void setNumeroDiTelefono(String numeroDiTelefono) {
+        this.numeroDiTelefono = numeroDiTelefono;
     }
 
-    public Occupazione getOccupazione() {
-        return occupazione;
+    /**
+     *
+     * @return RESTITUISCE IL SESSO, M O F, DELL'UTENTE.
+     */
+    public Sesso getSesso() {
+        return sesso;
     }
 
-    public boolean isPotenzialeCoinquilino() {
-        return potenzialeCoinquilino;
-    }
-
-    public Facolta getFacolta() {
-        return facolta;
-    }
-
-    public void setDataDiNascita(int giorno, int mese, int anno) throws ParseException {
-        
-        calcoloEta(giorno, mese, anno);   
-    }
-
-    public void setCellulare(String cellulare) {
-        this.cellulare = cellulare;
-    }
-    
-    
+    /**
+     *
+     * @param sesso: MASCHIO O FEMMINA.
+     */
     public void setSesso(Sesso sesso) {
         this.sesso = sesso;
     }
 
+    /**
+     *
+     * @return RESTITUISCE TRUE SE L'UTENTE E' UN FUMATORE, VICEVERSA RESTITUISCE FALSE.
+     */
+    public boolean isFumatore() {
+        return fumatore;
+    }
+
+    /**
+     *
+     * @param fumatore: TRUE SE L'UTENTE E' FUMATORE, FALSE SE NON LO E'.
+     */
     public void setFumatore(boolean fumatore) {
         this.fumatore = fumatore;
     }
 
+    /**
+     *
+     * @return RESTITUISCE TRUE SE L'UTENTE SI RITIENE UNA PERSONA CAPACE DI CUCINARE, VICEVERSA RESTITUISCE FALSE.
+     */
+    public boolean isCuoco() {
+        return cuoco;
+    }
+
+    /**
+     *
+     * @param cuoco: TRUE SE L'UTENTE SI RITIENE IN GRADO DI CUCINARE DISCRETAMENTE, FALSE SE NON LO E'.
+     */
     public void setCuoco(boolean cuoco) {
         this.cuoco = cuoco;
     }
 
+    /**
+     *
+     * @return RESTITUISCE TRUE SE L'UTENTE SI RITIENE UNA PERSONA CHE PRATICA SPORT, VICEVERSA RESTITUISCE FALSE.
+     */
+    public boolean isSportivo() {
+        return sportivo;
+    }
+
+    /**
+     *
+     * @param sportivo: TRUE SE L'UTENTE PRATICA SPORT, VICEVERSA FALSE.
+     */
     public void setSportivo(boolean sportivo) {
         this.sportivo = sportivo;
     }
 
+    /**
+     *
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENENTE IL NOME DELL'UTENTE.
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     *
+     * @param nome: STRINGA DI TESTO CON IL NOME DELL'UTENTE.
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     *
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENENTE IL COGNOME DELL'UTENTE.
+     */
+    public String getCognome() {
+        return cognome;
+    }
+
+    /**
+     *
+     * @param cognome: STRINGA DI TESTO CON IL COGNOME DELL'UTENTE.
+     */
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
-    public void setCittaDiRicerca(String cittaDiRicerca) {
-        this.cittaDiRicerca = cittaDiRicerca;
+    /**
+     *
+     * @return RESTITUISCE LA NAZIONALITA' DELL'UTENTE.
+     */
+    public Nazione getNazionalita() {
+        return nazionalita;
     }
 
-    public void setNazionalita(Nazionalita nazionalita) {
+    /**
+     *
+     * @param nazionalita: ENUM CONTENENTE LA NAZIONE DI PROVENIENZA DELL'UTENTE.
+     */
+    public void setNazionalita(Nazione nazionalita) {
         this.nazionalita = nazionalita;
     }
 
+    /**
+     *
+     * @return RESTITUISCE L'OCCUPAZIONE DELL'UTENTE: STUDENTE, LAVORATORE O ALTRO.
+     */
+    public Occupazione getOccupazione() {
+        return occupazione;
+    }
+
+    /**
+     *
+     * @param occupazione: ENUM CONTENENTE L'OCCUPAZIONE DELL'UTENTE.
+     */
     public void setOccupazione(Occupazione occupazione) {
         this.occupazione = occupazione;
     }
-    
-    public void setEta(int eta) {
-        this.eta = eta;
+
+    /**
+     *
+     * @return RESTITUISCE TRUE SE L'UTENTE VUOLE ESSERE INSERITO IN UNA EVENTUALE RICERCA DI COINQUILINI DA PARTE DI UN SECONDO UTENTE, VICEVERSA RESTITUISCE FALSE.
+     */
+    public boolean isPotenzialeCoinquilino() {
+        return potenzialeCoinquilino;
     }
 
-
-    public void candidaturaCoinquilino(boolean potenzialeCoinquilino) {
+    /**
+     *
+     * @param potenzialeCoinquilino: TRUE SE L'UTENTE VUOLE CANDIDARSI COME POTENZIALE COINQUILINO.
+     */
+    public void setPotenzialeCoinquilino(boolean potenzialeCoinquilino) {
         this.potenzialeCoinquilino = potenzialeCoinquilino;
     }
 
+    /**
+     *
+     * @return RESTITUISCE LA FACOLTA FREQUENTATA DALL'UTENTE SE QUESTO E' UNO STUDENTE.
+     */
+    public Facolta getFacolta() {
+        return facolta;
+    }
+
+    /**
+     *
+     * @param facolta: ENUM DELLA FACOLTA FREQUENTATA DALL'UTENTE, SE STUDENTE.
+     */
+    public void setFacolta(Facolta facolta) {
+        this.facolta = facolta;
+    }
+
+    /**
+     *
+     * @return RESTITUISCE LA CITTA' IN CUI L'UTENTE CERCA CASA O COINQUILINI.
+     */
+    public Citta getCittaDiRicerca() {
+        return cittaDiRicerca;
+    }
+
+    /**
+     *
+     * @param cittaDiRicerca: ENUM CONTENTENTE LA CITTA' IN CUI LO STUDENTE CERCA CASA O COINQUILINI.
+     */
+    public void setCittaDiRicerca(Citta cittaDiRicerca) {
+        this.cittaDiRicerca = cittaDiRicerca;
+    }
+
+    /**
+     *
+     * @return RESTITUISCE UNA STRINGA DI TESTO CONTENTENTE IL RIASSUNTO DEI DATI DELL'UTENTE.
+     */
     @Override
     public String toString() {
-        return "DatiUtente: \n" + "- data di nascita = " + miaData + "\n- eta = "+ eta+ "\n- sesso = " + sesso + "\n- fumatore = " + fumatore 
-                
-                    + "\n- cuoco = " + cuoco + "\n- sportivo = " + sportivo + "\n- nome = " + nome + "\n- cognome = " + cognome + 
-                
-                    "\n- nazionalita = " + nazionalita + "\n- occupazione = " + occupazione + "\n- potenziale coinquilino = " 
-                
-                    + potenzialeCoinquilino + "\n- facolta = " + facolta ;
+        String s = "";
+        s += "NOME: "+this.nome + "\nCOGNOME: "+this.cognome +"\nDATA DI NASCITA: " +this.dataDiNascita.toString();
+        s += "\nSESSO: "+this.sesso + "\nEMAIL: "+this.eMail+"\nNAZIONALITA': "+this.nazionalita;
+        s+= "\nOCCUPAZIONE: "+this.occupazione+"\nFACOLTA': "+this.facolta;
+        if(this.fumatore)
+            s+="\nFUMATORE: SI";
+        else
+            s+="\nFUMATORE: NO";
+        if(this.cuoco)
+            s+="\nCUOCO: SI";
+        else
+            s+="\nCUOCO: NO";
+        if(this.sportivo)
+            s+="\nSPORTIVO: SI";
+        else
+            s+="\nSPORTIVO: NO";
+        s+= "\nCITTA' DI RICERCA: "+this.cittaDiRicerca;
+        return s;
     }
     
-    public String toStringDB(){
-              return eMail +"\t" +password+ "\t"+  miaData + "\nt"+ eta+ "t" + sesso + "\t" + fumatore 
-                
-                    + "\t" + cuoco + "\t" + sportivo + "\t" + nome + "\t" + cognome + 
-                
-                    "\t" + nazionalita + "\t" + occupazione + "\t" 
-                
-                    + potenzialeCoinquilino + "\t" + facolta ;    
 
-
-    }
-    
-    
-    
-    
 }

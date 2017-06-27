@@ -11,6 +11,6 @@ package ProfiloUtente;
  */
 public enum Occupazione {
     
-    Studente, Lavoratore, Altro;
+    STUDENTE, LAVORATORE, ALTRO;
     
 }

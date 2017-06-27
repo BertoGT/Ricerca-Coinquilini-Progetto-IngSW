@@ -10,12 +10,24 @@ import java.util.ArrayList;
  */
 public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
-    private HouseGender sessoCasa;
+    private HouseGenerality sessoCasa;
+    private ArrayList<ElettroDomestico> elettroDomestici;
     private boolean cucinaSeparata;
     private ArrayList<CameraDisponibile> camere;
-    private String citta, indirizzo;
-
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, String citta, String indirizzo, HouseGender sessoCasa) {
+    private Citta citta;
+    private String indirizzo;
+    /**
+     * Istanzia un oggetto InfoCasa
+     * @param metriQuadri metri quadrati della casa
+     * @param nLocali numero locali della casa
+     * @param numeroBagni numero di bagni della casa
+     * @param distanzaCentro dictanza dal centro della casa
+     * @param cucinaSeparata tipologia di cucina della casa
+     * @param citta citta di collocamento della casa
+     * @param indirizzo indirizzo della casa
+     * @param sessoCasa  indica il sesso delle persone all'interno della casa dell'annuncio
+     */
+    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa) {
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
@@ -24,35 +36,54 @@ public class InfoCasa {
         this.citta = citta;
         this.indirizzo = indirizzo;
         this.camere = new ArrayList<>();
+        this.elettroDomestici=new ArrayList<>();
         this.sessoCasa = sessoCasa;
         
     }
-
-    public void creaCamera(int idCamera, int postiLetto, int postiLettoDisponibili) throws CameraNonInseritaException {
-        boolean flag = false;
-        for (CameraDisponibile camera : camere) {
-            if(camera.getIdCamera() == idCamera) {
-               flag = true;
-               break;
-            }
-        }
-        if(flag)
-            throw new CameraNonInseritaException("Camera già presente");
-        else 
-            camere.add(new CameraDisponibile(idCamera, postiLetto, postiLettoDisponibili));
+    
+    public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
+        int indice=this.camere.size();
+        camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
     
     public void rimuoviCamera(int idCamera) throws CameraNonTrovataException {
-        boolean flag = false;
-        for (int i = 0; i < camere.size(); i++) {
-            if(camere.get(i).getIdCamera() == idCamera) {
-                camere.remove(i);
-                flag = true;
-                break;
+       boolean flag=false;
+       int indice=0;
+      
+       for(int i=0;i<this.camere.size();i++){
+           if(this.camere.get(i).getIdCamera()==idCamera){
+               indice=i;
+               flag=true;
+               break;
+           }
+       }
+       if(flag){
+           this.camere.remove(indice);
+           for(int j=indice;j<this.camere.size();j++){
+               this.camere.get(j).setIdCamera(j);
+           }
+       }
+        else
+            throw new CameraNonTrovataException("Camera non presente");
+    }
+  
+   
+    public void addElettroDomestico(ElettroDomestico elettroDomestico){
+        this.elettroDomestici.add(elettroDomestico);
+    }
+    
+    public void rimuoviElettroDomestico(ElettroDomestico elettroDomestico){
+        int indice=0;
+        boolean flag=false;
+        
+        for(int i=0; i<this.elettroDomestici.size();i++){
+            if(this.elettroDomestici.get(i)==elettroDomestico){
+                indice=i;
+                flag=true;
             }
         }
-        if(flag == false)
-            throw new CameraNonTrovataException("Camera non presente");
+        if(flag)
+            this.elettroDomestici.remove(indice);
     }
 
     public int getMetriQuadri() {
@@ -71,7 +102,7 @@ public class InfoCasa {
         return distanzaCentro;
     }
 
-    public HouseGender getSessoCasa() {
+    public HouseGenerality getSessoCasa() {
         return sessoCasa;
     }
 
@@ -83,7 +114,11 @@ public class InfoCasa {
         return camere;
     }
 
-    public String getCitta() {
+    public ArrayList<ElettroDomestico> getElettroDomestici() {
+        return elettroDomestici;
+    }
+
+    public Citta getCitta() {
         return citta;
     }
 
@@ -107,7 +142,7 @@ public class InfoCasa {
         this.distanzaCentro = distanzaCentro;
     }
 
-    public void setSessoCasa(HouseGender sessoCasa) {
+    public void setSessoCasa(HouseGenerality sessoCasa) {
         this.sessoCasa = sessoCasa;
     }
 
@@ -115,7 +150,7 @@ public class InfoCasa {
         this.cucinaSeparata = cucinaSeparata;
     }
 
-    public void setCitta(String citta) {
+    public void setCitta(Citta citta) {
         this.citta = citta;
     }
 

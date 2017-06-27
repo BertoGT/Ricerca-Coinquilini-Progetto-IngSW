@@ -15,7 +15,7 @@ public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
     private final float punteggio;
     private final AnnuncioCasa annuncio;
 
-    public AnnuncioRisultante(AnnuncioCasa annuncio, float punteggio) {
+    AnnuncioRisultante(AnnuncioCasa annuncio, float punteggio) {
         this.punteggio = punteggio;
         this.annuncio = annuncio;
     }
