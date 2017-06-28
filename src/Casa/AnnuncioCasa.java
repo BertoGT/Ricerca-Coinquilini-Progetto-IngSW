@@ -149,7 +149,11 @@ public class AnnuncioCasa {
     public String getEmailProprietario() {
         return emailProprietario;
     }
- 
+    
+    public ArrayList<ElettroDomestico> getElettroDomestici() {
+        return casa.getElettroDomestici();
+    }
+    
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }

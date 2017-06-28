@@ -6,6 +6,7 @@
 package RicercaAnnuncio;
 
 import Casa.Citta;
+import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import java.util.ArrayList;
 
@@ -96,7 +97,16 @@ public class ContenitoreParametriAnnuncio {
     public void setParametroTipoCamera(int stelle, int postiLetto) {
         parametriRicerca.add(new TipoCamera(stelle, postiLetto));
     }
-
+    
+    /**
+     * Imposta la preferenza sulla presenza in casa di elettrodomestici
+     * @param stelle
+     * @param elettro 
+     */
+    public void setElettrodomestico(int stelle, ElettroDomestico elettro){
+        parametriRicerca.add(new Elettrodomestico(stelle, elettro));
+    }
+    
     /**
      * Restituisce la lista dei parametri della ricerca inseriti
      * @return lista parametri ricerca
@@ -104,6 +114,8 @@ public class ContenitoreParametriAnnuncio {
     public ArrayList<ParametroRicercaAnnuncio> getParametriRicerca() {
         return parametriRicerca;
     }
+    
+    
     
     
 }

@@ -11,17 +11,17 @@ import ProfiloUtente.Utente;
  *
  * @author Delbo
  */
-class Facolta extends ParametroRicercaCoinquilino{
+public class Facolta extends ParametroRicercaCoinquilino{
     
     private ProfiloUtente.Facolta facolta;
 
-    Facolta(int stelle,ProfiloUtente.Facolta facolta) {
+    public Facolta(int stelle,ProfiloUtente.Facolta facolta) {
         super(stelle);
         this.facolta=facolta;
     }
 
     @Override
-    float calcolaAffinità(Utente utente) {
+    public float calcolaAffinità(Utente utente) {
         if(utente.getDatiUtente().getFacolta()==this.facolta)
             return super.getStelle();
         else
