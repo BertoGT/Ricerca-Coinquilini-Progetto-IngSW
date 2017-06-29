@@ -7,12 +7,14 @@ package Servlet;
 
 
 import Casa.Citta;
+import Exceptions.RegistrazioneException;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +49,7 @@ public class RegistrationServlet extends HttpServlet {
         String nazionalita = req.getParameter("nazionalita");
         String facolta= req.getParameter("facolta");
         String telefono = req.getParameter("cellulare");
+        String citta = req.getParameter("cittadiricerca ");
         String occupazione = req.getParameter("occupazione");
         String fumatore = req.getParameter("fumatore");
         String cuoco = req.getParameter("cuoco");
@@ -75,8 +78,16 @@ public class RegistrationServlet extends HttpServlet {
    
         try {
             Sistema sys= new Sistema();
-            sys.registrazioneUtente(nome, cognome, Sesso.valueOf(sesso), email, password, giorno, mese, anno, telefono, nazionalita, occupazione, facolta, fumatoreBoolean, cuocoBoolean, sportivoBoolean, Citta.valueOf(citta), false);
+            sys.registrazioneUtente(nome, cognome, Sesso.valueOf(sesso), email,
+                        password, giorno, mese, anno, telefono, Nazione.valueOf(nazionalita),
+                        Occupazione.valueOf(occupazione), Facolta.valueOf(facolta),
+                        fumatoreBoolean, cuocoBoolean, sportivoBoolean, Citta.valueOf(citta), false);
+           
         } catch (SQLException ex) {
+            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RegistrazioneException ex) {
+            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
