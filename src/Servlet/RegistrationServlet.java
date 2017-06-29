@@ -82,13 +82,18 @@ public class RegistrationServlet extends HttpServlet {
                         password, giorno, mese, anno, telefono, Nazione.valueOf(nazionalita),
                         Occupazione.valueOf(occupazione), Facolta.valueOf(facolta),
                         fumatoreBoolean, cuocoBoolean, sportivoBoolean, Citta.valueOf(citta), false);
+            String registrazioneEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
+            resp.setStatus(200);
+            resp.getWriter().println(registrazioneEffettuataHtml);
            
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ParseException ex) {
+            String erroreHtml = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(erroreHtml);
         } catch (RegistrazioneException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+           String erroreEmailHtml = HtmlReader.htmlReader("erroreEmailRegistrazione.html");
+            resp.setStatus(200);
+            resp.getWriter().println(erroreEmailHtml);
         }
         
         
