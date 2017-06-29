@@ -13,16 +13,20 @@ import javax.servlet.http.Cookie;
  * @author alberto
  */
 class CookieStorage {
-    private static CookieStorage instance = new CookieStorage();
-    private static ArrayList<Cookie> cookies = new ArrayList<>();
+    private static CookieStorage instance;
+    private ArrayList<Cookie> cookies;
     
-    private CookieStorage() {}
+    private CookieStorage() {
+        cookies = new ArrayList<>();
+    }
     
     static CookieStorage getInstance() {
+        if(instance == null)
+            instance = new CookieStorage();
         return instance;
     }
     
-    static boolean controllaPresenzaCookie(Cookie cookie) {
+    boolean controllaPresenzaCookie(Cookie cookie) {
         for (Cookie c : cookies) {
             if(c.getName().equals(cookie.getName()) && c.getValue().equals(cookie.getValue()))
                 return true;          
@@ -30,7 +34,7 @@ class CookieStorage {
         return false;
     }
     
-    static void salvaCookie(Cookie cookie) {
+    void salvaCookie(Cookie cookie) {
         cookies.add(cookie);
     }
     

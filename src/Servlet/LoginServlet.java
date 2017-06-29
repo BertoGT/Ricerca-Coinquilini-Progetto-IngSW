@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet{
             CookieStorage cookieStorage = CookieStorage.getInstance();
             cookieStorage.salvaCookie(cookie);
             resp.addCookie(cookie);
+            resp.sendRedirect("/homepage");
         } catch (SQLException | LoginException ex) {
             // aprire pagina in cui si dice che i dati di login sono sbagliati.
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

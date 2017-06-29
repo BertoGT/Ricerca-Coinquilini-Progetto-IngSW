@@ -21,6 +21,7 @@ public class TesterServlet {
 			ServletContextHandler handler = new ServletContextHandler();
 			handler.addServlet(RegistrationServlet.class, "/registrazione");
                         handler.addServlet(LoginServlet.class, "/login");
+                        handler.addServlet(HomePageServlet.class, "/homepage");
 			server.setHandler(handler);
 			server.start();
 			
