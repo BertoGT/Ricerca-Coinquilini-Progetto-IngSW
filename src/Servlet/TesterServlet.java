@@ -20,13 +20,10 @@ public class TesterServlet {
 		try {
 			ServletContextHandler handler = new ServletContextHandler();
 			handler.addServlet(RegistrationServlet.class, "/registrazione");
+                        handler.addServlet(LoginServlet.class, "/login");
 			server.setHandler(handler);
 			server.start();
-			/**
-			 * Le classi che generalmente gestiscono le richiete http si chiamano servlet
-			 * useremo un contesto di una servlet, ossia MyServlet che andremo a scrivere noi
-			 * questa gestirà tutte le richieste "chiamate" dalla URL cioè "servi tutto con questa nuova servlet" 
-			 */
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

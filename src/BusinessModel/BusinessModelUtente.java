@@ -38,7 +38,7 @@ public class BusinessModelUtente {
      * Istanzia un oggetto BusinessModelUtente
      * @throws SQLException 
      */
-    private BusinessModelUtente() throws SQLException {
+    BusinessModelUtente() throws SQLException {
         db = Database.getInstance();
     }
     /**

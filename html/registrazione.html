@@ -3,6 +3,18 @@
 <head>
   <!-- <script src="jquery.js"></script>  -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+        function convalidaPassword(form) {
+            if (form.password.value != form.confermapassword.value) {
+                alert("La passord inserita non coincide con la prima!");
+                form.password.focus();
+                form.password.select();
+                return false;
+            } else 
+                return true;
+        }
+    </script>
 
 <script> 
     function caricabarra(){
@@ -18,7 +30,7 @@
 <div id="navbarra"></div>
 <div id="sfondoform" class="sfondo">
 		<p><h1>Inserisci i tuoi dati:</h1></p>
-		<form name="form" method="post" action="http://localhost:8080/registrazione" id="form">
+<form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/registrazione" id="form">
                     <p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value="" required></p>
 		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognome"  value="" required></p>		
 		<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value="" required></p>	

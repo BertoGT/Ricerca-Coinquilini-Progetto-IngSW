@@ -55,7 +55,7 @@ public class Sistema {
         this.ricercaCoinquilino = null;
         this.annunciRisultanti = null;
     }
-    public String logIn(String eMail, String password) throws SQLException, LoginException{
+    public int logIn(String eMail, String password) throws SQLException, LoginException{
         int idUtente = this.bmUtente.login(eMail, password);
         this.switchToUser();
         Utente temp = new Utente(idUtente, this.bmUtente.getDatiUtente(idUtente));
@@ -63,8 +63,8 @@ public class Sistema {
            this.user.setProfileManager(new ProfileManager(temp, this.bmUtente.getAnnuncioUtente(idUtente)));
         } catch (NessunAnnuncioException ex) {
            this.user.setProfileManager(new ProfileManager(temp, null));
-        }       
-        return "LOGIN EFFETTUATO CON SUCCESSO\n";
+        }   
+        return idUtente;
     }
     public void registrazioneUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
