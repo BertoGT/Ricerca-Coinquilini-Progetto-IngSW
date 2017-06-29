@@ -43,7 +43,12 @@ public class InfoCasa {
     
     public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
         int indice=this.camere.size();
-        camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
+       
+        if(indice!=0)
+            indice=this.camere.get(indice-1).getIdCamera()+1;
+        
+        System.out.println(indice);
+        this.camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
     
     public void rimuoviCamera(int idCamera) throws CameraNonTrovataException {
@@ -59,9 +64,6 @@ public class InfoCasa {
        }
        if(flag){
            this.camere.remove(indice);
-           for(int j=indice;j<this.camere.size();j++){
-               this.camere.get(j).setIdCamera(j);
-           }
        }
         else
             throw new CameraNonTrovataException("Camera non presente");
