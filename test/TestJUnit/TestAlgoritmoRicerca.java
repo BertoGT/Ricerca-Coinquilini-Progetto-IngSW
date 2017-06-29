@@ -18,6 +18,7 @@ import ProfiloUtente.Sesso;
 import ProfiloUtente.Utente;
 import RicercaAnnuncio.AnnuncioRisultante;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
+import RicercaAnnuncio.DistanzaCentro;
 import RicercaAnnuncio.Elettrodomestico;
 import RicercaAnnuncio.RicercaAnnuncio;
 import java.sql.SQLException;
@@ -31,24 +32,6 @@ import org.junit.Test;
  * @author cl428444
  */
 public class TestAlgoritmoRicerca {
-    
-    @Test /*test con database, se si aggiunge/rimuove un annuncio nel db fallisce! */
-    public void testAlgoritmoRicercaAnnuncio() throws SQLException{
-        ContenitoreParametriAnnuncio c = new ContenitoreParametriAnnuncio(Citta.PAVIA);
-        c.setCostoMax(400);
-        c.setParametroCucina(5, true);
-        c.setParametroNBagni(1, 3);
-        c.setParametroNLocali(5, 2);
-        c.setParametroSessoCasa(4, HouseGenerality.MISTA);
-        c.setParametroTipoCamera(3, 1);
-        c.setParametroDistCentro(2, 1000);
-        try {
-            ArrayList<AnnuncioRisultante> annunciRisultanti = new RicercaAnnuncio(c).eseguiRicerca();
-            assertEquals(3, annunciRisultanti.size(), 0);
-        } catch (NessunAnnuncioException ex) {
-            System.out.println(ex.getMessage());
-        }   
-    }
     
     @Test
     public void testCalcoloAffinitaElettrodomesticoAnnuncio() throws SQLException, NessunAnnuncioException{
@@ -98,5 +81,14 @@ public class TestAlgoritmoRicerca {
         assertEquals(4, f.calcolaAffinità(u3), 0);
         assertEquals(0, f.calcolaAffinità(u2), 0);
         
+    }
+    
+    @Test
+    public void calcolaAffinitaDistanzaCentroAnnuncio(){
+        AnnuncioCasa ann1 = new AnnuncioCasa("casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com");
+        ann1.creaInfo(50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
+    
+        DistanzaCentro d=new DistanzaCentro(5,2000);
+        assertEquals(2.5, d.calcolaAffinità(ann1), 0);
     }
 }
