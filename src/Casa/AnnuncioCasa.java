@@ -5,7 +5,7 @@
  */
 package Casa;
 
-import Exceptions.CameraNonInseritaException;
+
 import Exceptions.CameraNonTrovataException;
 import ProfiloUtente.DatiUtente;
 import java.util.ArrayList;

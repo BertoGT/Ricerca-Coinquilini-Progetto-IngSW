@@ -7,7 +7,6 @@ package Test;
 
 import Casa.Citta;
 import Casa.HouseGenerality;
-import Exceptions.CameraNonInseritaException;
 import Exceptions.NessunAnnuncioException;
 import RicercaAnnuncio.AnnuncioRisultante;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
  */
 public class TestConDBRicercaAnnuncioCasa {
     
-    public static void main(String[] args) throws SQLException, CameraNonInseritaException {
+    public static void main(String[] args) throws SQLException {
         
         ContenitoreParametriAnnuncio c = new ContenitoreParametriAnnuncio(Citta.PAVIA);
         c.setCostoMax(400);

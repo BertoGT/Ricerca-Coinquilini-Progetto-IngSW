@@ -47,8 +47,6 @@ public class ProfileManager {
             this.annuncioCasa = new AnnuncioCasa(descrizioneAggiuntiva, 0, 0, nomeCognomeProprietario, cellulareProprietario, emailProprietario);
         else
             throw new AnnuncioException("Cancellare annuncio precedente prima di crearne uno nuovo!");
-    }
-    
-    
+    }  
     
 }
