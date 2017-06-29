@@ -20,9 +20,12 @@
 		<p><h1>Inserisci i tuoi dati:</h1></p>
 		<form name="form" method="post" action="http://localhost:8080/registrazione" id="form">
                     <p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value="" required></p>
-		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognnome"  value="" required></p>		
+		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognome"  value="" required></p>		
 		<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value="" required></p>	
-		<p><label>Sesso*   &nbsp; </label><input style="width:75px" type="radio" name="maschio" value="M">M<input style="width:75px" type="radio" name="femmina" value="F">F</p>
+		<p><label>Sesso*   &nbsp; </label><select name="sesso">
+                    <option value="M">Maschio</option>
+                    <option value="F">Femmina</option>
+                    </select></p>
 		<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value="" required></p>	
 		<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
 		<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
