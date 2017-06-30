@@ -10,7 +10,6 @@ import Casa.Citta;
 import Casa.HouseGenerality;
 import Exceptions.CameraNonTrovataException;
 import org.junit.*;
-import static org.junit.Assert.*;
 
 /**
  *

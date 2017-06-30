@@ -95,6 +95,22 @@ public class BusinessModelAnnuncio {
     }
     
     /**
+     * Elimina l'annuncio dell'utente
+     * @param idAnnuncio idAnnuncio da eliminare
+     * @return true se avviene l'eliminazione, false atrimenti
+     * @throws SQLException 
+     */
+    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa) throws SQLException {
+        db.apriConnesione();
+        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa);
+        db.chiudiConnessione();
+        if(result == 0)
+            return false;
+        else 
+            return true;
+    }
+    
+    /**
      * Inserisce su DB le informazioni che descrivono la casa 
      * @param info oggetto che descrive la casa da inserire
      * @return l'idCasa che rappresenta l'identificatore univoco della casa inserita
