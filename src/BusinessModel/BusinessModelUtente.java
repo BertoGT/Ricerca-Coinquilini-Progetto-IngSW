@@ -179,14 +179,8 @@ public class BusinessModelUtente {
     public boolean inserisciInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
-        String fac;
-        if(dati.getOccupazione() == Occupazione.STUDENTE)
-            fac = dati.getFacolta().name();
-        else 
-            fac = null;
-        
         int result = db.setInfoUtente(idUtente, dati.isFumatore(), dati.isCuoco(), dati.isSportivo(), 
-                dati.getOccupazione().name(), fac);
+                dati.getOccupazione().name(), dati.getFacolta().name());
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -203,14 +197,8 @@ public class BusinessModelUtente {
     public boolean modificaInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
         
-        String fac;
-        if(dati.getOccupazione() == Occupazione.STUDENTE)
-            fac = dati.getFacolta().name();
-        else 
-            fac = null;
-        
         int result = db.modificaInfoUtente(idUtente, dati.isFumatore(), dati.isCuoco(), dati.isSportivo(), 
-                dati.getOccupazione().name(), fac);
+                dati.getOccupazione().name(), dati.getFacolta().name());
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -266,9 +254,7 @@ public class BusinessModelUtente {
         } catch (ParseException ex) {
             Logger.getLogger(BusinessModelUtente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }
-
-       
+        }    
     }
     
     /**

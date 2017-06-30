@@ -38,4 +38,13 @@ class CookieStorage {
         cookies.add(cookie);
     }
     
+    void eliminaCookie(Cookie cookie) {
+        for (int i = 0; i<cookies.size(); i++) {
+            if(cookies.get(i).getName().equals(cookie.getName()) && cookies.get(i).getValue().equals(cookie.getValue())) {
+                cookies.remove(i);
+                break;
+            }
+        }
+    }
+    
 }
