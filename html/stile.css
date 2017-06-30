@@ -59,14 +59,16 @@ input.submit-btn{
 	font-weight: bolder;
 }
 
+
 input.homepage-btn{
 	width: 500px;
-	font-size: 30px;
-	padding: 10px 4px;
+	font-size: 25px;
     font-family: 'Raleway';
+	padding: 10px 4px;
 	font-weight: bolder;
     background-color: #3399FF;
 	border-radius: 5px;
+	box-shadow: 0px 4px 4px;
 	color: #fff;
 	letter-spacing: 2px;
 	text-decoration: none;
@@ -143,7 +145,7 @@ input, select, textarea{
 	display: inline;
 	width: 150px;
 	float: center;
-    	color: #000000;
+    color: #000000;
 }
 
 
