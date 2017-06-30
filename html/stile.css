@@ -122,16 +122,12 @@ label{
 	text-align: right;
 }
 
-input, textarea{
+input, select, textarea{
 	border-radius: 4px;
 	display: inline;
 	width: 150px;
 	float: center;
-	color: black;
-}
-
-input, select, textarea{
-    color: #000000;
+    	color: #000000;
 }
 
 
