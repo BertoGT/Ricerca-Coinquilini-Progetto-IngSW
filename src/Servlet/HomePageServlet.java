@@ -27,10 +27,10 @@ public class HomePageServlet extends HttpServlet{
         try {
             Sistema s = new Sistema();
             Cookie cookie = req.getCookies()[0]; 
+            int idUtente = Integer.parseInt(cookie.getName());
             
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
-                // imposta l'utente loggato
-                int a = 0;
+                s.settaLoggato(idUtente);
             }
         } catch (SQLException ex) {
             Logger.getLogger(HomePageServlet.class.getName()).log(Level.SEVERE, null, ex);

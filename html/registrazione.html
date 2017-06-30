@@ -23,7 +23,7 @@
     };
 </script> 
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/498a05/html/stile.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css">
 <title>Rooming</title>
 </head>
 <body onload="caricabarra()">
@@ -31,16 +31,16 @@
 <div id="sfondoform" class="sfondo">
 		<p><h1>Inserisci i tuoi dati:</h1></p>
 <form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/registrazione" id="form">
-                    <p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value="" required></p>
-		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognome"  value="" required></p>		
-		<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value="" required></p>	
-		<p><label>Sesso*   &nbsp; </label><select name="sesso">
+                    <p ><label>Nome*  &nbsp; </label><input type="text" style="color:#000000" name="nome" value="" required></p>
+		<p><label>Cognome*  &nbsp; </label><input type="text" style="color:#000000" name="cognome"  value="" required></p>		
+		<p><label>E-Mail*  &nbsp;</label><input type="text" style="color:#000000" name="email"  value="" required></p>	
+		<p><label>Sesso*   &nbsp; </label><select style="color:#000000" name="sesso">
                     <option value="M">Maschio</option>
                     <option value="F">Femmina</option>
                     </select></p>
-		<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value="" required></p>	
-		<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
-		<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
+		<p><label>Data di nascita* (YYYY-MM-GG) &nbsp;</label><input type="date" style="color:#000000" name="datadinascita"  value="" required></p>	
+		<p><label>Numero di telefono &nbsp;</label><input type="text" style="color:#000000" name="cellulare" value=""></p>	
+		<p><label>Nazionalita' &nbsp; </label><select style="color:#000000" name="nazionalita">
 			<option value="ITALIA">ITALIA</option>
 			<option value="PORTOGALLO">PORTOGALLO</option>
 			<option value="SPAGNA">SPAGNA</option>
@@ -101,12 +101,12 @@
 			<option value="ALTRO">ALTRO</option>
 
 		</select></p>	
-		<p><label>Occupazione &nbsp;</label><select name="occupazione">
+		<p><label>Occupazione &nbsp;</label><select style="color:#000000" name="occupazione">
 			<option value="STUDENTE">Studente</option>
 			<option value="LAVORATORE">Lavoratore</option>
 			<option value="ALTRO">Altro</option></select></p>
                         
-                <p><label>Facolta &nbsp;</label><select name="facolta">
+                <p><label>Facolta &nbsp;</label><select style="color:#000000" name="facolta">
 			<option value="NESSUNA">NESSUNA</option>
 			<option value="AGRARIA">AGRARIA</option>
 			<option value="ARCHITETTURA">ARCHITETTURA</option>
@@ -132,7 +132,7 @@
                         <option value="INFORMATICA">INFORMATICA</option>
                         <option value="ALTRO">ALTRO</option>
                     </select></p>
-                    <p><label>Città di ricerca &nbsp;</label><select name="cittadiricerca">
+                    <p><label>Città di ricerca &nbsp;</label><select style="color:#000000" name="cittadiricerca">
 			<option value="ALESSANDRIA">ALESSANDRIA</option>
                         <option value="AGRIGENTO">AGRIGENTO</option>
                         <option value="ANCONA">ANCONA</option>
@@ -245,8 +245,8 @@
 		<p><label>Fumatore &nbsp;</label> <input type="checkbox" name="fumatore" value="F"></p>	
 		<p><label>Cucini? &nbsp;</label> <input type="checkbox" name="cuoco" value="C"></p>
 		<p><label>Sportivo? &nbsp;</label> <input type="checkbox" name="sportivo" value="S"></p>
-		<p><label>Password*  &nbsp;</label><input type="password" name="password" value="" required></p>		
-		<p><label>Conferma Password* &nbsp; </label><input type="password" name="confermapassword" value="" required></p>	
+		<p><label>Password*  &nbsp;</label><input type="password" style="color:#000000" name="password" value="" required></p>		
+		<p><label>Conferma Password* &nbsp; </label><input type="password" style="color:#000000" name="confermapassword" value="" required></p>	
 		<p></p><input type="submit" class="submit-btn" value="Conferma registrazione">
 		<input type="reset" value="annulla" class="submit-btn">
 		</form>

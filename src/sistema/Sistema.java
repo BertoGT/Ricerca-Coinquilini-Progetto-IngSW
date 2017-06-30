@@ -77,6 +77,16 @@ public class Sistema {
         return idUtente;
     }
     
+    public void settaLoggato(int idUtente) throws SQLException {
+        this.switchToUser();
+        Utente temp = new Utente(idUtente, this.bmUtente.getDatiUtente(idUtente));
+        try {
+           this.user.setProfileManager(new ProfileManager(temp, this.bmUtente.getAnnuncioUtente(idUtente)));
+        } catch (NessunAnnuncioException ex) {
+           this.user.setProfileManager(new ProfileManager(temp, null));
+        }   
+    }
+    
     /**
      * 
      * @param nome NOME DELL'UTENTE
@@ -366,6 +376,16 @@ public class Sistema {
      */
     public ArrayList<CoinquilinoRisultante> getCoinquiliniRisultanti() {
         return coinquiliniRisultanti;
+    }
+    
+    /**
+     * VERIFICA LA PRESENZA DI ALMENO UN ANNUNCIO DI UN UTENTE
+     * @param idUtenteProprietario
+     * @return TRUE SE L'AQNNUNCIO È PRESENTE, ALTRIMENTI FALSE
+     * @throws SQLException 
+     */
+    public boolean verificaPresenzaAnnunci(int idUtenteProprietario) throws SQLException {
+        return bmUtente.verificaPresenzaAnnuncio(idUtenteProprietario);
     }
     
     

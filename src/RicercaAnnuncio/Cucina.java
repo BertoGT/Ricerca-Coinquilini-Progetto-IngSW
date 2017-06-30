@@ -14,13 +14,22 @@ import Casa.AnnuncioCasa;
 class Cucina extends ParametroRicercaAnnuncio{
     private boolean cucinaSeparata;
 
+    /**
+     * ISTANZIA UN OGGETTO DI TIPO CUCINA CHE È UN PARAMETRO PER LA RICERCA DI UN ANNUNCIO
+     * @param stelle INDICA IL NUMERO DI STELLE CHE VENGONO PASSATE NELLA RICERCA, LE STELLE INDICANO QUANTO È IMPORTANTE QUESTO PARAMETRO PER LA RICERCA
+     * @param cucinaSeparata INDICA TRUE SE LA CUCINA È SEPARATA DAL SALONE, ALTRIMENTI FALSE
+     */
     Cucina(int stelle, boolean cucinaSeparata) {
         super(stelle);
         this.cucinaSeparata = cucinaSeparata;
     }
     
     
-
+    /**
+     * CALCOLA L'AFFINITA DEL SINGOLO PARAMETRO A CUCINA 
+     * @param annuncio ANNUNCIO DELLA CASA IN QUESTIONE
+     * @return RITORNA UN NUMERO FLOAT CHE INDICA L'AFFINITA
+     */
     @Override
     float calcolaAffinità(AnnuncioCasa annuncio) {
         if(cucinaSeparata){

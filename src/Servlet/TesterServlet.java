@@ -22,6 +22,7 @@ public class TesterServlet {
 			handler.addServlet(RegistrationServlet.class, "/registrazione");
                         handler.addServlet(LoginServlet.class, "/login");
                         handler.addServlet(HomePageServlet.class, "/homepage");
+                        handler.addServlet(LogoutServlet.class, "/logout");
 			server.setHandler(handler);
 			server.start();
 			

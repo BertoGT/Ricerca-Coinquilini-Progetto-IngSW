@@ -15,6 +15,11 @@ public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
     private final float punteggio;
     private final AnnuncioCasa annuncio;
 
+    /**
+     * ISTANZIA UN OGGETTO CHE INDICA L'ANNUNCIO RISULTANTE
+     * @param annuncio ANNUNCIO IN QUESTIONE
+     * @param punteggio PUNTEGGIO DI CIASCUN ANNUNCIO
+     */
     AnnuncioRisultante(AnnuncioCasa annuncio, float punteggio) {
         this.punteggio = punteggio;
         this.annuncio = annuncio;
@@ -28,6 +33,11 @@ public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
         return annuncio;
     }
 
+    /**
+     * METODO PER COMPARARE GLI ANNUNCI 
+     * @param o
+     * @return UN NUMERO MAGGIORE DI 0 SE IL PRIMO ELEMENTO È MAGGIORE DEL SECONDO MINORE DI 0
+     */
     @Override
     public int compareTo(AnnuncioRisultante o) {
         int diff = (int) (o.getPunteggio() - this.punteggio);
