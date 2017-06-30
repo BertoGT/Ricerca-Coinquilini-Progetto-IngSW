@@ -34,37 +34,35 @@ public class RegistrationServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
-        response.setStatus(200);
-        response.getWriter().println(registrazioneHtml);
+        Cookie cookie = request.getCookies()[0]; 
+            if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
+                // utente gia loggato.
+                String registrazioneGiaLoggato = HtmlReader.htmlReader("registrazioneGiaLoggato.html");
+                response.setStatus(200);
+                response.getWriter().println(registrazioneGiaLoggato);
+            } else {
+                String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
+                response.setStatus(200);
+                response.getWriter().println(registrazioneHtml);
+            }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Sistema s = new Sistema();
-            Cookie cookie = req.getCookies()[0]; 
-            if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
-                // utente gia loggato.
-                String registrazioneGiaLoggato = HtmlReader.htmlReader("registrazioneGiaLoggato.html");
-            }
-        } catch (NullPointerException | SQLException ex) {
-            // utente non loggato.
-            try {
-                effettuaRegistrazione(req);
-                String registrazioneEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
-                resp.setStatus(200);
-                resp.getWriter().println(registrazioneEffettuataHtml);
-           
-            } catch (SQLException | ParseException e) {
-                String erroreHtml = HtmlReader.htmlReader("erroriVari.html");
-                resp.setStatus(200);
-                resp.getWriter().println(erroreHtml);
-            } catch (RegistrazioneException e) {
-                String erroreEmailHtml = HtmlReader.htmlReader("erroreEmailRegistrazione.html");
-                resp.setStatus(200);
-                resp.getWriter().println(erroreEmailHtml);
-            }
+            effettuaRegistrazione(req);
+            String registrazioneEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
+            resp.setStatus(200);
+            resp.getWriter().println(registrazioneEffettuataHtml);
+
+        } catch (SQLException | ParseException e) {
+            String erroreHtml = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(erroreHtml);
+        } catch (RegistrazioneException e) {
+            String erroreEmailHtml = HtmlReader.htmlReader("erroreEmailRegistrazione.html");
+            resp.setStatus(200);
+            resp.getWriter().println(erroreEmailHtml);
         }
         
     }
