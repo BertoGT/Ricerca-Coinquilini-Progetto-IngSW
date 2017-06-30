@@ -69,6 +69,7 @@ public class CostantiDB {
             + "idUtenteProprietario, descrizione, costo) VALUES (?,?,?,?)";
     final static String modificaAnnuncioCasa = "UPDATE "+tabellaAnnuncioCasa+" SET descrizione = ?,"
             + "costo = ? WHERE idAnnuncio = ?";
+    final static String eliminaAnnuncioCasa = "DELETE FROM " +tabellaAnnuncioCasa+" WHERE idAnnuncio = ? and idCasa = ?";
     
     // Query inserimento/modifica infoCasa
     final static String inserisciInfoCasa = "INSERT INTO "+tabellaInfoCasa+" (m2, nLocali, nBagni,"

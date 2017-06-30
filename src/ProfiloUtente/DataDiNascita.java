@@ -20,9 +20,9 @@ public class DataDiNascita {
     
     /**
      *
-     * @param giorno
-     * @param mese
-     * @param anno
+     * @param giorno indica il giorno di nascita dell'utente
+     * @param mese indica il mese di nascita dell'utente
+     * @param anno indica l'anno di nascita dell'utente
      */
     public DataDiNascita(int giorno, int mese, int anno){
         this.calendario = new GregorianCalendar();
@@ -33,6 +33,7 @@ public class DataDiNascita {
         this.miaData= giorno + "/" + mese + "/" + anno;
         this.calcolaEta();
     }
+    
     private void calcolaEta(){
         this.eta = this.calendario.get(GregorianCalendar.YEAR) - this.anno;
         if(this.calendario.get(GregorianCalendar.MONTH)<this.mese)
