@@ -59,6 +59,22 @@ input.submit-btn{
 	font-weight: bolder;
 }
 
+input.homepage-btn{
+	width: 500px;
+	font-size: 30px;
+	padding: 10px 4px;
+    font-family: 'Raleway';
+	font-weight: bolder;
+    background-color: #3399FF;
+	border-radius: 5px;
+	color: #fff;
+	letter-spacing: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
 h1{
 	font-family: "Playfair Display", serif;
 	font-size: 52px;

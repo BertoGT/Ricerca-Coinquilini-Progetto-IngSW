@@ -1,0 +1,246 @@
+<html>
+<head>
+  <!-- <script src="jquery.js"></script>  -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script> 
+    function caricabarra(){
+      $("#navbarra").load("navbar.html"); 
+      $("#navfooter").load("footer.html");    
+    };
+    </script> 
+<meta charset="utf-8" />
+<link href="stile.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
+<title>Rooming</title>
+</head>
+<main>
+<body onload="caricabarra()">
+<div id="navbarra"></div>
+    <div id="sfondoform" class="sfondo">
+    
+        <p><h1>Inserisci i parametri di ricerca:</h1></p>
+<form name="form" method="post" action="http://localhost:8080/ricercacasa" id="form">
+        <p ><label>Citta  &nbsp; </label><input type="text" name="citta" value="" required></p>
+		<p><label>Costo Massimo &nbsp; </label><input type="text" name="costoMax"  value="" required></p>		
+		<p><label>Cucina  &nbsp;</label><input type="text" name="cucina"  value="" required></p>	
+        <p><label>Distanza Centro   &nbsp; </label></p>
+		<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value="" required></p>	
+		<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
+		<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
+			<option value="ITALIA">ITALIA</option>
+			<option value="PORTOGALLO">PORTOGALLO</option>
+			<option value="SPAGNA">SPAGNA</option>
+			<option value="IRLANDA">IRLANDA</option>
+			<option value="REGNO_UNITO">REGNO_UNITO</option>
+			<option value="PAESI_BASSI">PAESI_BASSI</option>
+			<option value="BELGIO">BELGIO</option>
+			<option value="GERMANIA">GERMANIA</option>
+			<option value="REPUBBLICA_CECA">REPUBBLICA_CECA</option>
+			<option value="NORVEGIA">NORVEGIA</option>
+			<option value="SVEZIA">SVEZIA</option>
+			<option value="FINLANDIA">FINLANDIA</option>
+			<option value="RUSSIA">RUSSIA</option>
+			<option value="ESTONIA">ESTONIA</option>
+			<option value="LETTONIA">LETTONIA</option>
+			<option value="LITUANIA">LITUANIA</option>
+			<option value="KAZAKISTAN">KAZAKISTAN</option>
+			<option value="DANIMARCA">DANIMARCA</option>
+			<option value="POLONIA">POLONIA</option>
+			<option value="BIELORUSSIA">BIELORUSSIA</option>
+			<option value="UCRAINA">UCRAINA</option>	
+			<option value="SLOVACCHIA">SLOVACCHIA</option>
+			<option value="ROMANIA">ROMANIA</option>
+			<option value="MOLDAVIA">MOLDAVIA</option>
+			<option value="GEORGIA">GEORGIA</option>
+			<option value="AZERBAIGIAN">AZERBAIGIAN</option>
+			<option value="ARMENIA">ARMENIA</option>
+			<option value="FRANCIA">FRANCIA</option>
+			<option value="SVIZZERA">SVIZZERA</option>
+			<option value="SLOVENIA">SLOVENIA</option>
+			<option value="CROAZIA">CROAZIA</option>
+			<option value="BOSNIA">BOSNIA</option>
+			<option value="SERBIA">SERBIA</option>
+			<option value="BULGARIA">BULGARIA</option>
+			<option value="MACEDONIA">MACEDONIA</option>
+			<option value="ALBANIA">ALBANIA</option>
+			<option value="GRECIA">GRECIA</option>
+			<option value="TURCHIA">TURCHIA</option>
+			<option value="SIRIA">SIRIA</option>
+			<option value="IRAQ">IRAQ</option>
+			<option value="CIPRO">CIPRO</option>
+			<option value="LIBANO">LIBANO</option>
+			<option value="GIORDANIA">GIORDANIA</option>
+			<option value="ARABIA_SAUDITA">ARABIA_SAUDITA</option>
+			<option value="ISRAELE">ISRAELE</option>
+			<option value="MYANMAR">MYANMAR</option>
+			<option value="TUNISIA">TUNISIA</option>
+			<option value="ALGERIA">ALGERIA</option>
+			<option value="MAROCCO">MAROCCO</option>
+			<option value="AFRICA">AFRICA</option>
+			<option value="AUSTRALIA">AUSTRALIA</option>
+			<option value="AMERICA">AMERICA</option>
+			<option value="CANADA">CANADA</option>
+			<option value="ARGENTINA">ARGENTINA</option>
+			<option value="CINA">CINA</option>
+			<option value="GIAPPONE">GIAPPONE</option>
+			<option value="FILIPPINE">FILIPPINE</option>
+			<option value="ALTRO">ALTRO</option>
+
+		</select></p>	
+		<p><label>Occupazione &nbsp;</label><select name="occupazione">
+			<option value="STUDENTE">Studente</option>
+			<option value="LAVORATORE">Lavoratore</option>
+			<option value="ALTRO">Altro</option></select></p>
+                        
+                <p><label>Facolta &nbsp;</label><select name="facolta">
+			<option value="NESSUNA">NESSUNA</option>
+			<option value="AGRARIA">AGRARIA</option>
+			<option value="ARCHITETTURA">ARCHITETTURA</option>
+                        <option value="DESIGN">DESIGN</option>
+                        <option value="INGEGNERIA">INGEGNERIA</option>
+                        <option value="BIOTECNOLOGIE">BIOTECNOLOGIE</option>
+                        <option value="BIOLOGIA">BIOLOGIA</option>
+                        <option value="ECONOMIA">ECONOMIA</option>
+                        <option value="FARMACIA">FARMACIA</option>
+                        <option value="GIURISPRUDENZA">GIURISPRUDENZA</option>
+                        <option value="LINGUE">LINGUE</option>
+                        <option value="LETTERE_E_FILOSOFIA">LETTERE_E_FILOSOFIA</option>
+                        <option value="LETTERATURA_STRANIERA">LETTERATURA_STRANIERA</option>
+                        <option value="MEDICINA">MEDICINA</option>
+                        <option value="VETERINARIA">VETERINARIA</option>
+                        <option value="MUSICOLOGIA">MUSICOLOGIA</option>
+                        <option value="PSICOLOGIA">PSICOLOGIA</option>
+                        <option value="SCIENZE_DELLA_FORMAZIONE">SCIENZE_DELLA_FORMAZIONE</option>
+                        <option value="SCIENZE_DELLA_COMUNICAZIONE">SCIENZE_DELLA_COMUNICAZIONE</option>
+                        <option value="MATEMATICA">MATEMATICA</option>
+                        <option value="FISICA">FISICA</option>
+                        <option value="SOCIOLOGIA">SOCIOLOGIA</option>
+                        <option value="INFORMATICA">INFORMATICA</option>
+                        <option value="ALTRO">ALTRO</option>
+                    </select></p>
+                    <p><label>Città di ricerca &nbsp;</label><select name="cittadiricerca">
+			<option value="ALESSANDRIA">ALESSANDRIA</option>
+                        <option value="AGRIGENTO">AGRIGENTO</option>
+                        <option value="ANCONA">ANCONA</option>
+                        <option value="AOSTA">AOSTA</option>
+                        <option value="AREZZO">AREZZO</option>
+                        <option value="ASCOLI_PICENO">ASCOLI PICENO</option>
+                        <option value="ASTI">ASTI</option>
+                        <option value="AVELLINO">AVELLINO</option>
+                        <option value="BARI">BARI</option>
+                        <option value="BARLETTA_ANDRIA_TRANI">BARLETTA ANDRIA TRANI</option>
+                        <option value="BELLUNO">BELLUNO</option>
+                        <option value="BENEVENTO">BENEVENTO</option>
+                        <option value="BERGAMO">BERGAMO</option>
+                        <option value="BIELLA">BIELLA</option>
+                        <option value="BOLOGNA">BOLOGNA</option>
+                        <option value="BOLZANO">BOLZANO</option>
+                        <option value="BRESCIA">BRESCIA</option>
+                        <option value="BRINDISI">BRINDISI</option>
+                        <option value="CAGLIARI">CAGLIARI</option>
+                        <option value="CALTANISSETTA">CALTANISSETTA</option>
+                        <option value="CAMPOBASSO">CAMPOBASSO</option>
+                        <option value="CARBONIA_IGLESIAS">CARBONIA IGLESIAS</option>
+                        <option value="CASERTA">CASERTA</option>
+                        <option value="CATANIA">CATANIA</option>
+                        <option value="CATANZARO">CATANZARO</option>
+                        <option value="CHIETI">CHIETI</option>
+                        <option value="COMO">COMO</option>
+                        <option value="COSENZA">COSENZA</option>
+                        <option value="CREMONA">CREMONA</option>
+                        <option value="CROTONE">CROTONE</option>
+                        <option value="CUNEO">CUNEO</option>
+                        <option value="ENNA">ENNA</option>
+                        <option value="FERMO">FERMO</option>
+                        <option value="FERRARA">FERRARA</option>
+                        <option value="FIRENZE">FIRENZE</option>
+                        <option value="FOGGIA">FOGGIA</option>
+                        <option value="FORLI_CESENA">FORLI CESENA</option>
+                        <option value="FROSINONE">FROSINONE</option>
+                        <option value="GENOVA">GENOVA</option>
+                        <option value="GORIZIA">GORIZIA</option>
+                        <option value="GROSSETO">GROSSETO</option>
+                        <option value="IMPERIA">IMPERIA</option>
+                        <option value="ISERNIA">ISERNIA</option>
+                        <option value="LA_SPEZIA">LA SPEZIA</option>
+                        <option value="L_AQUILA">L'AQUILA</option>
+                        <option value="LATINA">LATINA</option>
+                        <option value="LECCE">LECCE</option>
+                        <option value="LECCO">LECCO</option>
+                        <option value="LIVORNO">LIVORNO</option>
+                        <option value="LODI">LODI</option>
+                        <option value="LUCCA">LUCCA</option>
+                        <option value="MACERATA">MACERATA</option>
+                        <option value="MANTOVA">MANTOVA</option>
+                        <option value="MASSA_CARRARA">MASSA CARRARA</option>
+                        <option value="MATERA">MATERA</option>
+                        <option value="MESSINA">MESSINA</option>
+                        <option value="MILANO">MILANO</option>
+                        <option value="MODENA">MODENA</option>
+                        <option value="MONZA_E_DELLA_BRIANZA">MONZA E DELLA BRIANZA</option>
+                        <option value="NAPOLI">NAPOLI</option>
+                        <option value="NOVARA">NOVARA</option>
+                        <option value="NUORO">NUORO</option>
+                        <option value="OLBIA_TEMPIO">OLBIA_TEMPIO</option>
+                        <option value="ORISTANO">ORISTANO</option>
+                        <option value="PADOVA">PADOVA</option>
+                        <option value="PALERMO">PALERMO</option>
+                        <option value="PARMA">PARMA</option>
+                        <option value="PAVIA">PAVIA</option>
+                        <option value="PERUGIA">PERUGIA</option>
+                        <option value="PESARO_E_URBINO">PESARO E URBINO</option>
+                        <option value="PESCARA">PESCARA</option>
+                        <option value="PIACENZA">PIACENZA</option>
+                        <option value="PISA">PISA</option>
+                        <option value="PISTOIA">PISTOIA</option>
+                        <option value="PORDENONE">PORDENONE</option>
+                        <option value="POTENZA">POTENZA</option>
+                        <option value="PRATO">PRATO</option>
+                        <option value="RAGUSA">RAGUSA</option>
+                        <option value="RAVENNA">RAVENNA</option>
+                        <option value="REGGIO_CALABRIA">REGGIO CALABRIA</option>
+                        <option value="REGGIO_EMILIA">REGGIO EMILIA</option>
+                        <option value="RIETI">RIETI</option>
+                        <option value="RIMINI">RIMINI</option>
+                        <option value="ROMA">ROMA</option>
+                        <option value="ROVIGO">ROVIGO</option>
+                        <option value="SALERNO">SALERNO</option>
+                        <option value="SASSARI">SASSARI</option>
+                        <option value="SAVONA">SAVONA</option>
+                        <option value="SIENA">SIENA</option>
+                        <option value="SIRACUSA">SIRACUSA</option>
+                        <option value="SONDRIO">SONDRIO</option>
+                        <option value="TARANTO">TARANTO</option>
+                        <option value="TERAMO">TERAMO</option>
+                        <option value="TERNI">TERNI</option>
+                        <option value="TORINO">TORINO</option>
+                        <option value="TRAPANI">TRAPANI</option>
+                        <option value="TRENTO">TRENTO</option>
+                        <option value="TREVISO">TREVISO</option>
+                        <option value="TRIESTE">TRIESTE</option>
+                        <option value="UDINE">UDINE</option>
+                        <option value="VARESE">VARESE</option>
+                        <option value="VENEZIA">VENEZIA</option>
+                        <option value="VERBANO_CUSIO_OSSOLA">VERBANO CUSIO OSSOLA</option>
+                        <option value="VERCELLI">VERCELLI</option>
+                        <option value="VERONA">VERONA</option>
+                        <option value="VIBO_VALENTIA">VIBO VALENTIA</option>
+                        <option value="VICENZA">VICENZA</option>
+                        <option value="VITERBO">VITERBO</option>
+                    </select></p>              
+		<p><label>Fumatore &nbsp;</label> <input type="checkbox" name="fumatore" value="F"></p>	
+		<p><label>Cucini? &nbsp;</label> <input type="checkbox" name="cuoco" value="C"></p>
+		<p><label>Sportivo? &nbsp;</label> <input type="checkbox" name="sportivo" value="S"></p>
+		<p><label>Password*  &nbsp;</label><input type="password" name="password" value="" required></p>		
+		<p><label>Conferma Password* &nbsp; </label><input type="password" name="confermapassword" value="" required></p>	
+		<p></p><input type="submit" class="submit-btn" value="Conferma registrazione">
+		<input type="reset" value="annulla" class="submit-btn">
+		</form>
+             
+    </div>
+<div id="navfooter"></div>
+</body>
+</main>
+</html>
