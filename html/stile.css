@@ -131,12 +131,9 @@ input, textarea{
 }
 
 input, select, textarea{
-    color: #ff0000;
+    color: #000000;
 }
 
-textarea:focus, input:focus {
-    color: #ff0000;
-}
 
 .navbar_opt{
 	color: black;
