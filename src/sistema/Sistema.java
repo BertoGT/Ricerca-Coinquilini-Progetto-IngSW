@@ -55,6 +55,16 @@ public class Sistema {
         this.ricercaCoinquilino = null;
         this.annunciRisultanti = null;
     }
+    
+    /**
+     * 
+     * @param eMail indica eMail dell'utente
+     * @param password indica password dell'utente
+     * @return
+     * @throws SQLException
+     * @throws LoginException 
+     */
+    
     public int logIn(String eMail, String password) throws SQLException, LoginException{
         int idUtente = this.bmUtente.login(eMail, password);
         this.switchToUser();
@@ -66,6 +76,30 @@ public class Sistema {
         }   
         return idUtente;
     }
+    
+    /**
+     * 
+     * @param nome NOME DELL'UTENTE
+     * @param cognome COGNOME DELL'UTENTE
+     * @param sesso SESSO DELL'UTENTE
+     * @param eMail eMail DELL'UTENTE
+     * @param password PASSWORD DELL'UTENTE
+     * @param giorno GIORNO DI NASCITA DELL'UTENTE
+     * @param mese MESE DI NASCITA DELL'UTENTE
+     * @param anno ANNO DI NASCITA DELL'UTENTE
+     * @param cellulare
+     * @param nazionalita
+     * @param occupazione
+     * @param facolta
+     * @param fumatore
+     * @param cuoco
+     * @param sportivo
+     * @param cittaDiRicerca
+     * @param potenzialeCoinquilino
+     * @throws RegistrazioneException
+     * @throws SQLException
+     * @throws ParseException 
+     */
     public void registrazioneUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             
             Occupazione occupazione, Facolta facolta, boolean fumatore, boolean cuoco, boolean sportivo, Citta cittaDiRicerca, boolean potenzialeCoinquilino) throws RegistrazioneException, SQLException, ParseException{
