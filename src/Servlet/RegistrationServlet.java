@@ -61,17 +61,17 @@ public class RegistrationServlet extends HttpServlet {
         int mese = Integer.parseInt(giornoMeseAnno[1]);
         int anno = Integer.parseInt(giornoMeseAnno[0]);
         
-        boolean fumatoreBoolean = false;
-        if(fumatore.equals("F")) 
-            fumatoreBoolean = true;
+        boolean fumatoreBoolean = true;
+        if(fumatore == null && fumatore.equals("null")) 
+            fumatoreBoolean = false;
         
-        boolean cuocoBoolean = false;
-        if(cuoco.equals("C")) 
-            cuocoBoolean = true;
+        boolean cuocoBoolean = true;
+        if(cuoco == null && fumatore.equals("null")) 
+            cuocoBoolean = false;
         
-        boolean sportivoBoolean = false;
-        if(sportivo.equals("S")) 
-            sportivoBoolean = true;
+        boolean sportivoBoolean = true;
+        if(sportivo == null && fumatore.equals("null")) 
+            sportivoBoolean = false;
 
         
         int a=0;
