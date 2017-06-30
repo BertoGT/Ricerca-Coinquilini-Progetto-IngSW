@@ -5,6 +5,7 @@
  */
 package ProfiloUtente;
 
+import Exceptions.AnnuncioException;
 import Casa.AnnuncioCasa;
 
 /**
