@@ -53,6 +53,7 @@ public class CostantiDB {
             tabellaInfoCasa+" WHERE idUtenteProprietario = ?) as ann join" +
             "(select idUtente, email, nome, cognome, numeroDiTelefono FROM "+tabellaUtente+" natural join "+
             tabellaAnagraficaUtente+") as ute on ann.idUtenteProprietario = ute.idUtente";
+    final static String verificaPresenzaAnnuncio = "SELECT * FROM "+tabellaAnnuncioCasa+" WHERE idUtenteProprietario = ?" ;
     
     //Query per ottenere i dati utenti dato l'ID
     final static String getDatiUtente = "SELECT nome, cognome, dataNascita, sesso, nazionalita, cittaDiRicerca,"
@@ -69,7 +70,7 @@ public class CostantiDB {
             + "idUtenteProprietario, descrizione, costo) VALUES (?,?,?,?)";
     final static String modificaAnnuncioCasa = "UPDATE "+tabellaAnnuncioCasa+" SET descrizione = ?,"
             + "costo = ? WHERE idAnnuncio = ?";
-    final static String eliminaAnnuncioCasa = "DELETE FROM " +tabellaAnnuncioCasa+" WHERE idAnnuncio = ? and idCasa = ?";
+    final static String eliminaAnnuncioCasa = "DELETE FROM " +tabellaAnnuncioCasa+" WHERE idAnnuncio = ? and idCasa = ? and idUtenteProprietario = ?";
     
     // Query inserimento/modifica infoCasa
     final static String inserisciInfoCasa = "INSERT INTO "+tabellaInfoCasa+" (m2, nLocali, nBagni,"

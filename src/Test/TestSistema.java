@@ -29,9 +29,9 @@ public class TestSistema {
         try {
             Sistema s = new Sistema();
 //            System.out.println(s.logIn("mario.shehu.07@gmail.com", "proteine"));
-            s.registrazioneUtente("Antonio", "Licchello", Sesso.M, "antonio.licchello@gmail.com", "cicciofranco", 
-                    10, 11, 1995, "36547474", Nazione.ITALIA, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
-                    false, true, true, Citta.PAVIA, true);
+//            s.registrazioneUtente("Antonio", "Licchello", Sesso.M, "antonio.licchello@gmail.com", "cicciofranco", 
+//                    10, 11, 1995, "36547474", Nazione.ITALIA, Occupazione.STUDENTE, Facolta.INGEGNERIA, 
+//                    false, true, true, Citta.PAVIA, true);
 //            s.iniziaRicercaAnnunci(Citta.PAVIA);
 //            s.setCostoMax(270);
 //            s.setParametroNBagni(4, 1);
@@ -39,6 +39,7 @@ public class TestSistema {
 //            s.setParametroDistCentro(5, 1000);
 //            s.ricercaAnnuncio();
 //            System.out.println("c");
+//            System.out.println(s.verificaPresenzaAnnunci(4));
         } catch (Exception ex) {
             Logger.getLogger(TestSistema.class.getName()).log(Level.SEVERE, null, ex);
         }

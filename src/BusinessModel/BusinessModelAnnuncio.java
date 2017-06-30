@@ -100,9 +100,9 @@ public class BusinessModelAnnuncio {
      * @return true se avviene l'eliminazione, false atrimenti
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa);
+        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa, idUtenteProprietario);
         db.chiudiConnessione();
         if(result == 0)
             return false;

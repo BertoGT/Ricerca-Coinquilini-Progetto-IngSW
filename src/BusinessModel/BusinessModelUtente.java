@@ -270,4 +270,20 @@ public class BusinessModelUtente {
 
        
     }
+    
+    /**
+     * VERIFICA SE UN UTENTE HA ALMENO UN ANNUNCIO
+     * @param idUtenteProprietario È L'ID DELL'UTENTE IL CUI SI VUOLE VERIFICARE SE HA O MENO ANNUNCI
+     * @return TORNA TRUE SE L'UTENTE HA ALMENO UN ANNUNICO, FALSE ALTRIMENTI
+     * @throws SQLException 
+     */
+    public boolean verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
+        db.apriConnesione();
+        ResultSet rs = db.verificaPresenzaAnnuncio(idUtenteProprietario);
+        if(rs.next())
+            return true;
+        else
+            return false;
+                    
+    }
 }

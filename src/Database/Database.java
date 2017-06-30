@@ -199,10 +199,11 @@ public class Database {
         return ps.executeUpdate();
     }
     
-    public int eliminaAnnuncioCasa(int idAnnuncio, int idCasa) throws SQLException {
+    public int eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
         ps.setInt(1, idAnnuncio);
         ps.setInt(2, idCasa);
+        ps.setInt(3, idUtenteProprietario);
         return ps.executeUpdate();
     }
 
@@ -288,6 +289,13 @@ public class Database {
             ps.setInt(2, costo);
         }
         return ps.executeQuery();   
+    }
+    
+    public ResultSet verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaPresenzaAnnuncio);
+        ps.setInt(1, idUtenteProprietario);
+        return ps.executeQuery();
     }
     
     public ResultSet getCamere(int idCasa) throws SQLException {
