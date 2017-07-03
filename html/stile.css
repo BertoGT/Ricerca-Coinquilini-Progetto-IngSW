@@ -61,14 +61,14 @@ input.submit-btn{
 
 
 input.homepage-btn{
-	width: 500px;
+	width: 600px;
 	font-size: 25px;
     font-family: 'Raleway';
 	padding: 10px 4px;
 	font-weight: bolder;
+    padding-top: : 5%;
     background-color: #3399FF;
 	border-radius: 5px;
-	box-shadow: 0px 4px 4px;
 	color: #fff;
 	letter-spacing: 2px;
 	text-decoration: none;
@@ -123,6 +123,16 @@ h1{
 	opacity: 1;
 	color: #FFF;
 	width: 100%;
+}
+
+#scritteform{
+    
+    color: black;
+	font-family: 'Raleway';
+	font-size: 40px;
+	align-self: center;
+	padding-left: 60px;
+    
 }
 
 #footer{

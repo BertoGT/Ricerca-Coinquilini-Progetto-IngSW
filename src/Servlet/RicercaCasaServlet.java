@@ -34,7 +34,8 @@ public class RicercaCasaServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie cookie = request.getCookies()[0]; 
+         
+            Cookie cookie = request.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
                 String registrazioneGiaLoggato = HtmlReader.htmlReader("RicercaCasaLoggato.html");
@@ -65,7 +66,6 @@ public class RicercaCasaServlet extends HttpServlet {
             resp.setStatus(200);
             resp.getWriter().println(ricercaEffettuataHtml);
 
-       
         
     }
     

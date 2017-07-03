@@ -23,6 +23,7 @@ public class TesterServlet {
                         handler.addServlet(LoginServlet.class, "/login");
                         handler.addServlet(HomePageServlet.class, "/homepage");
                         handler.addServlet(LogoutServlet.class, "/logout");
+                        handler.addServlet(RicercaCasaServlet.class, "/ricercacasa");
 			server.setHandler(handler);
 			server.start();
 			

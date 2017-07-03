@@ -15,6 +15,7 @@ import Exceptions.RegistrazioneException;
 import ProfiloUtente.*;
 import RicercaAnnuncio.AnnuncioRisultante;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
+import Casa.ElettroDomestico;
 import RicercaAnnuncio.RicercaAnnuncio;
 import RicercaCoinquilino.CoinquilinoRisultante;
 import RicercaCoinquilino.ContenitoreParametriCoinquilino;
@@ -212,6 +213,10 @@ public class Sistema {
      */
     public void setParametroTipoCamera(int stelle, int postiLetto) {
         this.parametriAnnuncio.setParametroTipoCamera(stelle, postiLetto);
+    }
+    
+    public void setParametroElettrodomestico(int stelle, ElettroDomestico elettrodomestico) {
+        this.parametriAnnuncio.setElettrodomestico(stelle, elettrodomestico);
     }
     
     /**

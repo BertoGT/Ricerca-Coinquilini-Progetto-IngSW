@@ -5,7 +5,7 @@
 
 <script> 
     function caricabarra(){
-      $("#navbarra").load("navbar.html"); 
+      $("#navbarra").load("navbarLoggato.html"); 
       $("#navfooter").load("footer.html");    
     };
     </script> 
@@ -20,9 +20,9 @@
 <div id="navbarra"></div>
     <div id="sfondoform" class="sfondo">
     
-        <p><h1>Inserisci i parametri di ricerca:</h1></p>
+        <p><h1>Inserisci i parametri per la ricerca della tua futura casa:</h1></p>
 <form name="form" method="post" action="http://localhost:8080/ricercacasa" id="form">
-       <p><label>Città di ricerca &nbsp;</label><select name="cittadiricerca">
+       <p><label>Città di ricerca * &nbsp;</label><select style="color:#000000" name="cittadiricerca" required>
 			<option value="ALESSANDRIA">ALESSANDRIA</option>
                         <option value="AGRIGENTO">AGRIGENTO</option>
                         <option value="ANCONA">ANCONA</option>
@@ -132,31 +132,153 @@
                         <option value="VICENZA">VICENZA</option>
                         <option value="VITERBO">VITERBO</option>
                     </select></p>              
-		<p><label>Costo Massimo &nbsp; </label><input type="text" name="costoMax"  value="" required></p>		
-		<p><label>Cucina &nbsp;</label> <input type="checkbox" name="cucina" value="C"></p>	
-        <p><label>Distanza Centro &nbsp; </label><input type="text" name="costoMax"  value="" required></p>		
-    
-        <p><label>Numero Locali &nbsp;</label><select name="numerolocali">
+		<p><label>Costo Massimo * &nbsp; </label><input style="color:#000000" type="text" name="costoMax"  value="" required></p>		
+    <p><label>Cucina separata &nbsp;</label> <input type="checkbox" name="cucina" value="C">
+    <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzacucinaseparata">
 			<option value="uno">1</option>
             <option value="due">2</option>
             <option value="tre">3</option>
-            <option value="altro">altro</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
         </select></p>
-          
-		<p><label>Numero Bagni &nbsp;</label><select name="numerobagni">
+        <p><label>Distanza Centro (km) &nbsp; </label><input style="color:#000000" type="text" name="costoMax"  value="">
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzadistanzacentro">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+            
+        </select></p>		
+    
+        <p><label>Numero Locali &nbsp;</label><select style="color:#000000" name="numerolocali">
 			<option value="uno">1</option>
             <option value="due">2</option>
             <option value="tre">3</option>
             <option value="altro">altro</option>
+        </select><label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzanumerolocali">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+            
+        </select></p>   
+          
+		<p><label>Numero Bagni &nbsp;</label><select style="color:#000000" name="numerobagni">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="altro">altro</option>
+        </select> <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzanumerobagni">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+            
         </select></p>   
     
-		<p><label>Cucini? &nbsp;</label> <input type="checkbox" name="cuoco" value="C"></p>
-		<p><label>Sportivo? &nbsp;</label> <input type="checkbox" name="sportivo" value="S"></p>
-		<p><label>Password*  &nbsp;</label><input type="password" name="password" value="" required></p>		
-		<p><label>Conferma Password* &nbsp; </label><input type="password" name="confermapassword" value="" required></p>	
-		<p></p><input type="submit" class="submit-btn" value="Conferma registrazione">
-		<input type="reset" value="annulla" class="submit-btn">
+		 <p><label>Sesso coinquilini &nbsp;</label> <select style="color:#000000" name="sessocoinquilini">
+			<option value="FEMMINE">F</option>
+             <option value="MASCHI">M</option>
+             <option value="MISTA">MISTA</option></select> 
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzasesso">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+             <option value="cinque">5</option></select></p>
+		
+        <p><label>Tipo camera &nbsp;</label> <select style="color:#000000" name="tipocamera">
+			<option value="singola">1</option>
+             <option value="doppia">2</option>
+             <option value="tripla">3</option>
+            <option value="altro">Altro</option></select> 
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzatipocamera">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+		
+        <p><label>Forno &nbsp;</label> <input type="checkbox" name="forno" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzaforno">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+        <p><label>Lavatrice &nbsp;</label> <input type="checkbox" name="lavatrice" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzalavatrice">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+        <p><label>Condizionatore &nbsp;</label> <input type="checkbox" name="condizionatore" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzacondizionatore">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+        <p><label>Aspirapolvere &nbsp;</label> <input type="checkbox" name="aspirapolvere" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzaaspirapolvere">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+        <p><label>Asciugatrice &nbsp;</label> <input type="checkbox" name="asciugatrice" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzaasciugatrice">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+        <p><label>Microonde &nbsp;</label> <input type="checkbox" name="microonde" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzamicroonde">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+    
+    
+        <p><label>Lavastoviglie &nbsp;</label> <input type="checkbox" name="lavastoviglie" value="">
+    
+        <label>Importanza &nbsp;</label> <select style="color:#000000" name="importanzalavastoviglie">
+			<option value="uno">1</option>
+            <option value="due">2</option>
+            <option value="tre">3</option>
+            <option value="quattro">4</option>
+            <option value="cinque">5</option>
+        </select></p>
+        <p></p><input type="submit" class="submit-btn" value="Effettua Ricerca">
+		
 		</form>
+    
              
     </div>
 <div id="navfooter"></div>
