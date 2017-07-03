@@ -14,17 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author cl426653
+ * @author Alberto
  */
 public class LogoutServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie cookie = req.getCookies()[0];
-        CookieStorage.getInstance().eliminaCookie(cookie);
-        cookie.setMaxAge(0);
-        resp.addCookie(cookie);
-        resp.sendRedirect("/login");
+        try{
+            Cookie cookie = req.getCookies()[0];
+            CookieStorage.getInstance().eliminaCookie(cookie);
+            cookie.setMaxAge(0);
+            resp.addCookie(cookie);
+        } catch (NullPointerException ex) {} 
+        finally {
+            resp.sendRedirect("/login");
+        }
     }
     
     
