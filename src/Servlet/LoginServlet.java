@@ -6,6 +6,7 @@
 package Servlet;
 
 import Exceptions.LoginException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
@@ -26,6 +27,24 @@ public class LoginServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Cookie cookie = req.getCookies()[0]; 
+            if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
+                // utente gia loggato.
+                String registrazioneGiaLoggato = HtmlReader.htmlReader("registrazioneGiaLoggato.html");
+                resp.setStatus(200);
+                resp.getWriter().println(registrazioneGiaLoggato);
+            } else {
+                cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
+                resp.addCookie(cookie);
+                utenteNonLoggato(resp);
+            }
+        } catch (NullPointerException ex) {
+            utenteNonLoggato(resp);
+        }
+    }
+    
+    private void utenteNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException {
         String loginHtml = HtmlReader.htmlReader("login.html");
         resp.setStatus(200);
         resp.getWriter().println(loginHtml);
