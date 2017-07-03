@@ -8,7 +8,7 @@ package Servlet;
 import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
-import Exceptions.RegistrazioneException;
+import Exceptions.NessunAnnuncioException;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
@@ -16,7 +16,6 @@ import ProfiloUtente.Sesso;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -34,42 +33,39 @@ public class RicercaCasaServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         
+        try {
             Cookie cookie = request.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
-                String registrazioneGiaLoggato = HtmlReader.htmlReader("RicercaCasaLoggato.html");
+                String ricercaHtml = HtmlReader.htmlReader("RicercaCasaLoggato.html");
                 response.setStatus(200);
-                response.getWriter().println(registrazioneGiaLoggato);
+                response.getWriter().println(ricercaHtml);
             } else {
-                String registrazioneHtml = HtmlReader.htmlReader("RicercaCasaNonLoggato.html");
-                response.setStatus(200);
-                response.getWriter().println(registrazioneHtml);
+                cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
+                response.addCookie(cookie);
+                settaNonLoggato(response);
             }
+        } catch (NullPointerException ex) {
+            settaNonLoggato(response);
+        }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException, IOException{
-     
-       
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException, IOException{ 
         try {
             effettuaRicerca(req);
-        } catch (SQLException ex) {
-            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RegistrazioneException ex) {
-            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
             String ricercaEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
             resp.setStatus(200);
             resp.getWriter().println(ricercaEffettuataHtml);
-
-        
+        } catch (SQLException ex) {
+            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NessunAnnuncioException ex) {
+            // pagina con avviso nessun annuncio trovato.
+            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }               
     }
-    
-    private void effettuaRicerca(HttpServletRequest req) throws SQLException, RegistrazioneException, ParseException {
+     
+    private void effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
         String cittaDiRicerca = req.getParameter("cittadiricerca");
         String costoMax = req.getParameter("costoMax");
         String cucinaSeparata = req.getParameter("cucina");
@@ -124,10 +120,14 @@ public class RicercaCasaServlet extends HttpServlet {
         sys.setParametroElettrodomestico(Integer.parseInt(importAsciugatrice), ElettroDomestico.valueOf(asciugatrice));
         sys.setParametroElettrodomestico(Integer.parseInt(importAspirapolvere), ElettroDomestico.valueOf(aspirapolvere));
         sys.setParametroElettrodomestico(Integer.parseInt(importMicroonde), ElettroDomestico.valueOf(microonde));
-        
+        sys.ricercaAnnuncio();
     }
     
-    
+    private void settaNonLoggato(HttpServletResponse response) throws IOException {
+        String ricercaHtml = HtmlReader.htmlReader("RicercaCasaNonLoggato.html");
+        response.setStatus(200);
+        response.getWriter().println(ricercaHtml);
+    }
     
     
 }
