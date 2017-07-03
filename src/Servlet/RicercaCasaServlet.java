@@ -6,14 +6,19 @@
 package Servlet;
 
 import Casa.Citta;
+import Casa.ElettroDomestico;
+import Casa.HouseGenerality;
 import Exceptions.RegistrazioneException;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -32,86 +37,94 @@ public class RicercaCasaServlet extends HttpServlet {
         Cookie cookie = request.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
-                String registrazioneGiaLoggato = HtmlReader.htmlReader("registrazioneGiaLoggato.html");
+                String registrazioneGiaLoggato = HtmlReader.htmlReader("RicercaCasaLoggato.html");
                 response.setStatus(200);
                 response.getWriter().println(registrazioneGiaLoggato);
             } else {
-                String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
+                String registrazioneHtml = HtmlReader.htmlReader("RicercaCasaNonLoggato.html");
                 response.setStatus(200);
                 response.getWriter().println(registrazioneHtml);
             }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException, IOException{
+     
+       
         try {
-            effettuaRegistrazione(req);
-            String registrazioneEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
-            resp.setStatus(200);
-            resp.getWriter().println(registrazioneEffettuataHtml);
-
-        } catch (SQLException | ParseException e) {
-            String erroreHtml = HtmlReader.htmlReader("erroriVari.html");
-            resp.setStatus(200);
-            resp.getWriter().println(erroreHtml);
-        } catch (RegistrazioneException e) {
-            String erroreEmailHtml = HtmlReader.htmlReader("erroreEmailRegistrazione.html");
-            resp.setStatus(200);
-            resp.getWriter().println(erroreEmailHtml);
+            effettuaRicerca(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RegistrazioneException ex) {
+            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+            String ricercaEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
+            resp.setStatus(200);
+            resp.getWriter().println(ricercaEffettuataHtml);
+
+       
         
     }
     
-    private void effettuaRegistrazione(HttpServletRequest req) throws SQLException, RegistrazioneException, ParseException {
-        String nome = req.getParameter("nome");
-        String cognome = req.getParameter("cognome");
-        String email = req.getParameter("email");
-        String sesso = req.getParameter("sesso");
-        String dataDiNascita = req.getParameter("datadinascita");
-        String nazionalita = req.getParameter("nazionalita");
-        String facolta= req.getParameter("facolta");
-        String telefono = req.getParameter("cellulare");
-        String citta = req.getParameter("cittadiricerca");
-        String occupazione = req.getParameter("occupazione");
-        String fumatore = req.getParameter("fumatore");
-        String cuoco = req.getParameter("cuoco");
-        String sportivo = req.getParameter("sportivo");
-        String password = req.getParameter("password");
+    private void effettuaRicerca(HttpServletRequest req) throws SQLException, RegistrazioneException, ParseException {
+        String cittaDiRicerca = req.getParameter("cittadiricerca");
+        String costoMax = req.getParameter("costoMax");
+        String cucinaSeparata = req.getParameter("cucina");
+        String importCucinaSeparata = req.getParameter("importanzacucinaseparata");
+        String distanzaCentro = req.getParameter("distanzacentro");
+        String importDistanzaCentro = req.getParameter("importanzadistanzacentro");
+        String numeroLocali= req.getParameter("numerolocali");
+        String importNumeroLocali = req.getParameter("importanzanumerolocali");
+        String numeroBagni = req.getParameter("numerobagni");
+        String importNumeroBagni = req.getParameter("importanzanumerobagni");
+        String sessoCoinquilini = req.getParameter("sessocoinquilini");
+        String importSesso = req.getParameter("importanzasesso");
+        String tipoCamera = req.getParameter("tipocamera");
+        String importTipoCamera = req.getParameter("importanzatipocamera");
+        String forno = req.getParameter("forno");
+        String importForno = req.getParameter("importanzaforno");
+        String lavatrice = req.getParameter("lavatrice");
+        String importLavatrice = req.getParameter("importanzalavatrice");
+        String lavastoviglie = req.getParameter("lavastoviglie");
+        String importLavastoviglie = req.getParameter("importanzalavastoviglie");
+        String condizionatore = req.getParameter("condizionatore");
+        String importCondizionatore= req.getParameter("importanzacondizionatore");
+        String aspirapolvere = req.getParameter("aspirapolvere");
+        String importAspirapolvere = req.getParameter("importanzaaspirapolvere");
+        String asciugatrice = req.getParameter("asciugatrice");
+        String importAsciugatrice = req.getParameter("importanzaasciugatrice");
+        String microonde = req.getParameter("microonde");
+        String importMicroonde = req.getParameter("importanzamicroonde");
         
-        String[] giornoMeseAnno = dataDiNascita.split("-");
-        int giorno = Integer.parseInt(giornoMeseAnno[2]);
-        int mese = Integer.parseInt(giornoMeseAnno[1]);
-        int anno = Integer.parseInt(giornoMeseAnno[0]);
-        
-        boolean fumatoreBoolean = true;
+         
+        boolean cucinaSeparataBoolean = true;
         try{
-            if(fumatore.equals("null")) 
-                fumatoreBoolean = false;
+            if(cucinaSeparata.equals("null")) 
+                cucinaSeparataBoolean = false;
         } catch (NullPointerException ex) {
-            fumatoreBoolean = false;
-        }
-        
-        boolean cuocoBoolean = true;
-        try{
-            if(cuoco.equals("null")) 
-                cuocoBoolean = false;
-        } catch (NullPointerException ex) {
-            cuocoBoolean = false;
-        }
-        
-        boolean sportivoBoolean = true;
-        try{
-            if(sportivo.equals("null")) 
-                sportivoBoolean = false;
-        } catch (NullPointerException ex) {
-            sportivoBoolean = false;
+            cucinaSeparataBoolean = false;
         }
         
         Sistema sys= new Sistema();
-        sys.registrazioneUtente(nome, cognome, Sesso.valueOf(sesso), email,
-            password, giorno, mese, anno, telefono, Nazione.valueOf(nazionalita),
-            Occupazione.valueOf(occupazione), Facolta.valueOf(facolta),
-            fumatoreBoolean, cuocoBoolean, sportivoBoolean, Citta.valueOf(citta), false);
+        sys.iniziaRicercaAnnunci(Citta.valueOf(cittaDiRicerca));
+        sys.setCostoMax(Integer.parseInt(costoMax));
+        sys.setParametroCucina(Integer.parseInt(importCucinaSeparata), cucinaSeparataBoolean);
+        sys.setParametroDistCentro(Integer.parseInt(importDistanzaCentro), Integer.parseInt(distanzaCentro));
+        sys.setParametroNLocali(Integer.parseInt(importNumeroLocali), Integer.parseInt(numeroLocali));
+        sys.setParametroNBagni(Integer.parseInt(importNumeroBagni), Integer.parseInt(numeroBagni));
+        sys.setParametroSessoCasa(Integer.parseInt(importSesso), HouseGenerality.valueOf(sessoCoinquilini));
+        sys.setParametroTipoCamera(Integer.parseInt(importTipoCamera), Integer.parseInt(tipoCamera));
+        sys.setParametroElettrodomestico(Integer.parseInt(importForno), ElettroDomestico.valueOf(forno));
+        sys.setParametroElettrodomestico(Integer.parseInt(importLavatrice), ElettroDomestico.valueOf(lavatrice));
+        sys.setParametroElettrodomestico(Integer.parseInt(importLavastoviglie), ElettroDomestico.valueOf(lavastoviglie));
+        sys.setParametroElettrodomestico(Integer.parseInt(importCondizionatore), ElettroDomestico.valueOf(condizionatore));
+        sys.setParametroElettrodomestico(Integer.parseInt(importAsciugatrice), ElettroDomestico.valueOf(asciugatrice));
+        sys.setParametroElettrodomestico(Integer.parseInt(importAspirapolvere), ElettroDomestico.valueOf(aspirapolvere));
+        sys.setParametroElettrodomestico(Integer.parseInt(importMicroonde), ElettroDomestico.valueOf(microonde));
+        
     }
     
     
