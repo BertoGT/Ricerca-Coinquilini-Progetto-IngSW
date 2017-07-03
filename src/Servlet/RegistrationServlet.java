@@ -12,12 +12,10 @@ import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -34,17 +32,21 @@ public class RegistrationServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie cookie = request.getCookies()[0]; 
+        try {
+            Cookie cookie = request.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
                 String registrazioneGiaLoggato = HtmlReader.htmlReader("registrazioneGiaLoggato.html");
                 response.setStatus(200);
                 response.getWriter().println(registrazioneGiaLoggato);
             } else {
-                String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
-                response.setStatus(200);
-                response.getWriter().println(registrazioneHtml);
+                cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
+                response.addCookie(cookie);
+                settaNonLoggato(response);
             }
+        } catch (NullPointerException ex) {
+            settaNonLoggato(response);
+        }
     }
 
     @Override
@@ -63,8 +65,7 @@ public class RegistrationServlet extends HttpServlet {
             String erroreEmailHtml = HtmlReader.htmlReader("erroreEmailRegistrazione.html");
             resp.setStatus(200);
             resp.getWriter().println(erroreEmailHtml);
-        }
-        
+        }       
     }
     
     private void effettuaRegistrazione(HttpServletRequest req) throws SQLException, RegistrazioneException, ParseException {
@@ -117,6 +118,12 @@ public class RegistrationServlet extends HttpServlet {
             password, giorno, mese, anno, telefono, Nazione.valueOf(nazionalita),
             Occupazione.valueOf(occupazione), Facolta.valueOf(facolta),
             fumatoreBoolean, cuocoBoolean, sportivoBoolean, Citta.valueOf(citta), false);
+    }
+    
+    private void settaNonLoggato(HttpServletResponse response) throws FileNotFoundException, IOException {
+        String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
+        response.setStatus(200);
+        response.getWriter().println(registrazioneHtml);
     }
     
     
