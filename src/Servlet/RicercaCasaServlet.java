@@ -97,12 +97,9 @@ public class RicercaCasaServlet extends HttpServlet {
         String microonde = req.getParameter("microonde");
         String importMicroonde = req.getParameter("ratingm");
         
-        
-        
         Sistema sys= new Sistema();
         sys.iniziaRicercaAnnunci(Citta.valueOf(cittaDiRicerca));
-        
-        
+                
         try {
             if(!importCucinaSeparata.equals("null")) {
                 boolean cucinaSeparataBoolean = true;
@@ -118,34 +115,29 @@ public class RicercaCasaServlet extends HttpServlet {
         } catch (NullPointerException ex) {}
         
         try {
-            if(!importDistanzaCentro.equals("null")) {
+            if(!importDistanzaCentro.equals("null")) 
                  sys.setParametroDistCentro(Integer.parseInt(importDistanzaCentro.trim()), Integer.parseInt(distanzaCentro.trim()));
-            }
         } catch (NullPointerException | NumberFormatException ex) {}
         
         
         try {
-            if(!importNumeroLocali.equals("null")) {
+            if(!importNumeroLocali.equals("null")) 
                 sys.setParametroNLocali(Integer.parseInt(importNumeroLocali), Integer.parseInt(numeroLocali));
-            }
         } catch (NullPointerException ex) {}
         
         try {
-            if(!importNumeroBagni.equals("null")) {
+            if(!importNumeroBagni.equals("null")) 
                 sys.setParametroNBagni(Integer.parseInt(importNumeroBagni), Integer.parseInt(numeroBagni));
-            }
         } catch (NullPointerException ex) {}
         
         try {
-            if(!importSesso.equals("null")) {
+            if(!importSesso.equals("null")) 
                 sys.setParametroSessoCasa(Integer.parseInt(importSesso), HouseGenerality.valueOf(sessoCoinquilini));
-            }
         } catch (NullPointerException ex) {}
         
         try {
-            if(!importTipoCamera.equals("null")) {
+            if(!importTipoCamera.equals("null")) 
                 sys.setParametroTipoCamera(Integer.parseInt(importTipoCamera), Integer.parseInt(tipoCamera));
-            }
         } catch (NullPointerException ex) {}
         
         try {
