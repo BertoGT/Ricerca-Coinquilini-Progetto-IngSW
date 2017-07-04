@@ -1,12 +1,6 @@
 <!doctype html>
 <html>
 <head>
-<script language="javascript"> 
-	function logout(){
-        	$.post("http://localhost:8080/logout", {} );  //Your values here..
-   	}
-
-</script>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
@@ -23,7 +17,10 @@
     <ul class="nav navbar-nav navbar-right">
         <li><a href="contattaci" class="navbar_opt">Contattaci</a></li>
         <li><a href="" class="navbar_opt">Profilo</a></li>
-        <li><a href="javascript:logout()" class="navbar_opt">Logout</a></li>
+        <li><form name="logoutForm" method="POST" action="http://localhost:8080/logout">
+		<input type="hidden" name="param1" value="param1Value">
+		<a href="javascript:document.logoutForm.submit()">Logout</a>
+	</form></li>
         </ul>
   </div>
 </div>
