@@ -24,6 +24,7 @@ public class TesterServlet {
                         handler.addServlet(HomePageServlet.class, "/homepage");
                         handler.addServlet(LogoutServlet.class, "/logout");
                         handler.addServlet(RicercaCasaServlet.class, "/ricercacasa");
+                        handler.addServlet(RicercaCoinquiServlet.class, "/ricercacoinquilino");
 			server.setHandler(handler);
 			server.start();
 			
