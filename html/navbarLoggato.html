@@ -1,6 +1,12 @@
 <!doctype html>
 <html>
 <head>
+<script language="javascript"> 
+	function logout(){
+        	$.post(http://localhost:8080/logout", { name: "John", time: "2pm" } );  //Your values here..
+   	}
+
+</script>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
@@ -16,8 +22,8 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="contattaci" class="navbar_opt">Contattaci</a></li>
-        <li><a href="registrazione" class="navbar_opt">Profilo</a></li>
-        <li><a href="logout" class="navbar_opt">Logout</a></li>
+        <li><a href="" class="navbar_opt">Profilo</a></li>
+        <li><a href="javascript:logout()" class="navbar_opt">Logout</a></li>
         </ul>
   </div>
 </div>
