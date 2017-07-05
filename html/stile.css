@@ -147,6 +147,7 @@ input, select, textarea{
 	width: 100%;
 	align-content: center;
 	position: relative;
+	bottom: 5px;
 }
 
 
