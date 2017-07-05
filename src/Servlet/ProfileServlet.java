@@ -6,7 +6,10 @@
 package Servlet;
 
 import Casa.AnnuncioCasa;
+import Casa.CameraDisponibile;
 import Casa.Citta;
+import Casa.ElettroDomestico;
+import Casa.HouseGenerality;
 import Exceptions.RegistrazioneException;
 import ProfiloUtente.DataDiNascita;
 import ProfiloUtente.Facolta;
@@ -18,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -125,7 +129,7 @@ public class ProfileServlet extends HttpServlet {
            }else{
                AnnuncioCasa annuncio = pM.getAnnuncioCasa();
                String annuncioPerIlProfilo = HtmlReader.htmlReader("annuncioDinamicoProfileManager.html");
-               String buttonPerAnnuncio = HtmlReader.htmlReader("buttonAnnuncio.html");
+               String buttonPerAnnuncio = HtmlReader.htmlReader("risultatoCasa/buttonAnnuncio.html");
                annuncioPerIlProfilo.replaceAll("<!-- BUTON ANNUNCIO-->", buttonPerAnnuncio);
                profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
                
@@ -138,6 +142,16 @@ public class ProfileServlet extends HttpServlet {
         int metriQuadrati = annuncio.getMetriQuadri();
         int distanzaDalCentro = annuncio.getDistanzaCentro();
         int numeroBagni = annuncio.getNumeroBagni();
+        int numeroLocali = annuncio.getnLocali();
+        HouseGenerality sessoCasa = annuncio.getSessoCasa();
+        boolean cucinaSeparata = annuncio.isCucinaSeparata();
+        ArrayList<ElettroDomestico> elettrodomestici = annuncio.getElettroDomestici();
+        ArrayList<CameraDisponibile> camereDisponibili = annuncio.getCamere();
+        String descrizioneAggiuntivaAnnuncio = annuncio.getDescrizioneAggiuntiva();
+        int costoAnnuncioInEuro = annuncio.getCosto();
+        
+        String nomeCognomeProprietario = annuncio.getNomeCognomeProprietario();
+        
     }
     
 }
