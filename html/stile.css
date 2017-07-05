@@ -12,29 +12,6 @@ body{
 	min-height: 800px;
 }
 
-#body_mainpage{
-	align-items: center;
-	background-color: #3399FF;
-	display: flex;
-	font-family: "Raleway", sans-serif;
-	flex-direction: column;
-	justify-content: center;
-	overflow: hidden;
-}
-
-div.container{
-	align-items: center;
-	align-self: center;
-	background: url('immagini/sfondomainpage.jpg') center center;
-	border-radius: 10%;
-	display: flex;
-	flex-direction : column;
-	min-height: 800px;
-	justify-content : center;
-	width: 100%;
-	font-weight: bold;
-}
-
 a.button , input.submit-btn{
 	background-color: #3399FF;
 	border-radius: 5px;
@@ -59,6 +36,23 @@ input.submit-btn{
 	font-weight: bolder;
 }
 
+input.homepage-btn{
+	width: 600px;
+	font-size: 25px;
+    font-family: 'Raleway';
+	padding: 10px 4px;
+	font-weight: bolder;
+    padding-top: : 5%;
+    background-color: #3399FF;
+	border-radius: 5px;
+	color: #fff;
+	letter-spacing: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
 h1{
 	font-family: "Playfair Display", serif;
 	font-size: 52px;
@@ -78,6 +72,9 @@ h1{
 	border-radius: 5px;
 }
 
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
 .main_navbar, #navbarra{
 	width: 100%;
 	height: 10%;
@@ -87,7 +84,14 @@ h1{
 	top: 0px;
 	z-index: 100;
 }
-
+#containerProfiloRicerca{
+    width: auto;
+    margin: 0 auto;
+    float:center;
+    padding-left: 33%;
+    margin-right: 1%;
+    text-align:left;
+}
 #sfondoform{
 	width: 100%;
 	height: 90%;
@@ -107,6 +111,16 @@ h1{
 	width: 100%;
 }
 
+#scritteform{
+    
+    color: black;
+	font-family: 'Raleway';
+	font-size: 40px;
+	align-self: center;
+	padding-left: 60px;
+    
+}
+
 #footer{
 	background-color: rgba(192, 192, 192, 1);
 	padding: 10px 5px 10px 5px;
@@ -122,12 +136,14 @@ label{
 	text-align: right;
 }
 
-input{
+input, select, textarea{
 	border-radius: 4px;
 	display: inline;
 	width: 150px;
 	float: center;
+    color: #000000;
 }
+
 
 .navbar_opt{
 	color: black;
@@ -168,4 +184,88 @@ img.us{
 
 td{
 	border: 2px groove lightblue;
+}
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.divRicercaCasa{
+    width:100%;
+    height:30px;
+}
+
+#RicCasa{
+    width:70%;
+    height:100%;
+    float: left;
+    text-align: right;
+    padding: 3 20 0 0;
+}
+#star{
+    width: 30%;
+    height: 100%;
+    text-align: left;
+    float:right;
+}
+
+ html,body,h1,h2,h3,h4,h5,h6 {
+     font-family: "Roboto", sans-serif;
+}
+
+#labelModificaProfilo{
+    font-family: "Roboto", sans-serif;
+    text-align: left;
 }

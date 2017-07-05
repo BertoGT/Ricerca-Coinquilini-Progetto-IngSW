@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <title>Rooming</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.min.css" type="text/css">
+    <link rel = "stylesheet" href="_icons.scss" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="buttonAnnuncio.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+    .mySlides {display:none}
+    </style>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#ex1').slider({formatter: function(value) {return 'Current value: ' + value;}});
+        });
+
+        function showValue(newValue)
+        {
+            document.getElementById("range").innerHTML=newValue;
+        }
+    </script>
+<body class="w3-content w3-border-left w3-border-right">
+<!-- !PAGE CONTENT! ANNUNCIO! -->
+<div class="w3-main w3-white" style="margin-left:auto">
+    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form">
+
+      <!-- Push down content on small screens -->
+      <div class="w3-hide-large" style="margin-top:80px"></div>
+
+      <!-- Slideshow Header -->
+      <div class="w3-container" id="apartment">
+        <h2 class="w3-text-blue">Annuncio</h2>
+      </div>
+      <div class="w3-container">
+        <h4><strong>Spazio della casa</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+              <p>
+                  
+                <i class="fa fa-fw fa-male fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Metri quadrati :
+                  
+                <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="300" value="0" step="1" onchange="showValue(this.value)" />
+                <span id="range">0</span>
+                
+              </p>
+            <p>
+                <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Distanza dal centro (km) :
+                <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="30" value="0" step="1" onchange="showValue(this.value)" />
+                <span id="range">0</span>
+            </p>
+            <p>
+                <i class="fa fa-fw fa-bath fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Bagni:
+                <select style="color:#000000" name="numerobagni">
+                    <option value="uno">1</option>
+                    <option value="due">2</option>
+                    <option value="tre">3</option>
+                    <option value="altro">altro</option>
+                </select>
+              
+            </p>
+            <p>
+                <i class="fa fa-fw fa-home fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> NumeroDiLocali:
+                <select style="color:#000000" name="numerolocali" required>
+                    <option value="uno">1</option>
+                    <option value="due">2</option>
+                    <option value="tre">3</option>
+                    <option value="altro">altro</option>
+                </select>
+            <p>
+                <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Sesso Casa : 
+                <select style="color:#000000" name="sessocoinquilini" required>
+                    <option value="FEMMINE">F</option>
+                    <option value="MASCHI">M</option>
+                    <option value="MISTA">MISTA</option>
+                </select> 
+                
+                
+            </p>
+            <p>
+                <i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>Cucina separata: 
+                <input type="checkbox" name="cucina" value="C">
+            </p>
+          </div>
+        </div>
+        <hr>
+
+        <h4><strong>Elettrodomestici</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+              <p>
+                <label>Forno &nbsp;</label> <input type="checkbox" name="forno" value="">
+              </p>
+              <p>
+                <label>Lavatrice &nbsp;</label> <input type="checkbox" name="lavatrice" value="">
+              </p>
+              <p>
+                <label>Condizionatore &nbsp;</label> <input type="checkbox" name="condizionatore" value="">
+              </p>
+              <p>
+                <label>Aspirapolvere &nbsp;</label> <input type="checkbox" name="aspirapolvere" value="">
+              </p>
+              <p>
+                <label>Asciugatrice &nbsp;</label> <input type="checkbox" name="asciugatrice" value="">
+              </p>
+              <p>
+                <label>Microonde &nbsp;</label> <input type="checkbox" name="microonde" value="">
+              </p>
+              <p>
+                <label>Lavastoviglie &nbsp;</label> <input type="checkbox" name="lavastoviglie" value="">
+              </p>
+          </div>
+        </div>
+        <hr>
+        <h4><strong>Camere disponibili</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+              
+              
+              STO SCHIFO VA GENERATO DINAMICAMENTE
+            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Camere disponibili: 
+                <select style="color:#000000" name="numerolocali" required>
+                    <option value="uno">1</option>
+                    <option value="due">2</option>
+                    <option value="tre">3</option>
+                    <option value="altro">altro</option>
+                </select>
+            </p>
+            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Posti letto: 
+                <select style="color:#000000" name="numerolocali" required>
+                    <option value="uno">1</option>
+                    <option value="due">2</option>
+                    <option value="tre">3</option>
+                    <option value="altro">altro</option>
+                </select>
+            </p>
+            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Posti letto disponibili: 
+                <select style="color:#000000" name="numerolocali" required>
+                    <option value="uno">1</option>
+                    <option value="due">2</option>
+                    <option value="tre">3</option>
+                    <option value="altro">altro</option>
+                </select>
+            </p>
+            <!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->
+          </div>
+        </div>
+        <hr>
+        <h4><strong>Descrizione Annuncio</strong></h4>
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" required>
+                Descrivi qui il tuo annuncio!
+          </textarea>
+        <hr>
+        <h4><strong>Costo mensile</strong></h4>
+        <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+        <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="3000" value="0" step="1" onchange="showValue(this.value)" />
+        <span id="range">0</span>
+      </div>
+      <hr>
+
+      <!-- Contatti -->
+        <h2><strong>Contatti</strong></h2>
+        <p class="w3-large w3-text-theme">
+        <i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"></i> 
+        <label id="labelModificaProfilo">Nome e Cognome* : &nbsp; </label>
+        <input type="text" style="color:#000000" name="nome" value="" required>
+        </p>
+        <p class="w3-large w3-text-theme">
+        <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+        <label id="labelModificaProfilo">Città e indirizzo* : &nbsp; </label>
+        <input type="text" style="color:#000000" name="nome" value="" required>
+        </p>
+        <p class="w3-large w3-text-theme">
+        <i class="fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+        <label id="labelModificaProfilo">Numero di telefono* : &nbsp; </label>
+        <input type="text" style="color:#000000" name="nome" value="" required>
+        </p>
+        <p class="w3-large w3-text-theme">
+        <i class="fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"> </i> 
+        <label id="labelModificaProfilo">Email* : &nbsp; </label>
+        <input type="text" style="color:#000000" name="nome" value="" required>
+        </p>
+        
+        LA DATA DI CREAZIONE DELL'ANNUNCIO? LA PRENDE IN AUTOMATICO IL MODELLO?
+        </form>
+    </div>
+    <br>
+    <!-- End page content ANNUNCIO-->
+    <!-- QUI VANNO CARICATI I BUTTON PER LA MODIFICA/CREAZIONE DELL'ANNUNCIO
+        <button class="buttonAnnuncio" type="submit">
+                            <span>
+                                Crea annuncio
+                            </span>
+                        </button>
+<button class="buttonAnnuncio" type="submit">
+                            <span>
+                                Annulla
+                            </span>
+                        </button>
+
+    -->
+</body>
+</html>
+

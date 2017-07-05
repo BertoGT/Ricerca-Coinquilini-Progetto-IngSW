@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <script src="jquery.js"></script>  -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script> 
+    function caricabarra(){
+      $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbar.html"); 
+      $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");    
+    };
+</script> 
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/498a05/html/stile.css" type="text/css">
+<title>Rooming</title>
+</head>
+<body onload="caricabarra()">
+<div id="navbarra"></div>
+<div id="sfondoform" class="sfondo">
+		<p><h2> MESSAGGIO DINAMICO + TEMPORIZZAZIONE!  </h2>
+                <p><a href="http://localhost:8080/registrazione" class="sfondo">TORNA INDIETRO</a></p>
+			
+</div>
+  
+<div id="navfooter"></div>
+</body>
+</html>
