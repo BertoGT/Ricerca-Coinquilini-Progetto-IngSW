@@ -13,25 +13,30 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="buttonAnnuncio.css">
-    <style>
-    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
-    .mySlides {display:none}
-    </style>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+    
     <script type="text/javascript">
-        $(document).ready(function() {
-          $('#ex1').slider({formatter: function(value) {return 'Current value: ' + value;}});
-        });
-
-        function showValue(newValue)
-        {
-            document.getElementById("range").innerHTML=newValue;
-        }
+       	function caricabarra(){
+              $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbar.html"); 
+              $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
+         }
+        	function showValue1(newValue)
+        	{
+              document.getElementById("range1").innerHTML=newValue;
+        	}
+        	function showValue2(newValue)
+        	{
+              document.getElementById("range2").innerHTML=newValue;
+        	}
+			function showValue3(newValue)
+        	{			
+              document.getElementById("range3").innerHTML=newValue;
+        	}
     </script>
-<body class="w3-content w3-border-left w3-border-right">
-<!-- !PAGE CONTENT! ANNUNCIO! -->
-<div class="w3-main w3-white" style="margin-left:auto">
-    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form">
+<body onload="caricabarra()" class="sfondo">
+<div id="navbarra"></div>
+<div class="w3-main w3-white" style="margin:100px 15% 2% 15%;opacity:0.95;">
+    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form" style="padding: 1%">
 
       <!-- Push down content on small screens -->
       <div class="w3-hide-large" style="margin-top:80px"></div>
@@ -41,24 +46,25 @@
         <h2 class="w3-text-blue">Annuncio</h2>
       </div>
       <div class="w3-container">
-        <h4><strong>Spazio della casa</strong></h4>
+        <h4><strong>Dettagli della casa</strong></h4>
         <div class="w3-row w3-large">
           <div class="w3-col s6">
-              <p>
-                  
+            <p> 
                 <i class="fa fa-fw fa-male fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Metri quadrati :
-                  
-                <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="300" value="0" step="1" onchange="showValue(this.value)" />
-                <span id="range">0</span>
+                <input id="slider1" type="range" min="0" max="250" step="10" value="0" onchange="showValue1(this.value)" />
+                <span id="range1">0</span>
                 
-              </p>
+            </p>
+            
             <p>
                 <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Distanza dal centro (km) :
-                <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="30" value="0" step="1" onchange="showValue(this.value)" />
-                <span id="range">0</span>
+                <input id="slider2" type="range" min="0" max="30" value="0" step="0.1" onchange="showValue2(this.value)" />
+                <span id="range2">0</span>
             </p>
+            
             <p>
-                <i class="fa fa-fw fa-bath fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Bagni:
+                <i class="fa fa-fw fa-bath fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+                <label> Bagni:</label>
                 <select style="color:#000000" name="numerobagni">
                     <option value="uno">1</option>
                     <option value="due">2</option>
@@ -67,26 +73,30 @@
                 </select>
               
             </p>
+            
             <p>
-                <i class="fa fa-fw fa-home fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> NumeroDiLocali:
+                <i class="fa fa-fw fa-home fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
+                <label> NumeroDiLocali:</label>
                 <select style="color:#000000" name="numerolocali" required>
                     <option value="uno">1</option>
                     <option value="due">2</option>
                     <option value="tre">3</option>
                     <option value="altro">altro</option>
                 </select>
+            
             <p>
-                <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Sesso Casa : 
+                <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+                <label>Sesso Casa :</label> 
                 <select style="color:#000000" name="sessocoinquilini" required>
                     <option value="FEMMINE">F</option>
                     <option value="MASCHI">M</option>
                     <option value="MISTA">MISTA</option>
                 </select> 
-                
-                
             </p>
+            
             <p>
-                <i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>Cucina separata: 
+                <i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>
+                <label>Cucina separata:</label> 
                 <input type="checkbox" name="cucina" value="C">
             </p>
           </div>
@@ -120,6 +130,8 @@
           </div>
         </div>
         <hr>
+        
+        
         <h4><strong>Camere disponibili</strong></h4>
         <div class="w3-row w3-large">
           <div class="w3-col s6">
@@ -161,8 +173,8 @@
         <hr>
         <h4><strong>Costo mensile</strong></h4>
         <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
-        <input type="range" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="3000" value="0" step="1" onchange="showValue(this.value)" />
-        <span id="range">0</span>
+        <input id="slider3" type="range" min="0" max="900" value="0" step="25" onchange="showValue3(this.value)" />
+        <span id="range3">0</span>
       </div>
       <hr>
 
@@ -188,25 +200,17 @@
         <label id="labelModificaProfilo">Email* : &nbsp; </label>
         <input type="text" style="color:#000000" name="nome" value="" required>
         </p>
-        
-        LA DATA DI CREAZIONE DELL'ANNUNCIO? LA PRENDE IN AUTOMATICO IL MODELLO?
-        </form>
+   		<hr>
+         <button class="buttonAnnuncio" type="submit" style="margin-left:3%">
+             <span> Crea annuncio </span>
+         </button>
+			<button class="buttonAnnuncio" type="reset">
+             <span>Annulla</span>
+         </button>
+		</form>
+		<br><br>
     </div>
-    <br>
-    <!-- End page content ANNUNCIO-->
-    <!-- QUI VANNO CARICATI I BUTTON PER LA MODIFICA/CREAZIONE DELL'ANNUNCIO
-        <button class="buttonAnnuncio" type="submit">
-                            <span>
-                                Crea annuncio
-                            </span>
-                        </button>
-<button class="buttonAnnuncio" type="submit">
-                            <span>
-                                Annulla
-                            </span>
-                        </button>
-
-    -->
+    <div id="navfooter" style="margin-top:5px;"></div>
 </body>
 </html>
 

@@ -55,8 +55,7 @@ h1{
 	font-weight: 900
 	line-height : 46px;
 	margin: 0 0 60px 0;
-	text-align: center
-	color: #6699FF;
+	text-align: center;
 }
 
 .img-resposive{
@@ -108,7 +107,6 @@ h1{
 }
 
 #scritteform{
-    
    color: black;
 	font-family: 'Raleway';
 	font-size: 40px;
@@ -138,7 +136,7 @@ input, select, textarea{
 	font-size: 20px;
 }
 
-#footer{
+#navfooter{
 	background-color: #f8f8f8;
 	color: #777;
 	padding: 10px 5px 10px 5px;
