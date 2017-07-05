@@ -47,11 +47,14 @@ public class ProfileServlet extends HttpServlet {
                 int idUtente = Integer.parseInt(cookie.getName());
                 system.settaLoggato(idUtente);
                 ProfileManager pM = this.system.getUser().getProfileManager();
+                
+                String headerLoggato = HtmlReader.htmlReader("headerLoggato.html");
+                
                 String profileManager = HtmlReader.htmlReader("profileManager.html");
                 profileManager = this.sostituisciCampiProfilo(profileManager, pM);
                 profileManager = this.caricaAnnuncioSePresente(profileManager, pM);
                 response.setStatus(200);
-                response.getWriter().println(profileManager);
+                response.getWriter().println(headerLoggato+profileManager);
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 /*
@@ -79,135 +82,159 @@ public class ProfileServlet extends HttpServlet {
         response.getWriter().println(loginHtml);
     }
     private String sostituisciCampiProfilo(String profileManager, ProfileManager pM){
-        String newProfileManager = profileManager;
+        ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
+        ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
         
-        DataDiNascita dataDiNascitaUtente = pM.getUtente().getDatiUtente().getDataDiNascita();
-        Occupazione occupazioneUtente = pM.getUtente().getDatiUtente().getOccupazione();
-        Facolta facoltaUtente = pM.getUtente().getDatiUtente().getFacolta();
-        Citta cittaDiRicerca = pM.getUtente().getDatiUtente().getCittaDiRicerca();
-        String emailUtente = pM.getUtente().getDatiUtente().geteMail();
-        String numeroDiTelefonoUtente = pM.getUtente().getDatiUtente().getNumeroDiTelefono();
-        Sesso sessoUtente = pM.getUtente().getDatiUtente().getSesso();
-        Nazione nazionalitaUtente = pM.getUtente().getDatiUtente().getNazionalita();
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getDataDiNascita().toString());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getOccupazione().toString());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getFacolta().toString());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getCittaDiRicerca().toString());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().geteMail());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getNumeroDiTelefono());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getSesso().toString());
+        elementiDaModificareDinamici.add(pM.getUtente().getDatiUtente().getNazionalita().toString());
         boolean utenteSportivo = pM.getUtente().getDatiUtente().isSportivo();
-        boolean utenteFumatore = pM.getUtente().getDatiUtente().isFumatore();
-        boolean utenteCuoco = pM.getUtente().getDatiUtente().isCuoco();
-        boolean candidatoCoinquilino = pM.getUtente().getDatiUtente().isPotenzialeCoinquilino();
-        
-        profileManager.replaceAll("dataDiNascitaUtente", dataDiNascitaUtente.toString());
-        profileManager.replaceAll("occupazioneUtente", occupazioneUtente.toString());
-        profileManager.replaceAll("facoltaUtente", facoltaUtente.toString());
-        profileManager.replaceAll("cittaDiRicerca", cittaDiRicerca.toString());
-        profileManager.replaceAll("emailUtente", emailUtente);
-        profileManager.replaceAll("numeroDiTelefonoUtente", numeroDiTelefonoUtente);
-        profileManager.replaceAll("sessoUtente", sessoUtente.toString());
-        profileManager.replaceAll("nazionalitaUtente", nazionalitaUtente.toString());
         if(utenteSportivo==true)
-            profileManager.replaceAll("utenteSportivo", "SI");
+            elementiDaModificareDinamici.add("SI");
         else
-            profileManager.replaceAll("utenteSportivo", "NO");
-        
-        if(utenteCuoco==true)
-            profileManager.replaceAll("utenteCuoco", "SI");
-        else
-            profileManager.replaceAll("utenteCuoco", "NO");
-        
+            elementiDaModificareDinamici.add("NO");
+        boolean utenteFumatore = pM.getUtente().getDatiUtente().isFumatore();
         if(utenteFumatore==true)
-            profileManager.replaceAll("utenteFumatore", "SI");
+            elementiDaModificareDinamici.add("SI");
         else
-            profileManager.replaceAll("utenteFumatore", "NO");
-        
+            elementiDaModificareDinamici.add("NO");
+        boolean utenteCuoco = pM.getUtente().getDatiUtente().isCuoco();
+        if(utenteCuoco==true)
+            elementiDaModificareDinamici.add("SI");
+        else
+            elementiDaModificareDinamici.add("NO");
+        boolean candidatoCoinquilino = pM.getUtente().getDatiUtente().isPotenzialeCoinquilino();
         if(candidatoCoinquilino==true)
-            profileManager.replaceAll("candidatoCoinquilino", "SI");
+            elementiDaModificareDinamici.add("SI");
         else
-            profileManager.replaceAll("candidatoCoinquilino", "NO");
-        return newProfileManager;
+            elementiDaModificareDinamici.add("NO");
+        String nomeCognomeUtente = pM.getUtente().getDatiUtente().getCognome()+ " " + pM.getUtente().getDatiUtente().getNome() ;
+        elementiDaModificareDinamici.add(nomeCognomeUtente);
+        
+        elementiDaModificareHtml.add("dataDiNascitaUtente");
+        elementiDaModificareHtml.add("occupazioneUtente");
+        elementiDaModificareHtml.add("facoltaUtente");
+        elementiDaModificareHtml.add("cittaDiRicerca");
+        elementiDaModificareHtml.add("emailUtente");
+        elementiDaModificareHtml.add("numeroDiTelefonoUtente");
+        elementiDaModificareHtml.add("sessoUtente");
+        elementiDaModificareHtml.add("nazionalitaUtente");
+        elementiDaModificareHtml.add("utenteSportivo");
+        elementiDaModificareHtml.add("utenteCuoco");
+        elementiDaModificareHtml.add("utenteFumatore");
+        elementiDaModificareHtml.add("candidatoCoinquilino");
+        elementiDaModificareHtml.add("nomeCognomeUtente");
+        
+        for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
+            String tmp = profileManager.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
+            profileManager = tmp;
+        }
+        return profileManager;
     }
     private String caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
-        String newProfileManager = profileManager;
         try{
            if(pM.getAnnuncioCasa()== null){
                String nessunAnnuncioPerIlProfilo = HtmlReader.htmlReader("nessunAnnuncioProfiloDinamico.html");
-               profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", nessunAnnuncioPerIlProfilo);
+               String tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", nessunAnnuncioPerIlProfilo);
+               profileManager = tmp;
            }else{
                AnnuncioCasa annuncio = pM.getAnnuncioCasa();
                String annuncioPerIlProfilo = HtmlReader.htmlReader("annuncioDinamicoProfileManager.html");
                String buttonPerAnnuncio = HtmlReader.htmlReader("risultatoCasa/buttonAnnuncio.html");
-               annuncioPerIlProfilo.replaceAll("<!-- BUTTON ANNUNCIO-->", buttonPerAnnuncio);
+               String tmp = annuncioPerIlProfilo.replaceAll("<!-- BUTTON ANNUNCIO-->", buttonPerAnnuncio);
+               annuncioPerIlProfilo = tmp;
                annuncioPerIlProfilo = this.sostituisciCampiAnnuncio(annuncioPerIlProfilo, annuncio);
-               profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
+               tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
+               profileManager = tmp;
                
            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        return newProfileManager;
+        return profileManager;
     }
     private String sostituisciCampiAnnuncio(String annuncioPerIlProfilo, AnnuncioCasa annuncio) throws FileNotFoundException{
-        String newAnnuncio = annuncioPerIlProfilo;
-        int metriQuadrati = annuncio.getMetriQuadri();
-        int distanzaDalCentro = annuncio.getDistanzaCentro();
-        int numeroBagni = annuncio.getNumeroBagni();
-        int numeroLocali = annuncio.getnLocali();
-        HouseGenerality sessoCasa = annuncio.getSessoCasa();
+        ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
+        ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
+        
+        elementiDaModificareDinamici.add(String.valueOf(annuncio.getMetriQuadri()));
+        elementiDaModificareDinamici.add(String.valueOf(annuncio.getDistanzaCentro()));
+        elementiDaModificareDinamici.add(String.valueOf(annuncio.getNumeroBagni()));
+        elementiDaModificareDinamici.add(String.valueOf(annuncio.getnLocali()));
+        elementiDaModificareDinamici.add(annuncio.getSessoCasa().toString()); 
         boolean cucinaSeparata = annuncio.isCucinaSeparata();
+        if(cucinaSeparata==true)
+            elementiDaModificareDinamici.add("SI");
+        else
+            elementiDaModificareDinamici.add("NO");
+        elementiDaModificareDinamici.add(annuncio.getDescrizioneAggiuntiva());
+        elementiDaModificareDinamici.add(String.valueOf(annuncio.getCosto()));
+        elementiDaModificareDinamici.add(annuncio.getNomeCognomeProprietario());
+        elementiDaModificareDinamici.add(annuncio.getCitta() +" - "+annuncio.getIndirizzoCasa());
+        elementiDaModificareDinamici.add(annuncio.getCellulareProprietario());
+        elementiDaModificareDinamici.add(annuncio.getEmailProprietario());
+        elementiDaModificareDinamici.add(annuncio.getDataCreazioneAnnuncio());
+        
+        elementiDaModificareHtml.add("metriQuadrati");
+        elementiDaModificareHtml.add("distanzaDalCentro");
+        elementiDaModificareHtml.add("numeroBagni");
+        elementiDaModificareHtml.add("numeroLocali");
+        elementiDaModificareHtml.add("costoAnnuncioInEuro");
+        elementiDaModificareHtml.add("sessoCasa");
+        elementiDaModificareHtml.add("descrizioneAggiuntivaAnnuncio");
+        elementiDaModificareHtml.add("nomeCognomeProprietario");
+        elementiDaModificareHtml.add("indirizzoCasa");
+        elementiDaModificareHtml.add("numeroDiTelefonoProprietario");
+        elementiDaModificareHtml.add("emailProprietario");
+        elementiDaModificareHtml.add("dataDiNascitaUtente");
+        elementiDaModificareHtml.add("dataCreazioneAnnuncio");
+        elementiDaModificareHtml.add("cucinaSeparata");
+        
+        for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
+            String tmp = annuncioPerIlProfilo.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
+            annuncioPerIlProfilo = tmp;
+        }
+        
         ArrayList<ElettroDomestico> elettrodomestici = annuncio.getElettroDomestici();
         ArrayList<CameraDisponibile> camereDisponibili = annuncio.getCamere();
-        String descrizioneAggiuntivaAnnuncio = annuncio.getDescrizioneAggiuntiva();
-        int costoAnnuncioInEuro = annuncio.getCosto();
-        String nomeCognomeProprietario = annuncio.getNomeCognomeProprietario();
-        String indirizzoCasa = annuncio.getCitta() +" - "+annuncio.getIndirizzoCasa();
-        String numeroDiTelefonoProprietario = annuncio.getCellulareProprietario();
-        String emailProprietario = annuncio.getEmailProprietario();
-        String dataCreazioneAnnuncio = annuncio.getDataCreazioneAnnuncio();
         
-        annuncioPerIlProfilo.replaceAll("metriQuadrati", String.valueOf(metriQuadrati));
-        annuncioPerIlProfilo.replaceAll("distanzaDalCentro", String.valueOf(distanzaDalCentro));
-        annuncioPerIlProfilo.replaceAll("numeroBagni", String.valueOf(numeroBagni));
-        annuncioPerIlProfilo.replaceAll("numeroLocali", String.valueOf(numeroLocali));
-        annuncioPerIlProfilo.replaceAll("costoAnnuncioInEuro", String.valueOf(costoAnnuncioInEuro));
-        annuncioPerIlProfilo.replaceAll("sessoCasa", sessoCasa.toString());
-        annuncioPerIlProfilo.replaceAll("descrizioneAggiuntivaAnnuncio", descrizioneAggiuntivaAnnuncio);
-        annuncioPerIlProfilo.replaceAll("nomeCognomeProprietario", nomeCognomeProprietario);
-        annuncioPerIlProfilo.replaceAll("indirizzoCasa", indirizzoCasa);
-        annuncioPerIlProfilo.replaceAll("numeroDiTelefonoProprietario", numeroDiTelefonoProprietario);
-        annuncioPerIlProfilo.replaceAll("emailProprietario", emailProprietario);
-        annuncioPerIlProfilo.replaceAll("dataCreazioneAnnuncio", dataCreazioneAnnuncio);
-        
-        if(cucinaSeparata==true)
-            annuncioPerIlProfilo.replaceAll("cucinaSeparata", "SI");
-        else
-            annuncioPerIlProfilo.replaceAll("cucinaSeparata", "NO");
-        
+        String tmp;
         StringBuilder elettrodomestico = new StringBuilder();
         if(elettrodomestici.isEmpty()==true){
-            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessun Elettrodomestico presente nell'annuncio!");
+            annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessun Elettrodomestico presente nell'annuncio!");
         }else{
             for(ElettroDomestico e: elettrodomestici){
                 if(e==null)
                     break;
                 String elettrodomesticoAnnuncio = HtmlReader.htmlReader("elettrodomesticiDinamico.html");
-                elettrodomesticoAnnuncio.replaceAll("nomeElettrodomestico", e.toString());
+                elettrodomesticoAnnuncio = elettrodomesticoAnnuncio.replaceAll("nomeElettrodomestico", e.toString());
                 elettrodomestico.append(elettrodomesticoAnnuncio);
             }
-            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
+             annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
         
         StringBuilder cameraDisponibile = new StringBuilder();
         if(camereDisponibili.isEmpty()==true){
-            annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
+            annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
         }else{
             for(CameraDisponibile c: camereDisponibili){
                 if(c==null)
                     break;
                 String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
-                cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
-                cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
+                cameraDisponibileAnnuncio = tmp;
+                tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
         }
-        return newAnnuncio;
+        return annuncioPerIlProfilo;
     }
     
 }
