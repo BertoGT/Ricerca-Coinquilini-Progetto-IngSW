@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,20 +31,29 @@ public class HomePageServlet extends HttpServlet{
             int idUtente = Integer.parseInt(cookie.getName());        
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 s.settaLoggato(idUtente);
+                String headerLoggato = HtmlReader.htmlReader("headerLoggato.html");
+                String homepageHtml = HtmlReader.htmlReader("homepage.html");
+                resp.setStatus(200);
+                resp.getWriter().println(headerLoggato+homepageHtml);
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 resp.addCookie(cookie);
                 settaNonLoggato(resp);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(HomePageServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(errorePagina);  
         } catch (NullPointerException ex) {
             settaNonLoggato(resp);
         } 
     }
     
-    private void settaNonLoggato(HttpServletResponse response) {
-        // risposta da utente non loggato
-    }
+    private void settaNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException {
+        String headerNonLoggato = HtmlReader.htmlReader("headerNonLoggato.html");
+        String homepageHtml = HtmlReader.htmlReader("homepage.html");
+        resp.setStatus(200);
+        resp.getWriter().println(headerNonLoggato+homepageHtml);
+    }   
     
 }

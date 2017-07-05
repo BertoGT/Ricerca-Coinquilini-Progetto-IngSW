@@ -47,11 +47,14 @@ public class ProfileServlet extends HttpServlet {
                 int idUtente = Integer.parseInt(cookie.getName());
                 system.settaLoggato(idUtente);
                 ProfileManager pM = this.system.getUser().getProfileManager();
+                
+                String headerLoggato = HtmlReader.htmlReader("headerLoggato.html");
+                
                 String profileManager = HtmlReader.htmlReader("profileManager.html");
                 profileManager = this.sostituisciCampiProfilo(profileManager, pM);
                 profileManager = this.caricaAnnuncioSePresente(profileManager, pM);
                 response.setStatus(200);
-                response.getWriter().println(profileManager);
+                response.getWriter().println(headerLoggato+profileManager);
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 /*
