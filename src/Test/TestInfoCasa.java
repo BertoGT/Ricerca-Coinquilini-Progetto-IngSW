@@ -36,22 +36,22 @@ public class TestInfoCasa {
       */
        
        
-       AnnuncioCasa ann=new AnnuncioCasa("boh", 4, 440, "berto", "333", "berto@mail");
-       ann.creaInfo(10,3,4,200,true,Citta.AGRIGENTO,"via",HouseGenerality.MISTA);
-       InfoCasa info=new InfoCasa(10,2,1,100,true,Citta.ANCONA,"Via dal cazzo 7",HouseGenerality.MISTA);
-       ann.creaCamera(1, 1);
-       System.out.println(ann.getCamere());
-       ann.creaCamera(2, 2);
-       ann.creaCamera(3,3);
-       System.out.println(ann.getCamere());
+//       AnnuncioCasa ann=new AnnuncioCasa("boh", 4, 440, "berto", "333", "berto@mail");
+//       ann.creaInfo(10,3,4,200,true,Citta.AGRIGENTO,"via",HouseGenerality.MISTA);
+//       InfoCasa info=new InfoCasa(10,2,1,100,true,Citta.ANCONA,"Via dal cazzo 7",HouseGenerality.MISTA);
+//       ann.creaCamera(1, 1);
+//       System.out.println(ann.getCamere());
+//       ann.creaCamera(2, 2);
+//       ann.creaCamera(3,3);
+//       System.out.println(ann.getCamere());
  //    ann.printid();
-       System.out.println("\n");
-       ann.rimuoviCamera(0);
-       System.out.print(ann.getCamere());
-       ann.creaCamera(3, 3);
-       System.out.print("\n");
-       System.out.print(ann.getCamere());
-       
+//       System.out.println("\n");
+//       ann.rimuoviCamera(0);
+//       System.out.print(ann.getCamere());
+//       ann.creaCamera(3, 3);
+//       System.out.print("\n");
+//       System.out.print(ann.getCamere());
+//       
        
        
        

@@ -8,8 +8,11 @@ package Casa;
 
 import Exceptions.CameraNonTrovataException;
 import ProfiloUtente.DatiUtente;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -32,14 +35,17 @@ public class AnnuncioCasa {
      * @param cellulareProprietario cellulare del proprietario della casa
      * @param emailProprietario email del proprietario della casa
      */
-    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo, String nomeCognomeProprietario, String cellulareProprietario, String emailProprietario) {
+    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo, 
+            String nomeCognomeProprietario, String cellulareProprietario, 
+            String emailProprietario, Date data) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
         this.idAnnuncio = idAnnuncio;
         this.costo = costo;
         this.nomeCognomeProprietario = nomeCognomeProprietario;
         this.cellulareProprietario = cellulareProprietario;
         this.emailProprietario = emailProprietario;
-        this.dataCreazioneAnnuncio = Calendar.getInstance().toString();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        this.dataCreazioneAnnuncio = df.format(data);
     }
 
     public String getDataCreazioneAnnuncio() {
