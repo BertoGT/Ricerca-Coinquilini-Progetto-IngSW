@@ -153,7 +153,6 @@ public class RicercaCoinquiServlet extends HttpServlet {
         } catch (NullPointerException ex) {}
         
         sys.ricercaCoinquilino();
-        int a = 0;
     }
     
 

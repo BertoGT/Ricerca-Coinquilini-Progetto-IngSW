@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css">
+<link rel = "stylesheet" href="font-awesome.css" type="text/css">
+<link rel = "stylesheet" href="font-awesome.min.css" type="text/css">
+<link rel = "stylesheet" href="_icons.scss" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="buttonAnnuncio.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display:none}
+</style>
+<body class="w3-content w3-border-left w3-border-right">
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <span class="w3-bar-item">Rental</span>
+  <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! ANNUNCIO! -->
+<div class="w3-main w3-white" style="margin-left:auto">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:80px"></div>
+
+  <!-- Slideshow Header -->
+  <div class="w3-container" id="apartment">
+    <h2 class="w3-text-blue">Annuncio</h2>
+  </div>
+  <div class="w3-container">
+    <h4><strong>Spazio della casa</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+        <p><i class="fa fa-fw fa-male fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Metri quadrati: metriQuadrati</p>
+        <p><i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Distanza dal centro: distanzaDalCentro</p>
+        <p><i class="fa fa-fw fa-bath fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Bagni: numeroBagni</p>
+        <p><i class="fa fa-fw fa-home fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> NumeroDiLocali: numeroLocali
+        </p>
+        <p><i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> sessoCasa </p>
+        <p><i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>Cucina separata: cucinaSeparata</p>
+      </div>
+    </div>
+    <hr>
+    
+    <h4><strong>Elettrodomestici</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+        <!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->
+      </div>
+    </div>
+    <hr>
+    <h4><strong>Camere disponibili</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+        <!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->
+      </div>
+    </div>
+    <hr>
+    <h4><strong>Descrizione Annuncio</strong></h4>
+    <p>descrizioneAggiuntivaAnnuncio</p>
+    <p><h4><strong>Costo mensile</strong></h4> costoAnnuncioInEuro <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+    </p>
+    <hr>
+  </div>
+  <hr>
+  
+  <!-- Contatti -->
+  <div class="w3-container" id="contact" style="text-align:left;">
+    <h2>Contatti</h2>
+    <i class="fa fa-fw fa-id-card-o fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> nomeCognomeProprietario<br>
+    <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> cittaAnnuncioProprietario indirizzoCasa<br>
+    <i class="fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> numeroDiTelefonoProprietario<br>
+    <i class="fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"> </i> emailProprietario<br>
+    <i class="fa fa-fw fa-calendar fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> dataCreazioneAnnuncio<br>
+  </div>
+    <br>
+<!-- End page content ANNUNCIO-->
+<!-- QUI VANNO CARICATI I BUTTON PER LA MODIFICA DELL'ANNUNCIO-->
+</body>
+</html>
