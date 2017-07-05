@@ -31,9 +31,12 @@ public class ListaAnnunciCreator extends HttpServlet {
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 resp.addCookie(cookie);
+                risultati= annunciRisultantiNonLoggato(annunci);
+                resp.setStatus(200);
             }
         } catch (NullPointerException ex) {
-           
+            risultati= annunciRisultantiNonLoggato(annunci);
+            resp.setStatus(200);
         }
         
          return risultati;
@@ -78,7 +81,7 @@ public class ListaAnnunciCreator extends HttpServlet {
     private static String annunciRisultantiNonLoggato(ArrayList<AnnuncioRisultante> annunci) throws FileNotFoundException {
         
         StringBuilder sb= new StringBuilder();
-        sb.append(HtmlReader.htmlReader("headerLoggato.html"));
+        sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));
         sb.append(HtmlReader.htmlReader("risultatiRicerca.html"));
         
         for(AnnuncioRisultante a: annunci) {
@@ -109,8 +112,5 @@ public class ListaAnnunciCreator extends HttpServlet {
         sb.append("</table></div></body><div id=\"navfooter\"></div></html>");
         return sb.toString();
     }
-    
-    
-    
-    
+ 
 }
