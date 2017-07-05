@@ -56,6 +56,8 @@ public class RicercaCoinquiServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             ArrayList<CoinquilinoRisultante> risultati = effettuaRicerca(req);
+            String risposta = ListaCoinquiCreator.creaLista(risultati, req, resp);
+            resp.getWriter().println(risposta);
         } catch (SQLException ex) {
             Logger.getLogger(RicercaCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
