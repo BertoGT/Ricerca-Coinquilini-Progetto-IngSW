@@ -48,25 +48,6 @@ public class InfoCasa {
         
         this.camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
-    
-    public void rimuoviCamera(int idCamera) throws CameraNonTrovataException {
-       boolean flag=false;
-       int indice=0;
-      
-       for(int i=0;i<this.camere.size();i++){
-           if(this.camere.get(i).getIdCamera()==idCamera){
-               indice=i;
-               flag=true;
-               break;
-           }
-       }
-       if(flag){
-           this.camere.remove(indice);
-       }
-        else
-            throw new CameraNonTrovataException("Camera non presente");
-    }
-  
    
     public void addElettroDomestico(ElettroDomestico elettroDomestico){
         this.elettroDomestici.add(elettroDomestico);

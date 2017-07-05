@@ -44,6 +44,8 @@ public class ListaCoinquiCreator {
         sb.append(HtmlReader.htmlReader("risultatiRicerca.html"));
         for (CoinquilinoRisultante co : risultati) {
             DatiUtente utente = co.getUtente().getDatiUtente();
+            sb.append("<a href=\"http://localhost:8080/risultatoCoinquilino?id=");
+            sb.append(co.getUtente().getIdUtente()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             sb.append(co.getPunteggio()).append("%</div>");
@@ -61,7 +63,7 @@ public class ListaCoinquiCreator {
             sb.append("<p><i class=\"fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
             sb.append(utente.geteMail()).append("</p>");
             sb.append("<p><i class=\"fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
-            sb.append(utente.getNumeroDiTelefono()).append("</p></div>");          
+            sb.append(utente.getNumeroDiTelefono()).append("</p></div></a>");          
         }
         sb.append("</table></body><div id=\"navfooter\"></div></html>");
         return sb.toString();
@@ -73,6 +75,8 @@ public class ListaCoinquiCreator {
         sb.append(HtmlReader.htmlReader("risultatiRicerca.html"));
         for (CoinquilinoRisultante co : risultati) {
             DatiUtente utente = co.getUtente().getDatiUtente();
+            sb.append("<a href=\"http://localhost:8080/risultatoCoinquilino?id=");
+            sb.append(co.getUtente().getIdUtente()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             sb.append(co.getPunteggio()).append("%</div>");
@@ -86,7 +90,7 @@ public class ListaCoinquiCreator {
             sb.append("<p class=\"w3-large\"><i class=\"fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
             sb.append(utente.getFacolta().name()).append("</p>");
             sb.append("<p><i class=\"fa fa-home fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
-            sb.append(utente.getCittaDiRicerca()).append("</p></div>");         
+            sb.append(utente.getCittaDiRicerca()).append("</p></div></a>");         
         }
         sb.append("</table></body><div id=\"navfooter\"></div></html>");
         return sb.toString();

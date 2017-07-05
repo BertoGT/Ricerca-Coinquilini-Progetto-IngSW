@@ -19,6 +19,7 @@ import java.util.Date;
  * @author Niko
  */
 public class AnnuncioCasa {
+    private int idProprietario;
     private InfoCasa casa;
     private String descrizioneAggiuntiva;
     private int idAnnuncio;
@@ -28,16 +29,19 @@ public class AnnuncioCasa {
     private String dataCreazioneAnnuncio;
     /**
      * Istanzia un oggetto che permette di creare un AnnuncioCasa
+     * @param idProprietario  id del proprietario dell'annuncio
      * @param descrizioneAggiuntiva descrizione dell'annuncio della casa
      * @param idAnnuncio id dell'annuncio della casa
      * @param costo costo della casa
      * @param nomeCognomeProprietario nome e cognome del proprietario della casa
      * @param cellulareProprietario cellulare del proprietario della casa
      * @param emailProprietario email del proprietario della casa
+     * @param data data creazione annuncio
      */
-    public AnnuncioCasa(String descrizioneAggiuntiva, int idAnnuncio, int costo, 
+    public AnnuncioCasa(int idProprietario, String descrizioneAggiuntiva, int idAnnuncio, int costo, 
             String nomeCognomeProprietario, String cellulareProprietario, 
             String emailProprietario, Date data) {
+        this.idProprietario = idProprietario;
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
         this.idAnnuncio = idAnnuncio;
         this.costo = costo;
@@ -59,14 +63,7 @@ public class AnnuncioCasa {
     public void creaCamera(int postiLetto, int postiLettoDisponibili) {
         casa.creaCamera(this.idAnnuncio, postiLetto, postiLettoDisponibili);
     }
-    /**
-     * Rimuove la camera dall'annuncio
-     * @param idCamera id della camera dell'annuncio
-     * @throws CameraNonTrovataException  lancia un'eccezione nel caso la camera non possa essere eliminata(es.nessuna camera da eliminare)
-     */
-    public void rimuoviCamera(int idCamera) throws CameraNonTrovataException{
-        casa.rimuoviCamera(idCamera);
-    }
+
     /**
      * Permette di impostare tutte le informazioni necessarie di un annuncio
      * @param metriQuadri metri quadrati della casa dell'annuncio
