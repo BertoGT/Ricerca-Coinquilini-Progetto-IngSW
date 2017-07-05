@@ -20,14 +20,14 @@ import java.util.logging.Logger;
  * @author alberto
  */
 public class TestConDBAnnunci {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
             BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
             
-            
 //            int idProprietario = 10;
-//            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via setti 7", HouseGenerality.MASCHI));
-//            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa del capo progetto", 390));
+//            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via mia 7", HouseGenerality.MASCHI));
+//            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa nico", 390));
+//            System.out.println(bm.eliminaAnnuncioCasa(10, 12, 10));
 ////////            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));
 ////////            System.out.println(bm.modificaInfoCasa(1, 70, 3, 1, 300, HouseGenerality.MASCHI, true, Citta.AOSTA, "ciao"));
 //            System.out.println(bm.inserisciCamera(idCasa, new CameraDisponibile(1, 2, 0)));

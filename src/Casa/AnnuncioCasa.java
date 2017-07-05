@@ -5,7 +5,7 @@
  */
 package Casa;
 
-import Exceptions.CameraNonInseritaException;
+
 import Exceptions.CameraNonTrovataException;
 import ProfiloUtente.DatiUtente;
 import java.util.ArrayList;
@@ -149,7 +149,11 @@ public class AnnuncioCasa {
     public String getEmailProprietario() {
         return emailProprietario;
     }
- 
+    
+    public ArrayList<ElettroDomestico> getElettroDomestici() {
+        return casa.getElettroDomestici();
+    }
+    
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }

@@ -7,15 +7,12 @@ package Test;
 
 import Casa.Citta;
 import Casa.HouseGenerality;
-import Exceptions.CameraNonInseritaException;
 import Exceptions.NessunAnnuncioException;
 import RicercaAnnuncio.AnnuncioRisultante;
 import RicercaAnnuncio.ContenitoreParametriAnnuncio;
 import RicercaAnnuncio.RicercaAnnuncio;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class TestConDBRicercaAnnuncioCasa {
     
-    public static void main(String[] args) throws SQLException, CameraNonInseritaException {
+    public static void main(String[] args) throws SQLException {
         
         ContenitoreParametriAnnuncio c = new ContenitoreParametriAnnuncio(Citta.PAVIA);
         c.setCostoMax(400);

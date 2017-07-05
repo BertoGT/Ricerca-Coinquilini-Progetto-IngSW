@@ -10,7 +10,6 @@ import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Casa.InfoCasa;
-import Exceptions.CameraNonInseritaException;
 import Exceptions.CameraNonTrovataException;
 
 /**
@@ -43,12 +42,14 @@ public class TestInfoCasa {
        ann.creaCamera(1, 1);
        System.out.println(ann.getCamere());
        ann.creaCamera(2, 2);
+       ann.creaCamera(3,3);
        System.out.println(ann.getCamere());
- //      ann.printid();
+ //    ann.printid();
        System.out.println("\n");
        ann.rimuoviCamera(0);
        System.out.print(ann.getCamere());
-       ann.rimuoviCamera(0);
+       ann.creaCamera(3, 3);
+       System.out.print("\n");
        System.out.print(ann.getCamere());
        
        

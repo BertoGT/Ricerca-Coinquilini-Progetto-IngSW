@@ -20,10 +20,18 @@ public class Guest implements Power{
         this.dataOraAccesso = null;
     }
 
+    /**
+     * 
+     * @return RITORNA L'ORA DI ACCESSO DEL GUEST 
+     */
     public Calendar getDataOraAccesso() {
         return dataOraAccesso;
     }
 
+    /**
+     * 
+     * @param dataOraAccesso SETTA L'ORA DI ACCESSO DEL GUEST 
+     */
     public void setDataOraAccesso(Calendar dataOraAccesso) {
         this.dataOraAccesso = dataOraAccesso;
     }

@@ -198,6 +198,14 @@ public class Database {
         ps.setInt(3, idAnnuncio);
         return ps.executeUpdate();
     }
+    
+    public int eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
+        ps.setInt(1, idAnnuncio);
+        ps.setInt(2, idCasa);
+        ps.setInt(3, idUtenteProprietario);
+        return ps.executeUpdate();
+    }
 
     public ResultSet setInfoCasa(int m2, int nLocali, int nBagni, int distanzaCentro, 
             String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
@@ -281,6 +289,13 @@ public class Database {
             ps.setInt(2, costo);
         }
         return ps.executeQuery();   
+    }
+    
+    public ResultSet verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaPresenzaAnnuncio);
+        ps.setInt(1, idUtenteProprietario);
+        return ps.executeQuery();
     }
     
     public ResultSet getCamere(int idCasa) throws SQLException {
