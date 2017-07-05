@@ -48,7 +48,7 @@ public class ProfileManager {
     
     public void creaAnnuncio(String descrizioneAggiuntiva, int idAnnuncio, int costo, String nomeCognomeProprietario, String cellulareProprietario, String emailProprietario) throws AnnuncioException{
         if(this.annuncioCasa==null) {
-            this.annuncioCasa = new AnnuncioCasa(descrizioneAggiuntiva, 0, costo, 
+            this.annuncioCasa = new AnnuncioCasa(utente.getIdUtente(), descrizioneAggiuntiva, 0, costo, 
                     nomeCognomeProprietario, cellulareProprietario, emailProprietario, new Date(System.currentTimeMillis()));
             
         } else

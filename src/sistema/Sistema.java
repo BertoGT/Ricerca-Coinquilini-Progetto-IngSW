@@ -393,5 +393,9 @@ public class Sistema {
         return bmUtente.verificaPresenzaAnnuncio(idUtenteProprietario);
     }
     
+    public DatiUtente getDatiUtente(int idUtente) throws SQLException {
+        return bmUtente.getDatiUtente(idUtente);
+    }
+    
     
 }
