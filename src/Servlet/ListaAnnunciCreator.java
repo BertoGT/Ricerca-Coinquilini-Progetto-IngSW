@@ -31,7 +31,6 @@ public class ListaAnnunciCreator extends HttpServlet {
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 resp.addCookie(cookie);
-               
             }
         } catch (NullPointerException ex) {
            
@@ -51,14 +50,14 @@ public class ListaAnnunciCreator extends HttpServlet {
             AnnuncioCasa annuncio = a.getAnnuncio();
             
             sb.append("<div class=\"w3-main w3-white\" style=\"margin-left:10%; margin-right:10%;width:auto;text-align:left\"");
-            sb.append("<h4><strong> ID ANNUNCIO:");
+            sb.append("<h4><strong> Annuncio numero ");
             sb.append(annuncio.getIdAnnuncio());
             sb.append("</strong></h4>");
             sb.append("<p><i class=\"fa fa-fw fa-id-card-o fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
             sb.append(annuncio.getNomeCognomeProprietario());
             sb.append("</p>");
             sb.append("<p><i class=\"fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
-            sb.append(annuncio.getCitta());
+            sb.append(annuncio.getCitta()+" - ");
             sb.append(annuncio.getIndirizzoCasa());
             sb.append("</p><p><i class=\"fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
             sb.append(annuncio.getCellulareProprietario());
@@ -74,6 +73,43 @@ public class ListaAnnunciCreator extends HttpServlet {
         sb.append("</table></div></body><div id=\"navfooter\"></div></html>");
         return sb.toString();
     }
+    
+    
+    private static String annunciRisultantiNonLoggato(ArrayList<AnnuncioRisultante> annunci) throws FileNotFoundException {
+        
+        StringBuilder sb= new StringBuilder();
+        sb.append(HtmlReader.htmlReader("headerLoggato.html"));
+        sb.append(HtmlReader.htmlReader("risultatiRicerca.html"));
+        
+        for(AnnuncioRisultante a: annunci) {
+            
+            AnnuncioCasa annuncio = a.getAnnuncio();
+            
+            sb.append("<div class=\"w3-main w3-white\" style=\"margin-left:10%; margin-right:10%;width:auto;text-align:left\"");
+            sb.append("<h4><strong> Annuncio numero ");
+            sb.append(annuncio.getIdAnnuncio());
+            sb.append("</strong></h4>");
+            sb.append("<p><i class=\"fa fa-fw fa-id-card-o fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
+            sb.append(annuncio.getNomeCognomeProprietario());
+            sb.append("</p>");
+            sb.append("<p><i class=\"fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
+            sb.append(annuncio.getCitta()+" - ");
+            sb.append(annuncio.getIndirizzoCasa());
+            sb.append("</p><p><i class=\"fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
+            sb.append(annuncio.getCellulareProprietario());
+            sb.append("</p><p><i class=\"fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"> </i>"); 
+            sb.append(annuncio.getEmailProprietario());
+            sb.append("</p><p><i class=\"fa fa-fw fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>"); 
+            sb.append(annuncio.getDataCreazioneAnnuncio());
+            sb.append("</p><p><i class=\"fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
+            sb.append(annuncio.getCosto());
+            sb.append("</p></div>");
+        }        
+              
+        sb.append("</table></div></body><div id=\"navfooter\"></div></html>");
+        return sb.toString();
+    }
+    
     
     
     

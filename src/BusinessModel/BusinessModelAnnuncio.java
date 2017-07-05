@@ -254,9 +254,9 @@ public class BusinessModelAnnuncio {
         while(rs.next()) {
             int idCasa = rs.getInt(1);
             AnnuncioCasa annuncio = new AnnuncioCasa(rs.getString(4), rs.getInt(2), rs.getInt(5),
-                    rs.getString(16) +" "+rs.getString(17), rs.getString(18), rs.getString(15), rs.getDate(6));
-            annuncio.creaInfo(rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getBoolean(11),
-                    Citta.valueOf(rs.getString(12)), rs.getString(13), HouseGenerality.valueOf(rs.getString(10)));
+                    rs.getString(17) +" "+rs.getString(18), rs.getString(19), rs.getString(16), rs.getDate(6));
+            annuncio.creaInfo(rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
+                    Citta.valueOf(rs.getString(13)), rs.getString(14), HouseGenerality.valueOf(rs.getString(11)));
             ResultSet rCamere = db.getCamere(idCasa);
             while(rCamere.next()) {
                 annuncio.creaCamera(rCamere.getInt(3), rCamere.getInt(4));

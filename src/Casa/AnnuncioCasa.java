@@ -44,7 +44,7 @@ public class AnnuncioCasa {
         this.nomeCognomeProprietario = nomeCognomeProprietario;
         this.cellulareProprietario = cellulareProprietario;
         this.emailProprietario = emailProprietario;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         this.dataCreazioneAnnuncio = df.format(data);
     }
 
