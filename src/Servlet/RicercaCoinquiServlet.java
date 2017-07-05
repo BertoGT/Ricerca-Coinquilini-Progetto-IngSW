@@ -11,9 +11,11 @@ import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
+import RicercaCoinquilino.CoinquilinoRisultante;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -53,7 +55,7 @@ public class RicercaCoinquiServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            effettuaRicerca(req);
+            ArrayList<CoinquilinoRisultante> risultati = effettuaRicerca(req);
         } catch (SQLException ex) {
             Logger.getLogger(RicercaCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
@@ -68,7 +70,7 @@ public class RicercaCoinquiServlet extends HttpServlet {
         resp.getWriter().println(headerNonLoggato + ricercaHtml);
     }
     
-    private void effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
+    private ArrayList<CoinquilinoRisultante> effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
         String citta = req.getParameter("cittadiricerca");
         String sesso = req.getParameter("sesso");
         String eta = req.getParameter("eta");
@@ -153,6 +155,7 @@ public class RicercaCoinquiServlet extends HttpServlet {
         } catch (NullPointerException ex) {}
         
         sys.ricercaCoinquilino();
+        return sys.getCoinquiliniRisultanti();
     }
     
 
