@@ -60,6 +60,7 @@ public class RicercaCasaServlet extends HttpServlet {
             String risultati = ListaAnnunciCreator.creaListaAnnunci(effettuaRicerca(req), req, resp);
             resp.getWriter().println(risultati);
             resp.setStatus(200);
+            
         } catch (SQLException ex) {
             Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
