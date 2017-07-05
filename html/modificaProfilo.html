@@ -7,6 +7,7 @@
         <script>
             function caricabarra(){
               $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbar.html"); 
+              $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
             };
         </script>
         
@@ -26,15 +27,15 @@
         
         
    </head> 
-    <body onload="caricabarra()" class="w3-light-grey" >
+    <body onload="caricabarra()" class="sfondo" >
         
         <div id="navbarra"></div>
         <hr>
         <hr>
         <!-- Page Container -->
-        <div id="sfondoform" class="sfondo" >
-            <div class="w3-main w3-white" style="margin-left:10%; margin-right:10%;width:auto;text-align:center;">
-            <form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/modificaprofilo" id="form">
+        <div  style="padding: 100px 0px" >
+            <div class="w3-white" style="margin-left:10%; margin-right:10%;width:auto;text-align:center;">
+            	<form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/modificaprofilo" id="form">
               <div class="w3-container" id="apartment" style="text-align:center;height:100px;">
                 <h2 class="w3-text-blue"><strong>MODIFICA PROFILO</strong></h2>
               </div>
@@ -331,10 +332,10 @@
                 <button class="buttonAnnuncio" type="submit"> Conferma Registrazione </button>
                 <button class="buttonAnnuncio" type="reset"> Annulla </button>
                 </form>
+					<br><br>            
             </div>
         </div>
-        <br>
-        <br>
+        <div id="navfooter"></div>
     </body>
     
 </html>
