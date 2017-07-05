@@ -13,9 +13,11 @@ import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Sesso;
+import RicercaAnnuncio.AnnuncioRisultante;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -55,10 +57,10 @@ public class RicercaCasaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException, IOException{ 
         try {
-            effettuaRicerca(req);
-            String ricercaEffettuataHtml = HtmlReader.htmlReader("registrazioneEffettuata.html");
+            String risultati = ListaAnnunciCreator.creaListaAnnunci(effettuaRicerca(req), req, resp);
+            resp.getWriter().println(risultati);
             resp.setStatus(200);
-            resp.getWriter().println(ricercaEffettuataHtml);
+            
         } catch (SQLException ex) {
             Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
@@ -67,7 +69,7 @@ public class RicercaCasaServlet extends HttpServlet {
         }               
     }
      
-    private void effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
+    private ArrayList<AnnuncioRisultante> effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
         String cittaDiRicerca = req.getParameter("cittadiricerca");
         String costoMax = req.getParameter("costoMax");
         String cucinaSeparata = req.getParameter("cucina");
@@ -195,6 +197,7 @@ public class RicercaCasaServlet extends HttpServlet {
         
         sys.ricercaAnnuncio();
         
+        return sys.getAnnunciRisultanti();
     }
     
     private void settaNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException {
@@ -203,5 +206,5 @@ public class RicercaCasaServlet extends HttpServlet {
         resp.setStatus(200);
         resp.getWriter().println(headerNonLoggato + ricercaHtml);
     }
-     
+  
 }

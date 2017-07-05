@@ -57,8 +57,12 @@ public class RicercaCoinquilino {
                     affinitaTotale += affinita;
             }
             if(!coinquilinoIncompatibile) {
-                float punteggio = affinitaTotale * 100 / totaleStelle;
-                this.coinquiliniRisultanti.add(new CoinquilinoRisultante(dati, punteggio));
+                if(totaleStelle == 0) {
+                    this.coinquiliniRisultanti.add(new CoinquilinoRisultante(dati, 100));
+                } else {
+                    float punteggio = affinitaTotale * 100 / totaleStelle;
+                    this.coinquiliniRisultanti.add(new CoinquilinoRisultante(dati, punteggio));
+                }
             }      
         }
     }

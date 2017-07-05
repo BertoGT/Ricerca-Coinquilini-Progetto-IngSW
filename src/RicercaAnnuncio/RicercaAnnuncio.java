@@ -53,8 +53,12 @@ public class RicercaAnnuncio {
                     affinitaTotale += affinita;
             }
             if(!annuncioIncompatibile) {
-                float punteggio = affinitaTotale * 100 / totaleStelle;
-                this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, punteggio));
+                if(totaleStelle==0) {
+                    this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, 100));
+                } else {
+                    float punteggio = affinitaTotale * 100 / totaleStelle;
+                    this.annunciRisultanti.add(new AnnuncioRisultante(annuncioCasa, punteggio));
+                }
             }       
         }
     }
