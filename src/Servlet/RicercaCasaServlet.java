@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import HtmlCreators.ListaAnnunciCreator;
 import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;

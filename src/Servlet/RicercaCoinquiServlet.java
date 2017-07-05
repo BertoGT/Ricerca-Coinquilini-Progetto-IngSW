@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import HtmlCreators.ListaCoinquiCreator;
 import Casa.Citta;
 import Exceptions.NessunAnnuncioException;
 import ProfiloUtente.Facolta;

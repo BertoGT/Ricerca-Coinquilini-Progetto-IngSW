@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class HtmlReader {
 
-    static String htmlReader(String nomeFile) throws FileNotFoundException{
+    public static String htmlReader(String nomeFile) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File("html/"+nomeFile));
         StringBuilder ssb = new StringBuilder();
         while(scanner.hasNextLine()){

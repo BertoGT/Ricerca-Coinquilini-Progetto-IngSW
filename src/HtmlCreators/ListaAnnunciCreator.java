@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+package HtmlCreators;
 
 import Casa.AnnuncioCasa;
 import RicercaAnnuncio.AnnuncioRisultante;
+import Servlet.CookieStorage;
+import Servlet.HtmlReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
