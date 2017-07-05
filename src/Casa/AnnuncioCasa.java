@@ -160,6 +160,10 @@ public class AnnuncioCasa {
         return casa.getElettroDomestici();
     }
     
+    public String getIndirizzoCasa() {
+        return casa.getIndirizzo();
+    }
+    
     public void setDescrizioneAggiuntiva(String descrizioneAggiuntiva) {
         this.descrizioneAggiuntiva = descrizioneAggiuntiva;
     }
