@@ -48,8 +48,8 @@ public class ProfileServlet extends HttpServlet {
                 system.settaLoggato(idUtente);
                 ProfileManager pM = this.system.getUser().getProfileManager();
                 String profileManager = HtmlReader.htmlReader("profileManager.html");
-                this.sostituisciCampiProfilo(profileManager, pM);
-                this.caricaAnnuncioSePresente(profileManager, pM);
+                profileManager = this.sostituisciCampiProfilo(profileManager, pM);
+                profileManager = this.caricaAnnuncioSePresente(profileManager, pM);
                 response.setStatus(200);
                 response.getWriter().println(profileManager);
             } else {
@@ -78,7 +78,9 @@ public class ProfileServlet extends HttpServlet {
         response.setStatus(200);
         response.getWriter().println(loginHtml);
     }
-    private void sostituisciCampiProfilo(String profileManager, ProfileManager pM){
+    private String sostituisciCampiProfilo(String profileManager, ProfileManager pM){
+        String newProfileManager = profileManager;
+        
         DataDiNascita dataDiNascitaUtente = pM.getUtente().getDatiUtente().getDataDiNascita();
         Occupazione occupazioneUtente = pM.getUtente().getDatiUtente().getOccupazione();
         Facolta facoltaUtente = pM.getUtente().getDatiUtente().getFacolta();
@@ -100,7 +102,6 @@ public class ProfileServlet extends HttpServlet {
         profileManager.replaceAll("numeroDiTelefonoUtente", numeroDiTelefonoUtente);
         profileManager.replaceAll("sessoUtente", sessoUtente.toString());
         profileManager.replaceAll("nazionalitaUtente", nazionalitaUtente.toString());
-        
         if(utenteSportivo==true)
             profileManager.replaceAll("utenteSportivo", "SI");
         else
@@ -120,8 +121,10 @@ public class ProfileServlet extends HttpServlet {
             profileManager.replaceAll("candidatoCoinquilino", "SI");
         else
             profileManager.replaceAll("candidatoCoinquilino", "NO");
+        return newProfileManager;
     }
-    private void caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
+    private String caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
+        String newProfileManager = profileManager;
         try{
            if(pM.getAnnuncioCasa()== null){
                String nessunAnnuncioPerIlProfilo = HtmlReader.htmlReader("nessunAnnuncioProfiloDinamico.html");
@@ -130,15 +133,18 @@ public class ProfileServlet extends HttpServlet {
                AnnuncioCasa annuncio = pM.getAnnuncioCasa();
                String annuncioPerIlProfilo = HtmlReader.htmlReader("annuncioDinamicoProfileManager.html");
                String buttonPerAnnuncio = HtmlReader.htmlReader("risultatoCasa/buttonAnnuncio.html");
-               annuncioPerIlProfilo.replaceAll("<!-- BUTON ANNUNCIO-->", buttonPerAnnuncio);
+               annuncioPerIlProfilo.replaceAll("<!-- BUTTON ANNUNCIO-->", buttonPerAnnuncio);
+               annuncioPerIlProfilo = this.sostituisciCampiAnnuncio(annuncioPerIlProfilo, annuncio);
                profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
                
            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }     
+        } 
+        return newProfileManager;
     }
-    private void sostituisciCampiAnnuncio(String annuncioPerIlProfilo, AnnuncioCasa annuncio){
+    private String sostituisciCampiAnnuncio(String annuncioPerIlProfilo, AnnuncioCasa annuncio) throws FileNotFoundException{
+        String newAnnuncio = annuncioPerIlProfilo;
         int metriQuadrati = annuncio.getMetriQuadri();
         int distanzaDalCentro = annuncio.getDistanzaCentro();
         int numeroBagni = annuncio.getNumeroBagni();
@@ -149,9 +155,59 @@ public class ProfileServlet extends HttpServlet {
         ArrayList<CameraDisponibile> camereDisponibili = annuncio.getCamere();
         String descrizioneAggiuntivaAnnuncio = annuncio.getDescrizioneAggiuntiva();
         int costoAnnuncioInEuro = annuncio.getCosto();
-        
         String nomeCognomeProprietario = annuncio.getNomeCognomeProprietario();
+        String indirizzoCasa = annuncio.getCitta() +" - "+annuncio.getIndirizzoCasa();
+        String numeroDiTelefonoProprietario = annuncio.getCellulareProprietario();
+        String emailProprietario = annuncio.getEmailProprietario();
+        String dataCreazioneAnnuncio = annuncio.getDataCreazioneAnnuncio();
         
+        annuncioPerIlProfilo.replaceAll("metriQuadrati", String.valueOf(metriQuadrati));
+        annuncioPerIlProfilo.replaceAll("distanzaDalCentro", String.valueOf(distanzaDalCentro));
+        annuncioPerIlProfilo.replaceAll("numeroBagni", String.valueOf(numeroBagni));
+        annuncioPerIlProfilo.replaceAll("numeroLocali", String.valueOf(numeroLocali));
+        annuncioPerIlProfilo.replaceAll("costoAnnuncioInEuro", String.valueOf(costoAnnuncioInEuro));
+        annuncioPerIlProfilo.replaceAll("sessoCasa", sessoCasa.toString());
+        annuncioPerIlProfilo.replaceAll("descrizioneAggiuntivaAnnuncio", descrizioneAggiuntivaAnnuncio);
+        annuncioPerIlProfilo.replaceAll("nomeCognomeProprietario", nomeCognomeProprietario);
+        annuncioPerIlProfilo.replaceAll("indirizzoCasa", indirizzoCasa);
+        annuncioPerIlProfilo.replaceAll("numeroDiTelefonoProprietario", numeroDiTelefonoProprietario);
+        annuncioPerIlProfilo.replaceAll("emailProprietario", emailProprietario);
+        annuncioPerIlProfilo.replaceAll("dataCreazioneAnnuncio", dataCreazioneAnnuncio);
+        
+        if(cucinaSeparata==true)
+            annuncioPerIlProfilo.replaceAll("cucinaSeparata", "SI");
+        else
+            annuncioPerIlProfilo.replaceAll("cucinaSeparata", "NO");
+        
+        StringBuilder elettrodomestico = new StringBuilder();
+        if(elettrodomestici.isEmpty()==true){
+            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessun Elettrodomestico presente nell'annuncio!");
+        }else{
+            for(ElettroDomestico e: elettrodomestici){
+                if(e==null)
+                    break;
+                String elettrodomesticoAnnuncio = HtmlReader.htmlReader("elettrodomesticiDinamico.html");
+                elettrodomesticoAnnuncio.replaceAll("nomeElettrodomestico", e.toString());
+                elettrodomestico.append(elettrodomesticoAnnuncio);
+            }
+            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
+        }
+        
+        StringBuilder cameraDisponibile = new StringBuilder();
+        if(camereDisponibili.isEmpty()==true){
+            annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
+        }else{
+            for(CameraDisponibile c: camereDisponibili){
+                if(c==null)
+                    break;
+                String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
+                cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
+                cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                cameraDisponibile.append(cameraDisponibileAnnuncio);
+            }
+            annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+        }
+        return newAnnuncio;
     }
     
 }
