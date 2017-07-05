@@ -386,7 +386,7 @@ public class Sistema {
     /**
      * VERIFICA LA PRESENZA DI ALMENO UN ANNUNCIO DI UN UTENTE
      * @param idUtenteProprietario
-     * @return TRUE SE L'AQNNUNCIO È PRESENTE, ALTRIMENTI FALSE
+     * @return TRUE SE L'ANNUNCIO È PRESENTE, ALTRIMENTI FALSE
      * @throws SQLException 
      */
     public boolean verificaPresenzaAnnunci(int idUtenteProprietario) throws SQLException {
