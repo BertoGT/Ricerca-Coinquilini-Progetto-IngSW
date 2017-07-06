@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import HtmlCreators.ProfiloCoinquiCreator;
 import ProfiloUtente.DatiUtente;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,6 +29,8 @@ public class RisultatoCoinquiServlet extends HttpServlet{
             int idUtente = Integer.parseInt(req.getParameter("id"));
             Sistema sys = new Sistema();
             DatiUtente DatiUtente = sys.getDatiUtente(idUtente);
+            resp.getWriter().println(ProfiloCoinquiCreator.creaPagina(DatiUtente, req, resp));
+            resp.setStatus(200);
         } catch (SQLException ex) {
             Logger.getLogger(RisultatoCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
