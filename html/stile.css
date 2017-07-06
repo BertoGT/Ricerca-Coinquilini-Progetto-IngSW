@@ -101,6 +101,7 @@ h1{
 	overflow: auto;
 }
 
+
 #scritteform{
    color: black;
 	font-family: 'Raleway';
@@ -139,7 +140,7 @@ input, select, textarea{
 	height: 70px;
 	width: 100%;
 	align-content: center;
-	position: absolute;
+	position: relative;
 	bottom: 0px;
 }
 
