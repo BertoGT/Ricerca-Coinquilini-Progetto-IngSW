@@ -45,18 +45,17 @@ public class ProfileManager {
         this.utente = utente;
     }
     
-    public void modificaProfilo(String nome, String cognome, String email, Sesso sesso,
-            int giorno, int mese, int anno, Nazione nazionalita, Facolta facolta, 
-            String telefono,Citta citta, Occupazione occupazione, boolean fumatore, 
-            boolean sportivo, boolean cuoco, boolean candidato, String password) 
+    public void modificaProfilo(Facolta facolta, Citta citta, Occupazione occupazione, 
+            boolean fumatore, boolean sportivo, boolean cuoco, boolean candidato, String password) 
             throws SQLException, ParseException, PasswordException {
         
         BusinessModelUtente bm = BusinessModelUtente.getInstance();
         int idUtente = utente.getIdUtente();
         bm.modificaCittaDiRicerca(idUtente, citta);
-        bm.modificaInfoUtente(idUtente, new DatiUtente(nome, cognome, sesso, email, 
-                password, giorno, mese, anno, telefono, 
-                nazionalita, occupazione, facolta, fumatore, cuoco, sportivo, citta, candidato));
+        bm.setCandidatura(idUtente, candidato);
+        bm.modificaInfoUtente(idUtente, new DatiUtente(null, null, null, null, 
+                null, 0, 0, 0, null, null, occupazione, facolta, fumatore, cuoco,
+                sportivo, null, false));
         
         if(!password.equals(""))
             bm.modificaPassword(idUtente, password, password);

@@ -36,9 +36,9 @@ public class ModificaProfiloServlet extends HttpServlet{
             Cookie cookie = req.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
-            String pagina = HtmlReader.htmlReader("modificaProfilo.html");                
-            resp.setStatus(200);
-            resp.getWriter().println(pagina);
+                String pagina = HtmlReader.htmlReader("modificaProfilo.html");                
+                resp.setStatus(200);
+                resp.getWriter().println(pagina);
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 resp.addCookie(cookie);
@@ -72,14 +72,7 @@ public class ModificaProfiloServlet extends HttpServlet{
     }
     
     private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException {
-        String nome = req.getParameter("nome");
-        String cognome = req.getParameter("cognome");
-        String email = req.getParameter("email");
-        String sesso = req.getParameter("sesso");
-        String dataDiNascita = req.getParameter("datadinascita");
-        String nazionalita = req.getParameter("nazionalita");
         String facolta= req.getParameter("facolta");
-        String telefono = req.getParameter("cellulare");
         String citta = req.getParameter("cittadiricerca");
         String occupazione = req.getParameter("occupazione");
         String fumatore = req.getParameter("fumatore");
@@ -88,10 +81,6 @@ public class ModificaProfiloServlet extends HttpServlet{
         String sportivo = req.getParameter("sportivo");
         String password = req.getParameter("password");
 
-        String[] giornoMeseAnno = dataDiNascita.split("-");
-        int giorno = Integer.parseInt(giornoMeseAnno[2]);
-        int mese = Integer.parseInt(giornoMeseAnno[1]);
-        int anno = Integer.parseInt(giornoMeseAnno[0]);
 
         boolean candidatoBoolean = true;
         try{
@@ -129,10 +118,9 @@ public class ModificaProfiloServlet extends HttpServlet{
         Sistema sys= new Sistema();
         sys.settaLoggato(idUtente);
         ProfileManager pm = sys.getUser().getProfileManager();
-        pm.modificaProfilo(nome, cognome, email, Sesso.valueOf(sesso), giorno, mese,
-                anno, Nazione.valueOf(nazionalita), Facolta.valueOf(facolta), 
-                telefono, Citta.valueOf(citta), Occupazione.valueOf(occupazione), 
-                fumatoreBoolean, sportivoBoolean, cuocoBoolean, candidatoBoolean, password);
+        pm.modificaProfilo(Facolta.valueOf(facolta),  Citta.valueOf(citta), 
+                Occupazione.valueOf(occupazione), fumatoreBoolean, sportivoBoolean, 
+                cuocoBoolean, candidatoBoolean, password);
     }
 
     
