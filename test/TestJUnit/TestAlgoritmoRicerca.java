@@ -21,6 +21,7 @@ import RicercaAnnuncio.Elettrodomestico;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -33,11 +34,12 @@ public class TestAlgoritmoRicerca {
     @Test
     public void testCalcoloAffinitaElettrodomesticoAnnuncio() throws SQLException, NessunAnnuncioException{
         ArrayList<AnnuncioCasa> annunciTotali = new ArrayList<>();
+        Date data = new Date();
         
-        AnnuncioCasa annuncio1 = new AnnuncioCasa("casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com");
-        AnnuncioCasa annuncio2 = new AnnuncioCasa("bella", 2, 600, "Albe Gt", "3459876", "albegt@gmail.com");
-        AnnuncioCasa annuncio3 = new AnnuncioCasa("meno bella", 3, 500, "Nico Fari", "33845769", "nicofari@gmail.com");
-        AnnuncioCasa annuncio4 = new AnnuncioCasa("piena di donne", 4, 700, "Marghe Rico", "37658445", "ricoz@gmail.com");
+        AnnuncioCasa annuncio1 = new AnnuncioCasa(1, "casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com", data);
+        AnnuncioCasa annuncio2 = new AnnuncioCasa(2, "bella", 2, 600, "Albe Gt", "3459876", "albegt@gmail.com", data);
+        AnnuncioCasa annuncio3 = new AnnuncioCasa(3, "meno bella", 3, 500, "Nico Fari", "33845769", "nicofari@gmail.com", data);
+        AnnuncioCasa annuncio4 = new AnnuncioCasa(4, "piena di donne", 4, 700, "Marghe Rico", "37658445", "ricoz@gmail.com", data);
         annunciTotali.add(annuncio1);
         annunciTotali.add(annuncio2);
         annunciTotali.add(annuncio3);
@@ -82,7 +84,8 @@ public class TestAlgoritmoRicerca {
     
     @Test
     public void calcolaAffinitaDistanzaCentroAnnuncio(){
-        AnnuncioCasa ann1 = new AnnuncioCasa("casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com");
+        Date data = new Date();
+        AnnuncioCasa ann1 = new AnnuncioCasa(1, "casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com", data);
         ann1.creaInfo(50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
     
         DistanzaCentro d=new DistanzaCentro(5,2000);

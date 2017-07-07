@@ -63,7 +63,7 @@ public class RicercaCoinquiServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(RicercaCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
-            Logger.getLogger(RicercaCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);
+            resp.getWriter().println(HtmlReader.htmlReader("norisultati.html"));
         }
     }
     
