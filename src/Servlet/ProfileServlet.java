@@ -81,6 +81,7 @@ public class ProfileServlet extends HttpServlet {
         response.setStatus(200);
         response.getWriter().println(loginHtml);
     }
+    
     private String sostituisciCampiProfilo(String profileManager, ProfileManager pM){
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
@@ -136,18 +137,21 @@ public class ProfileServlet extends HttpServlet {
         }
         return profileManager;
     }
+    
     private String caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
         try{
            if(pM.getAnnuncioCasa()== null){
                String nessunAnnuncioPerIlProfilo = HtmlReader.htmlReader("nessunAnnuncioProfiloDinamico.html");
                String tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", nessunAnnuncioPerIlProfilo);
                profileManager = tmp;
-           }else{
+           }
+           if(pM.getAnnuncioCasa()!=null){
                AnnuncioCasa annuncio = pM.getAnnuncioCasa();
                String annuncioPerIlProfilo = HtmlReader.htmlReader("annuncioDinamicoProfileManager.html");
                String buttonPerAnnuncio = HtmlReader.htmlReader("risultatoCasa/buttonAnnuncio.html");
                String tmp = annuncioPerIlProfilo.replaceAll("<!-- BUTTON ANNUNCIO-->", buttonPerAnnuncio);
                annuncioPerIlProfilo = tmp;
+               
                annuncioPerIlProfilo = this.sostituisciCampiAnnuncio(annuncioPerIlProfilo, annuncio);
                tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
                profileManager = tmp;
@@ -184,16 +188,16 @@ public class ProfileServlet extends HttpServlet {
         elementiDaModificareHtml.add("distanzaDalCentro");
         elementiDaModificareHtml.add("numeroBagni");
         elementiDaModificareHtml.add("numeroLocali");
-        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("sessoCasa");
+        elementiDaModificareHtml.add("cucinaSeparata");
         elementiDaModificareHtml.add("descrizioneAggiuntivaAnnuncio");
+        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("nomeCognomeProprietario");
         elementiDaModificareHtml.add("indirizzoCasa");
         elementiDaModificareHtml.add("numeroDiTelefonoProprietario");
         elementiDaModificareHtml.add("emailProprietario");
-        elementiDaModificareHtml.add("dataDiNascitaUtente");
         elementiDaModificareHtml.add("dataCreazioneAnnuncio");
-        elementiDaModificareHtml.add("cucinaSeparata");
+        
         
         for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
             String tmp = annuncioPerIlProfilo.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
@@ -211,13 +215,12 @@ public class ProfileServlet extends HttpServlet {
             for(ElettroDomestico e: elettrodomestici){
                 if(e==null)
                     break;
-                String elettrodomesticoAnnuncio = HtmlReader.htmlReader("elettrodomesticiDinamico.html");
+                String elettrodomesticoAnnuncio = HtmlReader.htmlReader("risultatoCasa/elettrodomesticiDinamico.html");
                 elettrodomesticoAnnuncio = elettrodomesticoAnnuncio.replaceAll("nomeElettrodomestico", e.toString());
                 elettrodomestico.append(elettrodomesticoAnnuncio);
             }
              annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
-        
         StringBuilder cameraDisponibile = new StringBuilder();
         if(camereDisponibili.isEmpty()==true){
             annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
@@ -225,7 +228,7 @@ public class ProfileServlet extends HttpServlet {
             for(CameraDisponibile c: camereDisponibili){
                 if(c==null)
                     break;
-                String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
+                String cameraDisponibileAnnuncio = HtmlReader.htmlReader("risultatoCasa/cameraDisponibileDinamico.html");
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
                 cameraDisponibileAnnuncio = tmp;
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
@@ -235,6 +238,11 @@ public class ProfileServlet extends HttpServlet {
             annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
         }
         return annuncioPerIlProfilo;
+    } 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int idAnnuncio = this.system.getUser().getProfileManager().;
     }
     
 }
