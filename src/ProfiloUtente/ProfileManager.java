@@ -5,9 +5,14 @@
  */
 package ProfiloUtente;
 
+import BusinessModel.BusinessModelUtente;
 import Exceptions.AnnuncioException;
 import Casa.AnnuncioCasa;
+import Casa.Citta;
+import Exceptions.PasswordException;
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -38,6 +43,22 @@ public class ProfileManager {
 
     public void setUtente(Utente utente) {
         this.utente = utente;
+    }
+    
+    public void modificaProfilo(Facolta facolta, Citta citta, Occupazione occupazione, 
+            boolean fumatore, boolean sportivo, boolean cuoco, boolean candidato, String password) 
+            throws SQLException, ParseException, PasswordException {
+        
+        BusinessModelUtente bm = BusinessModelUtente.getInstance();
+        int idUtente = utente.getIdUtente();
+        bm.modificaCittaDiRicerca(idUtente, citta);
+        bm.setCandidatura(idUtente, candidato);
+        bm.modificaInfoUtente(idUtente, new DatiUtente(null, null, null, null, 
+                null, 0, 0, 0, null, null, occupazione, facolta, fumatore, cuoco,
+                sportivo, null, false));
+        
+        if(!password.equals(""))
+            bm.modificaPassword(idUtente, password, password);
     }
 
 

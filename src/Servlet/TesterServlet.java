@@ -27,6 +27,7 @@ public class TesterServlet {
                         handler.addServlet(RicercaCoinquiServlet.class, "/ricercacoinquilino");
                         handler.addServlet(ProfileServlet.class, "/profiloUtente");
                         handler.addServlet(RisultatoCoinquiServlet.class, "/risultatoCoinquilino");
+                        handler.addServlet(ModificaProfiloServlet.class, "/modificaProfilo");
 			server.setHandler(handler);
 			server.start();
 			
