@@ -152,7 +152,5 @@ public class ProfiloCoinquiCreator {
             body = tmp;
         }
         return sb.append(body).toString();
-    }
-    
-    
+    }   
 }
