@@ -6,9 +6,21 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script>
             function caricabarra(){
-              $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbar.html"); 
+              $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbarLoggato.html"); 
               $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
             };
+        </script>
+        
+        <script type="text/javascript">
+        function convalidaPassword(form) {
+            if (form.password.value != form.confermapassword.value) {
+                alert("La passord inserita non coincide con la prima!");
+                form.password.focus();
+                form.password.select();
+                return false;
+            } else 
+                return true;
+        }
         </script>
         
         <meta charset="UTF-8">
@@ -35,25 +47,25 @@
         <!-- Page Container -->
         <div  style="padding: 100px 0px" >
             <div class="w3-white" style="margin-left:10%; margin-right:10%;width:auto;text-align:center;opacity:0.95;">
-            	<form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/modificaprofilo" id="form">
+        <form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/modificaProfilo" id="form">
               <div class="w3-container" id="apartment" style="text-align:center;height:100px;">
                 <h2 class="w3-text-blue"><strong>MODIFICA PROFILO</strong></h2>
               </div>
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-                    <label id="labelModificaProfilo">Nome*  &nbsp; </label>
+                    <label id="labelModificaProfilo">Nome  &nbsp; </label>
                     <input type="text" style="color:#000000" name="nome" value="" required>
                 </p>
                 
 		          <p class="w3-large w3-text-theme">
                     <i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-                    <label id="labelModificaProfilo">Cognome*  &nbsp; </label>
+                    <label id="labelModificaProfilo">Cognome  &nbsp; </label>
                     <input type="text" style="color:#000000" name="cognome"  value="" required>
                 </p>	
                 
 		          <p class="w3-large w3-text-theme">
                     <i class="fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal"></i>
-                    <label id="labelModificaProfilo">Sesso*   &nbsp; </label>
+                    <label id="labelModificaProfilo">Sesso   &nbsp; </label>
                     <select style="color:#000000" name="sesso">
                     <option value="M">Maschio</option>
                     <option value="F">Femmina</option>
@@ -62,14 +74,14 @@
                 
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-                    <label id="labelModificaProfilo">Data di nascita* (YYYY-MM-GG) &nbsp;</label>
+                    <label id="labelModificaProfilo">Data di nascita (YYYY-MM-GG) &nbsp;</label>
                     <input type="date" style="color:#000000" name="datadinascita"  value="" required>
                 </p>	
                 
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>
                     <label id="labelModificaProfilo">Numero di telefono &nbsp;</label>
-                    <input type="text" style="color:#000000" name="cellulare" value="">
+                    <input type="text" style="color:#000000" name="cellulare" value="" required>
                 </p>	
                 
                 <p class="w3-large w3-text-theme">
@@ -180,7 +192,7 @@
                 
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>
-                    <label id="labelModificaProfilo">Città di ricerca &nbsp;</label>
+                    <label id="labelModificaProfilo">Citta' di ricerca &nbsp;</label>
                         <select style="color:#000000" name="cittadiricerca">
                                 <option value="ALESSANDRIA">ALESSANDRIA</option>
                                 <option value="AGRIGENTO">AGRIGENTO</option>
@@ -317,25 +329,27 @@
                     <input type="checkbox" name="sportivo" value="S">
                 </p>
                 
+                <p><h4>Inserire la nuova password solo se la si vuole cambiare</h4></p>
+                
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-key fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-                    <label id="labelModificaProfilo">Password*  &nbsp;</label>
+                    <label id="labelModificaProfilo">Password  &nbsp;</label>
                     <input type="password" style="color:#000000" name="password" value="" required>
                 </p>		
                 
                 <p class="w3-large w3-text-theme">
                     <i class="fa fa-key fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-                    <label id="labelModificaProfilo">Conferma Password* &nbsp; </label>
+                    <label id="labelModificaProfilo">Conferma Password &nbsp; </label>
                     <input type="password" style="color:#000000" name="confermapassword" value="" required>
                 </p>
                 
-                <button class="buttonAnnuncio" type="submit"> Conferma Registrazione </button>
+                <button class="buttonAnnuncio" type="submit"> Conferma Modifica </button>
                 <button class="buttonAnnuncio" type="reset"> Annulla </button>
                 </form>
 					<br><br>            
             </div>
         </div>
-        <div id="navfooter"></div>
+        <div id="navfooter" style="position:relative"></div>
     </body>
     
 </html>
