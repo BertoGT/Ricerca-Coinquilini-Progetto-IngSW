@@ -7,6 +7,7 @@ package sistema;
 
 import BusinessModel.BusinessModelAnnuncio;
 import BusinessModel.BusinessModelUtente;
+import Casa.AnnuncioCasa;
 import Casa.Citta;
 import Casa.HouseGenerality;
 import Exceptions.LoginException;
@@ -397,5 +398,7 @@ public class Sistema {
         return bmUtente.getDatiUtente(idUtente);
     }
     
-    
+    public AnnuncioCasa getAnnuncioProprietario(int idProprietario) throws SQLException, NessunAnnuncioException {
+        return bmUtente.getAnnuncioUtente(idProprietario);
+    }
 }

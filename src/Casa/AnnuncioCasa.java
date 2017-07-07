@@ -129,6 +129,9 @@ public class AnnuncioCasa {
         return casa.getDistanzaCentro();
     }
 
+    public int getIdProprietario() {
+        return idProprietario;
+    }
     public boolean isCucinaSeparata() {
         return casa.isCucinaSeparata();
     }

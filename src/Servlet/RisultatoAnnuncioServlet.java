@@ -37,8 +37,7 @@ public class RisultatoAnnuncioServlet extends HttpServlet {
             int idProprietario = Integer.parseInt(req.getParameter("id"));
             Sistema sys = new Sistema();
             AnnuncioCasa annuncio = sys.getAnnuncioProprietario(idProprietario);
-            String formannuncio = HtmlReader.htmlReader("formAnnuncio.html");
-            resp.getWriter().println(AnnuncioRisultanteCreator.creaPagina(formannuncio, annuncio, req, resp));
+            resp.getWriter().println(AnnuncioRisultanteCreator.creazioneAnnuncio(annuncio, req, resp));
             resp.setStatus(200);
         } catch (SQLException ex) {
             Logger.getLogger(RisultatoCoinquiServlet.class.getName()).log(Level.SEVERE, null, ex);

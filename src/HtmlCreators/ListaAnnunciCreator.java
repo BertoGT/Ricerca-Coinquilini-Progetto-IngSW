@@ -54,7 +54,11 @@ public class ListaAnnunciCreator extends HttpServlet {
             
             AnnuncioCasa annuncio = a.getAnnuncio();
             
-            sb.append("<div class=\"w3-main w3-white\" style=\"margin-left:10%; margin-right:10%;width:auto;text-align:left\"");
+            sb.append("<a href=\"http://localhost:8080/risultatoCasa?id=");
+            sb.append(annuncio.getIdProprietario()).append("\">");
+            sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
+            sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
+            sb.append(a.getPunteggio()).append("%</div>");
             sb.append("<h4><strong> Annuncio numero ");
             sb.append(annuncio.getIdAnnuncio());
             sb.append("</strong></h4>");
@@ -90,7 +94,11 @@ public class ListaAnnunciCreator extends HttpServlet {
             
             AnnuncioCasa annuncio = a.getAnnuncio();
             
-            sb.append("<div class=\"w3-main w3-white\" style=\"margin-left:10%; margin-right:10%;width:auto;text-align:left\"");
+            sb.append("<a href=\"http://localhost:8080/risultatoCasa?id=");
+            sb.append(annuncio.getIdProprietario()).append("\">");
+            sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
+            sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
+            sb.append(a.getPunteggio()).append("%</div>");
             sb.append("<h4><strong> Annuncio numero ");
             sb.append(annuncio.getIdAnnuncio());
             sb.append("</strong></h4>");
@@ -98,12 +106,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getNomeCognomeProprietario());
             sb.append("</p>");
             sb.append("<p><i class=\"fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
-            sb.append(annuncio.getCitta()+" - ");
-            sb.append(annuncio.getIndirizzoCasa());
-            sb.append("</p><p><i class=\"fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
-            sb.append(annuncio.getCellulareProprietario());
-            sb.append("</p><p><i class=\"fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"> </i>"); 
-            sb.append(annuncio.getEmailProprietario());
+            sb.append(annuncio.getCitta());
             sb.append("</p><p><i class=\"fa fa-fw fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>"); 
             sb.append(annuncio.getDataCreazioneAnnuncio());
             sb.append("</p><p><i class=\"fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
