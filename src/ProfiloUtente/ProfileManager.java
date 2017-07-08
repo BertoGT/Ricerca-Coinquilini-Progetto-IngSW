@@ -5,6 +5,7 @@
  */
 package ProfiloUtente;
 
+import BusinessModel.BusinessModelAnnuncio;
 import BusinessModel.BusinessModelUtente;
 import Exceptions.AnnuncioException;
 import Casa.AnnuncioCasa;
@@ -60,8 +61,17 @@ public class ProfileManager {
         if(!password.equals(""))
             bm.modificaPassword(idUtente, password, password);
     }
-
-
+    
+    public void cancellaAnnuncio(){
+        /*
+        BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
+        int idAnnuncio = this.annuncioCasa.getIdAnnuncio();
+        int idProprietario = this.utente.getIdUtente();
+        
+        bm.eliminaAnnuncioCasa(idAnnuncio, ,idProprietario );*/
+        // TODO 
+    }
+    
     @Override
     public String toString() {
         return "\nPROFILO UTENTE\n" + this.utente.toString()+"\n";

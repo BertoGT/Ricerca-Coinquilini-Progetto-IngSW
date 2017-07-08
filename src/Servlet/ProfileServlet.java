@@ -69,10 +69,14 @@ public class ProfileServlet extends HttpServlet {
             non sono presenti cookie, l'utente non può essere loggato!
             lo rimando alla pagina del login!
             */
-        } catch (SQLException ex) {
+        } catch (SQLException ex ) {
             String errorePagina = HtmlReader.htmlReader("erroriVari.html");
             response.setStatus(200);
             response.getWriter().println(errorePagina);     
+        }catch (FileNotFoundException ex){
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            response.setStatus(200);
+            response.getWriter().println(errorePagina);
         }
     }
     
@@ -215,7 +219,7 @@ public class ProfileServlet extends HttpServlet {
             for(ElettroDomestico e: elettrodomestici){
                 if(e==null)
                     break;
-                String elettrodomesticoAnnuncio = HtmlReader.htmlReader("risultatoCasa/elettrodomesticiDinamico.html");
+                String elettrodomesticoAnnuncio = HtmlReader.htmlReader("elettrodomesticiDinamico.html");
                 elettrodomesticoAnnuncio = elettrodomesticoAnnuncio.replaceAll("nomeElettrodomestico", e.toString());
                 elettrodomestico.append(elettrodomesticoAnnuncio);
             }
@@ -228,7 +232,7 @@ public class ProfileServlet extends HttpServlet {
             for(CameraDisponibile c: camereDisponibili){
                 if(c==null)
                     break;
-                String cameraDisponibileAnnuncio = HtmlReader.htmlReader("risultatoCasa/cameraDisponibileDinamico.html");
+                String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
                 cameraDisponibileAnnuncio = tmp;
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
