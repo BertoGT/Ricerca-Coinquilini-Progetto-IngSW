@@ -76,7 +76,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getDataCreazioneAnnuncio());
             sb.append("</p><p><i class=\"fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
             sb.append(annuncio.getCosto());
-            sb.append("</p></div>");
+            sb.append("</p></div></a>");
         }        
               
         sb.append("</table></div></body><div id=\"navfooter\"></div></html>");
@@ -111,7 +111,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getDataCreazioneAnnuncio());
             sb.append("</p><p><i class=\"fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal\" style=\"width:30px\"></i>");
             sb.append(annuncio.getCosto());
-            sb.append("</p></div>");
+            sb.append("</p></div></a>");
         }        
               
         sb.append("</table></div></body><div id=\"navfooter\"></div></html>");

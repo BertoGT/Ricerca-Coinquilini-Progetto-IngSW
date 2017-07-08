@@ -73,16 +73,16 @@ public class AnnuncioRisultanteCreator {
         elementiDaModificareHtml.add("distanzaDalCentro");
         elementiDaModificareHtml.add("numeroBagni");
         elementiDaModificareHtml.add("numeroLocali");
-        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("sessoCasa");
+        elementiDaModificareHtml.add("cucinaSeparata");
         elementiDaModificareHtml.add("descrizioneAggiuntivaAnnuncio");
+        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("nomeCognomeProprietario");
         elementiDaModificareHtml.add("indirizzoCasa");
         elementiDaModificareHtml.add("numeroDiTelefonoProprietario");
         elementiDaModificareHtml.add("emailProprietario");
-        elementiDaModificareHtml.add("dataDiNascitaUtente");
         elementiDaModificareHtml.add("dataCreazioneAnnuncio");
-        elementiDaModificareHtml.add("cucinaSeparata");
+        
         
         for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
             String tmp = body.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
@@ -106,7 +106,6 @@ public class AnnuncioRisultanteCreator {
             }
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
-        
         StringBuilder cameraDisponibile = new StringBuilder();
         if(camereDisponibili.isEmpty()==true){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
@@ -129,8 +128,8 @@ public class AnnuncioRisultanteCreator {
      private static String annuncioNonLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
   
         StringBuilder sb = new StringBuilder();
-        sb.append(HtmlReader.htmlReader("headerLoggato.html"));
-        String body = HtmlReader.htmlReader("formAnnuncio.html");
+        sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));
+        String body = HtmlReader.htmlReader("formAnnuncioNonLoggato.html");
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
         
@@ -148,24 +147,21 @@ public class AnnuncioRisultanteCreator {
         elementiDaModificareDinamici.add(String.valueOf(annuncio.getCosto()));
         elementiDaModificareDinamici.add(annuncio.getNomeCognomeProprietario());
         elementiDaModificareDinamici.add(annuncio.getCitta() +" - "+annuncio.getIndirizzoCasa());
-        elementiDaModificareDinamici.add(annuncio.getCellulareProprietario());
-        elementiDaModificareDinamici.add(annuncio.getEmailProprietario());
+
         elementiDaModificareDinamici.add(annuncio.getDataCreazioneAnnuncio());
         
         elementiDaModificareHtml.add("metriQuadrati");
         elementiDaModificareHtml.add("distanzaDalCentro");
         elementiDaModificareHtml.add("numeroBagni");
         elementiDaModificareHtml.add("numeroLocali");
-        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("sessoCasa");
+        elementiDaModificareHtml.add("cucinaSeparata");
         elementiDaModificareHtml.add("descrizioneAggiuntivaAnnuncio");
+        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("nomeCognomeProprietario");
         elementiDaModificareHtml.add("indirizzoCasa");
-        elementiDaModificareHtml.add("numeroDiTelefonoProprietario");
-        elementiDaModificareHtml.add("emailProprietario");
-        elementiDaModificareHtml.add("dataDiNascitaUtente");
         elementiDaModificareHtml.add("dataCreazioneAnnuncio");
-        elementiDaModificareHtml.add("cucinaSeparata");
+        
         
         for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
             String tmp = body.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
@@ -189,7 +185,6 @@ public class AnnuncioRisultanteCreator {
             }
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
-        
         StringBuilder cameraDisponibile = new StringBuilder();
         if(camereDisponibili.isEmpty()==true){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
