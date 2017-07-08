@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class InfoCasa {
     private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
+    int idCasa;
     private HouseGenerality sessoCasa;
     private ArrayList<ElettroDomestico> elettroDomestici;
     private boolean cucinaSeparata;
@@ -26,7 +27,8 @@ public class InfoCasa {
      * @param indirizzo indirizzo della casa
      * @param sessoCasa  indica il sesso delle persone all'interno della casa dell'annuncio
      */
-    public InfoCasa(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa) {
+    public InfoCasa(int idCasa, int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa) {
+        this.idCasa = idCasa;
         this.metriQuadri = metriQuadri;
         this.nLocali = nLocali;
         this.numeroBagni = numeroBagni;
@@ -38,6 +40,10 @@ public class InfoCasa {
         this.elettroDomestici=new ArrayList<>();
         this.sessoCasa = sessoCasa;
         
+    }
+
+    public int getIdCasa() {
+        return idCasa;
     }
     
     public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
