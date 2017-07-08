@@ -27,7 +27,7 @@ public class TestConDBAnnunci {
 //            int idProprietario = 10;
 //            int idCasa = bm.inserisciInfoCasa(new InfoCasa(70, 2, 1, 1200, true, Citta.PAVIA, "via mia 7", HouseGenerality.MASCHI));
 //            System.out.println(bm.inserisciAnnuncioCasa(idCasa ,idProprietario, "casa nico", 390));
-//            System.out.println(bm.eliminaAnnuncioCasa(5, 7, 9));
+            System.out.println(bm.eliminaAnnuncioCasa(9, 10));
 //            System.out.println(bm.eliminaCamera(3));
 //            System.out.println(bm.eliminaTuttiElettrodomestici(9));
 ////////            System.out.println(bm.modificaAnnuncioCasa(1, "modifica", 200));

@@ -95,14 +95,15 @@ public class BusinessModelAnnuncio {
     }
     
     /**
-     * Elimina l'annuncio dell'utente
-     * @param idAnnuncio idAnnuncio da eliminare
-     * @return true se avviene l'eliminazione, false atrimenti
+     * Elimina annuncio di un utente
+     * @param idCasa id casa da elimnare
+     * @param idUtenteProprietario id dell'utente proprietario della casa
+     * @return true se avviene la modifica, false altrimenti 
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idCasa, int idUtenteProprietario) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa, idUtenteProprietario);
+        int result = db.eliminaAnnuncioCasa(idCasa, idUtenteProprietario);
         eliminaCamera(idCasa);
         eliminaTuttiElettrodomestici(idCasa);
         db.chiudiConnessione();
@@ -245,6 +246,12 @@ public class BusinessModelAnnuncio {
             return true;
     }
     
+    /**
+     * Elimina tutti gli elettrodomestici di una casa
+     * @param idCasa id della casa da cui eliminare gli elettrodomestici
+     * @return true se avviene la modifica, false altrimenti
+     * @throws SQLException 
+     */
     public boolean eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
         
         db.apriConnesione();
