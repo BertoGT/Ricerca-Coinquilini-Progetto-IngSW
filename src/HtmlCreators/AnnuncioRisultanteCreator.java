@@ -129,7 +129,7 @@ public class AnnuncioRisultanteCreator {
      private static String annuncioNonLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
   
         StringBuilder sb = new StringBuilder();
-        sb.append(HtmlReader.htmlReader("headerLoggato.html"));
+        sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));
         String body = HtmlReader.htmlReader("formAnnuncio.html");
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();

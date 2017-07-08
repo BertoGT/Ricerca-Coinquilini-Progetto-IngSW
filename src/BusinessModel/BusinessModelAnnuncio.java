@@ -95,17 +95,14 @@ public class BusinessModelAnnuncio {
     }
     
     /**
-     * Elimina annuncio di un utente
-     * @param idCasa id casa da elimnare
-     * @param idUtenteProprietario id dell'utente proprietario della casa
-     * @return true se avviene la modifica, false altrimenti 
+     * Elimina l'annuncio dell'utente
+     * @param idAnnuncio idAnnuncio da eliminare
+     * @return true se avviene l'eliminazione, false atrimenti
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idCasa, int idUtenteProprietario) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idUtenteProprietario) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idCasa, idUtenteProprietario);
-        eliminaCamera(idCasa);
-        eliminaTuttiElettrodomestici(idCasa);
+        int result = db.eliminaAnnuncioCasa(idAnnuncio, idUtenteProprietario);
         db.chiudiConnessione();
         if(result == 0)
             return false;
@@ -195,22 +192,6 @@ public class BusinessModelAnnuncio {
     }
     
     /**
-     * Elimina una camera presente nel DB
-     * @param idCasa id univoco della casa a cui aggiungere la camera
-     * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException 
-     */
-    public boolean eliminaCamera(int idCasa) throws SQLException {
-        db.apriConnesione();
-        int result = db.eliminaCamere(idCasa);
-        db.chiudiConnessione();
-        if(result == 0)
-            return false;
-        else
-            return true;
-    }
-    
-    /**
      * Inserisci su DB un elettrodomestico alla casa specificata
      * @param idCasa id univoco della casa
      * @param elettrodomestico tipo dell'elettrodomestico da inserire
@@ -246,23 +227,6 @@ public class BusinessModelAnnuncio {
             return true;
     }
     
-    /**
-     * Elimina tutti gli elettrodomestici di una casa
-     * @param idCasa id della casa da cui eliminare gli elettrodomestici
-     * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException 
-     */
-    public boolean eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
-        
-        db.apriConnesione();
-        int result = db.eliminaTuttiElettrodomestici(idCasa);
-        db.chiudiConnessione();
-        if(result == 0) 
-            return false;
-        else 
-            return true;
-    }
-    
     /* SEZIONE LETTURA ANNUNCI */
     
     
@@ -289,7 +253,7 @@ public class BusinessModelAnnuncio {
         ResultSet rs = db.getAnnunciInfoCasa(citta.name(), costoConTolleranza);
         while(rs.next()) {
             int idCasa = rs.getInt(1);
-            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(1), rs.getString(4), rs.getInt(2), rs.getInt(5),
+            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(3), rs.getString(4), rs.getInt(2), rs.getInt(5),
                     rs.getString(17) +" "+rs.getString(18), rs.getString(19), rs.getString(16), rs.getDate(6));
             annuncio.creaInfo(rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
                     Citta.valueOf(rs.getString(13)), rs.getString(14), HouseGenerality.valueOf(rs.getString(11)));
