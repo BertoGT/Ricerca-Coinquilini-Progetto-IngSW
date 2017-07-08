@@ -8,8 +8,7 @@ import java.util.ArrayList;
  * @author alberto
  */
 public class InfoCasa {
-    private int metriQuadri, nLocali, numeroBagni,distanzaCentro;
-    int idCasa;
+    private int idCasa, metriQuadri, nLocali, numeroBagni,distanzaCentro;
     private HouseGenerality sessoCasa;
     private ArrayList<ElettroDomestico> elettroDomestici;
     private boolean cucinaSeparata;
@@ -18,6 +17,7 @@ public class InfoCasa {
     private String indirizzo;
     /**
      * Istanzia un oggetto InfoCasa
+     * @param idCasa identificativo della casa
      * @param metriQuadri metri quadrati della casa
      * @param nLocali numero locali della casa
      * @param numeroBagni numero di bagni della casa
