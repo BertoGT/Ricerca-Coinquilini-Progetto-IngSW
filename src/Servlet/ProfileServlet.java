@@ -239,10 +239,10 @@ public class ProfileServlet extends HttpServlet {
         }
         return annuncioPerIlProfilo;
     } 
-/*
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int idAnnuncio = this.system.getUser().getProfileManager().;
+        System.out.println("ciao marco");
     }
-    */
+    
 }
