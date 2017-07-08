@@ -70,7 +70,7 @@ public class CostantiDB {
             + "idUtenteProprietario, descrizione, costo) VALUES (?,?,?,?)";
     final static String modificaAnnuncioCasa = "UPDATE "+tabellaAnnuncioCasa+" SET descrizione = ?,"
             + "costo = ? WHERE idAnnuncio = ?";
-    final static String eliminaAnnuncioCasa = "DELETE FROM " +tabellaAnnuncioCasa+" WHERE idAnnuncio = ? and idCasa = ? and idUtenteProprietario = ?";
+    final static String eliminaAnnuncioCasa = "DELETE FROM " +tabellaAnnuncioCasa+" WHERE idAnnuncio = ? and idUtenteProprietario = ?";
     
     // Query inserimento/modifica infoCasa
     final static String inserisciInfoCasa = "INSERT INTO "+tabellaInfoCasa+" (m2, nLocali, nBagni,"
@@ -84,6 +84,7 @@ public class CostantiDB {
     final static String inserisciCamera = "INSERT INTO "+tabellaCamere+" VALUES (?,?,?,?)";
     final static String modificaCamera = "UPDATE "+tabellaCamere+" SET postiTotali = ?, postiDisponibili = ?"
             + " WHERE idCasa = ? and idCamera = ?";
+    
     
     //Query inserimento/modifica elettrodomestici
     final static String inserisciElettrodomestico = "INSERT INTO "+tabellaElettrodomestico+" VALUES(?, ?)";
