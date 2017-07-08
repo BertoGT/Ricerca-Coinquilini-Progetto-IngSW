@@ -100,9 +100,11 @@ public class BusinessModelAnnuncio {
      * @return true se avviene l'eliminazione, false atrimenti
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idUtenteProprietario) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idAnnuncio, idUtenteProprietario);
+        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa, idUtenteProprietario);
+        eliminaCamera(idCasa);
+        eliminaTuttiElettrodomestici(idCasa);
         db.chiudiConnessione();
         if(result == 0)
             return false;
@@ -192,6 +194,22 @@ public class BusinessModelAnnuncio {
     }
     
     /**
+     * Elimina una camera presente nel DB
+     * @param idCasa id univoco della casa a cui aggiungere la camera
+     * @return true se avviene la modifica, false altrimenti
+     * @throws SQLException 
+     */
+    public boolean eliminaCamera(int idCasa) throws SQLException {
+        db.apriConnesione();
+        int result = db.eliminaCamere(idCasa);
+        db.chiudiConnessione();
+        if(result == 0)
+            return false;
+        else
+            return true;
+    }
+    
+    /**
      * Inserisci su DB un elettrodomestico alla casa specificata
      * @param idCasa id univoco della casa
      * @param elettrodomestico tipo dell'elettrodomestico da inserire
@@ -220,6 +238,17 @@ public class BusinessModelAnnuncio {
         
         db.apriConnesione();
         int result = db.eliminaElettrodomestico(idCasa, elettrodomestico.name());
+        db.chiudiConnessione();
+        if(result == 0) 
+            return false;
+        else 
+            return true;
+    }
+    
+    public boolean eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
+        
+        db.apriConnesione();
+        int result = db.eliminaTuttiElettrodomestici(idCasa);
         db.chiudiConnessione();
         if(result == 0) 
             return false;
