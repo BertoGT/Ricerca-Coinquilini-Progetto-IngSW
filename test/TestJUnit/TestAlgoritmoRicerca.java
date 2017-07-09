@@ -45,10 +45,10 @@ public class TestAlgoritmoRicerca {
         annunciTotali.add(annuncio3);
         annunciTotali.add(annuncio4);
         
-        annuncio1.creaInfo(50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
-        annuncio2.creaInfo(80, 3, 2, 2000, true, Citta.MILANO, "via roma 56", HouseGenerality.MISTA);
-        annuncio3.creaInfo(60, 2, 1, 1500, true, Citta.PAVIA, "via bollo 6", HouseGenerality.MASCHI);
-        annuncio4.creaInfo(70, 3, 1, 3000, true, Citta.PAVIA, "via della spiga 23", HouseGenerality.FEMMINE);
+        annuncio1.creaInfo(1, 50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
+        annuncio2.creaInfo(2, 80, 3, 2, 2000, true, Citta.MILANO, "via roma 56", HouseGenerality.MISTA);
+        annuncio3.creaInfo(3, 60, 2, 1, 1500, true, Citta.PAVIA, "via bollo 6", HouseGenerality.MASCHI);
+        annuncio4.creaInfo(4, 70, 3, 1, 3000, true, Citta.PAVIA, "via della spiga 23", HouseGenerality.FEMMINE);
         
         annuncio1.creaCamera(5, 4);
         annuncio2.creaCamera(3, 1);
@@ -86,7 +86,7 @@ public class TestAlgoritmoRicerca {
     public void calcolaAffinitaDistanzaCentroAnnuncio(){
         Date data = new Date();
         AnnuncioCasa ann1 = new AnnuncioCasa(1, "casa arredata e vicino al centro", 1, 400, "Davide Delbo", "333333456", "delbus@gmail.com", data);
-        ann1.creaInfo(50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
+        ann1.creaInfo(1, 50, 2, 1, 1000, false, Citta.PAVIA, "via ferri 4", HouseGenerality.MASCHI);
     
         DistanzaCentro d=new DistanzaCentro(5,2000);
         assertEquals(2.5, d.calcolaAffinità(ann1), 0);
