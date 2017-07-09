@@ -118,7 +118,7 @@ public class ProfileServlet extends HttpServlet {
             elementiDaModificareDinamici.add("SI");
         else
             elementiDaModificareDinamici.add("NO");
-        String nomeCognomeUtente = pM.getUtente().getDatiUtente().getCognome()+ " " + pM.getUtente().getDatiUtente().getNome() ;
+        String nomeCognomeUtente = pM.getUtente().getDatiUtente().getNome()+ " " + pM.getUtente().getDatiUtente().getCognome() ;
         elementiDaModificareDinamici.add(nomeCognomeUtente);
         
         elementiDaModificareHtml.add("dataDiNascitaUtente");
@@ -130,8 +130,8 @@ public class ProfileServlet extends HttpServlet {
         elementiDaModificareHtml.add("sessoUtente");
         elementiDaModificareHtml.add("nazionalitaUtente");
         elementiDaModificareHtml.add("utenteSportivo");
-        elementiDaModificareHtml.add("utenteCuoco");
         elementiDaModificareHtml.add("utenteFumatore");
+        elementiDaModificareHtml.add("utenteCuoco");
         elementiDaModificareHtml.add("candidatoCoinquilino");
         elementiDaModificareHtml.add("nomeCognomeUtente");
         
@@ -246,7 +246,14 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("ciao marco");
+        try {
+            this.system.getUser().getProfileManager().cancellaAnnuncio();
+            this.doGet(req, resp);
+        } catch (SQLException ex) {
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(errorePagina);
+        }      
     }
     
 }

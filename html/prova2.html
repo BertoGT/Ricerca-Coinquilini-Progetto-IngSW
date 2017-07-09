@@ -1,0 +1,83 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.min.css" type="text/css">
+    <link rel = "stylesheet" href="_icons.scss" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="buttonAnnuncio.css">
+    <script type='text/javascript'>
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("camereDisponibili").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("aggiungiQui");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+         function createSelect(nome){
+             var input = document.createElement("select");
+             var array = ["1","2","3","4"];
+             input.name = nome;
+             for (var i = 0; i < array.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = array[i];
+                    option.text = array[i];
+                    input.appendChild(option);
+             }
+             return input;
+         }
+            
+            for (i=0;i<number;i++){
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("CAMERA " + (i+1)+":"));
+                
+                var div1 = document.createElement("div");
+                var div2 = document.createElement("div");
+                container.appendChild(div1);
+                container.appendChild(div2);
+                
+                var iconBed1 = document.createElement("span");
+                iconBed1.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+                
+                div1.appendChild(iconBed1);
+                // Create an <input> element, set its type and name attributes
+                var input = createSelect("postiLetto" + (i+1));
+                div1.appendChild(document.createTextNode("POSTI LETTO: "))
+                div1.appendChild(input);
+                
+                var iconBed2 = document.createElement("span");
+                iconBed2.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+                
+                div2.appendChild(iconBed2);
+                var input1 = createSelect("postiLettoDisponibili"+(i+1))
+                div2.appendChild(document.createTextNode("POSTI LETTO DISPONIBILI: "))
+                div2.appendChild(input1);
+                // Append a line break 
+                container.appendChild(document.createElement("br"));
+            }
+            
+        }
+    </script>
+</head
+<body>
+    <div>
+        <p>
+            <i class="fa fa-question fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
+            Camere disponibili: 
+            <select id="camereDisponibili" style="color:#000000" name="camereDisponibili" value="" onchange="addFields(this, event)" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </p>
+    </div>
+    <p id="aggiungiQui"></p>
+</body>
+</html>

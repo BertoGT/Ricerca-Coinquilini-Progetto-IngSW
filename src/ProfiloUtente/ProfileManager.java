@@ -62,14 +62,11 @@ public class ProfileManager {
             bm.modificaPassword(idUtente, password, password);
     }
     
-    public void cancellaAnnuncio(){
-        /*
+    public void cancellaAnnuncio() throws SQLException{
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
         int idAnnuncio = this.annuncioCasa.getIdAnnuncio();
-        int idProprietario = this.utente.getIdUtente();
         
-        bm.eliminaAnnuncioCasa(idAnnuncio, ,idProprietario );*/
-        // TODO 
+        bm.eliminaAnnuncioCasa(idAnnuncio);
     }
     
     @Override
