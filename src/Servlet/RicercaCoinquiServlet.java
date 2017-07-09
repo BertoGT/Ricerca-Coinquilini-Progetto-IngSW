@@ -108,43 +108,22 @@ public class RicercaCoinquiServlet extends HttpServlet {
           
         try {
             if(!impoCuoco.equals("null")) {
-                boolean cuocoBoolean = true;
-                try{
-                    if(cuoco.equals("null")) 
-                        cuocoBoolean = false;
-                } catch (NullPointerException ex) {
-                    cuocoBoolean = false;
-                } finally {
-                    sys.setParametroCucina(Integer.parseInt(impoCuoco), cuocoBoolean);
-                }
+                boolean cuocoBoolean = checkValueBool(cuoco);
+                sys.setParametroCucina(Integer.parseInt(impoCuoco), cuocoBoolean);
             }
         } catch (NullPointerException ex) {}
         
         try {
             if(!impoFumatore.equals("null")) {
-                boolean fumatoreBoolean = true;
-                try{
-                    if(fumatore.equals("null")) 
-                        fumatoreBoolean = false;
-                } catch (NullPointerException ex) {
-                    fumatoreBoolean = false;
-                } finally {
-                    sys.setParametroFumatore(Integer.parseInt(impoFumatore), fumatoreBoolean);
-                }
+                boolean fumatoreBoolean = checkValueBool(fumatore);
+                sys.setParametroFumatore(Integer.parseInt(impoFumatore), fumatoreBoolean); 
             }
         } catch (NullPointerException ex) {}
         
         try {
             if(!impoSportivo.equals("null")) {
-                boolean sportivoBoolean = true;
-                try{
-                    if(sportivo.equals("null")) 
-                        sportivoBoolean = false;
-                } catch (NullPointerException ex) {
-                    sportivoBoolean = false;
-                } finally {
-                    sys.setParametroSportivo(Integer.parseInt(impoSportivo), sportivoBoolean);
-                }
+                boolean sportivoBoolean = checkValueBool(sportivo);
+                sys.setParametroSportivo(Integer.parseInt(impoSportivo), sportivoBoolean);
             }
         } catch (NullPointerException ex) {}
         
@@ -162,9 +141,15 @@ public class RicercaCoinquiServlet extends HttpServlet {
         return sys.getCoinquiliniRisultanti();
     }
     
-
-    
-    
-    
-    
+    private boolean checkValueBool(String value){
+        boolean tmp = true;
+        try{
+            if(value.equals("null")) 
+                tmp = false;
+        } catch (NullPointerException ex) {
+            tmp = false;
+        } finally {
+            return tmp;
+        }
+    }   
 }

@@ -89,29 +89,9 @@ public class RegistrationServlet extends HttpServlet {
         int mese = Integer.parseInt(giornoMeseAnno[1]);
         int anno = Integer.parseInt(giornoMeseAnno[0]);
         
-        boolean fumatoreBoolean = true;
-        try{
-            if(fumatore.equals("null")) 
-                fumatoreBoolean = false;
-        } catch (NullPointerException ex) {
-            fumatoreBoolean = false;
-        }
-        
-        boolean cuocoBoolean = true;
-        try{
-            if(cuoco.equals("null")) 
-                cuocoBoolean = false;
-        } catch (NullPointerException ex) {
-            cuocoBoolean = false;
-        }
-        
-        boolean sportivoBoolean = true;
-        try{
-            if(sportivo.equals("null")) 
-                sportivoBoolean = false;
-        } catch (NullPointerException ex) {
-            sportivoBoolean = false;
-        }
+        boolean fumatoreBoolean = checkValueBool(fumatore);
+        boolean cuocoBoolean = checkValueBool(cuoco);   
+        boolean sportivoBoolean = checkValueBool(sportivo);
         
         Sistema sys= new Sistema();
         sys.registrazioneUtente(nome, cognome, Sesso.valueOf(sesso), email,
@@ -124,6 +104,18 @@ public class RegistrationServlet extends HttpServlet {
         String registrazioneHtml = HtmlReader.htmlReader("registrazione.html");
         response.setStatus(200);
         response.getWriter().println(registrazioneHtml);
+    }
+    
+    private boolean checkValueBool(String value){
+        boolean tmp = true;
+        try{
+            if(value.equals("null")) 
+                tmp = false;
+        } catch (NullPointerException ex) {
+            tmp = false;
+        } finally {
+            return tmp;
+        }
     }
     
     
