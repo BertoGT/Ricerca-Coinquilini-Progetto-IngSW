@@ -64,9 +64,9 @@ public class ProfileManager {
     
     public void cancellaAnnuncio() throws SQLException{
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
-        int idAnnuncio = this.annuncioCasa.getIdAnnuncio();
+        int idCasa = this.annuncioCasa.getIdCasa();
         
-        bm.eliminaAnnuncioCasa(idAnnuncio);
+        bm.eliminaAnnuncioCasa(idCasa);
     }
     
     @Override
