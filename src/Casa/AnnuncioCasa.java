@@ -72,8 +72,8 @@ public class AnnuncioCasa {
      * @param indirizzo indirizzo della casa dell'annuncio
      * @param sessoCasa indica il sesso delle persone all'interno della casa dell'annuncio
      */
-    public void creaInfo( int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
-        casa = new InfoCasa(metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
+    public void creaInfo(int idCasa, int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
+        casa = new InfoCasa(idCasa, metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
     }
     /**
      * Permette di inserire un elettrodomestico all'interno della casa dell'annuncio

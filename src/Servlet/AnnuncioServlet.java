@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Exceptions.InserimentoAnnuncioNonRiuscito;
 import BusinessModel.BusinessModelAnnuncio;
 import Casa.CameraDisponibile;
 import Casa.Citta;
@@ -70,7 +71,7 @@ public class AnnuncioServlet extends HttpServlet {
             }
         } catch (NullPointerException ex) {
             resp.sendRedirect("/homepage");
-        } catch (SQLException | ParseException | PasswordException ex) {
+        } catch (SQLException | ParseException | PasswordException | InserimentoAnnuncioNonRiuscito ex) {
             String errorePagina = HtmlReader.htmlReader("erroriVari.html");
             resp.setStatus(200);
             resp.getWriter().println(errorePagina); 
@@ -110,7 +111,7 @@ public class AnnuncioServlet extends HttpServlet {
         }
        return postiLettoEDisponibili; 
     }
-    private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException {
+    private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito {
         ArrayList<ElettroDomestico> elettrodomestici = new ArrayList<>();
         int metriQuadrati = Integer.parseInt(req.getParameter("metriQuadrati"));
         int distanzaCentro = (int) Math.round(Math.ceil(Float.parseFloat(req.getParameter("distanzaCentro"))));
@@ -135,7 +136,7 @@ public class AnnuncioServlet extends HttpServlet {
         int [][] postiLettoEDisponibili = this.parseCamereDisponibili(req);
 
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
-        int idCasa = bm.inserisciInfoCasa(new InfoCasa(metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
+        int idCasa = bm.inserisciInfoCasa(new InfoCasa(0,metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
                                                        cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini));
         if(bm.inserisciAnnuncioCasa(idCasa, idUtente, descrizioneAggiuntiva, costoMensile)){
             for(int i=0;i<postiLettoEDisponibili.length;i++){
@@ -148,6 +149,8 @@ public class AnnuncioServlet extends HttpServlet {
                     break;
                 bm.inserisciElettrodomestico(idCasa, e);
             }
+        }else{
+            throw new InserimentoAnnuncioNonRiuscito("Inserimento dell'annuncio nel db non riuscito!");
         }
     }
     
