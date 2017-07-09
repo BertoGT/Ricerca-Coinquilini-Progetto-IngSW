@@ -6,6 +6,7 @@
 package Servlet;
 
 import BusinessModel.BusinessModelAnnuncio;
+import Casa.CameraDisponibile;
 import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
@@ -122,7 +123,7 @@ public class AnnuncioServlet extends HttpServlet {
         ElettroDomestico lavastoviglie = this.checkValueElettrodomestico(req.getParameter("lavastoviglie"));
         Citta cittaDiRicerca = Citta.valueOf(req.getParameter("cittaDiRicerca"));
         String descrizioneAggiuntiva = req.getParameter("descrizioneAnnuncio");
-        String costoMensile = req.getParameter("costoMensile");
+        int costoMensile = Integer.parseInt(req.getParameter("costoMensile"));
         String nomeCognome = req.getParameter("nomeCognome");
         String cittaIndirizzo = req.getParameter("cittaIndirizzo");
         String cellulare = req.getParameter("cellulare");
@@ -130,8 +131,11 @@ public class AnnuncioServlet extends HttpServlet {
         int [][] postiLettoEDisponibili = this.parseCamereDisponibili(req);
 
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
-        int idCasa = bm.inserisciInfoCasa(new InfoCasa(idUtente, metriQuadrati, numeroLocali, numeroBagni, 
-                                                       distanzaCentro, cucinaSeparata, Citta.AOSTA, cittaIndirizzo, sessoCoinquilini));
+        int idCasa = bm.inserisciInfoCasa(new InfoCasa(metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
+                                                       cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini));
+        if(bm.inserisciAnnuncioCasa(idCasa, idUtente, descrizioneAggiuntiva, costoMensile)){
+            bm.inserisciCamera(idCasa, new CameraDisponibile())
+        }
         
         
     }
