@@ -18,6 +18,7 @@ import ProfiloUtente.ProfileManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -65,12 +66,14 @@ public class AnnuncioServlet extends HttpServlet {
             } else {
                 cookie.setMaxAge(0); // il cookie non è più valido, dunque lo elimino
                 resp.addCookie(cookie);
-                resp.sendRedirect("/homepage");
+                resp.sendRedirect("/login");
             }
         } catch (NullPointerException ex) {
             resp.sendRedirect("/homepage");
         } catch (SQLException | ParseException | PasswordException ex) {
-            Logger.getLogger(ModificaProfiloServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(errorePagina); 
         }
     }
     private boolean checkValueBool(String value){
@@ -108,19 +111,20 @@ public class AnnuncioServlet extends HttpServlet {
        return postiLettoEDisponibili; 
     }
     private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException {
+        ArrayList<ElettroDomestico> elettrodomestici = new ArrayList<>();
         int metriQuadrati = Integer.parseInt(req.getParameter("metriQuadrati"));
         int distanzaCentro = (int) Math.round(Math.ceil(Float.parseFloat(req.getParameter("distanzaCentro"))));
         int numeroBagni = Integer.parseInt(req.getParameter("numeroBagni"));
         int numeroLocali = Integer.parseInt(req.getParameter("numeroLocali"));
         HouseGenerality sessoCoinquilini = HouseGenerality.valueOf(req.getParameter("sessoCoinquilini"));
         boolean cucinaSeparata = this.checkValueBool(req.getParameter("cucinaSeparata"));
-        ElettroDomestico forno = this.checkValueElettrodomestico(req.getParameter("forno"));
-        ElettroDomestico lavatrice = this.checkValueElettrodomestico(req.getParameter("lavatrice"));
-        ElettroDomestico condizionatore = this.checkValueElettrodomestico(req.getParameter("condizionatore"));
-        ElettroDomestico aspirapolvere = this.checkValueElettrodomestico(req.getParameter("aspirapolvere"));
-        ElettroDomestico asciugatrice = this.checkValueElettrodomestico(req.getParameter("asciugatrice"));
-        ElettroDomestico microonde = this.checkValueElettrodomestico(req.getParameter("microonde"));
-        ElettroDomestico lavastoviglie = this.checkValueElettrodomestico(req.getParameter("lavastoviglie"));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("forno")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("lavatrice")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("condizionatore")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("aspirapolvere")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("asciugatrice")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("microonde")));
+        elettrodomestici.add(this.checkValueElettrodomestico(req.getParameter("lavastoviglie")));
         Citta cittaDiRicerca = Citta.valueOf(req.getParameter("cittaDiRicerca"));
         String descrizioneAggiuntiva = req.getParameter("descrizioneAnnuncio");
         int costoMensile = Integer.parseInt(req.getParameter("costoMensile"));
@@ -134,10 +138,17 @@ public class AnnuncioServlet extends HttpServlet {
         int idCasa = bm.inserisciInfoCasa(new InfoCasa(metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
                                                        cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini));
         if(bm.inserisciAnnuncioCasa(idCasa, idUtente, descrizioneAggiuntiva, costoMensile)){
-            bm.inserisciCamera(idCasa, new CameraDisponibile());
+            for(int i=0;i<postiLettoEDisponibili.length;i++){
+                int postiLetto = postiLettoEDisponibili[i][0];
+                int postiLettoDisponibili = postiLettoEDisponibili[i][1];
+                bm.inserisciCamera(idCasa, new CameraDisponibile(idCasa, i, postiLetto, postiLettoDisponibili));
+            }
+            for(ElettroDomestico e: elettrodomestici){
+                if(e==null)
+                    break;
+                bm.inserisciElettrodomestico(idCasa, e);
+            }
         }
-        
-        
     }
     
 }
