@@ -142,11 +142,12 @@ public class AnnuncioServlet extends HttpServlet {
             for(int i=0;i<postiLettoEDisponibili.length;i++){
                 int postiLetto = postiLettoEDisponibili[i][0];
                 int postiLettoDisponibili = postiLettoEDisponibili[i][1];
-                bm.inserisciCamera(idCasa, new CameraDisponibile(idCasa, i, postiLetto, postiLettoDisponibili));
+                if(postiLetto!=0 & postiLettoDisponibili!=0)
+                    bm.inserisciCamera(idCasa, new CameraDisponibile(idCasa, i, postiLetto, postiLettoDisponibili));
             }
             for(ElettroDomestico e: elettrodomestici){
                 if(e==null)
-                    break;
+                    continue;
                 bm.inserisciElettrodomestico(idCasa, e);
             }
         }else{

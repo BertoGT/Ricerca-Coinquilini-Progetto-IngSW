@@ -32,7 +32,9 @@
         	{			
               document.getElementById("range3").innerHTML=newValue;
         	}
-            function addFields(){
+    </script>
+    <script type="text/javascript">
+        function addFields(){
                 // Number of inputs to create
                 var number = document.getElementById("camereDisponibili").value;
                 // Container <div> where dynamic content will be placed
@@ -254,8 +256,8 @@
                 <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
                 <label>Sesso Casa :</label> 
                 <select style="color:#000000" name="sessoCoinquilini" required>
-                    <option value="FEMMINE">MASCHI</option>
-                    <option value="MASCHI">FEMMINE</option>
+                    <option value="MASCHI">MASCHI</option>
+                    <option value="FEMMINE">FEMMINE</option>
                     <option value="MISTA">MISTA</option>
                 </select> 
             </p>
@@ -319,7 +321,7 @@
         </div>
         <hr>
         <h4><strong>Descrizione Annuncio</strong></h4>
-          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" required>
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" value="Nessuna descrizione dell'annuncio!" required>
                 Descrivi qui il tuo annuncio!
           </textarea>
         <hr>
