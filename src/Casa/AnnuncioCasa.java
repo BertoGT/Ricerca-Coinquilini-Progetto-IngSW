@@ -125,6 +125,10 @@ public class AnnuncioCasa {
     public int getDistanzaCentro(){
         return casa.getDistanzaCentro();
     }
+    
+    public int getIdCasa() {
+        return casa.getIdCasa();
+    }
 
     public int getIdProprietario() {
         return idProprietario;

@@ -199,9 +199,9 @@ public class Database {
         return ps.executeUpdate();
     }
     
-    public int eliminaAnnuncioCasa(int idAnnuncio) throws SQLException {
+    public int eliminaAnnuncioCasa(int idCasa) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
-        ps.setInt(1, idAnnuncio);
+        ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
 

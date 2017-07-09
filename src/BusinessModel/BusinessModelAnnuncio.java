@@ -98,13 +98,13 @@ public class BusinessModelAnnuncio {
      * Elimina l'annuncio dell'utente, comprese l'info casa, le varie camere 
      * e gli elettrodomestici legati ad esso.
      * @param idUtenteProprietario identificativo del proprietario dell'annuncio da eliminare
-     * @param idAnnuncio idAnnuncio da eliminare
+     * @param idCasa identificativo della casa (e i dati relativi) da cancellare
      * @return true se avviene l'eliminazione, false atrimenti
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idAnnuncio) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idCasa) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idAnnuncio);
+        int result = db.eliminaAnnuncioCasa(idCasa);
         db.chiudiConnessione();
         if(result == 0)
             return false;
