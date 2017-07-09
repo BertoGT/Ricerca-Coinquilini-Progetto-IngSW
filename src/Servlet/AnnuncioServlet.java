@@ -134,7 +134,7 @@ public class AnnuncioServlet extends HttpServlet {
         int idCasa = bm.inserisciInfoCasa(new InfoCasa(metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
                                                        cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini));
         if(bm.inserisciAnnuncioCasa(idCasa, idUtente, descrizioneAggiuntiva, costoMensile)){
-            bm.inserisciCamera(idCasa, new CameraDisponibile())
+            bm.inserisciCamera(idCasa, new CameraDisponibile());
         }
         
         
