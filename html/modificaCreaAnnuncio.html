@@ -34,16 +34,7 @@
         	}
     </script>
     <script type="text/javascript">
-        function addFields(){
-                // Number of inputs to create
-                var number = document.getElementById("camereDisponibili").value;
-                // Container <div> where dynamic content will be placed
-                var container = document.getElementById("aggiungiQui");
-                // Clear previous contents of the container
-                while (container.hasChildNodes()) {
-                    container.removeChild(container.lastChild);
-                }
-             function createSelect(nome){
+        function createSelect(nome){
                  var input = document.createElement("select");
                  var array = ["1","2","3","4"];
                  input.name = nome;
@@ -54,8 +45,19 @@
                         input.appendChild(option);
                  }
                  return input;
-             }
-
+        }
+    </script>
+    <script type="text/javascript">
+        function addFields(){
+                // Number of inputs to create
+                var number = document.getElementById("camereDisponibili").value;
+                // Container <div> where dynamic content will be placed
+                var container = document.getElementById("aggiungiQui");
+                // Clear previous contents of the container
+                while (container.hasChildNodes()) {
+                    container.removeChild(container.lastChild);
+                }
+                
                 for (i=0;i<number;i++){
                     // Append a node with a random text
                     container.appendChild(document.createTextNode("CAMERA " + (i+1)+":"));
@@ -106,7 +108,7 @@
             <p>
                 <label>Città di ricerca &nbsp;</label>
                 <select style="color:#000000" name="cittaDiRicerca" required>
-			            <option value="ALESSANDRIA">ALESSANDRIA</option>
+			<option value="ALESSANDRIA">ALESSANDRIA</option>
                         <option value="AGRIGENTO">AGRIGENTO</option>
                         <option value="ANCONA">ANCONA</option>
                         <option value="AOSTA">AOSTA</option>
