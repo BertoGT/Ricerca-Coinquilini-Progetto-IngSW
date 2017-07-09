@@ -16,10 +16,10 @@
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     
     <script type="text/javascript">
-       	function caricabarra(){
-              $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbarLoggato.html"); 
-              $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
-         }
+            function caricabarra(){
+                  $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbarLoggato.html"); 
+                  $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
+             }
         	function showValue1(newValue)
         	{
               document.getElementById("range1").innerHTML=newValue;
@@ -88,7 +88,7 @@
 <body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
 <div class="w3-main w3-white" style="margin:100px 15% 2% 15%;opacity:0.95;">
-    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form" style="padding: 1%">
+    <form name="form" method="post" action="http://localhost:8080/modificaCreaAnnuncio" id="form" style="padding: 1%">
 
       <!-- Push down content on small screens -->
       <div class="w3-hide-large" style="margin-top:80px"></div>
