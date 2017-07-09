@@ -12,6 +12,7 @@ import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Casa.InfoCasa;
+import Exceptions.AnnuncioException;
 import Exceptions.PasswordException;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Occupazione;
@@ -71,7 +72,7 @@ public class AnnuncioServlet extends HttpServlet {
             }
         } catch (NullPointerException ex) {
             resp.sendRedirect("/homepage");
-        } catch (SQLException | ParseException | PasswordException | InserimentoAnnuncioNonRiuscito ex) {
+        } catch (SQLException | ParseException | PasswordException | InserimentoAnnuncioNonRiuscito | AnnuncioException ex) {
             String errorePagina = HtmlReader.htmlReader("erroriVari.html");
             resp.setStatus(200);
             resp.getWriter().println(errorePagina); 
@@ -111,7 +112,7 @@ public class AnnuncioServlet extends HttpServlet {
         }
        return postiLettoEDisponibili; 
     }
-    private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito {
+    private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito, AnnuncioException {
         ArrayList<ElettroDomestico> elettrodomestici = new ArrayList<>();
         int metriQuadrati = Integer.parseInt(req.getParameter("metriQuadrati"));
         int distanzaCentro = (int) Math.round(Math.ceil(Float.parseFloat(req.getParameter("distanzaCentro"))));
@@ -135,24 +136,11 @@ public class AnnuncioServlet extends HttpServlet {
         String email = req.getParameter("email");
         int [][] postiLettoEDisponibili = this.parseCamereDisponibili(req);
 
-        BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
-        int idCasa = bm.inserisciInfoCasa(new InfoCasa(0,metriQuadrati, numeroLocali, numeroBagni, distanzaCentro,
-                                                       cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini));
-        if(bm.inserisciAnnuncioCasa(idCasa, idUtente, descrizioneAggiuntiva, costoMensile)){
-            for(int i=0;i<postiLettoEDisponibili.length;i++){
-                int postiLetto = postiLettoEDisponibili[i][0];
-                int postiLettoDisponibili = postiLettoEDisponibili[i][1];
-                if(postiLetto!=0 & postiLettoDisponibili!=0)
-                    bm.inserisciCamera(idCasa, new CameraDisponibile(idCasa, i, postiLetto, postiLettoDisponibili));
-            }
-            for(ElettroDomestico e: elettrodomestici){
-                if(e==null)
-                    continue;
-                bm.inserisciElettrodomestico(idCasa, e);
-            }
-        }else{
-            throw new InserimentoAnnuncioNonRiuscito("Inserimento dell'annuncio nel db non riuscito!");
-        }
+        Sistema system = new Sistema();
+        system.settaLoggato(idUtente);
+        system.getUser().getProfileManager().creaAnnuncio(elettrodomestici, postiLettoEDisponibili, idUtente, costoMensile, metriQuadrati, numeroLocali,
+                                                          numeroBagni, distanzaCentro, cucinaSeparata, cittaDiRicerca, cittaIndirizzo, sessoCoinquilini, 
+                                                          descrizioneAggiuntiva);
     }
     
 }
