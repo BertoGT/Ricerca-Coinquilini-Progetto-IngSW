@@ -207,5 +207,4 @@ public class RicercaCasaServlet extends HttpServlet {
         resp.setStatus(200);
         resp.getWriter().println(headerNonLoggato + ricercaHtml);
     }
-  
 }
