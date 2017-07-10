@@ -49,9 +49,6 @@ public class InfoCasa {
      */
     public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
         int indice=this.camere.size();
-       
-     //   if(indice!=0)
-     //      indice=this.camere.get(indice-1).getIdCamera()+1;
         
         this.camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
