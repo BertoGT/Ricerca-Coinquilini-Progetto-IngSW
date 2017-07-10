@@ -6,7 +6,7 @@
 package Utenti;
 
 import ProfiloUtente.DatiUtente;
-import ProfiloUtente.ProfileManager;
+import Sistema.ProfileManager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Calendar;

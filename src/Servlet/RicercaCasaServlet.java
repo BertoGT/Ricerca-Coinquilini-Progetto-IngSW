@@ -10,10 +10,6 @@ import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
 import Exceptions.NessunAnnuncioException;
-import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazione;
-import ProfiloUtente.Occupazione;
-import ProfiloUtente.Sesso;
 import RicercaAnnuncio.AnnuncioRisultante;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,7 +22,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sistema.Sistema;
+import Sistema.Sistema;
 
 /**
  *
@@ -66,7 +62,9 @@ public class RicercaCasaServlet extends HttpServlet {
             Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
             // pagina con avviso nessun annuncio trovato.
-            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String risultati = HtmlReader.htmlReader("norisultati.html");
+            resp.getWriter().println(risultati);
+           
         }               
     }
      

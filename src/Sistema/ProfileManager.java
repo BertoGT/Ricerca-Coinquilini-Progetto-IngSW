@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProfiloUtente;
+package Sistema;
 
 import BusinessModel.BusinessModelAnnuncio;
 import BusinessModel.BusinessModelUtente;
@@ -16,6 +16,10 @@ import Casa.HouseGenerality;
 import Casa.InfoCasa;
 import Exceptions.InserimentoAnnuncioNonRiuscito;
 import Exceptions.PasswordException;
+import ProfiloUtente.DatiUtente;
+import ProfiloUtente.Facolta;
+import ProfiloUtente.Occupazione;
+import ProfiloUtente.Utente;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
