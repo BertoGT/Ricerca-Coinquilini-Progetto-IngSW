@@ -7,20 +7,11 @@ package Servlet;
 
 import Casa.AnnuncioCasa;
 import Casa.CameraDisponibile;
-import Casa.Citta;
 import Casa.ElettroDomestico;
-import Casa.HouseGenerality;
-import Exceptions.RegistrazioneException;
-import ProfiloUtente.DataDiNascita;
-import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazione;
-import ProfiloUtente.Occupazione;
-import ProfiloUtente.ProfileManager;
-import ProfiloUtente.Sesso;
+import Sistema.ProfileManager;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +20,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sistema.Sistema;
+import Sistema.Sistema;
 
 /**
  *

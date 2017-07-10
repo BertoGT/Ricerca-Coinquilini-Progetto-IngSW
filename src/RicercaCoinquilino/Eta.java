@@ -6,7 +6,6 @@
  */
 package RicercaCoinquilino;
 
-import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Utente;
 
 /**

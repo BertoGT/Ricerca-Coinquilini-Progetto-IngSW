@@ -261,8 +261,7 @@ public class BusinessModelAnnuncio {
                     Citta.valueOf(rs.getString(13)), rs.getString(14), HouseGenerality.valueOf(rs.getString(11)));
             ResultSet rCamere = db.getCamere(idCasa);
             while(rCamere.next()) {
-                annuncio.creaCamera(rCamere.getInt(3), rCamere.getInt(4));
-                
+                annuncio.creaCamera(rCamere.getInt(3), rCamere.getInt(4));   
             }
             ResultSet rElettro = db.getElettrodomestici(idCasa);
             while(rElettro.next()) {

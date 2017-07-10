@@ -1,22 +1,22 @@
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/607b96e/html/stile.css" type="text/css">
+<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/607b96e/html/stile.css" type="text/css">-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
-
-
+<link rel="stylesheet" href="stile.css">
+<link rel="stylesheet" href="buttonAnnuncio.css">
 <title>Rooming</title>
 </head>
 <main>
-<body onload="caricabarra()">
+<body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
-    <div id="sfondoform" class="sfondo">
+<div class="w3-white" style="width:50%;margin:100px 25%;color:#000000;padding-top:10px;">
     
-        <h1>Inserisci i parametri per la ricerca della tua futura casa:</h1>
+        <h1 style="font-size:30px;">Inserisci i parametri per la ricerca della tua futura casa:</h1>
         <form name="form" method="post" action="http://localhost:8080/ricercacasa" id="form">
-       <div class="divRicercaCasa">
-           <div id="RicCasa">
-           <label>Citta' di ricerca * &nbsp;</label><select style="color:#000000" name="cittadiricerca" required>
-			<option value="ALESSANDRIA">ALESSANDRIA</option>
+       	  <div class="divRicercaCasa">
+          		<div id="RicCasa">
+           		<label>Citta' di ricerca * &nbsp;</label><select style="color:#000000" name="cittadiricerca" required>
+								<option value="ALESSANDRIA">ALESSANDRIA</option>
                         <option value="AGRIGENTO">AGRIGENTO</option>
                         <option value="ANCONA">ANCONA</option>
                         <option value="AOSTA">AOSTA</option>
@@ -129,48 +129,50 @@
             <div class="divRicercaCasa">
                 <div id="RicCasa"><label>
                 Costo Massimo * &nbsp; </label><input style="color:#000000" type="text" name="costoMax"  value="" required>
-                </div></div>
+                </div>
+            </div>
         
     
     <div class="divRicercaCasa">
-    <div id="RicCasa">
-    <label>Cucina separata &nbsp;</label><input type="checkbox" name="cucina" value="C" style="width:150px">
-        </div>
-     <div id="star">   <fieldset class="rating">
-    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="MustBe">5 stars</label>
-    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Attractive">4 stars</label>
-    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Halfway">3 stars</label>
-    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Pleasant">2 stars</label>
-    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Indifferent">1 star</label>
-    </fieldset>
-        </div>
-    </div>
-            
-            
-    <div class="divRicercaCasa">
-    <div id="RicCasa">
-<label>Distanza Centro (km) &nbsp; </label><input style="color:#000000" type="text" name="costoMax"  value="">
-        </div>
-     <div id="star">   
+    	<div id="RicCasa">
+    		<label>Cucina separata &nbsp;</label><input type="checkbox" name="cucina" value="C" style="width:150px">
+      </div>
+    	<div id="star">   
     <fieldset class="rating">
-    <input type="radio" id="star5a" name="ratinga" value="5" /><label for="star5a" title="MustBe">5 stars</label>
-    <input type="radio" id="star4a" name="ratinga" value="4" /><label for="star4a" title="Attractive">4 stars</label>
-    <input type="radio" id="star3a" name="ratinga" value="3" /><label for="star3a" title="Halfway">3 stars</label>
-    <input type="radio" id="star2a" name="ratinga" value="2" /><label for="star2a" title="Pleasant">2 stars</label>
-    <input type="radio" id="star1a" name="ratinga" value="1" /><label for="star1a" title="Indifferent">1 star</label>
+	    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="MustBe">5 stars</label>
+   	 <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Attractive">4 stars</label>
+       <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Halfway">3 stars</label>
+    	 <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Pleasant">2 stars</label>
+    	 <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Indifferent">1 star</label>
     </fieldset>
-        </div>
+    	</div>
+    </div>
+            
+            
+    <div class="divRicercaCasa">
+    	<div id="RicCasa">
+			<label>Distanza Centro (km) &nbsp; </label><input style="color:#000000" type="text" name="costoMax"  value="">
+      </div>
+     	<div id="star">   
+    <fieldset class="rating">
+    	<input type="radio" id="star5a" name="ratinga" value="5" /><label for="star5a" title="MustBe">5 stars</label>
+    	<input type="radio" id="star4a" name="ratinga" value="4" /><label for="star4a" title="Attractive">4 stars</label>
+    	<input type="radio" id="star3a" name="ratinga" value="3" /><label for="star3a" title="Halfway">3 stars</label>
+    	<input type="radio" id="star2a" name="ratinga" value="2" /><label for="star2a" title="Pleasant">2 stars</label>
+    	<input type="radio" id="star1a" name="ratinga" value="1" /><label for="star1a" title="Indifferent">1 star</label>
+    </fieldset>
+      </div>
     </div>
     
     
     <div class="divRicercaCasa">
-        <div id="RicCasa">
-        <label>Numero Locali &nbsp;</label><select style="color:#000000" name="numerolocali">
-			<option value="1">Monolocale</option>
+       <div id="RicCasa">
+       	<label>Numero Locali &nbsp;</label><select style="color:#000000" name="numerolocali">
+				<option value="1">Monolocale</option>
             <option value="2">Bilocale</option>
             <option value="3">Trilocale</option></select>  
-        </div>
-        <div id="star">
+       </div>
+       <div id="star">
             <fieldset class="rating">
                 <input type="radio" id="star5b" name="ratingb" value="5" /><label for="star5b" title="MustBe">5 stars</label>
                 <input type="radio" id="star4b" name="ratingb" value="4" /><label for="star4b" title="Attractive">4 stars</label>
@@ -183,10 +185,10 @@
      
     <div class="divRicercaCasa">
         <div id="RicCasa">
-        <label>Numero Bagni &nbsp;</label><select style="color:#000000" name="numerobagni">
-			<option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option></select>
+        		<label>Numero Bagni &nbsp;</label><select style="color:#000000" name="numerobagni">
+					<option value="1">1</option>
+            	<option value="2">2</option>
+            	<option value="3">3</option></select>
         </div>
         <div id="star">
             <fieldset class="rating">
@@ -201,10 +203,10 @@
         
     <div class="divRicercaCasa">
         <div id="RicCasa">
-        <label>Sesso coinquilini &nbsp;</label> <select style="color:#000000" name="sessocoinquilini">
-			 <option value="FEMMINE">F</option>
-             <option value="MASCHI">M</option>
-             <option value="MISTA">MISTA</option></select>
+        		<label>Sesso coinquilini &nbsp;</label> <select style="color:#000000" name="sessocoinquilini">
+			 		<option value="FEMMINE">F</option>
+             	<option value="MASCHI">M</option>
+             	<option value="MISTA">MISTA</option></select>
         </div>
         <div id="star">
             <fieldset class="rating">
@@ -219,11 +221,11 @@
         
     <div class="divRicercaCasa">
         <div id="RicCasa">
-        <label>Tipo camera &nbsp;</label> <select style="color:#000000" name="tipocamera">
-			<option value="1">Singola</option>
-             <option value="2">Doppia</option>
-             <option value="3">Tripla</option>
-             <option value="4">Quadrupla</option></select> 
+        		<label>Tipo camera &nbsp;</label> <select style="color:#000000" name="tipocamera">
+					<option value="1">Singola</option>
+             	<option value="2">Doppia</option>
+             	<option value="3">Tripla</option>
+             	<option value="4">Quadrupla</option></select> 
         </div>
         <div id="star">
             <fieldset class="rating">
@@ -344,13 +346,13 @@
     </div>
         
             <br>
-        <p><input type="submit" class="submit-btn" value="Effettua Ricerca"></p>
+        <p style="padding-left: 25%;"><input type="submit" class="buttonannuncio" value="Effettua Ricerca"></p>
 		
 		</form>
     
              
     </div>
-<div id="navfooter"></div>
+<div id="navfooter" style="position:relative;"></div>
 </body>
 </main>
 </html>

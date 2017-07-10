@@ -383,17 +383,6 @@ public class Database {
         ps.setInt(4, idCamera);
         return ps.executeUpdate();
     }
-    /**
-     * Metodo che elimina le camere appartenenti ad un Idcasa.
-     * @param idCasa Id della casa univoco all'interno del database.
-     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
-     */
-    public int eliminaCamere(int idCasa) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaCamera);
-        ps.setInt(1, idCasa);
-        return ps.executeUpdate();
-    }
     
     public int setElettrodomestico(int idCasa, String tipo) throws SQLException {
         

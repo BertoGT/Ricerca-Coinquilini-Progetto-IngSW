@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" >
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css">
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css"> -->
+    <link rel="stylesheet" href="stile.css" type="text/css">
     <link rel = "stylesheet" href="font-awesome.css" type="text/css">
     <link rel = "stylesheet" href="font-awesome.min.css" type="text/css">
     <link rel = "stylesheet" href="_icons.scss" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="buttonAnnuncio.css">
+    
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     
     <script type="text/javascript">
@@ -317,7 +317,7 @@
                     <option value="4">4</option>
                 </select>
             </p>
-            <p id="aggiungiQui"></p>
+            <p id="aggiungiQui" style="width:auto;"></p>
             <!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->
           </div>
         </div>
@@ -332,7 +332,7 @@
         <span id="range3">0</span>
       </div>
       <hr>
-
+		<div style="padding-left:5px;">
       <!-- Contatti -->
         <h2><strong>Contatti</strong></h2>
         <p class="w3-large w3-text-theme">
@@ -355,6 +355,7 @@
         <label id="labelModificaProfilo">Email* : &nbsp; </label>
         <input type="text" style="color:#000000" name="email" value="" required>
         </p>
+      </div>
    		<hr>
          <button class="buttonAnnuncio" type="submit" style="margin-left:3%">
              <span> Crea annuncio </span>
@@ -365,7 +366,7 @@
 		</form>
 		<br><br>
     </div>
-    <div id="navfooter" style="margin-top:5px;"></div>
+    <div id="navfooter" style="margin-top:5px; position:relative;"></div>
 </body>
 </html>
 

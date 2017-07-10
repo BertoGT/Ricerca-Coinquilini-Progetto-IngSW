@@ -90,7 +90,6 @@ h1{
 
 .sfondo{
 	background: url('immagini/mattoni.jpg') center center;
-	background-attachment: scroll;
 	opacity: 1;
 	position: relative;
 	width: 100%;
@@ -99,6 +98,8 @@ h1{
 .w3-white{
 	opacity: 0.95;
 	overflow: auto;
+	background-color: white;
+	border-radius: 5px;
 }
 
 
@@ -107,8 +108,8 @@ h1{
 	font-family: 'Raleway';
 	font-size: 40px;
 	align-self: center;
-	padding-left: 60px;
-    
+	padding-left: 60px;  
+	
 }
  
 label{
@@ -122,7 +123,7 @@ input, select, textarea{
 	display: inline;
 	width: 150px;
 	float: center;
-    color: #000000;
+   color: #000000;
 }
 
 

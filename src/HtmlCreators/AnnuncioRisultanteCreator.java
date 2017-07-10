@@ -8,7 +8,6 @@ package HtmlCreators;
 import Casa.AnnuncioCasa;
 import Casa.CameraDisponibile;
 import Casa.ElettroDomestico;
-import ProfiloUtente.DatiUtente;
 import Servlet.CookieStorage;
 import Servlet.HtmlReader;
 import java.io.FileNotFoundException;
@@ -22,14 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author margherita
  */
 public class AnnuncioRisultanteCreator {
-    /**
-     * 
-     * @param annuncio Oggetto AnnuncioCasa, contenente tutte le informazioni relative ad un annuncio.
-     * @param req Oggetto HttpServletResponse che gestisce le risposte verso il client.
-     * @param resp Oggetto HttpServletRequest che gestisce le risposte verso il client.
-     * @return Stringa contenente l'annuncio formattato e pronto per l'html.
-     * @throws FileNotFoundException 
-     */
+    
      public static String creazioneAnnuncio(AnnuncioCasa annuncio, HttpServletRequest req, 
             HttpServletResponse resp) throws FileNotFoundException {
         String risposta;
@@ -114,7 +106,7 @@ public class AnnuncioRisultanteCreator {
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
         StringBuilder cameraDisponibile = new StringBuilder();
-        if(camereDisponibili.isEmpty()==true){
+        if(camereDisponibili.isEmpty()){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
         }else{
             for(CameraDisponibile c: camereDisponibili){
@@ -127,9 +119,10 @@ public class AnnuncioRisultanteCreator {
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            tmp = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            sb.append(tmp);
         }
-        return sb.append(body).toString();
+        return sb.toString();
     }
     
      private static String annuncioNonLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
@@ -193,7 +186,7 @@ public class AnnuncioRisultanteCreator {
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
         StringBuilder cameraDisponibile = new StringBuilder();
-        if(camereDisponibili.isEmpty()==true){
+        if(camereDisponibili.isEmpty()){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
         }else{
             for(CameraDisponibile c: camereDisponibili){
@@ -206,9 +199,10 @@ public class AnnuncioRisultanteCreator {
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            tmp = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            sb.append(tmp);
         }
-        return sb.append(body).toString();
+        return sb.toString();
     }
    
 }

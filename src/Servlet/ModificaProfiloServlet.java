@@ -8,10 +8,8 @@ package Servlet;
 import Casa.Citta;
 import Exceptions.PasswordException;
 import ProfiloUtente.Facolta;
-import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
-import ProfiloUtente.ProfileManager;
-import ProfiloUtente.Sesso;
+import Sistema.ProfileManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -22,7 +20,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sistema.Sistema;
+import Sistema.Sistema;
 
 /**
  *

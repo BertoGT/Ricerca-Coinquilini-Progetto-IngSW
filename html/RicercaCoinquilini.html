@@ -1,13 +1,14 @@
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/607b96e/html/stile.css" type="text/css">
+<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/607b96e/html/stile.css" type="text/css"> -->
+<link rel="stylesheet" href="stile.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Raleway:300" rel="stylesheet" type="text/css">
 <title>Rooming</title>
 </head>
 <main>
-<body onload="caricabarra()">
+<body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
-<div id="sfondoform" class="sfondo">
+<div class="w3-white" style="width:50%;margin:100px 25%;color:#000000;padding-top:10px;">
     
 <p><h1>Inserisci i parametri per la ricerca del tuo futuro coinquilino:</h1></p>
 <form name="form" method="post" action="http://localhost:8080/ricercacoinquilino" id="form">
@@ -338,8 +339,8 @@
     </div>
 
     <br>
-    <p>
-        <input type="submit" class="submit-btn" value="Effettua Ricerca">
+    <p style="padding-left:25%;">
+        <input type="submit" class="buttonAnnuncio" value="Effettua Ricerca">
     </p>
 </form>
 </div>

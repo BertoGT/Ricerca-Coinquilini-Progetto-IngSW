@@ -10,7 +10,6 @@ import RicercaAnnuncio.AnnuncioRisultante;
 import Servlet.CookieStorage;
 import Servlet.HtmlReader;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;

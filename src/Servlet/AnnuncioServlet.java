@@ -6,29 +6,21 @@
 package Servlet;
 
 import Exceptions.InserimentoAnnuncioNonRiuscito;
-import BusinessModel.BusinessModelAnnuncio;
-import Casa.CameraDisponibile;
 import Casa.Citta;
 import Casa.ElettroDomestico;
 import Casa.HouseGenerality;
-import Casa.InfoCasa;
 import Exceptions.AnnuncioException;
 import Exceptions.PasswordException;
-import ProfiloUtente.Facolta;
-import ProfiloUtente.Occupazione;
-import ProfiloUtente.ProfileManager;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sistema.Sistema;
+import Sistema.Sistema;
 
 /**
  *
