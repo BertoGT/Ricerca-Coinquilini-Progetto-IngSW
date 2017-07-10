@@ -62,7 +62,9 @@ public class RicercaCasaServlet extends HttpServlet {
             Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NessunAnnuncioException ex) {
             // pagina con avviso nessun annuncio trovato.
-            Logger.getLogger(RicercaCasaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            String risultati = HtmlReader.htmlReader("norisultati.html");
+            resp.getWriter().println(risultati);
+           
         }               
     }
      
