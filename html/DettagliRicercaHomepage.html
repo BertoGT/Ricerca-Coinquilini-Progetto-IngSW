@@ -23,27 +23,30 @@
     };
 </script> 
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/498a05/html/stile.css" type="text/css">
+<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/498a05/html/stile.css" type="text/css"> -->
+<link rel="stylesheet" href="buttonAnnuncio.css">
+<link rel="stylesheet" href="stile.css">
 <title>Rooming</title>
 </head>
-<body onload="caricabarra()">
+<body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
-<div id="sfondoform" class="sfondo">
-		<p><h1>Inserisci i tuoi dati:</h1></p>
-<form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/registrazione" id="form">
-                    <p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value="" required></p>
-		<p><label>Cognome*  &nbsp; </label><input type="text" name="cognome"  value="" required></p>		
-		<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value="" required></p>	
-		<p><label>Sesso*   &nbsp; </label><select name="sesso">
+<div  style="padding: 100px 0px" >
+      <div class="w3-white" style="margin-left:10%; margin-right:10%;width:auto;text-align:center;">
+		<h1>Inserisci i tuoi dati:</h1>
+		<form name="form" onsubmit="convalidaPassword(this)" method="post" action="http://localhost:8080/registrazione" id="form">
+            <p ><label>Nome*  &nbsp; </label><input type="text" name="nome" value="" required></p>
+				<p><label>Cognome*  &nbsp; </label><input type="text" name="cognome"  value="" required></p>		
+				<p><label>E-Mail*  &nbsp;</label><input type="text" name="email"  value="" required></p>	
+				<p><label>Sesso*   &nbsp; </label><select name="sesso">
                     <option value="M">Maschio</option>
                     <option value="F">Femmina</option>
                     </select></p>
-		<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value="" required></p>	
-		<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
-		<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
-			<option value="ITALIA">ITALIA</option>
-			<option value="PORTOGALLO">PORTOGALLO</option>
-			<option value="SPAGNA">SPAGNA</option>
+			<p><label>Data di nascita*  &nbsp;</label><input type="date" name="datadinascita"  value="" required></p>	
+			<p><label>Numero di telefono &nbsp;</label><input type="text" name="cellulare" value=""></p>	
+			<p><label>Nazionalita' &nbsp; </label><select name="nazionalita">
+				<option value="ITALIA">ITALIA</option>
+				<option value="PORTOGALLO">PORTOGALLO</option>
+				<option value="SPAGNA">SPAGNA</option>
 			<option value="IRLANDA">IRLANDA</option>
 			<option value="REGNO_UNITO">REGNO_UNITO</option>
 			<option value="PAESI_BASSI">PAESI_BASSI</option>
@@ -247,13 +250,13 @@
 		<p><label>Sportivo? &nbsp;</label> <input type="checkbox" name="sportivo" value="S"></p>
 		<p><label>Password*  &nbsp;</label><input type="password" name="password" value="" required></p>		
 		<p><label>Conferma Password* &nbsp; </label><input type="password" name="confermapassword" value="" required></p>	
-		<p></p><input type="submit" class="submit-btn" value="Conferma registrazione">
-		<input type="reset" value="annulla" class="submit-btn">
-		</form>
+		<br><button class="buttonAnnuncio" type="submit"> Conferma Modifica </button>
+      <button class="buttonAnnuncio" type="reset"> Annulla </button>
+		</form><br>
 		I campi contrassegnati da * sono obbligatori
-	
+	</div>
 </div>
   
-<div id="navfooter"></div>
+<div id="navfooter" style="position:relative;"></div>
 </body>
 </html>
