@@ -15,7 +15,7 @@ import ProfiloUtente.DatiUtente;
 import ProfiloUtente.Facolta;
 import ProfiloUtente.Nazione;
 import ProfiloUtente.Occupazione;
-import ProfiloUtente.ProfileManager;
+import Sistema.ProfileManager;
 import ProfiloUtente.Sesso;
 import ProfiloUtente.Utente;
 import java.sql.SQLException;

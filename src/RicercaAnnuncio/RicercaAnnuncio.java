@@ -6,7 +6,6 @@ package RicercaAnnuncio;
 
 import BusinessModel.BusinessModelAnnuncio;
 import Casa.AnnuncioCasa;
-import Casa.Citta;
 import Exceptions.NessunAnnuncioException;
 import java.sql.SQLException;
 import java.util.ArrayList;
