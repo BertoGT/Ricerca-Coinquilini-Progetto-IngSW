@@ -22,7 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author margherita
  */
 public class AnnuncioRisultanteCreator {
-    
+    /**
+     * 
+     * @param annuncio Oggetto AnnuncioCasa, contenente tutte le informazioni relative ad un annuncio.
+     * @param req Oggetto HttpServletResponse che gestisce le risposte verso il client.
+     * @param resp Oggetto HttpServletRequest che gestisce le risposte verso il client.
+     * @return Stringa contenente l'annuncio formattato e pronto per l'html.
+     * @throws FileNotFoundException 
+     */
      public static String creazioneAnnuncio(AnnuncioCasa annuncio, HttpServletRequest req, 
             HttpServletResponse resp) throws FileNotFoundException {
         String risposta;

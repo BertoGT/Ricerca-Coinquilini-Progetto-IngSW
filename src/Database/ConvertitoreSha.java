@@ -10,7 +10,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 class ConvertitoreSha {
-
     private static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < data.length; i++) {
@@ -28,8 +27,13 @@ class ConvertitoreSha {
         }
         return buf.toString();
     }
-
-
+    /**
+     * 
+     * @param text Parametro da convertire.
+     * @return Conversione in esadecimale criptato della password.
+     * @throws NoSuchAlgorithmException
+     * @throws UnsupportedEncodingException 
+     */
     static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest md = MessageDigest.getInstance("SHA-1");
         byte[] sha1hash = new byte[40];

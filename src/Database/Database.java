@@ -29,18 +29,27 @@ public class Database {
     private Connection conn;
     
     private Database(){};
-    
+    /**
+     * 
+     * @return  Ritorna l'istanza del database appena creata.
+     */
     public static Database getInstance() {
       if(instance == null) {
          instance = new Database();
       }
       return instance;
    }
-
+    /**
+     * 
+     * @return Ritorna la connessione al database.
+     */
     public Connection getConn() {
         return conn;
     }
-    
+    /**
+     * Metodo che apre la connessione al database.
+     * @throws SQLException 
+     */
     public void apriConnesione() throws SQLException {
         try {
             Class.forName(JDBC_DRIVER);
@@ -49,13 +58,24 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }      
     }
-    
+    /**
+     * Metodo che chiude la connessione verso il database
+     * @throws SQLException 
+     */
     public void chiudiConnessione() throws SQLException{
         conn.close();
     }
     
     /* SEZIONE UTENTE */
-    
+    /**
+     * 
+     * @param email Email dell'utente che vuole registrarsi.
+     * @param password Password scelta dall'utente che vuole registrarsi.
+     * @param power Indica i permessi dell'utente all'interno del sistema.
+     * @param candidato Indica che l'utente si candida come potenziale coinquilino.
+     * @return Ritorna un oggetto ResultSet.
+     * @throws SQLException 
+     */
     public ResultSet registrazione(String email, String password, int power, boolean candidato) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaEmail);
         ps.setString(1, email);
@@ -77,7 +97,13 @@ public class Database {
             return ps.getGeneratedKeys();
         }
     }
-    
+    /**
+     * 
+     * @param email Email dell'utente che vuole registrarsi.
+     * @param password Password scelta dall'utente che vuole registrarsi.
+     * @return Ritorna un oggetto ResultSet.
+     * @throws SQLException 
+     */
     public ResultSet login(String email, String password) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaUtente);
         try{
@@ -90,7 +116,14 @@ public class Database {
         }
         return ps.executeQuery();
     }
-    
+    /**
+     * 
+     * @param idUtente Id univoco dell'utente all'interno del db.
+     * @param vecchiaPassword Password precedente che si desidera cambiare.
+     * @param nuovaPassword Nuova password con la quale si vuole sostituire quella precedente.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaConId);
         try{
@@ -112,14 +145,32 @@ public class Database {
             return 0;
         }
     }
-    
+    /**
+     * 
+     * @param idUtente Id dell'utente univoco all'interno del database.
+     * @param candidatura Boolean che indica se l'utente vuole candidarsi come coinquilino o meno (true/false).
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int setCandidatura(int idUtente, boolean candidatura) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.setCandidatura);
         ps.setBoolean(1, candidatura);
         ps.setInt(2, idUtente);
         return ps.executeUpdate();
     }
-    
+    /**
+     * 
+     * @param idUtente Id dell'utente univoco all'interno del database.
+     * @param nome Nome dell'utente.
+     * @param cognome Cognome dell'utente.
+     * @param dataNascita Oggetto Date, indica la data di nascita dell'utente.
+     * @param sesso Sesso dell'utente.
+     * @param nazionalita Nazionalità dell'utente.
+     * @param cittaDiRicerca Città in cui l'utente ricerca casa o coinquilini.
+     * @param numeroDiTelefono Numero di telefono dell'utente.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int setDatiAnagrafici(int idUtente, String nome, String cognome, Date dataNascita, String sesso, 
             String nazionalita, String cittaDiRicerca, String numeroDiTelefono) throws SQLException {
         try {
@@ -137,14 +188,30 @@ public class Database {
             return 0;
         }
     }
-    
+    /**
+     * 
+     * @param idUtente Id dell'utente univoco all'interno del database.
+     * @param nuovaCitta Nuova città in cui l'utente vuole cercare casa o coinquilini, sostituisce la vecchia.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int modificaCitaDiRicerca(int idUtente, String nuovaCitta) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaCittaRicerca);
         ps.setString(1, nuovaCitta);
         ps.setInt(2, idUtente);
         return ps.executeUpdate();
     }
-    
+    /**
+     * 
+     * @param idUtente Id dell'utente univoco all'interno del database.
+     * @param fumatore Booleano che indica se l'utente è fumatore abituale o meno.
+     * @param cuoco Booleano che indica se l'utente è un cuoco abituale o meno.
+     * @param sportivo Booleanco che indica se l'utente è uno sportivo abituale o meno.
+     * @param occupazione Occupazione dell'utente.
+     * @param facolta Facoltà dell'utente, se studente, altrimenti è possibile scegliere "NESSUNA".
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int setInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
             String occupazione, String facolta) throws SQLException {
         try {
@@ -160,7 +227,18 @@ public class Database {
             return 0;
         }
     }
-    
+    /**
+     * Modifica delle informazioni dell'utente.
+     * 
+     * @param idUtente Id dell'utente univoco all'interno del database.
+     * @param fumatore Booleano che indica se l'utente è fumatore abituale o meno.
+     * @param cuoco Booleano che indica se l'utente è un cuoco abituale o meno.
+     * @param sportivo Booleanco che indica se l'utente è uno sportivo abituale o meno.
+     * @param occupazione Occupazione dell'utente.
+     * @param facolta Facoltà dell'utente, se studente, altrimenti è possibile scegliere "NESSUNA".
+     * @return  Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
             String occupazione, String facolta) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaInfoUtente);
@@ -190,6 +268,14 @@ public class Database {
         ps.setInt(4, costo);
         return ps.executeUpdate();
     }
+    /**
+     * 
+     * @param idAnnuncio Id univoco dell'annuncio all'interno del database.
+     * @param descrizione Descizione dell'annuncio.
+     * @param costo Costo mensile dell'annuncio in euro.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     
     public int modificaAnnuncioCasa(int idAnnuncio, String descrizione, int costo) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaAnnuncioCasa);
@@ -198,13 +284,31 @@ public class Database {
         ps.setInt(3, idAnnuncio);
         return ps.executeUpdate();
     }
-    
+    /**
+     * Elimina l'annuncio della casa all'interno del db.
+     * 
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int eliminaAnnuncioCasa(int idCasa) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
         ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
-
+    /**
+     * 
+     * @param m2 Metri quadrati dell'appartamento.
+     * @param nLocali Numero di locali dell'appartamento.
+     * @param nBagni Numero di bagni dell'appartamento.
+     * @param distanzaCentro Distanza dal centro dell'appartamento.
+     * @param sessoCasa Sesso presente all'interno della casa: MASCHI, FEMMINE, MISTA.
+     * @param cucinaSeparata Indica se la cucina è separata, ossia in una stanza a parte (true), oppure no (false).
+     * @param citta Città in cui la casa è presente.
+     * @param indirizzo Indirizzo della casa.
+     * @return returns a ResultSet object containing the auto-generated key(s) generated by the execution of this Statement object.
+     * @throws SQLException 
+     */
     public ResultSet setInfoCasa(int m2, int nLocali, int nBagni, int distanzaCentro, 
             String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
         
@@ -220,7 +324,21 @@ public class Database {
         ps.executeUpdate();
         return ps.getGeneratedKeys();
     }
-    
+    /**
+     * Metodo che modifica le informazioni della casa sul database.
+     * 
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @param m2 Metri quadrati dell'appartamento.
+     * @param nLocali Numero di locali dell'appartamento.
+     * @param nBagni Numero di bagni dell'appartamento.
+     * @param distanzaCentro Distanza dal centro dell'appartamento.
+     * @param sessoCasa Sesso presente all'interno della casa: MASCHI, FEMMINE, MISTA.
+     * @param cucinaSeparata Indica se la cucina è separata, ossia in una stanza a parte (true), oppure no (false).
+     * @param citta Città in cui la casa è presente.
+     * @param indirizzo Indirizzo della casa.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int modificaInfoCasa(int idCasa, int m2, int nLocali, int nBagni, int distanzaCentro, 
             String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
         
@@ -246,7 +364,16 @@ public class Database {
         ps.setInt(4, postiDisponibili);
         return ps.executeUpdate();
     }
-    
+    /**
+     * Metodo che modifica la camera, posti letto e posti disponibili, all'interno del database.
+     * 
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @param idCamera Id della camera, associato a quello della casa.
+     * @param postiTotali
+     * @param postiDisponibili
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int modificaCamera(int idCasa, int idCamera, int postiTotali, int postiDisponibili) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaCamera);       
@@ -256,7 +383,12 @@ public class Database {
         ps.setInt(4, idCamera);
         return ps.executeUpdate();
     }
-    
+    /**
+     * Metodo che elimina le camere appartenenti ad un Idcasa.
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int eliminaCamere(int idCasa) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaCamera);
         ps.setInt(1, idCasa);
@@ -270,7 +402,13 @@ public class Database {
         ps.setString(2, tipo);
         return ps.executeUpdate();
     }
-    
+    /**
+     * Metodo che elimina l'elettrodomestico all'interno del db, dato un idCasa.
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @param tipo Tipo dell'elettrodomestico che si desidera eliminare all'interno dell'appartamento.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int eliminaElettrodomestico(int idCasa, String tipo) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaElettrodomestico);       
@@ -278,7 +416,12 @@ public class Database {
         ps.setString(2, tipo);
         return ps.executeUpdate();
     }
-    
+    /**
+     * Elimino tutti gli elettrodomestici abbinati ad un dato idCasa.
+     * @param idCasa Id della casa univoco all'interno del database.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public int eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaTuttiElettrodomestici);       
@@ -287,7 +430,14 @@ public class Database {
     }
     
     /* SEZIONE LETTURA ANNUNCI */
-    
+    /**
+     * Metodo che carica gli annunci dal database data la città ed il costo.
+     * 
+     * @param citta Città di ricerca degli annunci.
+     * @param costo Costo di ricerca per gli annunci. 
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public ResultSet getAnnunciInfoCasa(String citta, int costo) throws SQLException {
         
         PreparedStatement ps;
@@ -301,7 +451,12 @@ public class Database {
         }
         return ps.executeQuery();   
     }
-    
+    /**
+     * Metodo che verifica la presenza di un annuncio sul database dato un idUtente.
+     * @param idUtenteProprietario Id dell'utente, univoco all'interno del database.
+     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
+     * @throws SQLException 
+     */
     public ResultSet verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaPresenzaAnnuncio);

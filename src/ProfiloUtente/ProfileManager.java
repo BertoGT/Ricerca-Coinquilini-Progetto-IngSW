@@ -30,7 +30,11 @@ import java.util.Date;
 public class ProfileManager {
     private Utente utente;
     private AnnuncioCasa annuncioCasa;
-
+    /**
+     * Crea un'istanza del profilo dell'utente.
+     * @param utente Oggetto utente contenente informazioni di base
+     * @param annuncioCasa  Oggetto AnnuncioCasa contenente le informazioni dell'annuncio.
+     */
     public ProfileManager(Utente utente, AnnuncioCasa annuncioCasa) {
         this.utente = utente;
         this.annuncioCasa = annuncioCasa;
@@ -51,7 +55,21 @@ public class ProfileManager {
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-    
+    /**
+     * Metodo che permette la modifica del profilo utente.
+     * 
+     * @param facolta Facolta frequentata dall'utente, "NESSUNA" se l'utente non è studente.
+     * @param citta Città di ricerca dell'utente.
+     * @param occupazione Occupazione dell'utente.
+     * @param fumatore Indica se l'utente è fumatore.
+     * @param sportivo Indica se l'utente è sportivo.
+     * @param cuoco Indica se l'utente è un cuoco.
+     * @param candidato Indica se l'utente si candida o meno come coinquilino.
+     * @param password Password scelta dall'utente, se non scelta si utilizza quella precedente.
+     * @throws SQLException
+     * @throws ParseException
+     * @throws PasswordException 
+     */
     public void modificaProfilo(Facolta facolta, Citta citta, Occupazione occupazione, 
             boolean fumatore, boolean sportivo, boolean cuoco, boolean candidato, String password) 
             throws SQLException, ParseException, PasswordException {
@@ -67,6 +85,26 @@ public class ProfileManager {
         if(!password.equals(""))
             bm.modificaPassword(idUtente, password, password);
     }
+    /**
+     * Metodo che permette la creazione di un annuncio all'utente. 
+     * 
+     * @param elettrodomestici Lista degli elettrodomestici da aggiungere all'annuncio.
+     * @param postiLettoEDisponibili Posti letto e posti letto disponibili per ogni camera disponibile creata dall'utente tramite interfaccia web.
+     * @param idUtente IdUtente univoco all'interno del database.
+     * @param costoMensile Costo mensile della casa.
+     * @param metriQuadrati Metri quadrati della casa.
+     * @param numeroLocali Numero di locali della casa.
+     * @param numeroBagni Numero di bagni della casa.
+     * @param distanzaCentro Distanza dal centro della casa.
+     * @param cucinaSeparata Indica se la casa ha una cucina separata o meno.
+     * @param cittaDiRicerca Citta in cui la casa è presente.
+     * @param cittaIndirizzo Indirizzo della casa.
+     * @param sessoCoinquilini Sesso presente all'interno della casa. 
+     * @param descrizioneAggiuntiva Descrizione aggiuntiva dell'annuncio.
+     * @throws SQLException
+     * @throws InserimentoAnnuncioNonRiuscito
+     * @throws AnnuncioException 
+     */
     public void creaAnnuncio(ArrayList<ElettroDomestico> elettrodomestici,int[][] postiLettoEDisponibili, int idUtente, int costoMensile, 
                              int metriQuadrati, int numeroLocali, int numeroBagni, int distanzaCentro, boolean cucinaSeparata,
                              Citta cittaDiRicerca, String cittaIndirizzo, HouseGenerality sessoCoinquilini, String descrizioneAggiuntiva) throws SQLException, InserimentoAnnuncioNonRiuscito, AnnuncioException{
@@ -93,7 +131,10 @@ public class ProfileManager {
             throw new AnnuncioException("Cancellare annuncio prima di crearne uno nuovo!");
         }
     }
-    
+    /**
+     * Metodo che cancella l'annuncio dell'utente.
+     * @throws SQLException 
+     */
     public void cancellaAnnuncio() throws SQLException{
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
         int idCasa = this.annuncioCasa.getIdCasa();

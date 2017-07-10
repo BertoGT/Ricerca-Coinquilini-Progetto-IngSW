@@ -22,7 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author Margherita
  */
 public class ListaAnnunciCreator extends HttpServlet {
-    
+    /**
+     * 
+     * @param annunci Lista contenente tutti gli annunci risultanti da una ricerca
+     * @param req
+     * @param resp
+     * @return Ritorna la lista sotto forma di stringa di tutti gli annunci risultanti formattati sotto forma di html.
+     * @throws FileNotFoundException 
+     */
     public static String creaListaAnnunci(ArrayList<AnnuncioRisultante> annunci, HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException {
         String risultati = null;
          try {

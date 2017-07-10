@@ -20,6 +20,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author alberto
  */
 public class ProfiloCoinquiCreator {
+    /**
+     * Metodo che crea la pagina html di un utente che si è candidato come coinquilino.
+     * 
+     * @param datiUtente Oggetto contenente le informazioni dell'utente.
+     * @param req
+     * @param resp
+     * @return Ritorna la stringa formattata e pronta per il caricamento dinamico Html.
+     * @throws FileNotFoundException 
+     */
     public static String creaPagina(DatiUtente datiUtente, HttpServletRequest req, 
             HttpServletResponse resp) throws FileNotFoundException {
         String risposta;

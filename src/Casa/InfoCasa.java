@@ -41,7 +41,13 @@ public class InfoCasa {
         this.sessoCasa = sessoCasa;
         
     }
-    
+    /**
+     * Aggiunge una camera all'interno della casa ai fini dell'annuncio.
+     * 
+     * @param idAnnuncio Parametro identificativo dell'annuncio.
+     * @param postiLetto Numero di posti letto che ci saranno all'interno della camera.
+     * @param postiLettoDisponibili Numero di posti letto disponibili all'interno della camera.
+     */
     public void creaCamera(int idAnnuncio, int postiLetto, int postiLettoDisponibili) {
         int indice=this.camere.size();
        
@@ -50,11 +56,19 @@ public class InfoCasa {
         
         this.camere.add(new CameraDisponibile(idAnnuncio, indice, postiLetto, postiLettoDisponibili));
     }
-   
+    /**
+     * Aggiunge un elettrodomestico all'interno della casa.
+     * 
+     * @param elettroDomestico Elettrodomestico da aggiungere all'interno della casa.
+     */
     public void addElettroDomestico(ElettroDomestico elettroDomestico){
         this.elettroDomestici.add(elettroDomestico);
     }
-    
+    /**
+     * Rimuove un elettrodomestico dalle info della casa.
+     * 
+     * @param elettroDomestico Elettrodomestico da rimuovere dalle info della casa.
+     */
     public void rimuoviElettroDomestico(ElettroDomestico elettroDomestico){
         int indice=0;
         boolean flag=false;

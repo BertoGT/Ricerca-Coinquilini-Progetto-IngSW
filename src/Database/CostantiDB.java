@@ -61,7 +61,9 @@ public class CostantiDB {
             + "from "+tabellaAnagraficaUtente+" where idUtente = ?)as x "
             + " natural join "+tabellaInfoUtente+" natural join "+tabellaUtente;
     
-    
+    /**
+     * Classe contenente le Query utilizzate nel database.
+     */
     
     /* SEZIONE ANNUNCI CASA*/
     

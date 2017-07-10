@@ -20,6 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author alberto
  */
 public class ListaCoinquiCreator {
+    /**
+     * 
+     * @param risultati Lista contentente le info dei coinquilini risultanti da una ricerca.
+     * @param req
+     * @param resp
+     * @return Stringa che prepara la lista passata in input per l'html.
+     * @throws FileNotFoundException 
+     */
     public static String creaLista(ArrayList<CoinquilinoRisultante> risultati, 
             HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException {
         String risposta;
