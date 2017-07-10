@@ -7,10 +7,8 @@ package RicercaCoinquilino;
 
 import BusinessModel.BusinessModelAnnuncio;
 import Exceptions.NessunAnnuncioException;
-import ProfiloUtente.Sesso;
 import ProfiloUtente.Utente;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 

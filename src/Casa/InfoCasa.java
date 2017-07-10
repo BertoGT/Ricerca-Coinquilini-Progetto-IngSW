@@ -1,6 +1,5 @@
 package Casa;
 
-import Exceptions.CameraNonTrovataException;
 import java.util.ArrayList;
 
 /**

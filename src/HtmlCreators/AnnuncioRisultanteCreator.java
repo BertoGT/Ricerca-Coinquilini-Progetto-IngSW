@@ -8,7 +8,6 @@ package HtmlCreators;
 import Casa.AnnuncioCasa;
 import Casa.CameraDisponibile;
 import Casa.ElettroDomestico;
-import ProfiloUtente.DatiUtente;
 import Servlet.CookieStorage;
 import Servlet.HtmlReader;
 import java.io.FileNotFoundException;

@@ -21,11 +21,8 @@ import ProfiloUtente.Facolta;
 import ProfiloUtente.Occupazione;
 import ProfiloUtente.Utente;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *

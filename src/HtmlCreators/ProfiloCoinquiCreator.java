@@ -6,7 +6,6 @@
 package HtmlCreators;
 
 import ProfiloUtente.DatiUtente;
-import RicercaCoinquilino.CoinquilinoRisultante;
 import Servlet.CookieStorage;
 import Servlet.HtmlReader;
 import java.io.FileNotFoundException;

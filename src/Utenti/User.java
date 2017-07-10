@@ -5,12 +5,8 @@
  */
 package Utenti;
 
-import ProfiloUtente.DatiUtente;
 import Sistema.ProfileManager;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Calendar;
-import java.util.Scanner;
 
 /**
  *
