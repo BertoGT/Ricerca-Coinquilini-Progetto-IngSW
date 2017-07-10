@@ -405,18 +405,6 @@ public class Database {
         ps.setString(2, tipo);
         return ps.executeUpdate();
     }
-    /**
-     * Elimino tutti gli elettrodomestici abbinati ad un dato idCasa.
-     * @param idCasa Id della casa univoco all'interno del database.
-     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
-     */
-    public int eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
-        
-        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaTuttiElettrodomestici);       
-        ps.setInt(1, idCasa);
-        return ps.executeUpdate();
-    }
     
     /* SEZIONE LETTURA ANNUNCI */
     /**
