@@ -107,7 +107,7 @@ public class AnnuncioRisultanteCreator {
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
         StringBuilder cameraDisponibile = new StringBuilder();
-        if(camereDisponibili.isEmpty()==true){
+        if(camereDisponibili.isEmpty()){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
         }else{
             for(CameraDisponibile c: camereDisponibili){
@@ -120,9 +120,10 @@ public class AnnuncioRisultanteCreator {
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            tmp = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            sb.append(tmp);
         }
-        return sb.append(body).toString();
+        return sb.toString();
     }
     
      private static String annuncioNonLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
@@ -186,7 +187,7 @@ public class AnnuncioRisultanteCreator {
              body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
         StringBuilder cameraDisponibile = new StringBuilder();
-        if(camereDisponibili.isEmpty()==true){
+        if(camereDisponibili.isEmpty()){
             body = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
         }else{
             for(CameraDisponibile c: camereDisponibili){
@@ -199,9 +200,10 @@ public class AnnuncioRisultanteCreator {
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            body = body.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            tmp = body.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            sb.append(tmp);
         }
-        return sb.append(body).toString();
+        return sb.toString();
     }
    
 }
