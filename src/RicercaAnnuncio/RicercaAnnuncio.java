@@ -67,10 +67,13 @@ public class RicercaAnnuncio {
      * Esegue la ricerca degli annunci compatibili e li ordina per punteggio (affinità) descrescente
      * @return Lista degli annunci compatibili ordinati per affinita descrescente
      */
-    public ArrayList<AnnuncioRisultante> eseguiRicerca() {
+    public ArrayList<AnnuncioRisultante> eseguiRicerca() throws NessunAnnuncioException {
         
         calcolaAffinita();
         Collections.sort(annunciRisultanti);
+        if(annunciRisultanti.isEmpty()) {
+            throw new NessunAnnuncioException("Nessun annuncio soddisfa i criteri");
+        }
         return annunciRisultanti;
     } 
     
