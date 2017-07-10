@@ -12,18 +12,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="buttonAnnuncio.css">
 
-        <style>
-        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-        </style>
-        
    </head> 
-    <body onload="caricabarra()" class="w3-light-grey" >
+    <body onload="caricabarra()" class="w3-light-grey sfondo" >
         
         <div id="navbarra"></div>
         <hr>
         <hr>
         <!-- Page Container -->
-        <div id="sfondoform" class="sfondo">
+        <div>
             
           <!-- The Grid -->
           <div class="w3-row-padding" style="width: auto; margin: 0 auto;float:center">
@@ -39,9 +35,10 @@
                   <p class="w3-large w3-text-theme"><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i> dataDiNascitaUtente</p>
                     <!-- Qui inseriamo l'occupazione dell'utente-->
                   <p class="w3-large w3-text-theme"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> occupazioneUtente</p>
-                    
-                  <!-- FACOLTA_AGGIUNTA_DINAMICA-->
-                    
+                    <!--facoltà dell'utente-->
+                  <p class="w3-large w3-text-theme">
+                      <i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal"></i> facoltaUtente
+                  </p>
                     <!-- città di ricerca dell'utente-->
                   <p  class="w3-large w3-text-theme"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> cittaDiRicerca</p>
                     <!-- contatto email utente-->
@@ -64,7 +61,7 @@
                   <p class="w3-large w3-text-theme">
                       <i class="fa fa-handshake-o fa-fw w3-margin-right w3-large w3-text-teal"></i> candidatoCoinquilino</p>
                   <div class="w3-row w3-large" style="float:center">
-                      <form name="form" method="post" action="http://localhost:8080/modificaprofilo" id="form">
+                      <form name="form" method="get" action="http://localhost:8080/modificaProfilo" id="form">
                         <button class="buttonAnnuncio" type="submit">
                             <span>
                                 Modifica Profilo
@@ -94,13 +91,10 @@
             </div>
               
           <!-- End Grid -->
-          </div>
-            
+          </div> 
           <!-- End Page Container -->
         </div>
-        <br>
-        <br>
-        
+        <div id="navfooter" style="position:relative;"></div>
     </body>
     
 </html>

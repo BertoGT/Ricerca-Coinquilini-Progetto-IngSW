@@ -6,12 +6,9 @@
 package Casa;
 
 
-import Exceptions.CameraNonTrovataException;
-import ProfiloUtente.DatiUtente;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -75,8 +72,8 @@ public class AnnuncioCasa {
      * @param indirizzo indirizzo della casa dell'annuncio
      * @param sessoCasa indica il sesso delle persone all'interno della casa dell'annuncio
      */
-    public void creaInfo(int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
-        casa = new InfoCasa(metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
+    public void creaInfo(int idCasa, int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
+        casa = new InfoCasa(idCasa, metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
     }
     /**
      * Permette di inserire un elettrodomestico all'interno della casa dell'annuncio
@@ -104,7 +101,7 @@ public class AnnuncioCasa {
     public int getIdAnnuncio() {
         return idAnnuncio;
     }
-  
+    
     public int getCosto() {
         return costo;
     }
@@ -128,7 +125,14 @@ public class AnnuncioCasa {
     public int getDistanzaCentro(){
         return casa.getDistanzaCentro();
     }
+    
+    public int getIdCasa() {
+        return casa.getIdCasa();
+    }
 
+    public int getIdProprietario() {
+        return idProprietario;
+    }
     public boolean isCucinaSeparata() {
         return casa.isCucinaSeparata();
     }

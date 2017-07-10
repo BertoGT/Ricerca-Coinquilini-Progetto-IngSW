@@ -199,11 +199,9 @@ public class Database {
         return ps.executeUpdate();
     }
     
-    public int eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
+    public int eliminaAnnuncioCasa(int idCasa) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
-        ps.setInt(1, idAnnuncio);
-        ps.setInt(2, idCasa);
-        ps.setInt(3, idUtenteProprietario);
+        ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
 
@@ -259,6 +257,12 @@ public class Database {
         return ps.executeUpdate();
     }
     
+    public int eliminaCamere(int idCasa) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaCamera);
+        ps.setInt(1, idCasa);
+        return ps.executeUpdate();
+    }
+    
     public int setElettrodomestico(int idCasa, String tipo) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.inserisciElettrodomestico);
@@ -272,6 +276,13 @@ public class Database {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaElettrodomestico);       
         ps.setInt(1, idCasa);
         ps.setString(2, tipo);
+        return ps.executeUpdate();
+    }
+    
+    public int eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaTuttiElettrodomestici);       
+        ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
     

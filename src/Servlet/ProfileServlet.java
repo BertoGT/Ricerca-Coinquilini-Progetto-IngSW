@@ -69,10 +69,14 @@ public class ProfileServlet extends HttpServlet {
             non sono presenti cookie, l'utente non può essere loggato!
             lo rimando alla pagina del login!
             */
-        } catch (SQLException ex) {
+        } catch (SQLException ex ) {
             String errorePagina = HtmlReader.htmlReader("erroriVari.html");
             response.setStatus(200);
             response.getWriter().println(errorePagina);     
+        }catch (FileNotFoundException ex){
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            response.setStatus(200);
+            response.getWriter().println(errorePagina);
         }
     }
     
@@ -81,6 +85,7 @@ public class ProfileServlet extends HttpServlet {
         response.setStatus(200);
         response.getWriter().println(loginHtml);
     }
+    
     private String sostituisciCampiProfilo(String profileManager, ProfileManager pM){
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
@@ -113,7 +118,7 @@ public class ProfileServlet extends HttpServlet {
             elementiDaModificareDinamici.add("SI");
         else
             elementiDaModificareDinamici.add("NO");
-        String nomeCognomeUtente = pM.getUtente().getDatiUtente().getCognome()+ " " + pM.getUtente().getDatiUtente().getNome() ;
+        String nomeCognomeUtente = pM.getUtente().getDatiUtente().getNome()+ " " + pM.getUtente().getDatiUtente().getCognome() ;
         elementiDaModificareDinamici.add(nomeCognomeUtente);
         
         elementiDaModificareHtml.add("dataDiNascitaUtente");
@@ -125,8 +130,8 @@ public class ProfileServlet extends HttpServlet {
         elementiDaModificareHtml.add("sessoUtente");
         elementiDaModificareHtml.add("nazionalitaUtente");
         elementiDaModificareHtml.add("utenteSportivo");
-        elementiDaModificareHtml.add("utenteCuoco");
         elementiDaModificareHtml.add("utenteFumatore");
+        elementiDaModificareHtml.add("utenteCuoco");
         elementiDaModificareHtml.add("candidatoCoinquilino");
         elementiDaModificareHtml.add("nomeCognomeUtente");
         
@@ -136,18 +141,21 @@ public class ProfileServlet extends HttpServlet {
         }
         return profileManager;
     }
+    
     private String caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
         try{
            if(pM.getAnnuncioCasa()== null){
                String nessunAnnuncioPerIlProfilo = HtmlReader.htmlReader("nessunAnnuncioProfiloDinamico.html");
                String tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", nessunAnnuncioPerIlProfilo);
                profileManager = tmp;
-           }else{
+           }
+           if(pM.getAnnuncioCasa()!=null){
                AnnuncioCasa annuncio = pM.getAnnuncioCasa();
                String annuncioPerIlProfilo = HtmlReader.htmlReader("annuncioDinamicoProfileManager.html");
                String buttonPerAnnuncio = HtmlReader.htmlReader("risultatoCasa/buttonAnnuncio.html");
                String tmp = annuncioPerIlProfilo.replaceAll("<!-- BUTTON ANNUNCIO-->", buttonPerAnnuncio);
                annuncioPerIlProfilo = tmp;
+               
                annuncioPerIlProfilo = this.sostituisciCampiAnnuncio(annuncioPerIlProfilo, annuncio);
                tmp = profileManager.replaceAll("<!--testoAnnuncioSostituzioneDinamica-->", annuncioPerIlProfilo);
                profileManager = tmp;
@@ -184,16 +192,16 @@ public class ProfileServlet extends HttpServlet {
         elementiDaModificareHtml.add("distanzaDalCentro");
         elementiDaModificareHtml.add("numeroBagni");
         elementiDaModificareHtml.add("numeroLocali");
-        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("sessoCasa");
+        elementiDaModificareHtml.add("cucinaSeparata");
         elementiDaModificareHtml.add("descrizioneAggiuntivaAnnuncio");
+        elementiDaModificareHtml.add("costoAnnuncioInEuro");
         elementiDaModificareHtml.add("nomeCognomeProprietario");
         elementiDaModificareHtml.add("indirizzoCasa");
         elementiDaModificareHtml.add("numeroDiTelefonoProprietario");
         elementiDaModificareHtml.add("emailProprietario");
-        elementiDaModificareHtml.add("dataDiNascitaUtente");
         elementiDaModificareHtml.add("dataCreazioneAnnuncio");
-        elementiDaModificareHtml.add("cucinaSeparata");
+        
         
         for (int i = 0; i < elementiDaModificareDinamici.size(); i++) {
             String tmp = annuncioPerIlProfilo.replaceAll(elementiDaModificareHtml.get(i), elementiDaModificareDinamici.get(i));
@@ -217,7 +225,6 @@ public class ProfileServlet extends HttpServlet {
             }
              annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", elettrodomestico.toString());
         }
-        
         StringBuilder cameraDisponibile = new StringBuilder();
         if(camereDisponibili.isEmpty()==true){
             annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", "Nessuna camera disponibile!");
@@ -235,6 +242,18 @@ public class ProfileServlet extends HttpServlet {
             annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
         }
         return annuncioPerIlProfilo;
+    } 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            this.system.getUser().getProfileManager().cancellaAnnuncio();
+            this.doGet(req, resp);
+        } catch (SQLException ex) {
+            String errorePagina = HtmlReader.htmlReader("erroriVari.html");
+            resp.setStatus(200);
+            resp.getWriter().println(errorePagina);
+        }      
     }
     
 }

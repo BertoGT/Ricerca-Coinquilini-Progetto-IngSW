@@ -95,14 +95,16 @@ public class BusinessModelAnnuncio {
     }
     
     /**
-     * Elimina l'annuncio dell'utente
-     * @param idAnnuncio idAnnuncio da eliminare
+     * Elimina l'annuncio dell'utente, comprese l'info casa, le varie camere 
+     * e gli elettrodomestici legati ad esso.
+     * @param idUtenteProprietario identificativo del proprietario dell'annuncio da eliminare
+     * @param idCasa identificativo della casa (e i dati relativi) da cancellare
      * @return true se avviene l'eliminazione, false atrimenti
      * @throws SQLException 
      */
-    public boolean eliminaAnnuncioCasa(int idAnnuncio, int idCasa, int idUtenteProprietario) throws SQLException {
+    public boolean eliminaAnnuncioCasa(int idCasa) throws SQLException {
         db.apriConnesione();
-        int result = db.eliminaAnnuncioCasa(idAnnuncio, idCasa, idUtenteProprietario);
+        int result = db.eliminaAnnuncioCasa(idCasa);
         db.chiudiConnessione();
         if(result == 0)
             return false;
@@ -253,9 +255,9 @@ public class BusinessModelAnnuncio {
         ResultSet rs = db.getAnnunciInfoCasa(citta.name(), costoConTolleranza);
         while(rs.next()) {
             int idCasa = rs.getInt(1);
-            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(1), rs.getString(4), rs.getInt(2), rs.getInt(5),
+            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(3), rs.getString(4), rs.getInt(2), rs.getInt(5),
                     rs.getString(17) +" "+rs.getString(18), rs.getString(19), rs.getString(16), rs.getDate(6));
-            annuncio.creaInfo(rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
+            annuncio.creaInfo(idCasa, rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
                     Citta.valueOf(rs.getString(13)), rs.getString(14), HouseGenerality.valueOf(rs.getString(11)));
             ResultSet rCamere = db.getCamere(idCasa);
             while(rCamere.next()) {

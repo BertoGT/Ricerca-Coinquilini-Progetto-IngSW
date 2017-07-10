@@ -5,7 +5,7 @@ package Casa;
  * @author Alberto
  */
 public class CameraDisponibile {
-    private int postiLetto, postiLettoDisponibili, idCamera, idAnnuncio; 
+    private int postiLetto, postiLettoDisponibili, idCamera, idCasa; 
     /**
      * Istanzia un oggetto CameraDisponibile
      * @param idAnnuncio id dell'annuncio
@@ -13,13 +13,17 @@ public class CameraDisponibile {
      * @param postiLetto posti letto totali della camera
      * @param postiLettoDisponibili posti letto disponibili della camera
      */
-    public CameraDisponibile(int idAnnuncio, int idCamera, int postiLetto, int postiLettoDisponibili) {
+    public CameraDisponibile(int idCasa, int idCamera, int postiLetto, int postiLettoDisponibili) {
         this.postiLetto = postiLetto;
         this.postiLettoDisponibili = postiLettoDisponibili;
         this.idCamera = idCamera;
-        this.idAnnuncio=idAnnuncio;
+        this.idCasa=idCasa;
     }
 
+    public int getIdCasa() {
+        return idCasa;
+    }
+    
     public int getPostiLetto() {
         return postiLetto;
     }
@@ -46,7 +50,7 @@ public class CameraDisponibile {
 
     @Override
     public String toString() {
-        return "CameraDisponibile{" + "postiLetto=" + postiLetto + ", idCamera=" + idCamera + ", idAnnuncio=" + idAnnuncio + '}';
+        return "CameraDisponibile{" + "postiLetto=" + postiLetto + ", idCamera=" + idCamera + ", idAnnuncio=" + idCasa + '}';
     }
 
     

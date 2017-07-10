@@ -16,10 +16,10 @@
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
     
     <script type="text/javascript">
-       	function caricabarra(){
-              $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbar.html"); 
-              $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
-         }
+            function caricabarra(){
+                  $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbarLoggato.html"); 
+                  $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
+             }
         	function showValue1(newValue)
         	{
               document.getElementById("range1").innerHTML=newValue;
@@ -33,10 +33,66 @@
               document.getElementById("range3").innerHTML=newValue;
         	}
     </script>
+    <script type="text/javascript">
+        function createSelect(nome){
+                 var input = document.createElement("select");
+                 var array = ["1","2","3","4"];
+                 input.name = nome;
+                 for (var i = 0; i < array.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = array[i];
+                        option.text = array[i];
+                        input.appendChild(option);
+                 }
+                 return input;
+        }
+    </script>
+    <script type="text/javascript">
+        function addFields(){
+                // Number of inputs to create
+                var number = document.getElementById("camereDisponibili").value;
+                // Container <div> where dynamic content will be placed
+                var container = document.getElementById("aggiungiQui");
+                // Clear previous contents of the container
+                while (container.hasChildNodes()) {
+                    container.removeChild(container.lastChild);
+                }
+                
+                for (i=0;i<number;i++){
+                    // Append a node with a random text
+                    container.appendChild(document.createTextNode("CAMERA " + (i+1)+":"));
+
+                    var div1 = document.createElement("div");
+                    var div2 = document.createElement("div");
+                    container.appendChild(div1);
+                    container.appendChild(div2);
+
+                    var iconBed1 = document.createElement("span");
+                    iconBed1.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+
+                    div1.appendChild(iconBed1);
+                    // Create an <input> element, set its type and name attributes
+                    var input = createSelect("postiLetto" + i);
+                    div1.appendChild(document.createTextNode("POSTI LETTO: "))
+                    div1.appendChild(input);
+
+                    var iconBed2 = document.createElement("span");
+                    iconBed2.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+
+                    div2.appendChild(iconBed2);
+                    var input1 = createSelect("postiLettoDisponibili"+i)
+                    div2.appendChild(document.createTextNode("POSTI LETTO DISPONIBILI: "))
+                    div2.appendChild(input1);
+                    // Append a line break 
+                    container.appendChild(document.createElement("br"));
+                }
+
+            }
+    </script>
 <body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
 <div class="w3-main w3-white" style="margin:100px 15% 2% 15%;opacity:0.95;">
-    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form" style="padding: 1%">
+    <form name="form" method="post" action="http://localhost:8080/modificaCreaAnnuncio" id="form" style="padding: 1%">
 
       <!-- Push down content on small screens -->
       <div class="w3-hide-large" style="margin-top:80px"></div>
@@ -49,27 +105,140 @@
         <h4><strong>Dettagli della casa</strong></h4>
         <div class="w3-row w3-large">
           <div class="w3-col s6">
+            <p>
+                <label>Città di ricerca &nbsp;</label>
+                <select style="color:#000000" name="cittaDiRicerca" required>
+			<option value="ALESSANDRIA">ALESSANDRIA</option>
+                        <option value="AGRIGENTO">AGRIGENTO</option>
+                        <option value="ANCONA">ANCONA</option>
+                        <option value="AOSTA">AOSTA</option>
+                        <option value="AREZZO">AREZZO</option>
+                        <option value="ASCOLI_PICENO">ASCOLI PICENO</option>
+                        <option value="ASTI">ASTI</option>
+                        <option value="AVELLINO">AVELLINO</option>
+                        <option value="BARI">BARI</option>
+                        <option value="BARLETTA_ANDRIA_TRANI">BARLETTA ANDRIA TRANI</option>
+                        <option value="BELLUNO">BELLUNO</option>
+                        <option value="BENEVENTO">BENEVENTO</option>
+                        <option value="BERGAMO">BERGAMO</option>
+                        <option value="BIELLA">BIELLA</option>
+                        <option value="BOLOGNA">BOLOGNA</option>
+                        <option value="BOLZANO">BOLZANO</option>
+                        <option value="BRESCIA">BRESCIA</option>
+                        <option value="BRINDISI">BRINDISI</option>
+                        <option value="CAGLIARI">CAGLIARI</option>
+                        <option value="CALTANISSETTA">CALTANISSETTA</option>
+                        <option value="CAMPOBASSO">CAMPOBASSO</option>
+                        <option value="CARBONIA_IGLESIAS">CARBONIA IGLESIAS</option>
+                        <option value="CASERTA">CASERTA</option>
+                        <option value="CATANIA">CATANIA</option>
+                        <option value="CATANZARO">CATANZARO</option>
+                        <option value="CHIETI">CHIETI</option>
+                        <option value="COMO">COMO</option>
+                        <option value="COSENZA">COSENZA</option>
+                        <option value="CREMONA">CREMONA</option>
+                        <option value="CROTONE">CROTONE</option>
+                        <option value="CUNEO">CUNEO</option>
+                        <option value="ENNA">ENNA</option>
+                        <option value="FERMO">FERMO</option>
+                        <option value="FERRARA">FERRARA</option>
+                        <option value="FIRENZE">FIRENZE</option>
+                        <option value="FOGGIA">FOGGIA</option>
+                        <option value="FORLI_CESENA">FORLI CESENA</option>
+                        <option value="FROSINONE">FROSINONE</option>
+                        <option value="GENOVA">GENOVA</option>
+                        <option value="GORIZIA">GORIZIA</option>
+                        <option value="GROSSETO">GROSSETO</option>
+                        <option value="IMPERIA">IMPERIA</option>
+                        <option value="ISERNIA">ISERNIA</option>
+                        <option value="LA_SPEZIA">LA SPEZIA</option>
+                        <option value="L_AQUILA">L'AQUILA</option>
+                        <option value="LATINA">LATINA</option>
+                        <option value="LECCE">LECCE</option>
+                        <option value="LECCO">LECCO</option>
+                        <option value="LIVORNO">LIVORNO</option>
+                        <option value="LODI">LODI</option>
+                        <option value="LUCCA">LUCCA</option>
+                        <option value="MACERATA">MACERATA</option>
+                        <option value="MANTOVA">MANTOVA</option>
+                        <option value="MASSA_CARRARA">MASSA CARRARA</option>
+                        <option value="MATERA">MATERA</option>
+                        <option value="MESSINA">MESSINA</option>
+                        <option value="MILANO">MILANO</option>
+                        <option value="MODENA">MODENA</option>
+                        <option value="MONZA_E_DELLA_BRIANZA">MONZA E DELLA BRIANZA</option>
+                        <option value="NAPOLI">NAPOLI</option>
+                        <option value="NOVARA">NOVARA</option>
+                        <option value="NUORO">NUORO</option>
+                        <option value="OLBIA_TEMPIO">OLBIA_TEMPIO</option>
+                        <option value="ORISTANO">ORISTANO</option>
+                        <option value="PADOVA">PADOVA</option>
+                        <option value="PALERMO">PALERMO</option>
+                        <option value="PARMA">PARMA</option>
+                        <option value="PAVIA">PAVIA</option>
+                        <option value="PERUGIA">PERUGIA</option>
+                        <option value="PESARO_E_URBINO">PESARO E URBINO</option>
+                        <option value="PESCARA">PESCARA</option>
+                        <option value="PIACENZA">PIACENZA</option>
+                        <option value="PISA">PISA</option>
+                        <option value="PISTOIA">PISTOIA</option>
+                        <option value="PORDENONE">PORDENONE</option>
+                        <option value="POTENZA">POTENZA</option>
+                        <option value="PRATO">PRATO</option>
+                        <option value="RAGUSA">RAGUSA</option>
+                        <option value="RAVENNA">RAVENNA</option>
+                        <option value="REGGIO_CALABRIA">REGGIO CALABRIA</option>
+                        <option value="REGGIO_EMILIA">REGGIO EMILIA</option>
+                        <option value="RIETI">RIETI</option>
+                        <option value="RIMINI">RIMINI</option>
+                        <option value="ROMA">ROMA</option>
+                        <option value="ROVIGO">ROVIGO</option>
+                        <option value="SALERNO">SALERNO</option>
+                        <option value="SASSARI">SASSARI</option>
+                        <option value="SAVONA">SAVONA</option>
+                        <option value="SIENA">SIENA</option>
+                        <option value="SIRACUSA">SIRACUSA</option>
+                        <option value="SONDRIO">SONDRIO</option>
+                        <option value="TARANTO">TARANTO</option>
+                        <option value="TERAMO">TERAMO</option>
+                        <option value="TERNI">TERNI</option>
+                        <option value="TORINO">TORINO</option>
+                        <option value="TRAPANI">TRAPANI</option>
+                        <option value="TRENTO">TRENTO</option>
+                        <option value="TREVISO">TREVISO</option>
+                        <option value="TRIESTE">TRIESTE</option>
+                        <option value="UDINE">UDINE</option>
+                        <option value="VARESE">VARESE</option>
+                        <option value="VENEZIA">VENEZIA</option>
+                        <option value="VERBANO_CUSIO_OSSOLA">VERBANO CUSIO OSSOLA</option>
+                        <option value="VERCELLI">VERCELLI</option>
+                        <option value="VERONA">VERONA</option>
+                        <option value="VIBO_VALENTIA">VIBO VALENTIA</option>
+                        <option value="VICENZA">VICENZA</option>
+                        <option value="VITERBO">VITERBO</option>
+                    </select>
+            </p> 
             <p> 
                 <i class="fa fa-fw fa-male fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Metri quadrati :
-                <input id="slider1" type="range" min="0" max="250" step="10" value="0" onchange="showValue1(this.value)" />
+                <input id="slider1" type="range" min="0" max="250" step="10" value="0" name = "metriQuadrati" onchange="showValue1(this.value)" />
                 <span id="range1">0</span>
                 
             </p>
             
             <p>
                 <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Distanza dal centro max(km) :
-                <input id="slider2" type="range" min="0" max="30" value="0" step="0.1" onchange="showValue2(this.value)" />
+                <input id="slider2" type="range" min="0" max="30" value="0" step="0.1" name = "distanzaCentro" onchange="showValue2(this.value)" />
                 <span id="range2">0</span>
             </p>
             
             <p>
                 <i class="fa fa-fw fa-bath fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
                 <label> Bagni:</label>
-                <select style="color:#000000" name="numerobagni">
-                    <option value="uno">1</option>
-                    <option value="due">2</option>
-                    <option value="tre">3</option>
-                    <option value="altro">altro</option>
+                <select style="color:#000000" name="numeroBagni">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
               
             </p>
@@ -78,19 +247,19 @@
             
                 <i class="fa fa-fw fa-home fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
                 <label> NumeroDiLocali:</label>
-                <select style="color:#000000" name="numerolocali" required>
-                    <option value="uno">1</option>
-                    <option value="due">2</option>
-                    <option value="tre">3</option>
-                    <option value="altro">altro</option>
+                <select style="color:#000000" name="numeroLocali" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
             </p>
             <p>
                 <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
                 <label>Sesso Casa :</label> 
-                <select style="color:#000000" name="sessocoinquilini" required>
-                    <option value="FEMMINE">F</option>
-                    <option value="MASCHI">M</option>
+                <select style="color:#000000" name="sessoCoinquilini" required>
+                    <option value="MASCHI">MASCHI</option>
+                    <option value="FEMMINE">FEMMINE</option>
                     <option value="MISTA">MISTA</option>
                 </select> 
             </p>
@@ -98,7 +267,7 @@
             <p>
                 <i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>
                 <label>Cucina separata:</label> 
-                <input type="checkbox" name="cucina" value="C">
+                <input type="checkbox" name="Cucina" value="C">
             </p>
           </div>
         </div>
@@ -108,25 +277,25 @@
         <div class="w3-row w3-large">
           <div class="w3-col s6">
               <p>
-                <label>Forno &nbsp;</label> <input type="checkbox" name="forno" value="">
+                <label>Forno &nbsp;</label> <input type="checkbox" name="forno" value="FORNO">
               </p>
               <p>
-                <label>Lavatrice &nbsp;</label> <input type="checkbox" name="lavatrice" value="">
+                <label>Lavatrice &nbsp;</label> <input type="checkbox" name="lavatrice" value="LAVATRICE">
               </p>
               <p>
-                <label>Condizionatore &nbsp;</label> <input type="checkbox" name="condizionatore" value="">
+                <label>Condizionatore &nbsp;</label> <input type="checkbox" name="condizionatore" value="CONDIZIONATORE">
               </p>
               <p>
-                <label>Aspirapolvere &nbsp;</label> <input type="checkbox" name="aspirapolvere" value="">
+                <label>Aspirapolvere &nbsp;</label> <input type="checkbox" name="aspirapolvere" value="ASPIRAPOLVERE">
               </p>
               <p>
-                <label>Asciugatrice &nbsp;</label> <input type="checkbox" name="asciugatrice" value="">
+                <label>Asciugatrice &nbsp;</label> <input type="checkbox" name="asciugatrice" value="ASCIUGATRICE">
               </p>
               <p>
-                <label>Microonde &nbsp;</label> <input type="checkbox" name="microonde" value="">
+                <label>Microonde &nbsp;</label> <input type="checkbox" name="microonde" value="MICROONDE">
               </p>
               <p>
-                <label>Lavastoviglie &nbsp;</label> <input type="checkbox" name="lavastoviglie" value="">
+                <label>Lavastoviglie &nbsp;</label> <input type="checkbox" name="lavastoviglie" value="LAVASTOVIGLIE">
               </p>
           </div>
         </div>
@@ -138,43 +307,29 @@
           <div class="w3-col s6">
               
               
-              STO SCHIFO VA GENERATO DINAMICAMENTE
-            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Camere disponibili: 
-                <select style="color:#000000" name="numerolocali" required>
-                    <option value="uno">1</option>
-                    <option value="due">2</option>
-                    <option value="tre">3</option>
-                    <option value="altro">altro</option>
+            <p>
+                <i class="fa fa-question fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
+                Camere disponibili: 
+                <select id="camereDisponibili" style="color:#000000" name="camereDisponibili" value="" onchange="addFields(this, event)" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
             </p>
-            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Posti letto: 
-                <select style="color:#000000" name="numerolocali" required>
-                    <option value="uno">1</option>
-                    <option value="due">2</option>
-                    <option value="tre">3</option>
-                    <option value="altro">altro</option>
-                </select>
-            </p>
-            <p><i class="fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Posti letto disponibili: 
-                <select style="color:#000000" name="numerolocali" required>
-                    <option value="uno">1</option>
-                    <option value="due">2</option>
-                    <option value="tre">3</option>
-                    <option value="altro">altro</option>
-                </select>
-            </p>
+            <p id="aggiungiQui"></p>
             <!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->
           </div>
         </div>
         <hr>
         <h4><strong>Descrizione Annuncio</strong></h4>
-          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" required>
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" value="Nessuna descrizione dell'annuncio!" required>
                 Descrivi qui il tuo annuncio!
           </textarea>
         <hr>
         <h4><strong>Costo mensile</strong></h4>
         <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
-        <input id="slider3" type="range" min="0" max="900" value="0" step="25" onchange="showValue3(this.value)" />
+        <input id="slider3" type="range" min="0" max="900" value="0" step="25" name = "costoMensile" onchange="showValue3(this.value)" />
         <span id="range3">0</span>
       </div>
       <hr>
@@ -184,22 +339,22 @@
         <p class="w3-large w3-text-theme">
         <i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"></i> 
         <label id="labelModificaProfilo">Nome e Cognome* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="nome" value="" required>
+        <input type="text" style="color:#000000" name="nomeCognome" value="" required>
         </p>
         <p class="w3-large w3-text-theme">
         <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
-        <label id="labelModificaProfilo">Città e indirizzo* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="nome" value="" required>
+        <label id="labelModificaProfilo">Indirizzo* : &nbsp; </label>
+        <input type="text" style="color:#000000" name="cittaIndirizzo" value="" required>
         </p>
         <p class="w3-large w3-text-theme">
         <i class="fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
         <label id="labelModificaProfilo">Numero di telefono* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="nome" value="" required>
+        <input type="text" style="color:#000000" name="cellulare" value="" required>
         </p>
         <p class="w3-large w3-text-theme">
         <i class="fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"> </i> 
         <label id="labelModificaProfilo">Email* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="nome" value="" required>
+        <input type="text" style="color:#000000" name="email" value="" required>
         </p>
    		<hr>
          <button class="buttonAnnuncio" type="submit" style="margin-left:3%">

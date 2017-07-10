@@ -99,7 +99,7 @@ public class DataDiNascita {
      */
     @Override
     public String toString() {
-        return "\nData di nascita: " + this.miaData + "\n";
+        return "Data di nascita: " + this.miaData + "\n";
     }
 
     public int getEta() {

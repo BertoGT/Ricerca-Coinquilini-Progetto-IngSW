@@ -218,9 +218,9 @@ public class BusinessModelUtente {
         ResultSet rs = db.getAnnuncioUtente(idUtenteProprietario);
         if(rs.next()) {
             int idCasa = rs.getInt(1);
-            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(1), rs.getString(4), rs.getInt(2), rs.getInt(5),
+            AnnuncioCasa annuncio = new AnnuncioCasa(rs.getInt(3), rs.getString(4), rs.getInt(2), rs.getInt(5),
                     rs.getString(17) +" "+rs.getString(18), rs.getString(19), rs.getString(16), rs.getDate(6));
-            annuncio.creaInfo(rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
+            annuncio.creaInfo(idCasa, rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getBoolean(12),
                     Citta.valueOf(rs.getString(13)), rs.getString(14), HouseGenerality.valueOf(rs.getString(11)));
             ResultSet rCamere = db.getCamere(idCasa);
             while(rCamere.next()) {
