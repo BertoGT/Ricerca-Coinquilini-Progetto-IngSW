@@ -60,19 +60,17 @@ public class ListaCoinquiCreator {
             sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             sb.append(co.getPunteggio()).append("%</div>");
             sb.append("<h4><strong>UTENTE: ").append(utente.getNome()).append(" ").append(utente.getCognome()).append("</strong></h4>");
-            sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i>");
             sb.append(utente.getDataDiNascita().toString()).append("</p>");
-            sb.append("<p class=\"w3-large\"><i class=\"fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal\"></i>Sesso: ");
             sb.append(utente.getSesso().name()).append("</p>");  
-            sb.append("<p><i class=\"fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal\"></i>Occupazione: ");
             sb.append(utente.getOccupazione().name()).append("</p>");
-            sb.append("<p class=\"w3-large\"><i class=\"fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal\"></i>Facolta': ");
             sb.append(utente.getFacolta().name()).append("</p>");
-            sb.append("<p><i class=\"fa fa-home fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
-            sb.append(utente.getCittaDiRicerca()).append("</p>");
-            sb.append("<p><i class=\"fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal\"></i>Email: ");
             sb.append(utente.geteMail()).append("</p>");
-            sb.append("<p><i class=\"fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal\"></i>Telefono: ");
             sb.append(utente.getNumeroDiTelefono()).append("</p></div></a>");          
         }
         sb.append("</table></body><div id=\"navfooter\"></div></html>");
@@ -91,16 +89,14 @@ public class ListaCoinquiCreator {
             sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             sb.append(co.getPunteggio()).append("%</div>");
             sb.append("<h4><strong>UTENTE: ").append(utente.getNome()).append(" ").append(utente.getCognome()).append("</strong></h4>");
-            sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i>");
             sb.append(utente.getDataDiNascita().toString()).append("</p>");
-            sb.append("<p class=\"w3-large\"><i class=\"fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal\"></i>Sesso: ");
             sb.append(utente.getSesso().name()).append("</p>");  
-            sb.append("<p><i class=\"fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal\"></i>Occupazione: ");
             sb.append(utente.getOccupazione().name()).append("</p>");
-            sb.append("<p class=\"w3-large\"><i class=\"fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
-            sb.append(utente.getFacolta().name()).append("</p>");
-            sb.append("<p><i class=\"fa fa-home fa-fw w3-margin-right w3-large w3-text-teal\"></i> ");
-            sb.append(utente.getCittaDiRicerca()).append("</p></div></a>");         
+            sb.append("<p class=\"w3-large\"><i class=\"fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal\"></i>Facolta': ");
+            sb.append(utente.getFacolta().name()).append("</p></div></a>");         
         }
         sb.append("</table></body><div id=\"navfooter\"></div></html>");
         return sb.toString();
