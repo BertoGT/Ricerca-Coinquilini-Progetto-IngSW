@@ -226,7 +226,7 @@ public class ProfileServlet extends HttpServlet {
                 String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
                 cameraDisponibileAnnuncio = tmp;
-                tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                tmp = cameraDisponibileAnnuncio.replaceAll("disponibiliReplace", String.valueOf(c.getPostiLettoDisponibili()));
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }

@@ -45,7 +45,7 @@
                         input.appendChild(option);
                  }
                  return input;
-        }
+        };
     </script>
     <script type="text/javascript">
         function addFields(){
@@ -73,21 +73,21 @@
                     div1.appendChild(iconBed1);
                     
                     var input = createSelect("postiLetto" + i);
-                    div1.appendChild(document.createTextNode("POSTI LETTO: "))
+                    div1.appendChild(document.createTextNode("POSTI LETTO: "));
                     div1.appendChild(input);
 
                     var iconBed2 = document.createElement("span");
                     iconBed2.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
 
                     div2.appendChild(iconBed2);
-                    var input1 = createSelect("postiLettoDisponibili"+i)
-                    div2.appendChild(document.createTextNode("POSTI LETTO DISPONIBILI: "))
+                    var input1 = createSelect("postiLettoDisponibili"+i);
+                    div2.appendChild(document.createTextNode("POSTI LETTO DISPONIBILI: "));
                     div2.appendChild(input1);
                      
                     container.appendChild(document.createElement("br"));
                 }
 
-            }
+            };
     </script>
 <body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
@@ -324,7 +324,9 @@
         <hr>
         <h4><strong>Descrizione Annuncio</strong></h4>
           <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" value="Nessuna descrizione dell'annuncio!">
+              NESSUNA DESCRIZIONE ANNUNCIO!
           </textarea>
+          
         <hr>
         <h4><strong>Costo mensile</strong></h4>
         <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
