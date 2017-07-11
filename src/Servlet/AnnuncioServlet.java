@@ -21,6 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Sistema.Sistema;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 
 /**
  *
@@ -33,7 +36,10 @@ public class AnnuncioServlet extends HttpServlet {
             Cookie cookie = req.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
-                String pagina = HtmlReader.htmlReader("modificaCreaAnnuncio.html");                
+                String pagina = HtmlReader.htmlReader("modificaCreaAnnuncio.html");          
+                PrintWriter out = new PrintWriter(new FileOutputStream(new File("fileModificaCreaAnnuncio.txt"),false));
+                out.append(pagina);
+                out.close();
                 resp.setStatus(200);
                 resp.getWriter().println(pagina);
             } else {
