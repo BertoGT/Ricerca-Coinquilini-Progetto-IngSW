@@ -30,6 +30,7 @@ public class TesterServlet {
                         handler.addServlet(RisultatoAnnuncioServlet.class, "/risultatoCasa");
                         handler.addServlet(ModificaProfiloServlet.class, "/modificaProfilo");
                         handler.addServlet(AnnuncioServlet.class, "/modificaCreaAnnuncio");
+                        handler.addServlet(InfoServlet.class, "/chiSiamo");
 			server.setHandler(handler);
 			server.start();
 			
