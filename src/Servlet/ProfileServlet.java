@@ -230,7 +230,7 @@ public class ProfileServlet extends HttpServlet {
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
-            annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- ELETTRODOMESTICI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
+            annuncioPerIlProfilo = annuncioPerIlProfilo.replaceAll("<!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->", cameraDisponibile.toString());
         }
         return annuncioPerIlProfilo;
     } 
