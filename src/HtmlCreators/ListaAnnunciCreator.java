@@ -64,7 +64,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getIdProprietario()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div class=\"w3-light-grey\">\n" +
-                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+a.getPunteggio()+"%\">Affinita' : "+a.getPunteggio()+"%</div>\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+a.getPunteggio()+"%\">Affinita' : "+String.format("%.1f",a.getPunteggio())+"%</div>\n" +
                       "</div>");
            // sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(a.getPunteggio()).append("%</div>");
@@ -104,7 +104,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getIdProprietario()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div class=\"w3-light-grey\">\n" +
-                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+a.getPunteggio()+"%\">Affinita' : "+a.getPunteggio()+"%</div>\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+a.getPunteggio()+"%\">Affinita' : "+String.format("%.1f",a.getPunteggio())+"%</div>\n" +
                       "</div>");
             //sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(a.getPunteggio()).append("%</div>");
