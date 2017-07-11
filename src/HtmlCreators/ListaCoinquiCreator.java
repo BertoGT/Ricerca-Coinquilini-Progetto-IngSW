@@ -57,10 +57,11 @@ public class ListaCoinquiCreator {
             sb.append("<a href=\"http://localhost:8080/risultatoCoinquilino?id=");
             sb.append(co.getUtente().getIdUtente()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
+            sb.append("<div class=\"w3-light-grey\">\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+co.getPunteggio()+"%\">Affinita' : "+co.getPunteggio()+"%</div>\n" +
+                      "</div>");
             //sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(co.getPunteggio()).append("%</div>");
-            sb.append("<div class = \"w3-light-grey w3-round\"> <div class =\"w3-container w3-round w3-blue\" style=\"width:25%\"> Affinità: ");
-            sb.append(co.getPunteggio()).append("%</div>");
             sb.append("<h4><strong>UTENTE: ").append(utente.getNome()).append(" ").append(utente.getCognome()).append("</strong></h4>");
             sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i>");
             sb.append(utente.getDataDiNascita().toString()).append("</p>");
@@ -88,10 +89,11 @@ public class ListaCoinquiCreator {
             sb.append("<a href=\"http://localhost:8080/risultatoCoinquilino?id=");
             sb.append(co.getUtente().getIdUtente()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
+            sb.append("<div class=\"w3-light-grey\">\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+co.getPunteggio()+"%\">Affinita' : "+co.getPunteggio()+"%</div>\n" +
+                      "</div>");
             //sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(co.getPunteggio()).append("%</div>");
-            sb.append("<div class = \"w3-light-grey w3-round\"> <div class =\"w3-container w3-round w3-blue\" style=\"width:25%\"> Affinità: ");
-            sb.append(co.getPunteggio()).append("%</div>");
             sb.append("<h4><strong>UTENTE: ").append(utente.getNome()).append(" ").append(utente.getCognome()).append("</strong></h4>");
             sb.append("<p class=\"w3-large w3-text-theme\"><i class=\"fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal\"></i>");
             sb.append(utente.getDataDiNascita().toString()).append("</p>");
