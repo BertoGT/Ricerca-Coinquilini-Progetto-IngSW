@@ -25,7 +25,7 @@ public class RicercaCoinquilino {
     /**
      * Istanzia un oggetto che esegue la ricerca di un potenziale coinquilino
      * @param parametriRicerca contenitore dei parametri di ricerca
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws NessunAnnuncioException se nessun coinquilino soddisfa i criteri di ricerca inseriti
      */
     public RicercaCoinquilino(ContenitoreParametriCoinquilino parametriRicerca) throws SQLException, NessunAnnuncioException {

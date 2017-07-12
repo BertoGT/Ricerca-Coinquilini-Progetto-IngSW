@@ -8,7 +8,7 @@ public class CameraDisponibile {
     private int postiLetto, postiLettoDisponibili, idCamera, idCasa; 
     /**
      * Istanzia un oggetto CameraDisponibile
-     * @param idAnnuncio id dell'annuncio
+     * @param idCasa id della casa.
      * @param idCamera id della camera dell'annuncio
      * @param postiLetto posti letto totali della camera
      * @param postiLettoDisponibili posti letto disponibili della camera

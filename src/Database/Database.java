@@ -48,7 +48,7 @@ public class Database {
     }
     /**
      * Metodo che apre la connessione al database.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public void apriConnesione() throws SQLException {
         try {
@@ -60,7 +60,7 @@ public class Database {
     }
     /**
      * Metodo che chiude la connessione verso il database
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public void chiudiConnessione() throws SQLException{
         conn.close();
@@ -74,7 +74,7 @@ public class Database {
      * @param power Indica i permessi dell'utente all'interno del sistema.
      * @param candidato Indica che l'utente si candida come potenziale coinquilino.
      * @return Ritorna un oggetto ResultSet.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet registrazione(String email, String password, int power, boolean candidato) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaEmail);
@@ -102,7 +102,7 @@ public class Database {
      * @param email Email dell'utente che vuole registrarsi.
      * @param password Password scelta dall'utente che vuole registrarsi.
      * @return Ritorna un oggetto ResultSet.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet login(String email, String password) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaUtente);
@@ -122,7 +122,7 @@ public class Database {
      * @param vecchiaPassword Password precedente che si desidera cambiare.
      * @param nuovaPassword Nuova password con la quale si vuole sostituire quella precedente.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaConId);
@@ -150,7 +150,7 @@ public class Database {
      * @param idUtente Id dell'utente univoco all'interno del database.
      * @param candidatura Boolean che indica se l'utente vuole candidarsi come coinquilino o meno (true/false).
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int setCandidatura(int idUtente, boolean candidatura) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.setCandidatura);
@@ -169,7 +169,7 @@ public class Database {
      * @param cittaDiRicerca Città in cui l'utente ricerca casa o coinquilini.
      * @param numeroDiTelefono Numero di telefono dell'utente.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int setDatiAnagrafici(int idUtente, String nome, String cognome, Date dataNascita, String sesso, 
             String nazionalita, String cittaDiRicerca, String numeroDiTelefono) throws SQLException {
@@ -193,7 +193,7 @@ public class Database {
      * @param idUtente Id dell'utente univoco all'interno del database.
      * @param nuovaCitta Nuova città in cui l'utente vuole cercare casa o coinquilini, sostituisce la vecchia.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int modificaCitaDiRicerca(int idUtente, String nuovaCitta) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaCittaRicerca);
@@ -210,7 +210,7 @@ public class Database {
      * @param occupazione Occupazione dell'utente.
      * @param facolta Facoltà dell'utente, se studente, altrimenti è possibile scegliere "NESSUNA".
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int setInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
             String occupazione, String facolta) throws SQLException {
@@ -237,7 +237,7 @@ public class Database {
      * @param occupazione Occupazione dell'utente.
      * @param facolta Facoltà dell'utente, se studente, altrimenti è possibile scegliere "NESSUNA".
      * @return  Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int modificaInfoUtente(int idUtente, boolean fumatore, boolean cuoco, boolean sportivo,
             String occupazione, String facolta) throws SQLException {
@@ -274,7 +274,7 @@ public class Database {
      * @param descrizione Descizione dell'annuncio.
      * @param costo Costo mensile dell'annuncio in euro.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     
     public int modificaAnnuncioCasa(int idAnnuncio, String descrizione, int costo) throws SQLException {
@@ -289,7 +289,7 @@ public class Database {
      * 
      * @param idCasa Id della casa univoco all'interno del database.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int eliminaAnnuncioCasa(int idCasa) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaAnnuncioCasa);
@@ -307,7 +307,7 @@ public class Database {
      * @param citta Città in cui la casa è presente.
      * @param indirizzo Indirizzo della casa.
      * @return returns a ResultSet object containing the auto-generated key(s) generated by the execution of this Statement object.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet setInfoCasa(int m2, int nLocali, int nBagni, int distanzaCentro, 
             String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
@@ -337,7 +337,7 @@ public class Database {
      * @param citta Città in cui la casa è presente.
      * @param indirizzo Indirizzo della casa.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE. 
      */
     public int modificaInfoCasa(int idCasa, int m2, int nLocali, int nBagni, int distanzaCentro, 
             String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
@@ -369,10 +369,10 @@ public class Database {
      * 
      * @param idCasa Id della casa univoco all'interno del database.
      * @param idCamera Id della camera, associato a quello della casa.
-     * @param postiTotali
-     * @param postiDisponibili
+     * @param postiTotali Indica quanti posti letto ci siano in una camera.
+     * @param postiDisponibili indica i posti letto disponibili di una camera.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int modificaCamera(int idCasa, int idCamera, int postiTotali, int postiDisponibili) throws SQLException {
         
@@ -396,7 +396,7 @@ public class Database {
      * @param idCasa Id della casa univoco all'interno del database.
      * @param tipo Tipo dell'elettrodomestico che si desidera eliminare all'interno dell'appartamento.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException  ECCEZIONE GENERATA DAL DATABASE.
      */
     public int eliminaElettrodomestico(int idCasa, String tipo) throws SQLException {
         
@@ -413,7 +413,7 @@ public class Database {
      * @param citta Città di ricerca degli annunci.
      * @param costo Costo di ricerca per gli annunci. 
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet getAnnunciInfoCasa(String citta, int costo) throws SQLException {
         
@@ -432,7 +432,7 @@ public class Database {
      * Metodo che verifica la presenza di un annuncio sul database dato un idUtente.
      * @param idUtenteProprietario Id dell'utente, univoco all'interno del database.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
         

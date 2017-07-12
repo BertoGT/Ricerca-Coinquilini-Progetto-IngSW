@@ -15,9 +15,8 @@ public class Utente {
 
     /**
      *
-     * @param idUtente
-     * @param datiUtente
-     * @param dataDiNascita
+     * @param idUtente ID DELL'UTENTE UNIVOCO ALL'INTERNO DEL DATABASE.
+     * @param datiUtente OGGETTO CONTENENTE LE INFORMAZIONI DELL'UTENTE.
      */
     public Utente(int idUtente, DatiUtente datiUtente) {
         this.idUtente = idUtente;

@@ -47,7 +47,7 @@ public class ContenitoreParametriCoinquilino {
     /**
      * Imposta se il potenziale coinquilino deve essere cuoco o meno
      * @param stelle peso che viene assegnato al parametro
-     * @param isCuoco 
+     * @param isCuoco Indica la volonta di cercare un coinquilino che sappia cucinare se true.
      */
     public void setParametroCuoco(int stelle, Boolean isCuoco){
         this.parametri.add(new Cuoco(stelle, isCuoco));
@@ -56,8 +56,8 @@ public class ContenitoreParametriCoinquilino {
     /**
      * Imposta eta minima e massima del poteziale coinquilino
      * @param stelle peso che viene assegnato al parametro
-     * @param etaMin
-     * @param etaMax 
+     * @param etaMin età minima tollerata dalla ricerca.
+     * @param etaMax età massima tollerata dalla ricerca.
      */
     public void setParametroEta(int stelle,int etaMin,int etaMax){
         this.parametri.add(new Eta(stelle,etaMin,etaMax));
@@ -75,7 +75,7 @@ public class ContenitoreParametriCoinquilino {
     /**
      * Imposta se il coinquilino può essre fumatore o meno
      * @param stelle peso che viene assegnato al parametro
-     * @param isFumatore 
+     * @param isFumatore Se true l'utente sta ricercando un coinquilino che sia un fumatore abituale.
      */
     public void setParametroFumatore(int stelle,boolean isFumatore){
         this.parametri.add(new Fumatore(stelle, isFumatore));
@@ -93,7 +93,7 @@ public class ContenitoreParametriCoinquilino {
     /**
      * Imposta l'occupazione
      * @param stelle peso che viene assegnato al parametro
-     * @param occupazione 
+     * @param occupazione Occupazione ricercata dall'utente.
      */
     public void setParametroOccupazione(int stelle,ProfiloUtente.Occupazione occupazione){
         this.parametri.add(new Occupazione(stelle, occupazione));
@@ -102,7 +102,7 @@ public class ContenitoreParametriCoinquilino {
     /**
      * Imposta se il potenziale coinquilino deve essere sportivo o meno
      * @param stelle peso che viene assegnato al parametro
-     * @param sportivo 
+     * @param sportivo Se true indica che l'utente cerca un coinquilino che sia sportivo.
      */
     public void setParametroSportivo(int stelle,boolean sportivo){
         this.parametri.add(new Sportivo(stelle, sportivo));

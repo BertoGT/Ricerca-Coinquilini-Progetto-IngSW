@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ListaAnnunciCreator extends HttpServlet {
     /**
-     * 
+     * Metodo che restituisce l'html del risultato della ricerca all'utente. Ottenuto tramite composizione di stringhe tramite la classe AnnunciRisultantiCreator.
      * @param annunci Lista contenente tutti gli annunci risultanti da una ricerca
-     * @param req
-     * @param resp
+     * @param req Oggetto Servlet Request.
+     * @param resp Oggetto Servlet Response.
      * @return Ritorna la lista sotto forma di stringa di tutti gli annunci risultanti formattati sotto forma di html.
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException Eccezione generata dal mancato reperimento del file html.
      */
     public static String creaListaAnnunci(ArrayList<AnnuncioRisultante> annunci, HttpServletRequest req, HttpServletResponse resp) throws FileNotFoundException {
         String risultati = null;

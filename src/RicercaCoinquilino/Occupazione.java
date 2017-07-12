@@ -14,12 +14,20 @@ import ProfiloUtente.Utente;
 class Occupazione extends ParametroRicercaCoinquilino{
 
     private ProfiloUtente.Occupazione occupazione;
-    
+    /**
+     * Metodo che crea un'istanza di un parametro di ricerca occupazione.
+     * @param stelle Importanza del parametro nella ricerca.
+     * @param occupazione Occupazione richiesta dalla ricerca.
+     */
     Occupazione(int stelle,ProfiloUtente.Occupazione occupazione) {
         super(stelle);
         this.occupazione=occupazione;
     }
-
+    /**
+     * CALCOLA L'AFFINITA DEL SINGOLO PARAMETRO OCCUPAZIONE 
+     * @param utente ANNUNCIO DELLA CASA IN QUESTIONE
+     * @return RITORNA UN NUMERO FLOAT CHE INDICA L'AFFINITA
+     */
     @Override
     float calcolaAffinità(Utente utente) {
         if(utente.getDatiUtente().getOccupazione()==this.occupazione)

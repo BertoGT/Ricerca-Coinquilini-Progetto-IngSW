@@ -24,7 +24,7 @@ public class RicercaAnnuncio {
     /**
      * Istanzia un oggetto che esegue la ricerca di un annuncio casa
      * @param parametriRicerca contenitore dei parametri di ricerca
-     * @throws SQLException
+     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws NessunAnnuncioException se nessun annuncio soddisfa i criteri di ricerca inseriti
      */
     public RicercaAnnuncio(ContenitoreParametriAnnuncio parametriRicerca) throws SQLException, NessunAnnuncioException {
@@ -65,6 +65,7 @@ public class RicercaAnnuncio {
     /**
      * Esegue la ricerca degli annunci compatibili e li ordina per punteggio (affinità) descrescente
      * @return Lista degli annunci compatibili ordinati per affinita descrescente
+     * @throws NessunAnnuncioException Eccezione generata dal mancato reperimento di annunci.
      */
     public ArrayList<AnnuncioRisultante> eseguiRicerca() throws NessunAnnuncioException {
         

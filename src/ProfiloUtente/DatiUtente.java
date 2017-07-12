@@ -26,23 +26,23 @@ public class DatiUtente {
     private Citta cittaDiRicerca; // aggiunta da and (albe, niko, delbo) per eseguire la ricerca nelle citta dei coinquilini 
     /**
      *
-     * @param nome 
-     * @param cognome
-     * @param sesso
-     * @param eMail
-     * @param password
-     * @param giorno
-     * @param mese
-     * @param anno
-     * @param cellulare
-     * @param nazionalita
-     * @param occupazione
-     * @param facolta
-     * @param fumatore
-     * @param cuoco
-     * @param sportivo
-     * @param cittaDiRicerca
-     * @throws ParseException
+     * @param nome NOME DELL'UTENTE.
+     * @param cognome COGNOME DELL'UTENTE.
+     * @param sesso SESSO DELL'UTENTE.
+     * @param eMail EMAIL DELL'UTENTE.
+     * @param password PASSWORD SCELTA PER IL LOGIN DALL'UTENTE.
+     * @param giorno GIORNO DI NASCITA DELL'UTENTE.
+     * @param mese MESE DI NASCITA DELL'UTENTE.
+     * @param anno ANNO DI NASCITA DELL'UTENTE.
+     * @param cellulare NUMERO TELEFONICO DELL'UTENTE.
+     * @param nazionalita NAZIONALITA' DELL'UTENTE.
+     * @param occupazione OCCUPAZIONE DELL'UTENTE.
+     * @param facolta FACOLTA DELL'UTENTE.
+     * @param fumatore BOOLEANO CHE INDICA SE L'UTENTE SIA FUMATORE ABITUALE.
+     * @param cuoco BOOLEANO CHE INDICA SE L'UTENTE SIA UN CUOCO ABITUALE.
+     * @param sportivo BOOLEANO CHE INDICA SE L'UTENTE SIA UNO SPORTIVO ABITUALE.
+     * @param cittaDiRicerca CITTA DI RICERCA.
+     * @throws ParseException ECCEZIONE GENERATA DALLA CREAZIONE DELLA DATA DI NASCITA.
      */
     public DatiUtente(String nome, String cognome, Sesso sesso,String eMail, String password,  int giorno, int mese, int anno, String cellulare, Nazione nazionalita, 
             

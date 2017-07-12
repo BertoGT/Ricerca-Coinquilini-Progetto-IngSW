@@ -14,12 +14,20 @@ import ProfiloUtente.Utente;
 public class Facolta extends ParametroRicercaCoinquilino{
     
     private ProfiloUtente.Facolta facolta;
-
+    /**
+     * Metodo che crea un'istanza di un parametro di ricerca facoltà.
+     * @param stelle Importanza del parametro nella ricerca.
+     * @param facolta  Facolta richiesta.
+     */
     public Facolta(int stelle,ProfiloUtente.Facolta facolta) {
         super(stelle);
         this.facolta=facolta;
     }
-
+    /**
+     * CALCOLA L'AFFINITA DEL SINGOLO PARAMETRO FACOLTA 
+     * @param utente ANNUNCIO DELLA CASA IN QUESTIONE
+     * @return RITORNA UN NUMERO FLOAT CHE INDICA L'AFFINITA
+     */
     @Override
     public float calcolaAffinità(Utente utente) {
         if(utente.getDatiUtente().getFacolta()==this.facolta)

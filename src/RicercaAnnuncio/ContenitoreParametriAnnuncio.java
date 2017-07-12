@@ -100,8 +100,8 @@ public class ContenitoreParametriAnnuncio {
     
     /**
      * Imposta la preferenza sulla presenza in casa di elettrodomestici
-     * @param stelle
-     * @param elettro 
+     * @param stelle peso che viene assegnato al parametro.
+     * @param elettro elettrodomestico.
      */
     public void setElettrodomestico(int stelle, ElettroDomestico elettro){
         parametriRicerca.add(new Elettrodomestico(stelle, elettro));

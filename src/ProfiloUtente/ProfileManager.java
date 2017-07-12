@@ -66,9 +66,9 @@ public class ProfileManager {
      * @param cuoco Indica se l'utente è un cuoco.
      * @param candidato Indica se l'utente si candida o meno come coinquilino.
      * @param password Password scelta dall'utente, se non scelta si utilizza quella precedente.
-     * @throws SQLException
-     * @throws ParseException
-     * @throws PasswordException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws ParseException ECCEZIONE GENERATA DALLA CREAZIONE DELLA DATA DI NASCITA. 
+     * @throws PasswordException ECCEZIONE GENERATA DA UN ERRATO INSERIMENTO DELLA PASSWORD.
      */
     public void modificaProfilo(Facolta facolta, Citta citta, Occupazione occupazione, 
             boolean fumatore, boolean sportivo, boolean cuoco, boolean candidato, String password) 
@@ -101,9 +101,9 @@ public class ProfileManager {
      * @param cittaIndirizzo Indirizzo della casa.
      * @param sessoCoinquilini Sesso presente all'interno della casa. 
      * @param descrizioneAggiuntiva Descrizione aggiuntiva dell'annuncio.
-     * @throws SQLException
-     * @throws InserimentoAnnuncioNonRiuscito
-     * @throws AnnuncioException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws InserimentoAnnuncioNonRiuscito ECCEZIONE GENERATA NEL MOMENTO IN CUI NON SI RIESCE AD INSERIRE L'ANNUNCIO CORRETTAMENTE SUL DATABASE.
+     * @throws AnnuncioException ECCEZIONE CHE NON PERMETTE LA CREAZIONE DELL'ANNUNCIO ALL'UTENTE IN QUANTO NE POSSIEDE GIA' UNO SUL PROPRIO PROFILO.
      */
     public void creaAnnuncio(ArrayList<ElettroDomestico> elettrodomestici,int[][] postiLettoEDisponibili, int idUtente, int costoMensile, 
                              int metriQuadrati, int numeroLocali, int numeroBagni, int distanzaCentro, boolean cucinaSeparata,
@@ -133,7 +133,7 @@ public class ProfileManager {
     }
     /**
      * Metodo che cancella l'annuncio dell'utente.
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public void cancellaAnnuncio() throws SQLException{
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();

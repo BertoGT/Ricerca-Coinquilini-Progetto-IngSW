@@ -309,8 +309,9 @@
               
             <p>
                 <i class="fa fa-question fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
-                Camere disponibili: 
+                Camere disponibili (Al momento 0 selezionate) :
                 <select id="camereDisponibili" style="color:#000000" name="camereDisponibili" value="" onchange="addFields(this, event)" required>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -323,7 +324,7 @@
         </div>
         <hr>
         <h4><strong>Descrizione Annuncio</strong></h4>
-          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px" value="Nessuna descrizione dell'annuncio!">
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px;" value="Nessuna descrizione dell'annuncio!">
               NESSUNA DESCRIZIONE ANNUNCIO!
           </textarea>
           

@@ -61,7 +61,7 @@ public class BusinessModelUtente {
      * @param password password dell'utente che vuole registrarsi
      * @param candidato indica se l'utente vuole candidarsi o meno come potenziale coinquilino
      * @return Restituisce un intero che indica l'id dell'utente
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws RegistrazioneException lancia un'eccezione se la regisgtrazione non avviene con successo (es.email già in uso)
      */
     
@@ -83,8 +83,8 @@ public class BusinessModelUtente {
      * Verifica se l'utente è registrato e in caso positivo lo logga 
      * @param email email dell'utente registrato
      * @param password password dell'utente registrato
-     * @returnRestituisce un intero che indica l'id dell'utente
-     * @throws SQLException
+     * @return Restituisce un intero che indica l'id dell'utente
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws LoginException lancia un'eccezione se il login non avviene con successo (es.email o password errate)
      */
     public int login(String email, String password) throws SQLException, LoginException {
@@ -106,7 +106,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param vecchiaPassword password corrente dell'utente registrato
      * @param nuovaPassword nuova password dell'utente registrato
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws PasswordException lancia un'eccezione se la modifica della password non avviene con successo (es.vecchia password errate)
      */
     public void modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException, PasswordException {
@@ -121,7 +121,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param candidatura indica se l'utente vuole candidarsi o meno come potenziale coinquilino
      * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean setCandidatura(int idUtente, boolean candidatura) throws SQLException {
         db.apriConnesione();
@@ -138,7 +138,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param dati dati dell'utente registrato
      * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
-     * @throws SQLException 
+     * @throws SQLException  ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean inserisciAnagraficaUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
@@ -158,7 +158,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param nuovaCitta nuova citta di ricerca in cui l'utente vuole essere ricercato
      * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean modificaCittaDiRicerca(int idUtente, Citta nuovaCitta) throws SQLException {
         db.apriConnesione();
@@ -174,7 +174,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param dati dell'utente registrato
      * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean inserisciInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
@@ -192,7 +192,7 @@ public class BusinessModelUtente {
      * @param idUtente id dell'utente registrato
      * @param dati dati dell'utente registrato
      * @return Ritorna true se l'operazione è avvenuta con successo, viceversa false
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean modificaInfoUtente(int idUtente, DatiUtente dati) throws SQLException {
         db.apriConnesione();
@@ -209,7 +209,7 @@ public class BusinessModelUtente {
      * Permette all'utente di visualizzare l'annuncio da lui creato
      * @param idUtenteProprietario id dell'utente proprietario dell'annuncio
      * @return  Ritorna l'annuncio creato dall'utente
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws NessunAnnuncioException lancia un'eccezione nel caso in cui si voglia visualizzare il proprio annuncio ma non è stato creato
      */
     public AnnuncioCasa getAnnuncioUtente(int idUtenteProprietario) throws SQLException, NessunAnnuncioException {
@@ -238,7 +238,7 @@ public class BusinessModelUtente {
      * Permette all'utente di visualizzare i propri dati inseriti
      * @param idUtente id dell'utente registrato
      * @return Ritorna i dati dell'utente
-     * @throws SQLException 
+     * @throws SQLException  ECCEZIONE GENERATA DAL DATABASE.
      */
     public DatiUtente getDatiUtente(int idUtente) throws SQLException {
         try {
@@ -261,7 +261,7 @@ public class BusinessModelUtente {
      * VERIFICA SE UN UTENTE HA ALMENO UN ANNUNCIO
      * @param idUtenteProprietario È L'ID DELL'UTENTE IL CUI SI VUOLE VERIFICARE SE HA O MENO ANNUNCI
      * @return TORNA TRUE SE L'UTENTE HA ALMENO UN ANNUNICO, FALSE ALTRIMENTI
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean verificaPresenzaAnnuncio(int idUtenteProprietario) throws SQLException {
         db.apriConnesione();

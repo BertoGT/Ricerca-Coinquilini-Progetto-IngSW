@@ -14,12 +14,20 @@ import Casa.CameraDisponibile;
  */
 class TipoCamera extends ParametroRicercaAnnuncio{
     private int postiLetto;
-
+    /**
+     * ISTANZIA UN OGGETTO DI TIPO TIPOCAMERA CHE È UN PARAMETRO PER LA RICERCA DI UN ANNUNCIO
+     * @param stelle INDICA IL NUMERO DI STELLE CHE VENGONO PASSATE NELLA RICERCA, LE STELLE INDICANO QUANTO È IMPORTANTE QUESTO PARAMETRO PER LA RICERCA
+     * @param nLocali INDICA IL NUMERO DI LOCALI DESIDERATI
+     */
     TipoCamera(int stelle, int postiLetto) {
         super(stelle);
         this.postiLetto = postiLetto;
     }
-
+    /**
+     * CALCOLA L'AFFINITA DEL SINGOLO PARAMETRO TIPO CAMERA
+     * @param annuncio ANNUNCIO DELLA CASA IN QUESTIONE
+     * @return RITORNA UN NUMERO FLOAT CHE INDICA L'AFFINITA
+     */
     @Override
     float calcolaAffinità(AnnuncioCasa annuncio) {
         float stelleTemporanee = 0;

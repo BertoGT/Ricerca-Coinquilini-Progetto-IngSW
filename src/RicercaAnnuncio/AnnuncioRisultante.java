@@ -35,7 +35,7 @@ public class AnnuncioRisultante implements Comparable<AnnuncioRisultante>{
 
     /**
      * METODO PER COMPARARE GLI ANNUNCI 
-     * @param o
+     * @param o Oggetto AnnuncioRisultante che incorpora l'annuncio e il punteggio relativo all'affinità ottenuta con la ricerca.
      * @return UN NUMERO MAGGIORE DI 0 SE IL PRIMO ELEMENTO È MAGGIORE DEL SECONDO MINORE DI 0
      */
     @Override

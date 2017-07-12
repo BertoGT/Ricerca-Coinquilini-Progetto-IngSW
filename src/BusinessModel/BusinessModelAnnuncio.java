@@ -40,7 +40,7 @@ public class BusinessModelAnnuncio {
     /**
      * Restituisce l'istanza della classe. Se non è ancora stata creata
      * viene istanziata.
-     * @return 
+     * @return RITORNA UN'ISTANZA DEL BUSINESS MODEL.
      */
     public static BusinessModelAnnuncio getInstance() {
       if(instance == null) {
@@ -61,7 +61,7 @@ public class BusinessModelAnnuncio {
      * @param descrizione descrizione aggiuntiva della casa 
      * @param costo costo di affitto
      * @return true se avviene l'inserimento, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean inserisciAnnuncioCasa(int idCasa, int idUtenteProprietario, 
             String descrizione, int costo) throws SQLException {
@@ -82,7 +82,7 @@ public class BusinessModelAnnuncio {
      * @param descrizione nuova descrizione
      * @param costo nuovo costo
      * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE. 
      */
     public boolean modificaAnnuncioCasa(int idAnnuncio, String descrizione, int costo) throws SQLException {
         db.apriConnesione();
@@ -97,10 +97,9 @@ public class BusinessModelAnnuncio {
     /**
      * Elimina l'annuncio dell'utente, comprese l'info casa, le varie camere 
      * e gli elettrodomestici legati ad esso.
-     * @param idUtenteProprietario identificativo del proprietario dell'annuncio da eliminare
      * @param idCasa identificativo della casa (e i dati relativi) da cancellare
      * @return true se avviene l'eliminazione, false atrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean eliminaAnnuncioCasa(int idCasa) throws SQLException {
         db.apriConnesione();
@@ -117,7 +116,7 @@ public class BusinessModelAnnuncio {
      * @param info oggetto che descrive la casa da inserire
      * @return l'idCasa che rappresenta l'identificatore univoco della casa inserita
      * su DB
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int inserisciInfoCasa(InfoCasa info) throws SQLException {
         // se crea l'infoCasa restituisce il suo id AI
@@ -142,7 +141,7 @@ public class BusinessModelAnnuncio {
      * @param idCasa id univoco della casa da modificare
      * @param info contenitore dei nuovi dati da sovrascrivere
      * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean modificaInfoCasa(int idCasa, InfoCasa info) throws SQLException {
         
@@ -162,7 +161,7 @@ public class BusinessModelAnnuncio {
      * @param idCasa id univoco della casa a cui aggiungere la camera
      * @param camera oggetto che rappresenta la cemera da inserire
      * @return true se viene caricata correttamente, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean inserisciCamera(int idCasa, CameraDisponibile camera) throws SQLException {
         
@@ -180,7 +179,7 @@ public class BusinessModelAnnuncio {
      * @param idCasa id univoco della casa a cui aggiungere la camera
      * @param camera oggetto che rappresenta la cemera da inserire
      * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean modificaCamera(int idCasa, CameraDisponibile camera) throws SQLException {
         
@@ -198,7 +197,7 @@ public class BusinessModelAnnuncio {
      * @param idCasa id univoco della casa
      * @param elettrodomestico tipo dell'elettrodomestico da inserire
      * @return true se viene caricata correttamente, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean inserisciElettrodomestico(int idCasa, ElettroDomestico elettrodomestico) throws SQLException {
         
@@ -216,7 +215,7 @@ public class BusinessModelAnnuncio {
      * @param idCasa id univoco della casa
      * @param elettrodomestico tipo dell'elettrodomestico da eliminare
      * @return true se viene eliminato, false altrimenti
-     * @throws SQLException 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public boolean eliminaElettrodomestico(int idCasa, ElettroDomestico elettrodomestico) throws SQLException {
         
@@ -238,7 +237,7 @@ public class BusinessModelAnnuncio {
      * @param citta Citta in cui si vuole cercare la casa
      * @param costo Costo massimo della casa. Se nullo viene trascurato questo criterio di ricerca
      * @return Lista annunci compatibili con citta e costo (se inserito)
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws NessunAnnuncioException se nessun annuncio è compatibile con i criteri inseriti
      * (citta e/o costo)
      */
@@ -281,7 +280,7 @@ public class BusinessModelAnnuncio {
      * @param citta Citta in cui si cerca un coinquilino
      * @param sesso Sesso che deve avere il coinquilino
      * @return Lista dei potenziali coninquilini
-     * @throws SQLException
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      * @throws NessunAnnuncioException nessun annuncio è compatibile con i criteri inseriti
      * (citta e/o sesso)
      */

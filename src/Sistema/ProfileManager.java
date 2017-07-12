@@ -31,7 +31,12 @@ import java.util.ArrayList;
 public class ProfileManager {
     private Utente utente;
     private AnnuncioCasa annuncioCasa;
-
+    /**
+     * ISTANZIA UN OGGETTO CHE RAPPRESENTA IL PROFILO UTENTE ALL'INTERNO DEL SISTEMA NEL MOMENTO
+     * IN CUI CI SI LOGGA. DAL PROFILO UTENTE SI POSSONO CREARE ANCHE GLI ANNUNCI (SOLO DAL PROFILO E' POSSIBILE).
+     * @param utente PROFILO UTENTE IN QUESTIONE CHE E' POSSIBILE MODIFICARE
+     * @param annuncioCasa ANNUNCIO CASA CONTENUTO NEL PROFILO, NULL SE L'UTENTE NON NE HA MAI CREATO UNO.
+     */
     public ProfileManager(Utente utente, AnnuncioCasa annuncioCasa) {
         this.utente = utente;
         this.annuncioCasa = annuncioCasa;
@@ -52,7 +57,20 @@ public class ProfileManager {
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-    
+    /**
+     * METODO CHE PERMETTE LA MODIFICA DEL PROFILO ALL'UTENTE. NON E' POSSIBILE MODIFICARE TUTTI I PARAMETRI CON I QUALI L'UTENTE SI E' REGISTRATO.
+     * @param facolta FACOLTA UTENTE.
+     * @param citta CITTA DI RICERCA UTENTE.
+     * @param occupazione OCCUPAZIONE DELL'UTENTE.
+     * @param fumatore BOOLEANO CHE INDICA SE L'UTENTE SIA UN FUMATORE ABITUALE.
+     * @param sportivo BOOLEANO CHE INDICA SE L'UTENTE SIA UNO SPORTIVO ABITUALE.
+     * @param cuoco BOOLEANO CHE INDICA SE L'UTENTE SIA UN CUOCO ABITUALE.
+     * @param candidato BOOLEANO CHE INDICA SE L'UTENTE SI CANDIDI COME COINQUILINO O MENO.
+     * @param password NUOVA PASSWORD CHE RIMPIAZZA QUELLA VECCHIA.
+     * @throws SQLException
+     * @throws ParseException
+     * @throws PasswordException 
+     */
     public void modificaProfilo(Facolta facolta, Citta citta, Occupazione occupazione, 
             boolean fumatore, boolean sportivo, boolean cuoco, boolean candidato, String password) 
             throws SQLException, ParseException, PasswordException {
@@ -68,6 +86,25 @@ public class ProfileManager {
         if(!password.equals(""))
             bm.modificaPassword(idUtente, password, password);
     }
+    /**
+     * METODO CHE PERMETTE LA CREAZIONE DI UN ANNUNCIO ALL'UTENTE.
+     * @param elettrodomestici LISTA CONTENENTE GLI ELETTRODOMESTICI CHE LA CASA POSSIEDE.
+     * @param postiLettoEDisponibili MATRICE CONTENENTE NELLE RIGHE LE CAMERE DISPONIBILI E NELLE COLONNE I POSTI LETTO E I POSTI LETTO DISPONIBILI PER OGNI CAMERA
+     * @param idUtente ID DELL'UTENTE UNIVOCO ALL'INTERNO DEL DATABASE.
+     * @param costoMensile COSTO MENSILE DELLA CASA.
+     * @param metriQuadrati METRI QUADRATI DELLA CASA.
+     * @param numeroLocali NUMERO DI LOCALI DELLA CASA.
+     * @param numeroBagni NUMERO DI BAGNI DELLA CASA.
+     * @param distanzaCentro DISTANZA DAL CENTRO DELLA CASA.
+     * @param cucinaSeparata BOOLEANO CHE INDICA SE LA CUCINA E' SEPARATA DAL SALONE.
+     * @param cittaDiRicerca CITTA IN CUI LA CASA E' PRESENTE.
+     * @param cittaIndirizzo INDIRIZZO DELLA CASA ALL'INTERNO DELLA CITTA'.
+     * @param sessoCoinquilini SESSO DEGLI INQUILINI DELL'APPARTAMENTO.
+     * @param descrizioneAggiuntiva DESCRIZIONE DELLA CASA.
+     * @throws SQLException
+     * @throws InserimentoAnnuncioNonRiuscito
+     * @throws AnnuncioException 
+     */
     public void creaAnnuncio(ArrayList<ElettroDomestico> elettrodomestici,int[][] postiLettoEDisponibili, int idUtente, int costoMensile, 
                              int metriQuadrati, int numeroLocali, int numeroBagni, int distanzaCentro, boolean cucinaSeparata,
                              Citta cittaDiRicerca, String cittaIndirizzo, HouseGenerality sessoCoinquilini, String descrizioneAggiuntiva) throws SQLException, InserimentoAnnuncioNonRiuscito, AnnuncioException{
@@ -94,7 +131,10 @@ public class ProfileManager {
             throw new AnnuncioException("Cancellare annuncio prima di crearne uno nuovo!");
         }
     }
-    
+    /**
+     * METODO CHE CANCELLA L'ANNUNCIO PRESENTE SUL PROFILO UTENTE.
+     * @throws SQLException 
+     */
     public void cancellaAnnuncio() throws SQLException{
         BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
         int idCasa = this.annuncioCasa.getIdCasa();

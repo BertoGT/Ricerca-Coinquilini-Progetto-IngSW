@@ -21,7 +21,16 @@ import javax.servlet.http.HttpServletResponse;
  * @author margherita
  */
 public class AnnuncioRisultanteCreator {
-    
+    /**
+     * Metodo che crea una stringa contenente l'html contenente il risultato della ricerca di annunci, sia per l'utente loggato che non loggato.
+     * Gli utenti non loggati non vedranno i contatti (email e numero di telefono). 
+     * NB! lavora sul singolo annuncio, la composizione finale è eseguita nella classe ListaAnnunciCreator
+     * @param annuncio Oggetto AnnuncioCasa contenente le informazioni dell'annuncio-
+     * @param req Oggetto Servlet Request.
+     * @param resp Oggetto Servelt Response.
+     * @return Stringa contenente l'html per restituire i risultati della ricerca annunci all'utente, sia che esso sia loggato che non.
+     * @throws FileNotFoundException ECCEZIONE GENERATA DAL MANCATO REPERIMENTO DEL FILE.
+     */
      public static String creazioneAnnuncio(AnnuncioCasa annuncio, HttpServletRequest req, 
             HttpServletResponse resp) throws FileNotFoundException {
         String risposta;

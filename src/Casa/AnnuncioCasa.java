@@ -71,6 +71,7 @@ public class AnnuncioCasa {
      * @param citta citta della casa dell'annuncio
      * @param indirizzo indirizzo della casa dell'annuncio
      * @param sessoCasa indica il sesso delle persone all'interno della casa dell'annuncio
+     * @param idCasa Id della casa univoco all'interno del database.
      */
     public void creaInfo(int idCasa, int metriQuadri, int nLocali, int numeroBagni,int distanzaCentro, boolean cucinaSeparata, Citta citta, String indirizzo, HouseGenerality sessoCasa){
         casa = new InfoCasa(idCasa, metriQuadri, nLocali, numeroBagni,distanzaCentro, cucinaSeparata, citta, indirizzo, sessoCasa);
