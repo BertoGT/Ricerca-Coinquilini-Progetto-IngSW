@@ -73,7 +73,10 @@ public class LoginServlet extends HttpServlet{
         cookie.setMaxAge(60*60*24*2); // dura due giorni
         return cookie;
     }
-    
+    /**
+     * 
+     * @return STRINGA RANDOM DA APPENDERE AL NOME DEL COOKIE.
+     */
     private String generaStringa() {
         Random rnd = new Random ();
         char[] arr = new char[16];

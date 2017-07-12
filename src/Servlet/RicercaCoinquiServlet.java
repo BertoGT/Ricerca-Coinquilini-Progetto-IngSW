@@ -73,7 +73,13 @@ public class RicercaCoinquiServlet extends HttpServlet {
         resp.setStatus(200);
         resp.getWriter().println(headerNonLoggato + ricercaHtml);
     }
-    
+    /**
+     * METODO CHE EFFETTUA LA RICERCA A SECONDA DEI PARAMETRI INSERITI.
+     * @param req OGGETTO SERVLET REQUEST
+     * @return RITORNA L'ARRAYLIST DEI COINQUILINI RISULTANTI DALLA RICERCA.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws NessunAnnuncioException ECCEZIONE GENERATA DAL MANCATO REPERIMENTO DI ANNUNCI.
+     */
     private ArrayList<CoinquilinoRisultante> effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
         String citta = req.getParameter("cittadiricerca");
         String sesso = req.getParameter("sesso");

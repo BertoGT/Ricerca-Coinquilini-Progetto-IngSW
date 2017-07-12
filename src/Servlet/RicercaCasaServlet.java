@@ -67,7 +67,13 @@ public class RicercaCasaServlet extends HttpServlet {
            
         }               
     }
-     
+    /**
+     * METODO CHE EFFETTUA LA RICERCA A SECONDA DEI PARAMETRI INSERITI.
+     * @param req OGGETTO SERVLET REQUEST
+     * @return RITORNA L'ARRAYLIST DEGLI ANNUNCI RISULTANTI DALLA RICERCA.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws NessunAnnuncioException ECCEZIONE GENERATA DAL MANCATO REPERIMENTO DI ANNUNCI.
+     */
     private ArrayList<AnnuncioRisultante> effettuaRicerca(HttpServletRequest req) throws SQLException, NessunAnnuncioException {
         String cittaDiRicerca = req.getParameter("cittadiricerca");
         String costoMax = req.getParameter("costoMax");

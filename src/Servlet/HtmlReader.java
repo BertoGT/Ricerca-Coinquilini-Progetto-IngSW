@@ -14,7 +14,12 @@ import java.util.Scanner;
  * @author Marco La Salvia
  */
 public class HtmlReader {
-
+    /**
+     * 
+     * @param nomeFile FILE HTML DA LEGGERE.
+     * @return STRINGA CONTENENTE L'HTML LETTO.
+     * @throws FileNotFoundException ECCEZIONE GENERATA DAL MANCATO REPERIMENTO DEL FILE HTML.
+     */
     public static String htmlReader(String nomeFile) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File("html/"+nomeFile));
         StringBuilder ssb = new StringBuilder();

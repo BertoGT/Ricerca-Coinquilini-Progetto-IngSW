@@ -68,7 +68,14 @@ public class ModificaProfiloServlet extends HttpServlet{
             Logger.getLogger(ModificaProfiloServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * 
+     * @param req OGGETTO SERVLET REQUEST
+     * @param idUtente ID DELL'UTENTE UNIVOCO ALL'INTERNO DEL DATABASE 
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws ParseException ECCEZIONE GENERATA DAL PARSING ERRATO.
+     * @throws PasswordException  ECCEZIONE GENERATA DALL'ERRATO INSERIMENTO DELLA PASSWORD.
+     */
     private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException {
         String facolta= req.getParameter("facolta");
         String citta = req.getParameter("cittadiricerca");

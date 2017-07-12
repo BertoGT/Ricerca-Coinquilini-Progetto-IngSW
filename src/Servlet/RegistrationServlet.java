@@ -67,7 +67,13 @@ public class RegistrationServlet extends HttpServlet {
             resp.getWriter().println(erroreEmailHtml);
         }       
     }
-    
+    /**
+     * METODO CHE EFFETTUA LA REGISTRAZIONE SUL DATABASE.
+     * @param req OGGETTO SERVLET REQUEST.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws RegistrazioneException ERRORE DURANTE LA REGISTRAZIONE (EMAIL GIA' PRESENTE).
+     * @throws ParseException  ERRORE DURANTE IL PARSING.
+     */
     private void effettuaRegistrazione(HttpServletRequest req) throws SQLException, RegistrazioneException, ParseException {
         String nome = req.getParameter("nome");
         String cognome = req.getParameter("cognome");

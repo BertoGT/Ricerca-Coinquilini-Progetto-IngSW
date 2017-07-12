@@ -76,6 +76,11 @@ public class AnnuncioServlet extends HttpServlet {
             resp.getWriter().println(errorePagina); 
         }
     }
+    /**
+     * 
+     * @param value Stringa passata come parametro.
+     * @return  True se la stringa non è nulla, altrimenti false.
+     */
     private boolean checkValueBool(String value){
         boolean tmp = true;
         try{
@@ -86,6 +91,11 @@ public class AnnuncioServlet extends HttpServlet {
         }
         return tmp;
     }
+    /**
+     * 
+     * @param value Stringa contenente l'elettrodomestico
+     * @return Il valore Enum relativo all'elettrodomestico.
+     */
     private ElettroDomestico checkValueElettrodomestico(String value){
         ElettroDomestico tmp = null;
         try{
@@ -98,6 +108,11 @@ public class AnnuncioServlet extends HttpServlet {
         }
         return tmp;
     }
+    /**
+     * 
+     * @param req Oggetto Servlet Request.
+     * @return Matrice contenente posti e posti disponibili per ogni camera disponibile in ogni riga.
+     */
     private int[][] parseCamereDisponibili(HttpServletRequest req){
         int[][] postiLettoEDisponibili = new int[4][4];
         for(int i=0;i<4;i++){
@@ -110,6 +125,16 @@ public class AnnuncioServlet extends HttpServlet {
         }
        return postiLettoEDisponibili; 
     }
+    /**
+     * METODO CHE CREA UN ANNUNCIO DAL PROFILO UTENTE.
+     * @param req OGGETTO SERVLET REQUEST.
+     * @param idUtente Id dell'utente univoco all'interno del database
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws ParseException ECCEZIONE GENERATA DAL PARSING ERRATO
+     * @throws PasswordException ECCEZIONE GENERATA DALL'ERRATO INSERIMENTO DELLA PASSWORD.
+     * @throws InserimentoAnnuncioNonRiuscito ECCEZIONE RELATIVA AL MANCATO INSERIMENTO DELL'ANNUNCIO.
+     * @throws AnnuncioException  IMPOSSIBILE CARICARE UN NUOVO ANNUNCIO SE UNO E' GIA' PRESENTE.
+     */
     private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito, AnnuncioException {
         ArrayList<ElettroDomestico> elettrodomestici = new ArrayList<>();
         int metriQuadrati = Integer.parseInt(req.getParameter("metriQuadrati"));

@@ -76,7 +76,12 @@ public class ProfileServlet extends HttpServlet {
         response.setStatus(200);
         response.getWriter().println(loginHtml);
     }
-    
+    /**
+     * 
+     * @param profileManager HTML PROFILO UTENTE
+     * @param pM OGGETTO PROFILO UTENTE
+     * @return HTML CON I CAMPI DEL PROFILO UTENTE SOSTITUITI CORRETTAMENTE.
+     */
     private String sostituisciCampiProfilo(String profileManager, ProfileManager pM){
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
@@ -132,7 +137,12 @@ public class ProfileServlet extends HttpServlet {
         }
         return profileManager;
     }
-    
+    /**
+     * 
+     * @param profileManager STRINGA CONTENENTE L'HTML DEL PROFILE MANAGER
+     * @param pM OGGETTO PROFILE MANAGER DAL QUALE PRENDERE I VALORI DA SOSTITUIRE
+     * @return HTML DEL PROFILO UTENTE: SE C'E' UN ANNUNCIO LO CARICA SE NO NO.
+     */
     private String caricaAnnuncioSePresente(String profileManager, ProfileManager pM){
         try{
            if(pM.getAnnuncioCasa()== null){
@@ -157,6 +167,13 @@ public class ProfileServlet extends HttpServlet {
         } 
         return profileManager;
     }
+    /**
+     * METODO CHE CARICA DINAMICAMENTE I CAMPI DI UN ANNUNCIO NELL'HTML
+     * @param annuncioPerIlProfilo HTML DELL'ANNUNCIO
+     * @param annuncio OGGETTO ANNUNCIO DAL QUALE PRENDERE I VALORI DA SOSTITUIRE
+     * @return HTML ANNUNCIO CON I CAMPI SOSTITUITI
+     * @throws FileNotFoundException ECCEZIONE GENERATA DAL MANCATO REPERIMENTO DI FILE HTML.
+     */
     private String sostituisciCampiAnnuncio(String annuncioPerIlProfilo, AnnuncioCasa annuncio) throws FileNotFoundException{
         ArrayList<String> elementiDaModificareDinamici = new ArrayList<>();
         ArrayList<String> elementiDaModificareHtml = new ArrayList<>();
