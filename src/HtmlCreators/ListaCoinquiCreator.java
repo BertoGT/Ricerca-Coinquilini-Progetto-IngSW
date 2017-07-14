@@ -77,7 +77,7 @@ public class ListaCoinquiCreator {
             sb.append("<p class=\"w3-large\"><i class=\"fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal\"></i>Telefono: ");
             sb.append(utente.getNumeroDiTelefono()).append("</p></div></a>");          
         }
-        sb.append("</table></body><div id=\"navfooter\"></div></html>");
+        sb.append("</table></body></html>");
         return sb.toString();
     }
     

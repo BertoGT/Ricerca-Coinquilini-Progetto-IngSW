@@ -85,7 +85,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append("</p></div></a>");
         }        
               
-        sb.append("</table></div></body><div id=\"navfooter\"></div></html>");
+        sb.append("</table></div></body></html>");
         return sb.toString();
     }
     
