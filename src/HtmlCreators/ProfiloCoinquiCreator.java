@@ -47,7 +47,13 @@ public class ProfiloCoinquiCreator {
         }
         return risposta;
     }
-    
+    /**
+     * Metodo che sostituisce i campi all'interno dell'profilo utente che si vuole visualizzare.
+     * (VERSIONE LOGGATO : VEDO I CONTATTI).
+     * @param datiUtente Oggetto DatiUtente contenente i campi che devono essere sostituiti.
+     * @return Ritorna la stringa contenente l'html con i campi correttamente sostituiti.
+     * @throws FileNotFoundException  Eccezzione generata dal mancato reperimento del file html.
+     */
     private static String rispostaLoggato(DatiUtente datiUtente) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerLoggato.html"));
@@ -106,7 +112,13 @@ public class ProfiloCoinquiCreator {
         }
         return sb.append(body).toString();
     }
-    
+    /**
+     * Metodo che sostituisce i campi all'interno dell'profilo utente che si vuole visualizzare.
+     * (VERSIONE NON LOGGATO : NON VEDO I CONTATTI).
+     * @param datiUtente Oggetto DatiUtente contenente i campi che devono essere sostituiti.
+     * @return Ritorna la stringa contenente l'html con i campi correttamente sostituiti.
+     * @throws FileNotFoundException  Eccezzione generata dal mancato reperimento del file html.
+     */
     private static String rispostaNonLoggato(DatiUtente datiUtente) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));

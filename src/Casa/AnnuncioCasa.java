@@ -48,7 +48,9 @@ public class AnnuncioCasa {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         this.dataCreazioneAnnuncio = df.format(data);
     }
-
+    /**
+     * @return Metodo get della data di creazione dell'annuncio.
+     */
     public String getDataCreazioneAnnuncio() {
         return dataCreazioneAnnuncio;
     }
@@ -90,11 +92,14 @@ public class AnnuncioCasa {
     public void rimuoviElettrodomestico(ElettroDomestico elettrodomestico) {
         casa.rimuoviElettroDomestico(elettrodomestico);
     }
-
+    /**
+     * 
+     * @return Metodo get delle informazioni relative alla casa.
+     */
     public InfoCasa getCasa() {
         return casa;
     }
-
+    
     public String getDescrizioneAggiuntiva() {
         return descrizioneAggiuntiva;
     }
@@ -137,7 +142,7 @@ public class AnnuncioCasa {
     public boolean isCucinaSeparata() {
         return casa.isCucinaSeparata();
     }
-
+    
     public ArrayList<CameraDisponibile> getCamere() {
         return casa.getCamere();
     }

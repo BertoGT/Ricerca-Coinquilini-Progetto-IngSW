@@ -48,7 +48,13 @@ public class ListaCoinquiCreator {
         }
         return risposta;
     }
-    
+    /**
+     * Metodo che genera la lista di utenti in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE LOGGATO: VEDO I CONTATTI)
+     * @param risultati Lista degli utenti reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli utenti.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String rispostaLoggato(ArrayList<CoinquilinoRisultante> risultati) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerLoggato.html"));
@@ -80,7 +86,13 @@ public class ListaCoinquiCreator {
         sb.append("</table></body></html>");
         return sb.toString();
     }
-    
+    /**
+     * Metodo che genera la lista di utenti in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE NON LOGGATO: NON VEDO I CONTATTI)
+     * @param risultati Lista degli utenti reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli utenti.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String rispostaNonLoggato(ArrayList<CoinquilinoRisultante> risultati) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));

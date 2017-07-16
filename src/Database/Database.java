@@ -48,7 +48,7 @@ public class Database {
     }
     /**
      * Metodo che apre la connessione al database.
-     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public void apriConnesione() throws SQLException {
         try {
@@ -74,7 +74,7 @@ public class Database {
      * @param power Indica i permessi dell'utente all'interno del sistema.
      * @param candidato Indica che l'utente si candida come potenziale coinquilino.
      * @return Ritorna un oggetto ResultSet.
-     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public ResultSet registrazione(String email, String password, int power, boolean candidato) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.verificaEmail);
@@ -122,7 +122,7 @@ public class Database {
      * @param vecchiaPassword Password precedente che si desidera cambiare.
      * @param nuovaPassword Nuova password con la quale si vuole sostituire quella precedente.
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
     public int modificaPassword(int idUtente, String vecchiaPassword, String nuovaPassword) throws SQLException {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.loggaConId);

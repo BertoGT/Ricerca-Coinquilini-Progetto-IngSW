@@ -38,7 +38,12 @@ public class InfoServlet extends HttpServlet{
             utenteNonLoggato(resp);
         } 
     }
-    
+    /**
+     * Carico la navbar da non loggato.
+     * @param resp Oggetto ServletResponse
+     * @throws FileNotFoundException Eccezione gerata dal mancato reperimento del file html.
+     * @throws IOException Eccezione di IO
+     */
     private void utenteNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException{
         String header = HtmlReader.htmlReader("headerNonLoggato.html");
         String body = HtmlReader.htmlReader("chisiamo.html");

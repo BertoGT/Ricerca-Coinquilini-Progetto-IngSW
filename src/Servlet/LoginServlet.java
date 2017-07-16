@@ -67,7 +67,11 @@ public class LoginServlet extends HttpServlet{
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Genera un cookie la cui durata è di due giorni a partire dall'id utente.
+     * @param idUtente Id dell'utente univoco all'interno del database
+     * @return Oggetto cookie.
+     */
     private Cookie generaCookie(int idUtente) {
         Cookie cookie = new Cookie(String.valueOf(idUtente), generaStringa());
         cookie.setMaxAge(60*60*24*2); // dura due giorni
