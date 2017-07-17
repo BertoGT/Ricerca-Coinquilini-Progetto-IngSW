@@ -49,7 +49,13 @@ public class ListaAnnunciCreator extends HttpServlet {
         
          return risultati;
     }
-    
+    /**
+     * Metodo che genera la lista di annunci in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE LOGGATO: VEDO I CONTATTI)
+     * @param annunci Lista degli annunci reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli annunci.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String annunciRisultantiLoggato(ArrayList<AnnuncioRisultante> annunci) throws FileNotFoundException {
         
         StringBuilder sb= new StringBuilder();
@@ -64,7 +70,7 @@ public class ListaAnnunciCreator extends HttpServlet {
             sb.append(annuncio.getIdProprietario()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div class=\"w3-light-grey\">\n" +
-                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+a.getPunteggio()+"%\">Affinita' : "+String.format("%.1f",a.getPunteggio())+"%</div>\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:100%\">Affinita' : "+String.format("%.1f",a.getPunteggio())+"%</div>\n" +
                       "</div>");
            // sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(a.getPunteggio()).append("%</div>");
@@ -89,7 +95,13 @@ public class ListaAnnunciCreator extends HttpServlet {
         return sb.toString();
     }
     
-    
+    /**
+     * Metodo che genera la lista di annunci in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE NON LOGGATO: NON VEDO I CONTATTI)
+     * @param annunci Lista degli annunci reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli annunci.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String annunciRisultantiNonLoggato(ArrayList<AnnuncioRisultante> annunci) throws FileNotFoundException {
         
         StringBuilder sb= new StringBuilder();

@@ -41,7 +41,7 @@ public class TestEccezioni {
         AnnuncioCasa a1= new AnnuncioCasa(1, "casa", 0, 0, "nomeCognomeProprietario", "cellulareProprietario", "emailProprietario", data);
         ProfileManager pm = new ProfileManager(u, a1);
         pm.creaAnnuncio(elettrodomestici, postiLettoDisponibili, 0, 0, 0, 0, 0, 0, true, Citta.CALTANISSETTA, "cittaIndirizzo", HouseGenerality.MASCHI, "descrizioneAggiuntiva");
-        
+
     }
     
 }

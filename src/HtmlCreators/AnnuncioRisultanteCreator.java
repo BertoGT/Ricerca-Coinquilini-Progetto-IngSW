@@ -25,7 +25,7 @@ public class AnnuncioRisultanteCreator {
      * Metodo che crea una stringa contenente l'html contenente il risultato della ricerca di annunci, sia per l'utente loggato che non loggato.
      * Gli utenti non loggati non vedranno i contatti (email e numero di telefono). 
      * NB! lavora sul singolo annuncio, la composizione finale è eseguita nella classe ListaAnnunciCreator
-     * @param annuncio Oggetto AnnuncioCasa contenente le informazioni dell'annuncio-
+     * @param annuncio Oggetto AnnuncioCasa contenente le informazioni dell'annuncio.
      * @param req Oggetto Servlet Request.
      * @param resp Oggetto Servelt Response.
      * @return Stringa contenente l'html per restituire i risultati della ricerca annunci all'utente, sia che esso sia loggato che non.
@@ -50,7 +50,13 @@ public class AnnuncioRisultanteCreator {
         }
         return risposta;
     }
-    
+    /**
+     * Metodo che sostituisce i campi all'interno dell'annuncio che si vuole visualizzare.
+     * (VERSIONE LOGGATO : VEDO I CONTATTI).
+     * @param annuncio Oggetto AnnuncioCasa contenente i campi che devono essere sostituiti.
+     * @return Ritorna la stringa contenente l'html con i campi correttamente sostituiti.
+     * @throws FileNotFoundException  Eccezzione generata dal mancato reperimento del file html.
+     */
       private static String annuncioLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
   
         StringBuilder sb = new StringBuilder();
@@ -124,7 +130,7 @@ public class AnnuncioRisultanteCreator {
                 String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
                 cameraDisponibileAnnuncio = tmp;
-                tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                tmp = cameraDisponibileAnnuncio.replaceAll("disponibiliReplace", String.valueOf(c.getPostiLettoDisponibili()));
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }
@@ -133,7 +139,13 @@ public class AnnuncioRisultanteCreator {
         }
         return sb.toString();
     }
-    
+    /**
+     * Metodo che sostituisce i campi all'interno dell'annuncio che si vuole visualizzare.
+     * (VERSIONE NON LOGGATO : NON VEDO I CONTATTI).
+     * @param annuncio Oggetto AnnuncioCasa contenente i campi che devono essere sostituiti.
+     * @return Ritorna la stringa contenente l'html con i campi correttamente sostituiti.
+     * @throws FileNotFoundException  Eccezzione generata dal mancato reperimento del file html.
+     */
      private static String annuncioNonLoggato(AnnuncioCasa annuncio) throws FileNotFoundException{
   
         StringBuilder sb = new StringBuilder();
@@ -204,7 +216,7 @@ public class AnnuncioRisultanteCreator {
                 String cameraDisponibileAnnuncio = HtmlReader.htmlReader("cameraDisponibileDinamico.html");
                 tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLetto", String.valueOf(c.getPostiLetto()));
                 cameraDisponibileAnnuncio = tmp;
-                tmp = cameraDisponibileAnnuncio.replaceAll("numeroPostiLettoDisponibili", String.valueOf(c.getPostiLettoDisponibili()));
+                tmp = cameraDisponibileAnnuncio.replaceAll("disponibiliReplace", String.valueOf(c.getPostiLettoDisponibili()));
                 cameraDisponibileAnnuncio = tmp;
                 cameraDisponibile.append(cameraDisponibileAnnuncio);
             }

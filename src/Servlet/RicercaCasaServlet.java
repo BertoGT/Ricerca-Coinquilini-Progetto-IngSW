@@ -63,8 +63,7 @@ public class RicercaCasaServlet extends HttpServlet {
         } catch (NessunAnnuncioException ex) {
             // pagina con avviso nessun annuncio trovato.
             String risultati = HtmlReader.htmlReader("norisultati.html");
-            resp.getWriter().println(risultati);
-           
+            resp.getWriter().println(risultati);          
         }               
     }
     /**
@@ -204,7 +203,12 @@ public class RicercaCasaServlet extends HttpServlet {
         
         return sys.getAnnunciRisultanti();
     }
-    
+    /**
+     * Carico la navbar da non loggato.
+     * @param resp Oggetto ServletResponse
+     * @throws FileNotFoundException Eccezione gerata dal mancato reperimento del file html.
+     * @throws IOException Eccezione di IO
+     */
     private void settaNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException {
         String headerNonLoggato = HtmlReader.htmlReader("headerNonLoggato.html");
         String ricercaHtml = HtmlReader.htmlReader("RicercaCasa.html");

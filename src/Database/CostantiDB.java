@@ -78,18 +78,16 @@ public class CostantiDB {
     final static String inserisciInfoCasa = "INSERT INTO "+tabellaInfoCasa+" (m2, nLocali, nBagni,"
             + "distanzaCentro, sessoCasa, cucinaSeparata, citta, indirizzo)"
             + "VALUES (?,?,?,?,?,?,?,?)";
-    final static String modificaInfoCasa = "UPDATE "+tabellaInfoCasa+" SET m2 = ?, nLocali = ?,"
-            + "nBagni = ?, distanzaCentro = ?, sessoCasa = ?, cucinaSeparata = ?, citta = ?,"
-            + "indirizzo = ? WHERE idCasa = ?";
+    final static String modificaInfoCasa = "UPDATE "+tabellaInfoCasa+" SET sessoCasa = ? WHERE idCasa = ?";
     
     //Query inserimento/modifica camera
     final static String inserisciCamera = "INSERT INTO "+tabellaCamere+" VALUES (?,?,?,?)";
-    final static String modificaCamera = "UPDATE "+tabellaCamere+" SET postiTotali = ?, postiDisponibili = ?"
-            + " WHERE idCasa = ? and idCamera = ?";
+    final static String eliminaTutteCamera = "DELETE FROM "+tabellaCamere+" WHERE idCasa = ?";
     
     //Query inserimento/modifica elettrodomestici
     final static String inserisciElettrodomestico = "INSERT INTO "+tabellaElettrodomestico+" VALUES(?, ?)";
     final static String eliminaElettrodomestico = "DELETE FROM "+tabellaElettrodomestico+" WHERE idCasa = ? and tipo = ?";
+    final static String eliminaTuttiElettrodomestici = "DELETE FROM "+tabellaElettrodomestico+" WHERE idCasa = ?";
     
     //Query annunciCasa
     final static String getAnnunciJoinInfoCasa = "SELECT * FROM (SELECT * from "+tabellaAnnuncioCasa+" natural join "+

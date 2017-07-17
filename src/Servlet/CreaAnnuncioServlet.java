@@ -29,14 +29,14 @@ import java.io.PrintWriter;
  *
  * @author Marco La Salvia
  */
-public class AnnuncioServlet extends HttpServlet {
+public class CreaAnnuncioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             Cookie cookie = req.getCookies()[0]; 
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
-                String pagina = HtmlReader.htmlReader("modificaCreaAnnuncio.html");          
+                String pagina = HtmlReader.htmlReader("creaAnnuncio.html");          
                 PrintWriter out = new PrintWriter(new FileOutputStream(new File("fileModificaCreaAnnuncio.txt"),false));
                 out.append(pagina);
                 out.close();
@@ -60,7 +60,7 @@ public class AnnuncioServlet extends HttpServlet {
             if(CookieStorage.getInstance().controllaPresenzaCookie(cookie)){
                 // utente gia loggato.
                 int idUtente = Integer.parseInt(cookie.getName());
-                effettuaModifica(req, idUtente);
+                creaAnnuncio(req, idUtente);
                 resp.setStatus(200);
                 resp.sendRedirect("/profiloUtente");
             } else {
@@ -135,7 +135,7 @@ public class AnnuncioServlet extends HttpServlet {
      * @throws InserimentoAnnuncioNonRiuscito ECCEZIONE RELATIVA AL MANCATO INSERIMENTO DELL'ANNUNCIO.
      * @throws AnnuncioException  IMPOSSIBILE CARICARE UN NUOVO ANNUNCIO SE UNO E' GIA' PRESENTE.
      */
-    private void effettuaModifica(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito, AnnuncioException {
+    private void creaAnnuncio(HttpServletRequest req, int idUtente) throws SQLException, ParseException, PasswordException, InserimentoAnnuncioNonRiuscito, AnnuncioException {
         ArrayList<ElettroDomestico> elettrodomestici = new ArrayList<>();
         int metriQuadrati = Integer.parseInt(req.getParameter("metriQuadrati"));
         int distanzaCentro = (int) Math.round(Math.ceil(Float.parseFloat(req.getParameter("distanzaCentro"))));
@@ -153,10 +153,7 @@ public class AnnuncioServlet extends HttpServlet {
         Citta cittaDiRicerca = Citta.valueOf(req.getParameter("cittaDiRicerca"));
         String descrizioneAggiuntiva = req.getParameter("descrizioneAnnuncio");
         int costoMensile = Integer.parseInt(req.getParameter("costoMensile"));
-        String nomeCognome = req.getParameter("nomeCognome");
         String cittaIndirizzo = req.getParameter("cittaIndirizzo");
-        String cellulare = req.getParameter("cellulare");
-        String email = req.getParameter("email");
         int [][] postiLettoEDisponibili = this.parseCamereDisponibili(req);
 
         Sistema system = new Sistema();

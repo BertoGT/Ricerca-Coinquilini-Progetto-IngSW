@@ -48,7 +48,13 @@ public class ListaCoinquiCreator {
         }
         return risposta;
     }
-    
+    /**
+     * Metodo che genera la lista di utenti in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE LOGGATO: VEDO I CONTATTI)
+     * @param risultati Lista degli utenti reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli utenti.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String rispostaLoggato(ArrayList<CoinquilinoRisultante> risultati) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerLoggato.html"));
@@ -59,7 +65,7 @@ public class ListaCoinquiCreator {
             sb.append(co.getUtente().getIdUtente()).append("\">");
             sb.append("<div class=\"w3-main w3-white\" style=\"margin:2% 10%; padding: 1% 2% 2% 2%; width:auto; text-align:left; opacity:0.95;\">");
             sb.append("<div class=\"w3-light-grey\">\n" +
-                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:"+co.getPunteggio()+"%\">Affinita' : "+String.format("%.1f",co.getPunteggio())+"%</div>\n" +
+                      "<div class=\"w3-container w3-blue w3-center\" style=\"width:100%\">Affinita' : "+String.format("%.1f",co.getPunteggio())+"%</div>\n" +
                       "</div>");
             //sb.append("<div style=\"text-align:center;float:right; font-weight:bold; font-size:20;\">Affinita'<br>");
             //sb.append(co.getPunteggio()).append("%</div>");
@@ -80,7 +86,13 @@ public class ListaCoinquiCreator {
         sb.append("</table></body></html>");
         return sb.toString();
     }
-    
+    /**
+     * Metodo che genera la lista di utenti in html reperiti tramite la ricerca del sistema.
+     * (VERSIONE NON LOGGATO: NON VEDO I CONTATTI)
+     * @param risultati Lista degli utenti reperita grazie alla ricerca.
+     * @return Stringa contenente l'html in cui abbiamo inserito la lista degli utenti.
+     * @throws FileNotFoundException Eccezzione generata dal mancato reperimento dei file html.
+     */
     private static String rispostaNonLoggato(ArrayList<CoinquilinoRisultante> risultati) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         sb.append(HtmlReader.htmlReader("headerNonLoggato.html"));

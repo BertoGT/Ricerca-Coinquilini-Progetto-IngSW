@@ -46,7 +46,12 @@ public class HomePageServlet extends HttpServlet{
             settaNonLoggato(resp);
         } 
     }
-    
+    /**
+     * Carico la navbar da non loggato.
+     * @param resp Oggetto ServletResponse
+     * @throws FileNotFoundException Eccezione gerata dal mancato reperimento del file html.
+     * @throws IOException Eccezione di IO
+     */
     private void settaNonLoggato(HttpServletResponse resp) throws FileNotFoundException, IOException {
         String headerNonLoggato = HtmlReader.htmlReader("headerNonLoggato.html");
         String homepageHtml = HtmlReader.htmlReader("homepage.html");
