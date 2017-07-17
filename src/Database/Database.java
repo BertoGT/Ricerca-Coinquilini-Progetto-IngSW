@@ -339,19 +339,11 @@ public class Database {
      * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
      * @throws SQLException SQLException ECCEZIONE GENERATA DAL DATABASE. 
      */
-    public int modificaInfoCasa(int idCasa, int m2, int nLocali, int nBagni, int distanzaCentro, 
-            String sessoCasa, boolean cucinaSeparata, String citta, String indirizzo) throws SQLException {
+    public int modificaSessoCasa(int idCasa, String sessoCasa) throws SQLException {
         
         PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaInfoCasa);
-        ps.setInt(1, m2);
-        ps.setInt(2, nLocali);
-        ps.setInt(3, nBagni);
-        ps.setInt(4, distanzaCentro);
-        ps.setString(5, sessoCasa);
-        ps.setBoolean(6, cucinaSeparata);
-        ps.setString(7, citta);
-        ps.setString(8, indirizzo);
-        ps.setInt(9, idCasa);
+        ps.setString(1, sessoCasa);
+        ps.setInt(2, idCasa);
         return ps.executeUpdate();
     }
     
@@ -364,23 +356,11 @@ public class Database {
         ps.setInt(4, postiDisponibili);
         return ps.executeUpdate();
     }
-    /**
-     * Metodo che modifica la camera, posti letto e posti disponibili, all'interno del database.
-     * 
-     * @param idCasa Id della casa univoco all'interno del database.
-     * @param idCamera Id della camera, associato a quello della casa.
-     * @param postiTotali Indica quanti posti letto ci siano in una camera.
-     * @param postiDisponibili indica i posti letto disponibili di una camera.
-     * @return Ritorna le rows modificate dalla query se tutto va a buon fine, altrimenti 0.
-     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
-     */
-    public int modificaCamera(int idCasa, int idCamera, int postiTotali, int postiDisponibili) throws SQLException {
-        
-        PreparedStatement ps = conn.prepareStatement(CostantiDB.modificaCamera);       
-        ps.setInt(1, postiTotali);
-        ps.setInt(2, postiDisponibili);
-        ps.setInt(3, idCasa);
-        ps.setInt(4, idCamera);
+
+    
+    public int eliminaTutteCamere(int idCasa) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaTutteCamera);
+        ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
     
@@ -403,6 +383,13 @@ public class Database {
         PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaElettrodomestico);       
         ps.setInt(1, idCasa);
         ps.setString(2, tipo);
+        return ps.executeUpdate();
+    }
+    
+    public int eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
+        
+        PreparedStatement ps = conn.prepareStatement(CostantiDB.eliminaTuttiElettrodomestici);       
+        ps.setInt(1, idCasa);
         return ps.executeUpdate();
     }
     

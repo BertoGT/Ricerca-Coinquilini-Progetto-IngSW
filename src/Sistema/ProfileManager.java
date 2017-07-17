@@ -131,6 +131,32 @@ public class ProfileManager {
             throw new AnnuncioException("Cancellare annuncio prima di crearne uno nuovo!");
         }
     }
+    
+    public void modificaAnnuncio(ArrayList<ElettroDomestico> elettrodomestici,int[][] postiLettoEDisponibili, int idUtente, int costoMensile, 
+            HouseGenerality sessoCoinquilini, String descrizioneAggiuntiva) throws SQLException, AnnuncioException {
+        if(this.annuncioCasa!=null){
+            BusinessModelAnnuncio bm = BusinessModelAnnuncio.getInstance();
+            int idCasa = annuncioCasa.getIdCasa();
+            bm.modificaSessoCasa(idCasa, sessoCoinquilini);
+            bm.modificaAnnuncioCasa(annuncioCasa.getIdAnnuncio(), descrizioneAggiuntiva, costoMensile);
+            
+            bm.eliminaTutteCamere(idCasa);
+            for(int i=0;i<postiLettoEDisponibili.length;i++){
+                int postiLetto = postiLettoEDisponibili[i][0];
+                int postiLettoDisponibili = postiLettoEDisponibili[i][1];
+                if(postiLetto!=0 & postiLettoDisponibili!=0)
+                    bm.inserisciCamera(idCasa, new CameraDisponibile(idCasa, i, postiLetto, postiLettoDisponibili));
+            }
+            bm.eliminaTuttiElettrodomestici(idCasa);
+            for(ElettroDomestico e: elettrodomestici){
+                if(e==null)
+                    continue;
+                bm.inserisciElettrodomestico(idCasa, e);
+            }
+        }else{
+            throw new AnnuncioException("Non è stato ancora creato nessun annuncio!");
+        }
+    }
     /**
      * METODO CHE CANCELLA L'ANNUNCIO PRESENTE SUL PROFILO UTENTE.
      * @throws SQLException 

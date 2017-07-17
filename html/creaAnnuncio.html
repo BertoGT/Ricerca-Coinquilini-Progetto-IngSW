@@ -92,14 +92,14 @@
 <body onload="caricabarra()" class="sfondo">
 <div id="navbarra"></div>
 <div class="w3-main w3-white" style="margin:100px 15% 2% 15%;opacity:0.95;">
-    <form name="form" method="post" action="http://localhost:8080/modificaCreaAnnuncio" id="form" style="padding: 1%">
+    <form name="form" method="post" action="http://localhost:8080/creaAnnuncio" id="form" style="padding: 1%">
 
       <!-- Push down content on small screens -->
       <div class="w3-hide-large" style="margin-top:80px"></div>
 
       <!-- Slideshow Header -->
       <div class="w3-container" id="apartment" style="text-align:center;" >
-        <h2 class="w3-text-blue">Annuncio</h2>
+        <h2 class="w3-text-blue">Crea Annuncio</h2>
       </div>
       <div class="w3-container">
         <h4><strong>Dettagli della casa</strong></h4>
@@ -218,6 +218,12 @@
                         <option value="VITERBO">VITERBO</option>
                     </select>
             </p> 
+            <p class="w3-large w3-text-theme">
+                <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+                <label id="labelModificaProfilo">Indirizzo : &nbsp; </label>
+                <input type="text" style="color:#000000" name="cittaIndirizzo" value="" required>
+            </p>
+            
             <p> 
                 <i class="fa fa-fw fa-male fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> Metri quadrati :
                 <input id="slider1" type="range" min="0" max="250" step="10" value="0" name = "metriQuadrati" onchange="showValue1(this.value)" />
@@ -267,7 +273,7 @@
             <p>
                 <i class="material-icons fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px">kitchen</i>
                 <label>Cucina separata:</label> 
-                <input type="checkbox" name="Cucina" value="C">
+                <input type="checkbox" name="cucinaSeparata" value="C">
             </p>
           </div>
         </div>
@@ -324,9 +330,7 @@
         </div>
         <hr>
         <h4><strong>Descrizione Annuncio</strong></h4>
-          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px;" value="Nessuna descrizione dell'annuncio!">
-              NESSUNA DESCRIZIONE ANNUNCIO!
-          </textarea>
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px;">NESSUNA DESCRIZIONE ANNUNCIO!</textarea>
           
         <hr>
         <h4><strong>Costo mensile</strong></h4>
@@ -334,32 +338,7 @@
         <input id="slider3" type="range" min="0" max="900" value="0" step="25" name = "costoMensile" onchange="showValue3(this.value)" />
         <span id="range3">0</span>
       </div>
-      <hr>
-		<div style="padding-left:5px;">
-      <!-- Contatti -->
-        <h2><strong>Contatti</strong></h2>
-        <p class="w3-large w3-text-theme">
-        <i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"></i> 
-        <label id="labelModificaProfilo">Nome e Cognome* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="nomeCognome" value="" required>
-        </p>
-        <p class="w3-large w3-text-theme">
-        <i class="fa fa-fw fa-map-marker fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
-        <label id="labelModificaProfilo">Indirizzo* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="cittaIndirizzo" value="" required>
-        </p>
-        <p class="w3-large w3-text-theme">
-        <i class="fa fa-fw fa-phone fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
-        <label id="labelModificaProfilo">Numero di telefono* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="cellulare" value="" required>
-        </p>
-        <p class="w3-large w3-text-theme">
-        <i class="fa fa-fw fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"> </i> 
-        <label id="labelModificaProfilo">Email* : &nbsp; </label>
-        <input type="text" style="color:#000000" name="email" value="" required>
-        </p>
-      </div>
-   		<hr>
+   <hr>
          <button class="buttonAnnuncio" type="submit" style="margin-left:3%">
              <span> Crea annuncio </span>
          </button>

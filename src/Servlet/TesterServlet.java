@@ -29,7 +29,8 @@ public class TesterServlet {
                         handler.addServlet(RisultatoCoinquiServlet.class, "/risultatoCoinquilino");
                         handler.addServlet(RisultatoAnnuncioServlet.class, "/risultatoCasa");
                         handler.addServlet(ModificaProfiloServlet.class, "/modificaProfilo");
-                        handler.addServlet(AnnuncioServlet.class, "/modificaCreaAnnuncio");
+                        handler.addServlet(CreaAnnuncioServlet.class, "/creaAnnuncio");
+                        handler.addServlet(ModificaAnnuncioServlet.class, "/modificaAnnuncio");
                         handler.addServlet(InfoServlet.class, "/chiSiamo");
 			server.setHandler(handler);
 			server.start();

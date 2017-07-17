@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <title>Rooming</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/IngSW-unipv/Progetto-G/e050ff9/html/stile.css" type="text/css"> -->
+    <link rel="stylesheet" href="stile.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.css" type="text/css">
+    <link rel = "stylesheet" href="font-awesome.min.css" type="text/css">
+    <link rel = "stylesheet" href="_icons.scss" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="buttonAnnuncio.css">
+    
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
+    
+    <script type="text/javascript">
+            function caricabarra(){
+                  $("#navbarra").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/navbarLoggato.html"); 
+                  $("#navfooter").load("https://raw.githubusercontent.com/IngSW-unipv/Progetto-G/master/html/footer.html");
+             }
+        	function showValue1(newValue)
+        	{
+              document.getElementById("range1").innerHTML=newValue;
+        	}
+        	function showValue2(newValue)
+        	{
+              document.getElementById("range2").innerHTML=newValue;
+        	}
+			function showValue3(newValue)
+        	{			
+              document.getElementById("range3").innerHTML=newValue;
+        	}
+    </script>
+    <script type="text/javascript">
+        function createSelect(nome){
+                 var input = document.createElement("select");
+                 var array = ["1","2","3","4"];
+                 input.name = nome;
+                 for (var i = 0; i < array.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = array[i];
+                        option.text = array[i];
+                        input.appendChild(option);
+                 }
+                 return input;
+        };
+    </script>
+    <script type="text/javascript">
+        function addFields(){
+                
+                var number = document.getElementById("camereDisponibili").value;
+                
+                var container = document.getElementById("aggiungiQui");
+                
+                while (container.hasChildNodes()) {
+                    container.removeChild(container.lastChild);
+                }
+                
+                for (i=0;i<number;i++){
+                    
+                    container.appendChild(document.createTextNode("CAMERA " + (i+1)+":"));
+
+                    var div1 = document.createElement("div");
+                    var div2 = document.createElement("div");
+                    container.appendChild(div1);
+                    container.appendChild(div2);
+
+                    var iconBed1 = document.createElement("span");
+                    iconBed1.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+
+                    div1.appendChild(iconBed1);
+                    
+                    var input = createSelect("postiLetto" + i);
+                    div1.appendChild(document.createTextNode("POSTI LETTO: "));
+                    div1.appendChild(input);
+
+                    var iconBed2 = document.createElement("span");
+                    iconBed2.setAttribute("class","fa fa fa-bed fa-fw w3-margin-right w3-large w3-text-teal");
+
+                    div2.appendChild(iconBed2);
+                    var input1 = createSelect("postiLettoDisponibili"+i);
+                    div2.appendChild(document.createTextNode("POSTI LETTO DISPONIBILI: "));
+                    div2.appendChild(input1);
+                     
+                    container.appendChild(document.createElement("br"));
+                }
+
+            };
+    </script>
+<body onload="caricabarra()" class="sfondo">
+<div id="navbarra"></div>
+<div class="w3-main w3-white" style="margin:100px 15% 2% 15%;opacity:0.95;">
+    <form name="form" method="post" action="http://localhost:8080/modificaAnnuncio" id="form" style="padding: 1%">
+
+      <!-- Push down content on small screens -->
+      <div class="w3-hide-large" style="margin-top:80px"></div>
+
+      <!-- Slideshow Header -->
+      <div class="w3-container" id="apartment" style="text-align:center;" >
+        <h2 class="w3-text-blue">Modifica Annuncio</h2>
+      </div>
+      <div class="w3-container">
+        <h4><strong>Dettagli della casa</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+            <p>
+                <i class="fa fa-fw fa-venus-mars fa-fw w3-margin-right w3-large w3-text-teal"></i>
+                <label>Sesso Casa :</label> 
+                <select style="color:#000000" name="sessoCoinquilini" required>
+                    <option value="MASCHI">MASCHI</option>
+                    <option value="FEMMINE">FEMMINE</option>
+                    <option value="MISTA">MISTA</option>
+                </select> 
+            </p>
+          </div>
+        </div>
+        <hr>
+
+        <h4><strong>Elettrodomestici</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+              <p>
+                <label>Forno &nbsp;</label> <input type="checkbox" name="forno" value="FORNO">
+              </p>
+              <p>
+                <label>Lavatrice &nbsp;</label> <input type="checkbox" name="lavatrice" value="LAVATRICE">
+              </p>
+              <p>
+                <label>Condizionatore &nbsp;</label> <input type="checkbox" name="condizionatore" value="CONDIZIONATORE">
+              </p>
+              <p>
+                <label>Aspirapolvere &nbsp;</label> <input type="checkbox" name="aspirapolvere" value="ASPIRAPOLVERE">
+              </p>
+              <p>
+                <label>Asciugatrice &nbsp;</label> <input type="checkbox" name="asciugatrice" value="ASCIUGATRICE">
+              </p>
+              <p>
+                <label>Microonde &nbsp;</label> <input type="checkbox" name="microonde" value="MICROONDE">
+              </p>
+              <p>
+                <label>Lavastoviglie &nbsp;</label> <input type="checkbox" name="lavastoviglie" value="LAVASTOVIGLIE">
+              </p>
+          </div>
+        </div>
+        <hr>
+        
+        
+        <h4><strong>Camere disponibili</strong></h4>
+        <div class="w3-row w3-large">
+          <div class="w3-col s6">
+              
+              
+            <p>
+                <i class="fa fa-question fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i> 
+                Camere disponibili (Al momento 0 selezionate) :
+                <select id="camereDisponibili" style="color:#000000" name="camereDisponibili" value="" onchange="addFields(this, event)" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </p>
+            <p id="aggiungiQui" style="width:auto;"></p>
+            <!-- CAMERE DISPONIBILI DA AGGIUNGERE DINAMICAMENTE QUI-->
+          </div>
+        </div>
+        <hr>
+        <h4><strong>Descrizione Annuncio</strong></h4>
+          <textarea name="descrizioneAnnuncio" rows="5" cols="40" style="width:800px;">NESSUNA DESCRIZIONE ANNUNCIO!</textarea>
+          
+        <hr>
+        <h4><strong>Costo mensile</strong></h4>
+        <i class="fa fa-fw fa-eur fa-fw w3-margin-right w3-large w3-text-teal" style="width:30px"></i>
+        <input id="slider3" type="range" min="0" max="900" value="0" step="25" name = "costoMensile" onchange="showValue3(this.value)" />
+        <span id="range3">0</span>
+      </div>
+   <hr>
+         <button class="buttonAnnuncio" type="submit" style="margin-left:3%">
+             <span> Modifica Annuncio </span>
+         </button>
+			<button class="buttonAnnuncio" type="reset">
+             <span>Annulla</span>
+         </button>
+		</form>
+		<br><br>
+    </div>
+    <div id="navfooter" style="margin-top:5px; position:relative;"></div>
+</body>
+</html>
