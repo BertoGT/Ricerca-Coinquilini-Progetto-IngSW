@@ -23,10 +23,23 @@
 		<h1>Inserisci le credenziali di accesso:</h1>
 		<div style="padding:10px 0 10px 20%;">
 		<form method="post" action="http://localhost:8080/login" id="form">
-                    <p><label>EMail  &nbsp; </label><input type="text" style="color:#000000" name="email" value="" required></p>
-                    <p><label>Password  &nbsp;</label><input type="password" style="color:#000000" name="password" value="" required></p>		
-                    <p></p><input type="submit" class="buttonAnnuncio" value="Login">
-                    <input type="reset" value="Annulla" class="buttonAnnuncio">
+            <p><label>EMail  &nbsp; </label><input type="text" style="color:#000000" name="email" value="" required></p>
+            <p><label>Password  &nbsp;</label><input type="password" style="color:#000000" name="password" value="" required></p>		
+            <p></p>
+            <button class="buttonAnnuncio" type="submit">
+                <span>
+                    Login
+                </span>
+            </button>
+            <button class="buttonAnnuncio" type="submit">
+                <span>
+                    Annulla
+                </span>
+            </button>
+            <!--
+            <input type="submit" class="buttonAnnuncio" value="Login">
+            <input type="reset" value="Annulla" class="buttonAnnuncio">
+            -->
 		</form>	
 		</div>
 </div>
