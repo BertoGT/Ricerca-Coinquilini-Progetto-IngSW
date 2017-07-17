@@ -63,8 +63,7 @@ public class RicercaCasaServlet extends HttpServlet {
         } catch (NessunAnnuncioException ex) {
             // pagina con avviso nessun annuncio trovato.
             String risultati = HtmlReader.htmlReader("norisultati.html");
-            resp.getWriter().println(risultati);
-           
+            resp.getWriter().println(risultati);          
         }               
     }
     /**
