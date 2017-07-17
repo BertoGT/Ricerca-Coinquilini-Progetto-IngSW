@@ -143,12 +143,10 @@ public class BusinessModelAnnuncio {
      * @return true se avviene la modifica, false altrimenti
      * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
      */
-    public boolean modificaInfoCasa(int idCasa, InfoCasa info) throws SQLException {
+    public boolean modificaSessoCasa(int idCasa, HouseGenerality sessoCasa) throws SQLException {
         
         db.apriConnesione();
-        int result = db.modificaInfoCasa(idCasa, info.getMetriQuadri(), info.getnLocali(), info.getNumeroBagni(),
-                info.getDistanzaCentro(), info.getSessoCasa().name(), info.isCucinaSeparata(),
-                info.getCitta().name(), info.getIndirizzo());
+        int result = db.modificaSessoCasa(idCasa, sessoCasa.name());
         db.chiudiConnessione();
         if(result == 0) 
             return false;
@@ -175,20 +173,18 @@ public class BusinessModelAnnuncio {
     }
     
     /**
-     * Modifica una camera presente su DB
-     * @param idCasa id univoco della casa a cui aggiungere la camera
-     * @param camera oggetto che rappresenta la cemera da inserire
+     * Elimina tutte le camere di una casa
+     * @param idCasa id univoco della casa a cui eliminare le camere
      * @return true se avviene la modifica, false altrimenti
-     * @throws SQLException ECCEZIONE GENERATA DAL DATABASE.
+     * @throws SQLException 
      */
-    public boolean modificaCamera(int idCasa, CameraDisponibile camera) throws SQLException {
-        
+    public boolean eliminaTutteCamere(int idCasa) throws SQLException {
         db.apriConnesione();
-        int result = db.modificaCamera(idCasa, camera.getIdCamera(), camera.getPostiLetto(), camera.getPostiLettoDisponibili());
+        int result = db.eliminaTutteCamere(idCasa);
         db.chiudiConnessione();
-        if(result == 0) 
+        if(result == 0)
             return false;
-        else 
+        else
             return true;
     }
     
@@ -221,6 +217,16 @@ public class BusinessModelAnnuncio {
         
         db.apriConnesione();
         int result = db.eliminaElettrodomestico(idCasa, elettrodomestico.name());
+        db.chiudiConnessione();
+        if(result == 0) 
+            return false;
+        else 
+            return true;
+    }
+    
+    public boolean eliminaTuttiElettrodomestici(int idCasa) throws SQLException {
+        db.apriConnesione();
+        int result = db.eliminaTuttiElettrodomestici(idCasa);
         db.chiudiConnessione();
         if(result == 0) 
             return false;
